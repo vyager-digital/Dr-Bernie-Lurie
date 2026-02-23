@@ -49,8 +49,15 @@
     font-family: 'Playfair Display', serif;
     font-size: 1.05rem; font-weight: 600;
     color: var(--rose-dark);
+    display: flex; flex-direction: column; gap: 0.15rem; line-height: 1;
   }
-  .nav-logo span { font-style: italic; color: var(--sage-dark); }
+  .nav-logo-main { white-space: nowrap; }
+  .nav-logo-main > span { font-style: italic; color: var(--sage-dark); }
+  .nav-logo-sub {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.58rem; font-weight: 400; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--text-light);
+  }
   .nav-links { display: flex; gap: 2.5rem; }
   .nav-links a {
     font-size: 0.78rem; font-weight: 400; letter-spacing: 0.1em;
@@ -660,7 +667,7 @@
 <body>
 
 <nav>
-  <div class="nav-logo">Nature's <span>Healing</span> Process</div>
+  <div class="nav-logo"><span class="nav-logo-sub">herbernie</span><span class="nav-logo-main">Nature's <span>Healing</span> Process</span></div>
   <div class="nav-links">
     <a href="#causes">Why You're Suffering</a>
     <a href="#process">The Protocol</a>
