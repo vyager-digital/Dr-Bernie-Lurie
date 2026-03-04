@@ -40,6 +40,7 @@
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
+    transition: box-shadow 0.3s;
     padding: 1.4rem 5rem;
     background: rgba(253,248,245,0.92);
     backdrop-filter: blur(14px);
@@ -65,6 +66,8 @@
     transition: color 0.3s;
   }
   .nav-links a:hover { color: var(--rose-dark); }
+  nav.scrolled { box-shadow: 0 2px 24px rgba(61,46,42,0.12); border-bottom-color: transparent; }
+  .nav-links a.active { color: var(--rose); }
   .nav-cta {
     background: var(--rose); color: white;
     padding: 0.7rem 1.8rem; border-radius: 3rem;
@@ -336,6 +339,27 @@
   .cause-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--rose-dark); margin-bottom: 0.6rem; }
   .cause-desc { font-size: 0.9rem; line-height: 1.75; color: var(--text-mid); }
 
+  /* MID-PAGE CTA */
+  .mid-cta {
+    background: var(--rose);
+    padding: 2.8rem 6rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+  }
+  .mid-cta-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.2rem, 2vw, 1.55rem); font-style: italic; font-weight: 300;
+    color: white; max-width: 52ch; line-height: 1.5;
+  }
+  .mid-cta-btn {
+    background: white; color: var(--rose-dark);
+    font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.9rem 2.2rem; border-radius: 3rem;
+    text-decoration: none; white-space: nowrap; flex-shrink: 0;
+    transition: all 0.3s;
+  }
+  .mid-cta-btn:hover { background: var(--blush); transform: translateY(-1px); }
+
   /* PROCESS */
   .process-section { background: var(--warm-white); }
   .process-inner {
@@ -451,7 +475,7 @@
   .test-body { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-style: italic; line-height: 1.7; color: var(--text-dark); margin-bottom: 1.5rem; }
   .test-divider { height: 1px; background: var(--blush); margin-bottom: 1.2rem; }
   .test-meta { display: flex; align-items: center; gap: 0.9rem; }
-  .test-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--blush); font-size: 1.1rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .test-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--rose); font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.05em; color: white; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .test-name { font-size: 0.85rem; font-weight: 500; color: var(--text-dark); }
   .test-condition { font-size: 0.8rem; color: var(--rose); letter-spacing: 0.04em; }
 
@@ -801,9 +825,9 @@
       <div class="wyg-card">
         <div class="wyg-card-top">
           <div class="wyg-icon gold-bg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6l1 7H8L9 3z"/><path d="M8 10c-2 2-3 4-3 6a7 7 0 0 0 14 0c0-2-1-4-3-6"/><line x1="9" y1="14" x2="15" y2="14"/></svg></div>
-          <div class="wyg-card-title">Remedies from Dr. Lurie's Own Facility</div>
+          <div class="wyg-card-title">Remedies from Our Own Clinical Facility</div>
         </div>
-        <div class="wyg-card-body">Many formulations are manufactured in Dr. Lurie's own clinical facility — ensuring the purity, potency, and therapeutic quality your healing demands.</div>
+        <div class="wyg-card-body">Many formulations are manufactured in our own clinical facility — ensuring the purity, potency, and therapeutic quality your healing demands.</div>
       </div>
     </div>
   </div>
@@ -880,6 +904,12 @@
   </div>
 </section>
 
+<!-- MID-PAGE CTA -->
+<div class="mid-cta">
+  <p class="mid-cta-text">Ready to understand what's really happening in your body — and finally get answers that work?</p>
+  <a href="#consult" class="mid-cta-btn">Book Your Consultation →</a>
+</div>
+
 <!-- PROCESS -->
 <section class="process-section section-wrap" id="process">
   <div class="process-inner">
@@ -897,8 +927,8 @@
           <p class="step-body">Most practitioners diagnose on a single visit. We assess symptom patterns across your entire cycle — because that's the only way to know whether you're dealing with estrogen dominance, progesterone deficiency, or both at different points in your month. That distinction determines everything that follows.</p>
           <ul class="step-list">
             <li>Full symptom history across the cycle</li>
-            <li>Identifying estrogen vs progesterone patterns</li>
-            <li>Environmental and dietary contributors</li>
+            <li>Estrogen vs progesterone mapping</li>
+            <li>Environmental & dietary factors</li>
             <li>Stress and adrenal load assessed</li>
           </ul>
         </div>
@@ -910,10 +940,10 @@
           <h3 class="step-title">Targeted Herbal Support</h3>
           <p class="step-body">Balancing herbs don't force the body in one direction. They restore the body's own feedback mechanisms so it can regulate itself correctly — from within. Many formulations are prepared in our own clinical facility, timed specifically to your hormonal cycle where needed.</p>
           <ul class="step-list">
-            <li>Herbs matched to your specific hormonal pattern</li>
+            <li>Herbs matched to your hormonal pattern</li>
             <li>Formulations timed to your cycle</li>
             <li>Nutritional deficiencies addressed</li>
-            <li>Environmental hormone sources reduced</li>
+            <li>Hormone disruptors eliminated</li>
           </ul>
         </div>
       </div>
@@ -925,9 +955,9 @@
           <p class="step-body">Hormonal healing takes months, not weeks. As your body relearns how to regulate itself, your transformation is adjusted accordingly. Most patients notice meaningful improvement within 4–6 weeks, with significant change within 3–6 months.</p>
           <ul class="step-list">
             <li>Symptom tracking across the full cycle</li>
-            <li>Transformation refined as the body responds</li>
-            <li>Diet, stress and detox supported throughout</li>
-            <li>No lifelong dependence on synthetic hormones</li>
+            <li>Plan refined as your body responds</li>
+            <li>Diet, stress and detox supported</li>
+            <li>No reliance on synthetic hormones</li>
           </ul>
         </div>
       </div>
@@ -985,19 +1015,19 @@
         <div class="test-top"><div class="test-qmark">"</div><div class="test-stars">★★★★★</div></div>
         <p class="test-body">Seven years of thyroid medication that never quite worked. Dr. Lurie's transformation addressed what was missing, not just what was measurable. Within four months, my energy returned the way it hadn't since my thirties.</p>
         <div class="test-divider"></div>
-        <div class="test-meta"><div class="test-avatar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div><div class="test-name">Margaret T., 54</div><div class="test-condition">Hashimoto's & Hypothyroidism</div></div></div>
+        <div class="test-meta"><div class="test-avatar">MT</div><div><div class="test-name">Margaret T., 54</div><div class="test-condition">Hashimoto's & Hypothyroidism</div></div></div>
       </div>
       <div class="test-card">
         <div class="test-top"><div class="test-qmark">"</div><div class="test-stars">★★★★★</div></div>
         <p class="test-body">I was told PCOS meant infertility. Dr. Lurie helped me understand what was truly happening in my body. With dietary changes and his custom formulations, I conceived naturally at 38. I don't have words for what that means.</p>
         <div class="test-divider"></div>
-        <div class="test-meta"><div class="test-avatar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div><div class="test-name">Rachel M., 39</div><div class="test-condition">PCOS & Fertility</div></div></div>
+        <div class="test-meta"><div class="test-avatar">RM</div><div><div class="test-name">Rachel M., 39</div><div class="test-condition">PCOS & Fertility</div></div></div>
       </div>
       <div class="test-card">
         <div class="test-top"><div class="test-qmark">"</div><div class="test-stars">★★★★★</div></div>
         <p class="test-body">The brain fog, the 3am wake-ups drenched in sweat, the complete loss of myself. Six months with Dr. Lurie's transformation and I feel better than I did at forty. I just wish I'd found this twenty years earlier.</p>
         <div class="test-divider"></div>
-        <div class="test-meta"><div class="test-avatar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div><div class="test-name">Diane K., 48</div><div class="test-condition">Perimenopause & Adrenal Fatigue</div></div></div>
+        <div class="test-meta"><div class="test-avatar">DK</div><div><div class="test-name">Diane K., 48</div><div class="test-condition">Perimenopause & Adrenal Fatigue</div></div></div>
       </div>
     </div>
     <p style="text-align:center;margin-top:1.5rem;font-size:0.74rem;color:var(--text-light);font-style:italic;">Stories reflect individual experiences. Results vary. All transformations are undertaken under qualified natural health practitioner supervision.</p>
@@ -1094,6 +1124,24 @@
 </footer>
 
 <script>
+  // Nav scroll shadow
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Nav active state
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const sections = document.querySelectorAll('section[id]');
+  const navObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id));
+      }
+    });
+  }, { threshold: 0.35 });
+  sections.forEach(s => navObserver.observe(s));
+
   const els = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
   const io = new IntersectionObserver(entries => {
     entries.forEach((e, i) => {
