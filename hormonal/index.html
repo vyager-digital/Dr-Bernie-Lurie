@@ -343,7 +343,7 @@
     display: grid; grid-template-columns: 1fr 1.6fr;
     gap: 4rem; align-items: start;
   }
-  .process-header { margin-bottom: 0; }
+  .process-header { margin-bottom: 0; position: sticky; top: 6rem; }
   /* PROCESS - clean numbered design */
   .steps-row {
     display: flex; flex-direction: column; gap: 0;
@@ -377,6 +377,7 @@
   }
   .step-card:nth-child(2) { border-color: var(--blush-deep); margin-top: 0; }
   .step-card:nth-child(2) .step-num { color: var(--rose); }
+  .step-card:nth-child(2):hover .step-num { color: white; }
   .step-content {
     padding: 2.2rem 2.5rem;
     display: flex; flex-direction: column;
@@ -457,6 +458,7 @@
   /* DR BERNIE */
   .bernie-section { background: var(--parchment); }
   .bernie-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 5rem; align-items: start; }
+  .bernie-inner .reveal-left { position: sticky; top: 6rem; }
   .bernie-badge {
     display: inline-flex; align-items: center; gap: 0.6rem;
     background: rgba(196,121,106,0.1); border: 1px solid rgba(196,121,106,0.25);
@@ -884,7 +886,7 @@
     <div class="process-header reveal">
       <div class="section-eyebrow">How we work</div>
       <h2 class="section-headline">A Diagnosis Built Around<br><em>Your Whole Cycle</em></h2>
-      <p class="section-subtext" style="margin-top:1rem;">There is no generic transformation here. Before any treatment, we need to understand exactly where you are in your hormonal picture — which pattern dominates, and when.</p>
+      <p class="section-subtext" style="margin-top:1rem;">Every woman's hormonal picture is unique — and your care should be too. Before any treatment, we take the time to understand exactly where you are in your cycle, which patterns dominate, and what your body truly needs to heal.</p>
     </div>
     <div class="steps-row reveal">
       <div class="step-card">
@@ -1045,7 +1047,7 @@
     <div class="cta-left reveal-left">
       <div class="section-eyebrow">Your First Step</div>
       <h2 class="cta-headline">Book Your Personal<br><em>Consultation</em> with Dr. Lurie</h2>
-      <p class="cta-sub">In a one-on-one online consultation, we will assess your full hormonal picture and build a treatment plan designed entirely around you — not a generic transformation, but your personal path to healing.</p>
+      <p class="cta-sub">In a one-on-one online consultation, we will map your complete hormonal cycle and build a treatment plan designed entirely around you — your personal path to lasting balance and healing.</p>
       <div class="cta-inclusions">
         <div class="cta-inc-row"><div class="inc-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg></div>A comprehensive personal natural health transformation</div>
         <div class="cta-inc-row"><div class="inc-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22C6.5 22 2 17.5 2 12c0-4 2.5-7.5 6-9"/><path d="M12 22c3-3 4-6 4-10 0-3-1-5.5-3-7.5"/><path d="M12 22c-3-3-4-6-4-10 0-2 .5-4 1.5-5.5"/><path d="M8 3c1.5 1.5 3 2.5 4 3 1.5.5 3.5 1 5 .5"/></svg></div>Custom supplementation prescribed for your specific condition</div>
