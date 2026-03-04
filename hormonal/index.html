@@ -85,7 +85,7 @@
   .hero-left {
     background: var(--parchment);
     display: flex; flex-direction: column; justify-content: center;
-    padding: 9rem 5rem 7rem 6rem;
+    padding: 8rem 5rem 3rem 6rem;
     position: relative; overflow: hidden;
     max-width: none;
   }
@@ -120,18 +120,18 @@
 
   .hero-headline {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(2.8rem, 3.8vw, 4.5rem);
+    font-size: clamp(2.4rem, 3.4vw, 4rem);
     font-weight: 700; line-height: 1.08;
-    color: var(--text-dark); margin-bottom: 1.8rem;
+    color: var(--text-dark); margin-bottom: 1rem;
     opacity: 0; animation: riseIn 0.9s 0.4s forwards;
   }
   .hero-headline .script { font-style: italic; color: var(--rose); font-weight: 400; display: block; }
-  .hero-headline .sage-word { color: var(--sage-dark); }
+  .hero-headline .sage-word { color: var(--sage-dark); display: block; margin-top: 0.4rem; }
 
   .hero-subtext {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.22rem; font-weight: 300; line-height: 1.75;
-    color: var(--text-mid); max-width: 40ch; margin-bottom: 3rem;
+    color: var(--text-mid); max-width: 40ch; margin-bottom: 1.8rem;
     opacity: 0; animation: riseIn 0.9s 0.6s forwards;
   }
 
@@ -168,19 +168,22 @@
   }
 
   .hero-right {
-    position: relative; overflow: hidden; min-height: 100vh;
+    position: relative;
+    min-height: 100vh;
+    background: var(--parchment);
+    display: flex;
+    align-items: stretch;
+    padding: 6rem 3rem 3rem 1.5rem;
   }
   .hero-right img {
-    width: 100%; height: 100%;
-    object-fit: cover; object-position: center top;
+    width: 100%;
+    border-radius: 1.5rem;
+    object-fit: cover;
+    object-position: center top;
     display: block;
+    box-shadow: 0 24px 64px rgba(61, 46, 42, 0.15);
   }
-  .hero-right::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(to right, var(--parchment) 0%, transparent 18%);
-    pointer-events: none;
-  }
+  .hero-right::after { display: none; }
   .hero-right-overlay { display: none; }
 
   .wyg-label {
@@ -684,7 +687,7 @@
     <h1 class="hero-headline">
       Stop Accepting<br>
       <span class="script">This as Normal.</span>
-      <span class="sage-word">Your body knows how to heal.</span>
+      <span class="sage-word">Your body knows<br>how to heal.</span>
     </h1>
     <p class="hero-subtext">
       Hot flushes, mood swings, sleepless nights, the fog, the weight — none of it is inevitable. It's addressable. And you deserve answers that actually work.
@@ -889,20 +892,18 @@
       <h2 class="facility-headline">Remedies Made With Intention,<br><em>Crafted for Your Healing</em></h2>
       <p class="facility-body">Unlike generic health supplements, many of the formulations Dr. Lurie prescribes are manufactured in his own clinical facility — ensuring precise potency, exceptional purity, and the therapeutic quality your body deserves. Each remedy is chosen and prepared specifically for you, not mass-produced for the shelf.</p>
       <div class="facility-pills">
-        <span class="f-pill">Herbal Tinctures</span>
-        <span class="f-pill">Adaptogenic Blends</span>
-        <span class="f-pill">Targeted Minerals</span>
-        <span class="f-pill">Detox Protocols</span>
-        <span class="f-pill">Thyroid Support</span>
-        <span class="f-pill">Adrenal Formulas</span>
+        <span class="f-pill">Restful Sleep</span>
+        <span class="f-pill">Clear-Headed Days</span>
+        <span class="f-pill">Mood Stability</span>
+        <span class="f-pill">Balanced Cycles</span>
+        <span class="f-pill">Renewed Energy</span>
+        <span class="f-pill">Confidence Restored</span>
       </div>
     </div>
-    <div class="facility-stats reveal-right">
     <div class="facility-stats reveal-right">
       <div class="fac-stat"><span class="fac-stat-num">40+</span><div class="fac-stat-label">Years Clinical Experience</div></div>
       <div class="fac-stat"><span class="fac-stat-num">100%</span><div class="fac-stat-label">Natural Formulations</div></div>
       <div class="fac-stat"><span class="fac-stat-num">Custom</span><div class="fac-stat-label">Every Prescription</div></div>
-      <div class="fac-stat"><span class="fac-stat-num">Online</span><div class="fac-stat-label">Worldwide Consultations</div></div>
     </div>
   </div>
 </section>
