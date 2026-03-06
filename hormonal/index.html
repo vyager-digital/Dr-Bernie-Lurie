@@ -35,6 +35,7 @@
     background: var(--warm-white);
     color: var(--text-dark);
     overflow-x: hidden;
+    padding-top: 80px;
   }
 
   nav {
@@ -79,166 +80,129 @@
 
   /* HERO */
   .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    position: relative;
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: flex-start;
+    padding: 8vh 0 8vh;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
     overflow: hidden;
   }
+  .hero-bg img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: 72% center;
+    display: block;
+  }
+  .hero-bg::before {
+    content: '';
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(
+      100deg,
+      rgba(12, 8, 6, 0.88) 0%,
+      rgba(12, 8, 6, 0.62) 32%,
+      rgba(12, 8, 6, 0.22) 58%,
+      transparent 76%
+    );
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(to top, rgba(12, 8, 6, 0.55) 0%, transparent 45%);
+  }
 
-  .hero-left {
-    background: var(--parchment);
-    display: flex; flex-direction: column; justify-content: center;
-    padding: 8rem 5rem 3rem 6rem;
-    position: relative; overflow: hidden;
-    max-width: none;
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 7%;
+    max-width: 680px;
   }
-  .hero-left::before {
-    content: '';
-    position: absolute; top: -15%; left: -10%;
-    width: 55%; height: 55%;
-    background: radial-gradient(ellipse, rgba(196,121,106,0.12) 0%, transparent 70%);
-    border-radius: 60% 40% 50% 50%;
-    animation: petaldrift 9s ease-in-out infinite;
+  .hero-kicker {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem; font-weight: 500;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--blush-deep);
+    display: flex; align-items: center; gap: 0.9rem;
+    margin-bottom: 1.2rem;
+    opacity: 0; animation: riseIn 0.85s 0.2s forwards;
   }
-  .hero-left::after {
-    content: '';
-    position: absolute; bottom: 0; right: -5%;
-    width: 45%; height: 45%;
-    background: radial-gradient(ellipse, rgba(122,158,126,0.12) 0%, transparent 70%);
-    border-radius: 40% 60% 40% 60%;
-    animation: petaldrift 12s ease-in-out infinite reverse;
+  .hero-kicker::before { content: ''; width: 2rem; height: 1px; background: var(--rose-soft); }
+
+  .hero-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 4.4vw, 5.2rem);
+    font-weight: 700;
+    line-height: 1.0;
+    color: white;
+    margin-bottom: 1.2rem;
+    letter-spacing: -0.02em;
   }
+  .hl-line { display: block; opacity: 0; animation: riseIn 0.85s 0.38s forwards; }
+  .hero-headline .script {
+    font-style: italic; font-weight: 400; display: block;
+    color: var(--rose-soft);
+    opacity: 0; animation: riseIn 0.85s 0.54s forwards;
+  }
+  .hero-headline .sage-word {
+    color: white; display: block;
+    font-weight: 400; margin-top: 0.4rem;
+    opacity: 0; animation: riseIn 0.85s 0.70s forwards;
+  }
+
+  .hero-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 1.5vw, 1.28rem);
+    font-weight: 300; line-height: 1.7;
+    color: rgba(255, 255, 255, 0.76);
+    max-width: 46ch;
+    margin-bottom: 2rem;
+    opacity: 0; animation: riseIn 0.85s 0.88s forwards;
+  }
+
+  .btn-hero {
+    display: inline-flex; align-items: center; gap: 1rem;
+    background: var(--rose); color: white;
+    padding: 1.1rem 2.6rem; border-radius: 3rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.84rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; text-decoration: none;
+    transition: all 0.3s;
+    box-shadow: 0 8px 36px rgba(196,121,106,0.50);
+    opacity: 0; animation: riseIn 0.85s 1.05s forwards;
+  }
+  .btn-hero:hover { background: var(--rose-dark); transform: translateY(-2px); box-shadow: 0 14px 44px rgba(196,121,106,0.58); }
+  .btn-hero-arrow { transition: transform 0.3s; display: inline-block; }
+  .btn-hero:hover .btn-hero-arrow { transform: translateX(5px); }
+
+  .hero-trust {
+    position: absolute;
+    bottom: 3.5rem; right: 4rem;
+    z-index: 3;
+    display: flex; flex-direction: column; align-items: flex-end; gap: 0.2rem;
+    opacity: 0; animation: riseIn 0.85s 1.1s both;
+  }
+  .hero-trust-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem; font-weight: 700;
+    color: white; line-height: 1; letter-spacing: -0.02em;
+  }
+  .hero-trust-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.68rem; letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+
   @keyframes petaldrift {
     0%, 100% { transform: translate(0,0) rotate(0deg) scale(1); }
     50% { transform: translate(8px,-12px) rotate(3deg) scale(1.04); }
   }
-
-  .hero-eyebrow {
-    display: flex; align-items: center; gap: 0.9rem;
-    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--rose); font-weight: 500; margin-bottom: 1.8rem;
-    opacity: 0; animation: riseIn 0.9s 0.2s forwards;
-  }
-  .hero-eyebrow::before { content: ''; width: 2.2rem; height: 1px; background: var(--rose-soft); }
-
-  .hero-headline {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.4rem, 3.4vw, 4rem);
-    font-weight: 700; line-height: 1.08;
-    color: var(--text-dark); margin-bottom: 1rem;
-    opacity: 0; animation: riseIn 0.9s 0.4s forwards;
-  }
-  .hero-headline .script { font-style: italic; color: var(--rose); font-weight: 400; display: block; }
-  .hero-headline .sage-word { color: var(--sage-dark); display: block; margin-top: 0.4rem; }
-
-  .hero-subtext {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.22rem; font-weight: 300; line-height: 1.75;
-    color: var(--text-mid); max-width: 40ch; margin-bottom: 1.8rem;
-    opacity: 0; animation: riseIn 0.9s 0.6s forwards;
-  }
-
-  .hero-actions {
-    display: flex; flex-direction: column; gap: 1.2rem;
-    opacity: 0; animation: riseIn 0.9s 0.8s forwards;
-  }
-  .btn-book {
-    display: inline-flex; align-items: center; gap: 0.8rem;
-    background: var(--rose); color: white;
-    padding: 1.1rem 2.4rem; border-radius: 3rem;
-    font-size: 0.88rem; font-weight: 500; letter-spacing: 0.05em;
-    text-decoration: none; border: none; cursor: pointer;
-    transition: all 0.35s;
-    box-shadow: 0 6px 28px rgba(196,121,106,0.38);
-    width: fit-content;
-  }
-  .btn-book:hover { background: var(--rose-dark); transform: translateY(-2px); box-shadow: 0 10px 36px rgba(196,121,106,0.45); }
-  .btn-arrow {
-    width: 32px; height: 32px; background: rgba(255,255,255,0.2);
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    transition: transform 0.3s;
-  }
-  .btn-book:hover .btn-arrow { transform: translateX(4px); }
-  .hero-note {
-    font-size: 0.82rem; color: var(--text-light);
-    display: flex; align-items: center; gap: 0.5rem;
-  }
-  .hero-note::before { content: '✦'; color: var(--gold); }
-
   @keyframes riseIn {
     from { opacity: 0; transform: translateY(22px); }
     to   { opacity: 1; transform: translateY(0); }
-  }
-
-  .hero-right {
-    position: relative;
-    min-height: 100vh;
-    overflow: hidden;
-  }
-  .hero-right::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to bottom,
-      rgba(242, 221, 213, 0.35) 0%,
-      transparent 40%,
-      transparent 60%,
-      rgba(61, 46, 42, 0.18) 100%
-    );
-    z-index: 1;
-    pointer-events: none;
-  }
-  .hero-right img {
-    width: 100%;
-    height: 90%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-    position: absolute;
-    top: 10%;
-    left: 0;
-    right: 0;
-  }
-  .hero-right::after { display: none; }
-  .hero-right-overlay { display: none; }
-
-  .hero-badge {
-    position: absolute;
-    bottom: 3rem;
-    left: 2rem;
-    background: white;
-    border-radius: 1rem;
-    padding: 1rem 1.3rem;
-    display: flex;
-    align-items: center;
-    gap: 0.9rem;
-    box-shadow: 0 8px 32px rgba(61, 46, 42, 0.13);
-    z-index: 2;
-    animation: riseIn 0.9s 1.1s both;
-  }
-  .hero-badge-icon {
-    width: 2.4rem; height: 2.4rem;
-    border-radius: 50%;
-    background: var(--blush);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1rem;
-    flex-shrink: 0;
-  }
-  .hero-badge-number {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    color: var(--text-dark);
-    line-height: 1;
-    font-weight: 600;
-  }
-  .hero-badge-label {
-    font-family: 'Jost', sans-serif;
-    font-size: 0.68rem;
-    color: var(--text-mid);
-    letter-spacing: 0.04em;
-    margin-top: 0.25rem;
-    text-transform: uppercase;
   }
 
   .wyg-label {
@@ -273,6 +237,127 @@
     font-size: 0.98rem; font-weight: 600; color: var(--text-dark);
   }
   .wyg-card-body { font-size: 0.9rem; line-height: 1.7; color: var(--text-mid); padding-left: calc(40px + 1rem); }
+
+  /* TRUTH SECTION */
+  .truth-section {
+    background: var(--warm-white);
+    padding: 7rem 6rem;
+    border-bottom: 1px solid var(--blush-deep);
+  }
+  .truth-inner { max-width: 1100px; margin: 0 auto; }
+
+  .truth-header {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+  .truth-header .section-eyebrow { justify-content: center; }
+  .truth-header .section-headline {
+    font-size: clamp(2rem, 3vw, 3rem);
+    max-width: 680px;
+    margin: 0.8rem auto 1.4rem;
+    line-height: 1.2;
+  }
+  .truth-header .section-headline em { color: var(--rose); font-style: italic; }
+  .truth-subtext {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: var(--text-mid);
+    line-height: 1.7;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .truth-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--blush-deep);
+    border: 2px solid var(--blush-deep);
+    border-radius: 1.4rem;
+    overflow: hidden;
+    margin-bottom: 4rem;
+  }
+  .truth-card {
+    background: var(--warm-white);
+    padding: 3rem 3.2rem 3rem 3rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+  .truth-card::before {
+    content: '\201C';
+    font-family: 'Playfair Display', serif;
+    font-size: 7rem;
+    line-height: 1;
+    color: var(--blush-deep);
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    pointer-events: none;
+    user-select: none;
+  }
+  .truth-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.18rem;
+    font-style: italic;
+    color: var(--rose-dark);
+    line-height: 1.5;
+    font-weight: 400;
+    position: relative;
+    padding-left: 1.1rem;
+    border-left: 2.5px solid var(--rose-soft);
+    max-width: 85%;
+  }
+  .truth-explanation {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.97rem;
+    color: var(--text-mid);
+    line-height: 1.75;
+    font-weight: 300;
+    max-width: 90%;
+  }
+  .truth-explanation strong {
+    color: var(--text-dark);
+    font-weight: 500;
+  }
+
+  .truth-closing {
+    text-align: center;
+    padding: 1rem 2rem 0;
+  }
+  .truth-closing-line {
+    width: 3rem;
+    height: 1px;
+    background: var(--rose-soft);
+    margin: 0 auto 2rem;
+  }
+  .truth-closing-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.45rem;
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--text-dark);
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .truth-closing-text em { font-style: italic; color: var(--rose); }
+  .truth-closing-text strong { font-weight: 600; }
+
+  @media (max-width: 900px) {
+    .truth-section { padding: 5rem 3rem; }
+    .truth-grid { grid-template-columns: 1fr; }
+    .truth-card { padding: 2.5rem 2rem; }
+  }
+  @media (max-width: 600px) {
+    .truth-section { padding: 4rem 1.4rem; }
+    .truth-header { margin-bottom: 3.5rem; }
+    .truth-subtext { font-size: 1.1rem; font-weight: 400; }
+    .truth-quote { font-size: 1.05rem; }
+    .truth-explanation { font-size: 0.93rem; font-weight: 400; }
+    .truth-closing-text { font-size: 1.2rem; font-weight: 400; }
+  }
 
   /* WHAT YOU RECEIVE SECTION */
   .wyg-section { background: white; padding: 5rem 6rem; border-bottom: 1px solid var(--blush-deep); }
@@ -580,12 +665,28 @@
   .footer-links a:hover { color: var(--rose); }
 
   /* SCROLL REVEAL */
-  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s ease, transform 0.9s ease; }
+  .reveal {
+    opacity: 0; transform: translateY(38px);
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--d, 0ms);
+  }
   .reveal.visible { opacity: 1; transform: none; }
-  .reveal-left { opacity: 0; transform: translateX(-28px); transition: opacity 0.9s ease, transform 0.9s ease; }
+  .reveal-left {
+    opacity: 0; transform: translateX(-36px);
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--d, 0ms);
+  }
   .reveal-left.visible { opacity: 1; transform: none; }
-  .reveal-right { opacity: 0; transform: translateX(28px); transition: opacity 0.9s ease, transform 0.9s ease; }
+  .reveal-right {
+    opacity: 0; transform: translateX(36px);
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--d, 0ms);
+  }
   .reveal-right.visible { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
 
   /* ── TABLET (≤ 960px) ── */
   @media (max-width: 960px) {
@@ -593,10 +694,9 @@
     .nav-links { display: none; }
     .nav-cta { font-size: 0.72rem; padding: 0.6rem 1.2rem; white-space: nowrap; }
 
-    .hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-left { padding: 7rem 2.5rem 3.5rem; }
-    .hero-right { min-height: 60vw; }
-    .hero-right::after { background: linear-gradient(to bottom, var(--parchment) 0%, transparent 20%); }
+    .hero { min-height: calc(100svh - 70px); padding: 7vh 0 6vh; }
+    .hero-content { padding: 0 3rem; }
+    .hero-trust { bottom: 2.5rem; right: 2rem; }
 
     .wyg-section { padding: 4rem 2.5rem; }
     .wyg-grid { grid-template-columns: 1fr 1fr; gap: 1.2rem; }
@@ -630,7 +730,7 @@
     /* ── Cormorant Garamond weight fix ──
        weight 300 is too thin to read on phone screens.
        Bump ALL light-weight serif text to 400 (normal). */
-    .hero-subtext,
+    .hero-tagline,
     .section-subtext,
     .facility-body,
     .bernie-text,
@@ -651,13 +751,15 @@
     .nav-cta::after { content: 'Book Now'; font-size: 0.78rem; letter-spacing: 0.03em; }
 
     /* Hero */
-    .hero-left { padding: 5.5rem 1.4rem 2.5rem; }
-    .hero-eyebrow { font-size: 0.78rem; }
-    .hero-headline { font-size: 2rem !important; line-height: 1.12; }
-    .hero-subtext { font-size: 1.05rem; max-width: none; margin-bottom: 2rem; }
-    .btn-book { width: 100%; justify-content: center; font-size: 0.95rem; padding: 1rem 1.4rem; }
-    .btn-arrow { margin-left: auto; }
-    .hero-right { min-height: 72vw; }
+    .hero { min-height: calc(100svh - 64px); padding: 6vh 0 5vh; }
+    .hero-bg img { object-position: 25% center; }
+    .hero-content { padding: 0 1.4rem; }
+    .hero-headline { font-size: clamp(2.6rem, 9vw, 3.2rem) !important; line-height: 1.0; }
+    .hero-tagline { font-size: 1.1rem; font-weight: 400; max-width: none; }
+    .btn-hero { width: 100%; justify-content: center; font-size: 0.9rem; }
+    .hero-trust { bottom: auto; top: 5.5rem; right: 1.4rem; }
+    .hero-trust-num { font-size: 1.8rem; }
+    .hero-trust-label { font-size: 0.62rem; }
 
     /* What you receive */
     .wyg-section { padding: 3rem 1.4rem; }
@@ -760,44 +862,72 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-left">
-    <div class="hero-eyebrow">Women's Hormonal Healing</div>
-    <h1 class="hero-headline">
-      Stop Accepting<br>
-      <span class="script">This as Normal.</span>
-      <span class="sage-word">Your body knows<br>how to heal.</span>
-    </h1>
-    <p class="hero-subtext">
-      Hot flushes, mood swings, sleepless nights, the fog, the weight — none of it is inevitable. It's addressable. And you deserve answers that actually work.
-    </p>
-    <div class="hero-actions">
-      <a href="#consult" class="btn-book">
-        Book Your Online Consultation
-        <span class="btn-arrow">→</span>
-      </a>
-    </div>
-  </div>
-
-  </div><!-- end hero-left -->
-
-  <div class="hero-right">
+  <div class="hero-bg">
     <img
-      src="assets/images/hormonal-hero-8.webp"
-      alt="Radiant woman in warm natural light"
+      src="assets/images/hero-new.png"
+      alt="Woman in a sunlit field gathering wild botanicals"
+      width="1400" height="500"
     >
-    <div class="hero-badge">
-      <div class="hero-badge-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-        </svg>
-      </div>
-      <div>
-        <div class="hero-badge-number">Thousands</div>
-        <div class="hero-badge-label">of Women Helped</div>
-      </div>
-    </div>
   </div>
 
+  <div class="hero-content">
+    <div class="hero-kicker">Women's Hormonal Healing</div>
+    <h1 class="hero-headline">
+      <span class="hl-line">Stop Accepting</span>
+      <span class="script">This as Normal.</span>
+      <span class="sage-word">Your body knows how to heal.</span>
+    </h1>
+    <p class="hero-tagline">Hot flushes, mood swings, sleepless nights, the fog, the weight — none of it is inevitable. It's addressable. And you deserve answers that actually work.</p>
+    <a href="#consult" class="btn-hero">
+      Book Your Online Consultation
+      <span class="btn-hero-arrow">→</span>
+    </a>
+  </div>
+
+  <div class="hero-trust">
+    <span class="hero-trust-num">Thousands</span>
+    <span class="hero-trust-label">of Women Helped</span>
+  </div>
+</section>
+
+<!-- WHAT'S ACTUALLY HAPPENING -->
+<section class="truth-section">
+  <div class="truth-inner">
+
+    <div class="truth-header reveal">
+      <div class="section-eyebrow">What's Actually Happening</div>
+      <h2 class="section-headline">
+        You're Not Imagining It.<br>
+        You're Not <em>Getting Older "Gracefully."</em>
+      </h2>
+      <p class="truth-subtext">You're hormonally imbalanced — and nobody's looked at the full picture.</p>
+    </div>
+
+    <div class="truth-grid">
+      <div class="truth-card reveal" style="--d:0ms">
+        <p class="truth-quote">"My blood tests came back normal."</p>
+        <p class="truth-explanation">Normal compared to what? A single test on a single day tells your doctor almost nothing. Your hormones shift dramatically across a 28-day cycle. One snapshot — taken on the wrong day — looks completely different from a test taken two weeks later. <strong>Your doctor is treating a moving target as a fixed fact.</strong></p>
+      </div>
+      <div class="truth-card reveal" style="--d:120ms">
+        <p class="truth-quote">"I've been on HRT and I'm getting worse."</p>
+        <p class="truth-explanation">That's not surprising. Most HRT adds more estrogen to a body that's already estrogen-saturated. Environmental chemicals in plastics, pesticides, and food packaging have been flooding your system with estrogen-mimicking compounds for decades. <strong>More estrogen isn't the answer. It may be the problem.</strong></p>
+      </div>
+      <div class="truth-card reveal" style="--d:240ms">
+        <p class="truth-quote">"I've been told it's stress. Or anxiety. Or just aging."</p>
+        <p class="truth-explanation">Some of those symptoms — the mood swings, the brain fog, the crashes, the sleeplessness — have a hormonal explanation that never got explored. The symptoms of hormonal imbalance and the symptoms of anxiety look identical on paper. <strong>One has a root cause that can be addressed.</strong></p>
+      </div>
+      <div class="truth-card reveal" style="--d:360ms">
+        <p class="truth-quote">"I'm managing. But I'm not well."</p>
+        <p class="truth-explanation">Managing isn't healing. If you've adjusted your life around symptoms you were told are just part of being a woman, you've been given an answer that <strong>stopped the conversation too early.</strong></p>
+      </div>
+    </div>
+
+    <div class="truth-closing reveal">
+      <div class="truth-closing-line"></div>
+      <p class="truth-closing-text">There's a reason you haven't gotten better. It's not your body failing.<br><em>It's the assessment that failed.</em></p>
+    </div>
+
+  </div>
 </section>
 
 <!-- WHAT YOU RECEIVE -->
@@ -808,21 +938,21 @@
       <h2 class="section-headline" style="text-align:center;">A Plan Built Around <em>You</em>,<br>Tailored to Your Body's Needs</h2>
     </div>
     <div class="wyg-grid">
-      <div class="wyg-card">
+      <div class="wyg-card reveal" style="--d:0ms">
         <div class="wyg-card-top">
           <div class="wyg-icon rose-bg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg></div>
           <div class="wyg-card-title">Your Personal Healing Plan</div>
         </div>
         <div class="wyg-card-body">A comprehensive, individually tailored transformation — diet, detox, lifestyle, and herbal support — built around your unique hormonal picture, not a generic template.</div>
       </div>
-      <div class="wyg-card">
+      <div class="wyg-card reveal" style="--d:110ms">
         <div class="wyg-card-top">
           <div class="wyg-icon sage-bg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sage-dark)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22C6.5 22 2 17.5 2 12c0-4 2.5-7.5 6-9"/><path d="M12 22c3-3 4-6 4-10 0-3-1-5.5-3-7.5"/><path d="M12 22c-3-3-4-6-4-10 0-2 .5-4 1.5-5.5"/><path d="M8 3c1.2 1.2 2.5 2.5 4 3s3.5 1 5 .5"/></svg></div>
           <div class="wyg-card-title">Custom Natural Supplementation</div>
         </div>
         <div class="wyg-card-body">Targeted supplements and herbal formulations prescribed specifically for your condition — chosen with precision, not pulled off a shelf.</div>
       </div>
-      <div class="wyg-card">
+      <div class="wyg-card reveal" style="--d:220ms">
         <div class="wyg-card-top">
           <div class="wyg-icon gold-bg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6l1 7H8L9 3z"/><path d="M8 10c-2 2-3 4-3 6a7 7 0 0 0 14 0c0-2-1-4-3-6"/><line x1="9" y1="14" x2="15" y2="14"/></svg></div>
           <div class="wyg-card-title">Remedies from Our Own Clinical Facility</div>
@@ -879,23 +1009,23 @@
       <h2 class="section-headline">The Real Reason You Haven't Gotten Better</h2>
       <p class="section-subtext">Most women with hormonal imbalances have been given the wrong answer — often because they were asked the wrong question. A single blood test on a single day tells your doctor almost nothing. Your hormones change dramatically across a 28-day cycle. Treating one snapshot as the whole truth is why so many women don't improve. And sometimes get worse.</p>
     </div>
-    <div class="causes-grid reveal-right">
-      <div class="cause-card">
+    <div class="causes-grid">
+      <div class="cause-card reveal" style="--d:0ms">
         <div class="cause-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22C6.5 22 2 17.5 2 12c0-4 2.5-7.5 6-9"/><path d="M12 22c3-3 4-6 4-10 0-3-1-5.5-3-7.5"/><path d="M12 22c-3-3-4-6-4-10 0-2 .5-4 1.5-5.5"/><path d="M8 3c1.5 1.5 3 2.5 4 3 1.5.5 3.5 1 5 .5"/></svg></div>
         <div class="cause-title">Xenoestrogen Overload</div>
         <p class="cause-desc">Plastics, pesticides, food packaging, personal care products — they all leach chemicals that mimic estrogen in the body. Most women today are estrogen-saturated before symptoms even begin. Adding more estrogen is the last thing they need.</p>
       </div>
-      <div class="cause-card">
+      <div class="cause-card reveal" style="--d:120ms">
         <div class="cause-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
         <div class="cause-title">The Blood Test Trap</div>
         <p class="cause-desc">During the first two weeks of your cycle, estrogen is high and progesterone is low. During the second two weeks, that completely reverses. If your doctor tested you on the wrong day, their prescription is based on the wrong picture entirely.</p>
       </div>
-      <div class="cause-card">
+      <div class="cause-card reveal" style="--d:240ms">
         <div class="cause-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 13 9 20 9"/><path d="M13 2L3 13h9v9l9-11h-9z"/></svg></div>
         <div class="cause-title">Progesterone Deficiency</div>
         <p class="cause-desc">After 40, the ovaries' natural output slows — and progesterone typically drops faster than estrogen. The result is hot flushes, depression, memory loss, and night sweats. Conditions that are frequently medicated rather than corrected.</p>
       </div>
-      <div class="cause-card">
+      <div class="cause-card reveal" style="--d:360ms">
         <div class="cause-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg></div>
         <div class="cause-title">Stress Stealing Your Hormones</div>
         <p class="cause-desc">Under chronic stress, the body prioritises cortisol over sex hormone production — literally stealing the building blocks meant for progesterone. You can take all the right supplements and still not recover if this isn't addressed.</p>
@@ -996,8 +1126,8 @@
       </div>
     </div>
     <div class="facility-stats reveal-right">
-      <div class="fac-stat"><span class="fac-stat-num">40+</span><div class="fac-stat-label">Years Clinical Experience</div></div>
-      <div class="fac-stat"><span class="fac-stat-num">100%</span><div class="fac-stat-label">Natural Formulations</div></div>
+      <div class="fac-stat"><span class="fac-stat-num" data-count="40" data-suffix="+">40+</span><div class="fac-stat-label">Years Clinical Experience</div></div>
+      <div class="fac-stat"><span class="fac-stat-num" data-count="100" data-suffix="%">100%</span><div class="fac-stat-label">Natural Formulations</div></div>
       <div class="fac-stat"><span class="fac-stat-num">Custom</span><div class="fac-stat-label">Every Prescription</div></div>
     </div>
   </div>
@@ -1010,20 +1140,20 @@
       <div class="section-eyebrow" style="justify-content:center;">Patient Stories</div>
       <h2 class="section-headline" style="text-align:center;">Women Who Found Their Way Back</h2>
     </div>
-    <div class="test-grid reveal">
-      <div class="test-card">
+    <div class="test-grid">
+      <div class="test-card reveal" style="--d:0ms">
         <div class="test-top"><div class="test-qmark">"</div><div class="test-stars">★★★★★</div></div>
         <p class="test-body">Seven years of thyroid medication that never quite worked. Dr. Lurie's transformation addressed what was missing, not just what was measurable. Within four months, my energy returned the way it hadn't since my thirties.</p>
         <div class="test-divider"></div>
         <div class="test-meta"><div class="test-avatar">MT</div><div><div class="test-name">Margaret T., 54</div><div class="test-condition">Hashimoto's & Hypothyroidism</div></div></div>
       </div>
-      <div class="test-card">
+      <div class="test-card reveal" style="--d:120ms">
         <div class="test-top"><div class="test-qmark">"</div><div class="test-stars">★★★★★</div></div>
         <p class="test-body">I was told PCOS meant infertility. Dr. Lurie helped me understand what was truly happening in my body. With dietary changes and his custom formulations, I conceived naturally at 38. I don't have words for what that means.</p>
         <div class="test-divider"></div>
         <div class="test-meta"><div class="test-avatar">RM</div><div><div class="test-name">Rachel M., 39</div><div class="test-condition">PCOS & Fertility</div></div></div>
       </div>
-      <div class="test-card">
+      <div class="test-card reveal" style="--d:240ms">
         <div class="test-top"><div class="test-qmark">"</div><div class="test-stars">★★★★★</div></div>
         <p class="test-body">The brain fog, the 3am wake-ups drenched in sweat, the complete loss of myself. Six months with Dr. Lurie's transformation and I feel better than I did at forty. I just wish I'd found this twenty years earlier.</p>
         <div class="test-divider"></div>
@@ -1128,7 +1258,7 @@
   const nav = document.querySelector('nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 20);
-  });
+  }, { passive: true });
 
   // Nav active state
   const navLinks = document.querySelectorAll('.nav-links a');
@@ -1139,19 +1269,45 @@
         navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id));
       }
     });
-  }, { threshold: 0.35 });
+  }, { threshold: 0.25, rootMargin: '-15% 0px -15% 0px' });
   sections.forEach(s => navObserver.observe(s));
 
-  const els = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-  const io = new IntersectionObserver(entries => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 100);
-        io.unobserve(e.target);
+  // Scroll reveal — per-element delay controlled via CSS --d custom property
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-  els.forEach(el => io.observe(el));
+  }, { threshold: 0.12, rootMargin: '0px 0px -48px 0px' });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // Animated number counters
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.count, 10);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1400;
+    const startTime = performance.now();
+    function step(now) {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  const counterEls = document.querySelectorAll('[data-count]');
+  const counterObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  counterEls.forEach(el => counterObserver.observe(el));
 </script>
 </body>
 </html>
