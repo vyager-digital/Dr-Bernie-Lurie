@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(open:*)",
+      "WebFetch(domain:dr-bernie-lurie-hormonal.vercel.app)",
+      "Bash(identify:*)",
+      "Bash(cp:*)",
+      "Bash(python3:*)"
+    ]
+  }
+}
