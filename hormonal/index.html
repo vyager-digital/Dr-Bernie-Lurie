@@ -848,59 +848,45 @@
 
   /* WHAT HEALING LOOKS LIKE */
   .transform-section { background: var(--warm-white); padding: 7rem 6rem; border-bottom: 1px solid var(--blush-deep); }
-  .transform-inner { max-width: 820px; margin: 0 auto; }
+  .transform-inner { max-width: 1200px; margin: 0 auto; }
   .transform-header { text-align: center; margin-bottom: 5rem; }
-  .transform-stack { display: flex; flex-direction: column; gap: 1.8rem; }
+  .transform-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
   .transform-card {
-    display: grid; grid-template-columns: 88px 1fr; gap: 0 2.5rem; align-items: start;
-    background: white; border: 1px solid var(--blush-deep); border-radius: 2rem;
-    padding: 2.8rem 3rem; position: relative; overflow: hidden;
-    opacity: 0; transform: translateY(56px);
-    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    padding: 2.8rem 2rem;
+    background: white; border: 1px solid var(--blush-deep); border-radius: 1.8rem;
+    opacity: 0; transform: translateY(52px);
+    transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
   }
   .transform-card.visible { opacity: 1; transform: none; }
-  .transform-card::before {
-    content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 4px;
-    background: linear-gradient(180deg, var(--rose-soft) 0%, var(--sage-light) 100%);
-  }
-  .tc-left { display: flex; flex-direction: column; align-items: center; gap: 0.7rem; padding-top: 0.3rem; }
-  .tc-num {
-    font-family: 'Playfair Display', serif; font-size: 0.78rem; font-weight: 700;
-    color: var(--rose-soft); letter-spacing: 0.1em;
-  }
-  .tc-icon {
-    width: 58px; height: 58px; border-radius: 50%; background: var(--sage-pale);
+  .transform-icon {
+    width: 68px; height: 68px; border-radius: 50%; background: var(--sage-pale);
     display: flex; align-items: center; justify-content: center;
-    font-size: 1.25rem; color: var(--sage-dark); flex-shrink: 0;
+    margin: 0 auto 1.5rem; font-size: 1.4rem; color: var(--sage-dark); flex-shrink: 0;
   }
-  .tc-right {}
-  .tc-before {
-    font-family: 'Jost', sans-serif; font-size: 0.82rem; font-weight: 400;
-    color: var(--text-light); font-style: italic; line-height: 1.5; margin-bottom: 0.75rem;
+  .transform-before {
+    font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--rose-dark);
+    line-height: 1.5; margin-bottom: 0.8rem;
   }
-  .tc-arrow { font-size: 0.85rem; color: var(--rose-soft); display: block; margin-bottom: 0.75rem; }
-  .tc-after {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.55rem, 2.2vw, 2rem); font-weight: 700;
-    color: var(--text-dark); line-height: 1.15; margin-bottom: 0.9rem;
+  .transform-arrow { font-size: 1rem; color: var(--rose); margin: 0.4rem 0 0.8rem; line-height: 1; flex-shrink: 0; }
+  .transform-after {
+    font-family: 'Cormorant Garamond', serif; font-size: clamp(1.3rem, 1.8vw, 1.65rem);
+    font-weight: 600; color: var(--sage-dark); line-height: 1.25; margin-bottom: 1rem;
   }
-  .tc-detail {
-    font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 300;
-    line-height: 1.75; color: var(--text-mid);
-  }
+  .transform-detail { font-size: 0.9rem; font-weight: 300; line-height: 1.75; color: var(--text-mid); }
   .transform-footer { text-align: center; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--blush-deep); }
   .transform-footer p { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 400; color: var(--text-mid); max-width: 620px; margin: 0 auto; line-height: 1.6; }
   /* Team photo (real image) */
   .team-photo { aspect-ratio: 4/5; width: 100%; position: relative; overflow: hidden; }
   .team-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
-  @media (max-width: 900px) { .transform-section { padding: 5rem 3rem; } }
+  @media (max-width: 900px) { .transform-section { padding: 5rem 3rem; } .transform-grid { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 600px) {
     .transform-section { padding: 4rem 1.4rem; }
-    .transform-card { grid-template-columns: 1fr; gap: 1rem; padding: 1.8rem 1.5rem; }
-    .tc-left { flex-direction: row; gap: 0.8rem; align-items: center; }
-    .tc-icon { width: 46px; height: 46px; font-size: 1.05rem; flex-shrink: 0; }
-    .tc-after { font-size: 1.45rem; }
-    .tc-detail { font-size: 1.05rem; font-weight: 400; }
+    .transform-grid { grid-template-columns: 1fr; }
+    .transform-card { padding: 2rem 1.4rem; }
+    .transform-after { font-size: 1.35rem; }
+    .transform-detail { font-weight: 400; font-size: 0.95rem; }
   }
 </style>
 </head>
@@ -1002,78 +988,48 @@
       <h2 class="section-headline">This Is What's <em>Possible</em></h2>
       <p class="section-subtext">Not a suppression of symptoms. A restoration of you.</p>
     </div>
-    <div class="transform-stack">
+    <div class="transform-grid">
       <div class="transform-card">
-        <div class="tc-left">
-          <div class="tc-num">01</div>
-          <div class="tc-icon"><i class="fas fa-moon"></i></div>
-        </div>
-        <div class="tc-right">
-          <div class="tc-before">Restless nights, 3am wake-ups</div>
-          <div class="tc-arrow">↓</div>
-          <div class="tc-after">Deep, uninterrupted sleep</div>
-          <p class="tc-detail">When progesterone is restored to its proper balance, sleep returns — naturally, without sedatives.</p>
-        </div>
+        <div class="transform-icon"><i class="fas fa-moon"></i></div>
+        <div class="transform-before">Restless nights, 3am wake-ups</div>
+        <div class="transform-arrow">↓</div>
+        <div class="transform-after">Deep, uninterrupted sleep</div>
+        <p class="transform-detail">When progesterone is restored to its proper balance, sleep returns — naturally, without sedatives.</p>
       </div>
       <div class="transform-card">
-        <div class="tc-left">
-          <div class="tc-num">02</div>
-          <div class="tc-icon"><i class="fas fa-brain"></i></div>
-        </div>
-        <div class="tc-right">
-          <div class="tc-before">Brain fog, forgetfulness, the feeling of losing yourself</div>
-          <div class="tc-arrow">↓</div>
-          <div class="tc-after">Mental clarity and confidence restored</div>
-          <p class="tc-detail">Hormonal balance supports neurotransmitter function. The fog lifts. You think clearly again.</p>
-        </div>
+        <div class="transform-icon"><i class="fas fa-brain"></i></div>
+        <div class="transform-before">Brain fog, forgetfulness, the feeling of losing yourself</div>
+        <div class="transform-arrow">↓</div>
+        <div class="transform-after">Mental clarity and confidence restored</div>
+        <p class="transform-detail">Hormonal balance supports neurotransmitter function. The fog lifts. You think clearly again.</p>
       </div>
       <div class="transform-card">
-        <div class="tc-left">
-          <div class="tc-num">03</div>
-          <div class="tc-icon"><i class="fas fa-heart"></i></div>
-        </div>
-        <div class="tc-right">
-          <div class="tc-before">Mood swings, irritability, crying for no reason</div>
-          <div class="tc-arrow">↓</div>
-          <div class="tc-after">Emotional steadiness and calm</div>
-          <p class="tc-detail">These aren't personality traits. They're symptoms. And symptoms with a hormonal root can be resolved.</p>
-        </div>
+        <div class="transform-icon"><i class="fas fa-heart"></i></div>
+        <div class="transform-before">Mood swings, irritability, crying for no reason</div>
+        <div class="transform-arrow">↓</div>
+        <div class="transform-after">Emotional steadiness and calm</div>
+        <p class="transform-detail">These aren't personality traits. They're symptoms. And symptoms with a hormonal root can be resolved.</p>
       </div>
       <div class="transform-card">
-        <div class="tc-left">
-          <div class="tc-num">04</div>
-          <div class="tc-icon"><i class="fas fa-fire-flame-curved"></i></div>
-        </div>
-        <div class="tc-right">
-          <div class="tc-before">Hot flushes, night sweats, constant discomfort</div>
-          <div class="tc-arrow">↓</div>
-          <div class="tc-after">Temperature stability, comfort in your own body</div>
-          <p class="tc-detail">Natural herbal protocols address the underlying deficiency — not just the sensation.</p>
-        </div>
+        <div class="transform-icon"><i class="fas fa-fire-flame-curved"></i></div>
+        <div class="transform-before">Hot flushes, night sweats, constant discomfort</div>
+        <div class="transform-arrow">↓</div>
+        <div class="transform-after">Temperature stability, comfort in your own body</div>
+        <p class="transform-detail">Natural herbal protocols address the underlying deficiency — not just the sensation.</p>
       </div>
       <div class="transform-card">
-        <div class="tc-left">
-          <div class="tc-num">05</div>
-          <div class="tc-icon"><i class="fas fa-battery-full"></i></div>
-        </div>
-        <div class="tc-right">
-          <div class="tc-before">Fatigue that sleep doesn't fix</div>
-          <div class="tc-arrow">↓</div>
-          <div class="tc-after">Sustained energy through the day</div>
-          <p class="tc-detail">When your hormones, thyroid, and adrenals work together as designed, energy stops being something you ration.</p>
-        </div>
+        <div class="transform-icon"><i class="fas fa-battery-full"></i></div>
+        <div class="transform-before">Fatigue that sleep doesn't fix</div>
+        <div class="transform-arrow">↓</div>
+        <div class="transform-after">Sustained energy through the day</div>
+        <p class="transform-detail">When your hormones, thyroid, and adrenals work together as designed, energy stops being something you ration.</p>
       </div>
       <div class="transform-card">
-        <div class="tc-left">
-          <div class="tc-num">06</div>
-          <div class="tc-icon"><i class="fas fa-person"></i></div>
-        </div>
-        <div class="tc-right">
-          <div class="tc-before">Weight that doesn't move despite everything</div>
-          <div class="tc-arrow">↓</div>
-          <div class="tc-after">Metabolic balance and body confidence</div>
-          <p class="tc-detail">Oestrogen dominance directly drives weight gain. Address the cause, and the body responds.</p>
-        </div>
+        <div class="transform-icon"><i class="fas fa-person"></i></div>
+        <div class="transform-before">Weight that doesn't move despite everything</div>
+        <div class="transform-arrow">↓</div>
+        <div class="transform-after">Metabolic balance and body confidence</div>
+        <p class="transform-detail">Oestrogen dominance directly drives weight gain. Address the cause, and the body responds.</p>
       </div>
     </div>
     <div class="transform-footer reveal">
