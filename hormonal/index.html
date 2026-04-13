@@ -850,13 +850,13 @@
   .transform-section { background: var(--warm-white); padding: 7rem 6rem; border-bottom: 1px solid var(--blush-deep); }
   .transform-inner { max-width: 1200px; margin: 0 auto; }
   .transform-header { text-align: center; margin-bottom: 5rem; }
-  .transform-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .transform-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4rem 2.5rem; }
   .transform-card {
     display: flex; flex-direction: column; align-items: center; text-align: center;
-    padding: 2.8rem 2rem;
-    background: white; border: 1px solid var(--blush-deep); border-radius: 1.8rem;
+    padding: 0 1rem;
     opacity: 0; transform: translateY(52px);
-    transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--d, 0ms);
   }
   .transform-card.visible { opacity: 1; transform: none; }
   .transform-icon {
@@ -989,42 +989,42 @@
       <p class="section-subtext">Not a suppression of symptoms. A restoration of you.</p>
     </div>
     <div class="transform-grid">
-      <div class="transform-card">
+      <div class="transform-card" style="--d:0ms">
         <div class="transform-icon"><i class="fas fa-moon"></i></div>
         <div class="transform-before">Restless nights, 3am wake-ups</div>
         <div class="transform-arrow">↓</div>
         <div class="transform-after">Deep, uninterrupted sleep</div>
         <p class="transform-detail">When progesterone is restored to its proper balance, sleep returns — naturally, without sedatives.</p>
       </div>
-      <div class="transform-card">
+      <div class="transform-card" style="--d:150ms">
         <div class="transform-icon"><i class="fas fa-brain"></i></div>
         <div class="transform-before">Brain fog, forgetfulness, the feeling of losing yourself</div>
         <div class="transform-arrow">↓</div>
         <div class="transform-after">Mental clarity and confidence restored</div>
         <p class="transform-detail">Hormonal balance supports neurotransmitter function. The fog lifts. You think clearly again.</p>
       </div>
-      <div class="transform-card">
+      <div class="transform-card" style="--d:300ms">
         <div class="transform-icon"><i class="fas fa-heart"></i></div>
         <div class="transform-before">Mood swings, irritability, crying for no reason</div>
         <div class="transform-arrow">↓</div>
         <div class="transform-after">Emotional steadiness and calm</div>
         <p class="transform-detail">These aren't personality traits. They're symptoms. And symptoms with a hormonal root can be resolved.</p>
       </div>
-      <div class="transform-card">
+      <div class="transform-card" style="--d:0ms">
         <div class="transform-icon"><i class="fas fa-fire-flame-curved"></i></div>
         <div class="transform-before">Hot flushes, night sweats, constant discomfort</div>
         <div class="transform-arrow">↓</div>
         <div class="transform-after">Temperature stability, comfort in your own body</div>
         <p class="transform-detail">Natural herbal protocols address the underlying deficiency — not just the sensation.</p>
       </div>
-      <div class="transform-card">
+      <div class="transform-card" style="--d:150ms">
         <div class="transform-icon"><i class="fas fa-battery-full"></i></div>
         <div class="transform-before">Fatigue that sleep doesn't fix</div>
         <div class="transform-arrow">↓</div>
         <div class="transform-after">Sustained energy through the day</div>
         <p class="transform-detail">When your hormones, thyroid, and adrenals work together as designed, energy stops being something you ration.</p>
       </div>
-      <div class="transform-card">
+      <div class="transform-card" style="--d:300ms">
         <div class="transform-icon"><i class="fas fa-person"></i></div>
         <div class="transform-before">Weight that doesn't move despite everything</div>
         <div class="transform-arrow">↓</div>
