@@ -566,43 +566,46 @@
   .test-name { font-size: 0.85rem; font-weight: 500; color: var(--text-dark); }
   .test-condition { font-size: 0.8rem; color: var(--rose); letter-spacing: 0.04em; }
 
-  /* DR BERNIE */
-  .bernie-section { background: var(--parchment); }
-  .bernie-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 5rem; align-items: start; }
-  .bernie-inner .reveal-left { position: sticky; top: 6rem; }
-  .bernie-badge {
-    display: inline-flex; align-items: center; gap: 0.6rem;
-    background: rgba(196,121,106,0.1); border: 1px solid rgba(196,121,106,0.25);
-    border-radius: 2rem; padding: 0.45rem 1.2rem;
-    font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--rose-dark); margin-bottom: 1.5rem;
-  }
-  .bernie-headline { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 2.8vw, 2.7rem); font-weight: 700; line-height: 1.15; color: var(--text-dark); margin-bottom: 1.2rem; }
-  .bernie-headline em { font-style: italic; color: var(--rose); }
-  .bernie-text { font-family: 'Cormorant Garamond', serif; font-size: 1.12rem; font-weight: 300; line-height: 1.8; color: var(--text-mid); margin-bottom: 1.2rem; }
-  .bernie-creds { display: flex; flex-direction: column; gap: 0.7rem; margin-top: 2rem; }
-  .cred-row { display: flex; align-items: flex-start; gap: 0.8rem; font-size: 0.9rem; color: var(--text-mid); }
-  .cred-pip { width: 7px; height: 7px; border-radius: 50%; background: var(--rose-soft); flex-shrink: 0; margin-top: 0.35rem; }
-  .bernie-photo-col { display: flex; flex-direction: column; gap: 1.5rem; }
-  .bernie-photo-frame {
-    position: relative; border-radius: 1.5rem; overflow: hidden;
+  /* TEAM */
+  .team-section { background: var(--parchment); }
+  .team-inner { max-width: 1200px; margin: 0 auto; }
+  .team-header { text-align: center; margin-bottom: 1.5rem; }
+  .team-intro { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 300; line-height: 1.8; color: var(--text-mid); max-width: 62ch; margin: 0 auto 4rem; text-align: center; }
+  .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+  .team-card { background: white; border: 1px solid var(--blush-deep); border-radius: 1.5rem; overflow: hidden; }
+  .team-photo-placeholder {
     aspect-ratio: 4/5; width: 100%;
-    box-shadow: 0 20px 60px rgba(61,46,42,0.15);
+    background: linear-gradient(135deg, var(--blush-light) 0%, var(--blush) 60%, var(--blush-deep) 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 0.7rem; position: relative;
   }
-  .bernie-photo-img {
-    width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;
-  }
-  .bernie-photo-badge {
-    position: absolute; bottom: 1.5rem; left: 1.5rem;
-    background: white; border-radius: 1rem; padding: 0.8rem 1.2rem;
+  .team-photo-initials { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 700; color: rgba(196,121,106,0.45); line-height: 1; }
+  .team-photo-label { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); }
+  .team-photo-badge {
+    position: absolute; bottom: 1.2rem; left: 1.2rem;
+    background: white; border-radius: 0.9rem; padding: 0.65rem 1rem;
     display: flex; flex-direction: column; align-items: flex-start;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
   }
-  .bernie-photo-badge-num {
-    font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700;
-    color: var(--rose-dark); line-height: 1;
+  .team-photo-badge-num { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--rose-dark); line-height: 1; }
+  .team-photo-badge-label { font-size: 0.65rem; color: var(--text-light); letter-spacing: 0.04em; margin-top: 0.15rem; }
+  .team-card-body { padding: 2rem; }
+  .team-name { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; color: var(--text-dark); margin-bottom: 0.3rem; }
+  .team-title { font-size: 0.76rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rose); font-weight: 500; margin-bottom: 1.2rem; line-height: 1.5; }
+  .team-bio { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 300; line-height: 1.8; color: var(--text-mid); margin-bottom: 1.5rem; }
+  .team-creds { display: flex; flex-direction: column; gap: 0.5rem; }
+  .team-cred-row { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.88rem; color: var(--text-mid); }
+  .team-cred-pip { width: 6px; height: 6px; border-radius: 50%; background: var(--rose-soft); flex-shrink: 0; margin-top: 0.37rem; }
+  /* Facility practice image */
+  .facility-practice-wrap { max-width: 1200px; margin: 2.5rem auto 0; position: relative; z-index: 2; }
+  .facility-practice-placeholder {
+    aspect-ratio: 16/6; border-radius: 1.2rem; overflow: hidden;
+    background: rgba(255,255,255,0.07); border: 1px dashed rgba(255,255,255,0.25);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.7rem;
   }
-  .bernie-photo-badge-label { font-size: 0.7rem; color: var(--text-light); letter-spacing: 0.04em; margin-top: 0.2rem; }
+  .facility-practice-placeholder svg { opacity: 0.3; }
+  .facility-practice-placeholder-label { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+  /* Shared quote card (used in team section) */
   .bernie-quote-card { background: white; border: 1px solid var(--blush-deep); border-radius: 1.8rem; padding: 2.5rem; position: relative; overflow: hidden; }
   .bernie-quote-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--rose-soft), var(--mauve-light), var(--sage-light)); }
   .bqc-mark { font-family: 'Playfair Display', serif; font-size: 5rem; line-height: 1; color: var(--blush-deep); margin-bottom: 0.5rem; }
@@ -717,7 +720,7 @@
 
     .test-grid { grid-template-columns: 1fr 1fr; gap: 1.2rem; }
 
-    .bernie-inner { grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .team-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
 
     .cta-section { padding: 5rem 2.5rem; }
     .cta-inner { grid-template-columns: 1fr; gap: 3rem; }
@@ -735,7 +738,8 @@
     .hero-tagline,
     .section-subtext,
     .facility-body,
-    .bernie-text,
+    .team-bio,
+    .team-intro,
     .cta-sub { font-weight: 400; }
 
     /* Italic serif (testimonials, quote, scripture) — also boost weight */
@@ -813,18 +817,20 @@
     .test-condition { font-size: 0.8rem; }
     .test-stars { font-size: 0.85rem; }
 
-    /* Dr Bernie */
-    .bernie-inner { grid-template-columns: 1fr; gap: 2rem; }
-    .bernie-photo-col { order: -1; }
-    .bernie-photo-frame { aspect-ratio: 4/3; max-height: 260px; }
-    .bernie-badge { font-size: 0.78rem; }
-    .bernie-text { font-size: 1.05rem; }
-    .cred-row { font-size: 0.95rem; }
+    /* Team */
+    .team-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+    .team-photo-placeholder { aspect-ratio: 3/2; }
+    .team-card-body { padding: 1.4rem; }
+    .team-name { font-size: 1.2rem; }
+    .team-bio { font-size: 1.05rem; }
+    .team-cred-row { font-size: 0.95rem; }
+    .team-intro { font-size: 1.05rem; margin-bottom: 2rem; }
     .bernie-quote-card { padding: 1.5rem 1.2rem; }
     .bqc-mark { font-size: 3rem; }
     .bernie-quote-text { font-size: 1.05rem; }
     .bernie-quote-attr { font-size: 0.85rem; }
     .scripture { font-size: 1rem; }
+    .facility-practice-placeholder { aspect-ratio: 16/9; }
 
     /* CTA / Booking */
     .cta-section { padding: 3rem 1.4rem; }
@@ -1019,7 +1025,7 @@
       </div>
     </div>
     <div class="transform-footer reveal">
-      <p>Most patients notice meaningful improvement within 4–6 weeks, with significant change within 3–6 months. Hormonal healing takes time — because it's real healing, not symptom management.</p>
+      <p>Most patients notice meaningful improvement within 2 weeks, with significant change within 3–6 months. Hormonal healing takes time — because it's real healing, not symptom management.</p>
     </div>
   </div>
 </section>
@@ -1124,6 +1130,16 @@
         <div class="cause-title">Stress Stealing Your Hormones</div>
         <p class="cause-desc">Chronic stress steals the building blocks your body uses to make progesterone. No supplement can fix this if the underlying stress load isn't addressed.</p>
       </div>
+      <div class="cause-card reveal" style="--d:480ms">
+        <div class="cause-icon"><i class="fas fa-droplet"></i></div>
+        <div class="cause-title">Insulin Resistance</div>
+        <p class="cause-desc">High sugar intake and sedentary habits drive insulin resistance — a primary cause of PCOS and hormonal disruption. If blood sugar isn't managed, most hormonal treatments fail before they begin.</p>
+      </div>
+      <div class="cause-card reveal" style="--d:600ms">
+        <div class="cause-icon"><i class="fas fa-bed"></i></div>
+        <div class="cause-title">Sleep Deprivation</div>
+        <p class="cause-desc">Your body resets its hormonal balance during deep sleep. Missing even one hour reduces insulin sensitivity and disrupts cortisol, oestrogen, and progesterone — compounding imbalances that are already there.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1176,7 +1192,7 @@
         <div class="step-content">
           <span class="step-badge">Ongoing Care</span>
           <h3 class="step-title">Monitor and Adjust</h3>
-          <p class="step-body">Hormonal healing takes months, not weeks. As your body relearns how to regulate itself, your transformation is adjusted accordingly. Most patients notice meaningful improvement within 4–6 weeks, with significant change within 3–6 months.</p>
+          <p class="step-body">Hormonal healing takes months, not weeks. As your body relearns how to regulate itself, your transformation is adjusted accordingly. Most patients notice meaningful improvement within 2 weeks, with significant change within 3–6 months.</p>
           <ul class="step-list">
             <li>Symptom tracking across the full cycle</li>
             <li>Plan refined as your body responds</li>
@@ -1225,6 +1241,12 @@
       <div class="fac-stat"><span class="fac-stat-num">Custom</span><div class="fac-stat-label">Every Prescription</div></div>
     </div>
   </div>
+  <div class="facility-practice-wrap reveal" style="--d:150ms">
+    <div class="facility-practice-placeholder">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="14" rx="2"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/><circle cx="12" cy="15" r="2"/></svg>
+      <div class="facility-practice-placeholder-label">Herbernie International · The Dispensary</div>
+    </div>
+  </div>
 </section>
 
 <!-- TESTIMONIALS -->
@@ -1258,39 +1280,63 @@
   </div>
 </section>
 
-<!-- DR BERNIE -->
-<section class="bernie-section section-wrap" id="about">
-  <div class="bernie-inner">
-    <div class="reveal-left">
-      <div class="bernie-badge">✦ About Dr. Lurie</div>
-      <h2 class="bernie-headline">Bernard Lurie, N.D.<br><em>Four Decades at the Frontier of Natural Healing</em></h2>
-      <p class="bernie-text">I didn't choose natural medicine — it chose me. After watching the system fail too many patients, too many women especially, I devoted my practice to what I'd seen actually work: restoring the body's own extraordinary capacity to heal.</p>
-      <p class="bernie-text">In my Christian faith, I see God's hand in the design of the human body. You may call it nature's intelligence or the body's innate wisdom. Whatever name you give it, the principle remains: when we stop fighting the body and start supporting it, healing follows.</p>
-      <div class="bernie-creds">
-        <div class="cred-row"><div class="cred-pip"></div>40+ years naturopathic clinical practice</div>
-        <div class="cred-row"><div class="cred-pip"></div>Specialized focus in women's hormonal conditions</div>
-        <div class="cred-row"><div class="cred-pip"></div>Own manufacturing facility for bespoke natural remedies</div>
-        <div class="cred-row"><div class="cred-pip"></div>Online consultations available worldwide</div>
-      </div>
+<!-- TEAM -->
+<section class="team-section section-wrap" id="about">
+  <div class="team-inner">
+    <div class="team-header reveal">
+      <div class="section-eyebrow" style="justify-content:center;">The Practice</div>
+      <h2 class="section-headline" style="text-align:center;">The People Behind<br><em>Your Healing</em></h2>
     </div>
-    <div class="reveal-right">
-      <div class="bernie-photo-col">
-        <div class="bernie-photo-frame">
-          <img src="https://vyager.com.br/wp-content/uploads/2026/02/Dr-Bernie-Lurie.png" 
-               alt="Dr. Bernard Lurie, N.D." 
-               class="bernie-photo-img">
-          <div class="bernie-photo-badge">
-            <span class="bernie-photo-badge-num">40+</span>
-            <span class="bernie-photo-badge-label">Years of Practice</span>
+    <p class="team-intro reveal" style="--d:100ms">Herbernie International is built on over four decades of clinical experience and a shared conviction: the body's capacity to heal is extraordinary — it simply needs the right support. Dr. Lurie and Jo-anne work together to ensure every patient receives care that is genuinely individual, thorough, and grounded in natural medicine.</p>
+    <div class="team-grid">
+      <div class="team-card reveal" style="--d:0ms">
+        <div class="team-photo-placeholder">
+          <div class="team-photo-initials">BL</div>
+          <div class="team-photo-label">Photo coming soon</div>
+          <div class="team-photo-badge">
+            <span class="team-photo-badge-num">43+</span>
+            <span class="team-photo-badge-label">Years Practice</span>
           </div>
         </div>
-        <div class="bernie-quote-card">
-          <div class="bqc-mark">"</div>
-          <p class="bernie-quote-text">I have never seen a body that didn't want to heal. What I've seen is bodies that haven't been given what healing requires — the right nourishment, the right environment, and the right support. That is what we provide.</p>
-          <div class="bernie-quote-attr">— Dr. Bernard Lurie, N.D.</div>
-          <div class="scripture">"And God said, Behold, I have given you every herb bearing seed... to you it shall be for food." — Genesis 1:29</div>
+        <div class="team-card-body">
+          <div class="team-name">Dr. Bernard Lurie</div>
+          <div class="team-title">Naturopath (PhD) · Western Medical Herbalist (DSc)</div>
+          <p class="team-bio">Bernard Lurie has spent more than four decades working at the frontier of natural medicine. As founder of Herbernie International in Port Elizabeth, he has treated thousands of patients across South Africa — integrating herbal medicine, naturopathy, iridology, and osteopathy into a model of care that addresses root causes, not symptoms. His work is guided by a conviction held for over forty years: the body knows how to heal. The practitioner's role is to give it what healing requires.</p>
+          <div class="team-creds">
+            <div class="team-cred-row"><div class="team-cred-pip"></div>PhD Naturopathy · DSc Western Medical Herbalism</div>
+            <div class="team-cred-row"><div class="team-cred-pip"></div>Qualified in osteopathy, iridology &amp; nutrition</div>
+            <div class="team-cred-row"><div class="team-cred-pip"></div>Founder, Herbernie International — Port Elizabeth</div>
+            <div class="team-cred-row"><div class="team-cred-pip"></div>Online consultations available worldwide</div>
+          </div>
         </div>
       </div>
+      <div class="team-card reveal" style="--d:160ms">
+        <div class="team-photo-placeholder">
+          <div class="team-photo-initials">JB</div>
+          <div class="team-photo-label">Photo coming soon</div>
+          <div class="team-photo-badge">
+            <span class="team-photo-badge-num">7+</span>
+            <span class="team-photo-badge-label">Years Clinical</span>
+          </div>
+        </div>
+        <div class="team-card-body">
+          <div class="team-name">Jo-anne Buckingham</div>
+          <div class="team-title">Registered Natural Health Practitioner</div>
+          <p class="team-bio">Jo-anne is a registered natural health practitioner specialising in herbal medicine and clinical nutrition. Over seven years working alongside Dr. Lurie, she has developed deep expertise in hormonal assessment, treatment planning, and long-term health optimisation. Her approach is patient-centred and practical — rooted in the same philosophy that drives the practice: understand the full picture first, then build a plan that actually works. She is also the co-founder of Soul Essentials, a natural beauty and wellness range for women.</p>
+          <div class="team-creds">
+            <div class="team-cred-row"><div class="team-cred-pip"></div>Diploma in Nutrition &amp; Advanced Herbalism</div>
+            <div class="team-cred-row"><div class="team-cred-pip"></div>Specialised in hormonal conditions &amp; women's health</div>
+            <div class="team-cred-row"><div class="team-cred-pip"></div>7 years clinical experience at Herbernie International</div>
+            <div class="team-cred-row"><div class="team-cred-pip"></div>Co-founder, Soul Essentials natural wellness range</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bernie-quote-card reveal" style="margin-top:2.5rem;--d:200ms">
+      <div class="bqc-mark">"</div>
+      <p class="bernie-quote-text">I have never seen a body that didn't want to heal. What I've seen is bodies that haven't been given what healing requires — the right nourishment, the right environment, and the right support. That is what we provide.</p>
+      <div class="bernie-quote-attr">— Dr. Bernard Lurie, N.D.</div>
+      <div class="scripture">"And God said, Behold, I have given you every herb bearing seed... to you it shall be for food." — Genesis 1:29</div>
     </div>
   </div>
 </section>
