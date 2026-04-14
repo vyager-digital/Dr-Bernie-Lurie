@@ -546,18 +546,10 @@
   }
   .facility-eyebrow::before { content: ''; width: 1.5rem; height: 1px; background: rgba(255,255,255,0.4); }
   .facility-headline { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 2.8vw, 2.6rem); font-weight: 700; line-height: 1.15; color: white; margin-bottom: 1.2rem; }
-  .facility-headline em { font-style: italic; color: rgba(255,255,255,0.75); }
-  .facility-body { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 300; line-height: 1.75; color: rgba(255,255,255,0.8); margin-bottom: 2rem; }
+  .facility-headline em { font-style: italic; color: rgba(255,255,255,0.9); }
+  .facility-body { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 400; line-height: 1.75; color: rgba(255,255,255,0.92); margin-bottom: 2rem; }
   .facility-pills { display: flex; flex-wrap: wrap; gap: 0.6rem; }
   .f-pill { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.25); color: white; font-size: 0.78rem; padding: 0.45rem 1rem; border-radius: 2rem; letter-spacing: 0.03em; }
-  .facility-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-  .fac-stat {
-    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 1.2rem; padding: 1.8rem; text-align: center; transition: all 0.35s;
-  }
-  .fac-stat:hover { background: rgba(255,255,255,0.18); transform: translateY(-3px); }
-  .fac-stat-num { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; color: white; display: block; }
-  .fac-stat-label { font-size: 0.76rem; color: rgba(255,255,255,0.65); letter-spacing: 0.05em; margin-top: 0.3rem; }
 
   /* TESTIMONIALS */
   .testimonials-section { background: var(--blush-light); }
@@ -712,7 +704,6 @@
     .facility-section { padding: 4rem 2.5rem; }
     .facility-inner { grid-template-columns: 1fr; gap: 2.5rem; }
     .facility-image-col { min-height: 340px; }
-    .facility-stats { grid-template-columns: 1fr 1fr; }
 
     .test-grid { grid-template-columns: 1fr 1fr; gap: 1.2rem; }
 
@@ -801,10 +792,6 @@
     .facility-eyebrow { font-size: 0.78rem; }
     .facility-body { font-size: 1.05rem; }
     .f-pill { font-size: 0.85rem; }
-    .facility-stats { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
-    .fac-stat { padding: 1.1rem 0.7rem; }
-    .fac-stat-num { font-size: 1.7rem; }
-    .fac-stat-label { font-size: 0.78rem; }
 
     /* Testimonials */
     .test-grid { grid-template-columns: 1fr; gap: 0.9rem; }
@@ -1234,11 +1221,6 @@
           <span class="f-pill">Renewed Energy</span>
           <span class="f-pill">Confidence Restored</span>
         </div>
-      </div>
-      <div class="facility-stats reveal" style="--d:100ms">
-        <div class="fac-stat"><span class="fac-stat-num" data-count="40" data-suffix="+">40+</span><div class="fac-stat-label">Years Clinical Experience</div></div>
-        <div class="fac-stat"><span class="fac-stat-num" data-count="100" data-suffix="%">100%</span><div class="fac-stat-label">Natural Formulations</div></div>
-        <div class="fac-stat"><span class="fac-stat-num">Custom</span><div class="fac-stat-label">Every Prescription</div></div>
       </div>
     </div>
     <div class="facility-image-col reveal-right">
