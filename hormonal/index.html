@@ -528,8 +528,16 @@
   }
   .facility-inner {
     max-width: 1200px; margin: 0 auto;
-    display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center;
+    display: grid; grid-template-columns: 1fr 420px; gap: 4rem; align-items: stretch;
     position: relative; z-index: 2;
+  }
+  .facility-left-col { display: flex; flex-direction: column; gap: 2.5rem; justify-content: center; }
+  .facility-image-col {
+    border-radius: 1.4rem; overflow: hidden;
+    min-height: 540px;
+  }
+  .facility-image-col img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;
   }
   .facility-eyebrow {
     font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
@@ -593,15 +601,6 @@
   .team-creds { display: flex; flex-direction: column; gap: 0.5rem; }
   .team-cred-row { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.88rem; color: var(--text-mid); }
   .team-cred-pip { width: 6px; height: 6px; border-radius: 50%; background: var(--rose-soft); flex-shrink: 0; margin-top: 0.37rem; }
-  /* Facility practice image */
-  .facility-practice-wrap { max-width: 1200px; margin: 2.5rem auto 0; position: relative; z-index: 2; }
-  .facility-practice-placeholder {
-    aspect-ratio: 16/6; border-radius: 1.2rem; overflow: hidden;
-    background: rgba(255,255,255,0.07); border: 1px dashed rgba(255,255,255,0.25);
-    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.7rem;
-  }
-  .facility-practice-placeholder svg { opacity: 0.3; }
-  .facility-practice-placeholder-label { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
   /* Shared quote card (used in team section) */
   .bernie-quote-card { background: white; border: 1px solid var(--blush-deep); border-radius: 1.8rem; padding: 2.5rem; position: relative; overflow: hidden; }
   .bernie-quote-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--rose-soft), var(--mauve-light), var(--sage-light)); }
@@ -713,6 +712,7 @@
 
     .facility-section { padding: 4rem 2.5rem; }
     .facility-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .facility-image-col { min-height: 340px; }
     .facility-stats { grid-template-columns: 1fr 1fr; }
 
     .test-grid { grid-template-columns: 1fr 1fr; gap: 1.2rem; }
@@ -829,7 +829,6 @@
     .bernie-quote-text { font-size: 1.05rem; }
     .bernie-quote-attr { font-size: 0.85rem; }
     .scripture { font-size: 1rem; }
-    .facility-practice-placeholder { aspect-ratio: 16/9; }
 
     /* CTA / Booking */
     .cta-section { padding: 3rem 1.4rem; }
@@ -1242,28 +1241,28 @@
 <!-- FACILITY -->
 <section class="facility-section">
   <div class="facility-inner">
-    <div class="reveal-left">
-      <div class="facility-eyebrow">Dr. Lurie's Clinical Facility</div>
-      <h2 class="facility-headline">Remedies Made With Intention,<br><em>Crafted for Your Healing</em></h2>
-      <p class="facility-body">Unlike generic health supplements, many of the formulations Dr. Lurie prescribes are manufactured in his own clinical facility — ensuring precise potency, exceptional purity, and the therapeutic quality your body deserves. Each remedy is chosen and prepared specifically for you, not mass-produced for the shelf.</p>
-      <div class="facility-pills">
-        <span class="f-pill">Restful Sleep</span>
-        <span class="f-pill">Clear-Headed Days</span>
-        <span class="f-pill">Mood Stability</span>
-        <span class="f-pill">Balanced Cycles</span>
-        <span class="f-pill">Renewed Energy</span>
-        <span class="f-pill">Confidence Restored</span>
+    <div class="facility-left-col">
+      <div class="reveal-left">
+        <div class="facility-eyebrow">Dr. Lurie's Clinical Facility</div>
+        <h2 class="facility-headline">Remedies Made With Intention,<br><em>Crafted for Your Healing</em></h2>
+        <p class="facility-body">Unlike generic health supplements, many of the formulations Dr. Lurie prescribes are manufactured in his own clinical facility — ensuring precise potency, exceptional purity, and the therapeutic quality your body deserves. Each remedy is chosen and prepared specifically for you, not mass-produced for the shelf.</p>
+        <div class="facility-pills">
+          <span class="f-pill">Restful Sleep</span>
+          <span class="f-pill">Clear-Headed Days</span>
+          <span class="f-pill">Mood Stability</span>
+          <span class="f-pill">Balanced Cycles</span>
+          <span class="f-pill">Renewed Energy</span>
+          <span class="f-pill">Confidence Restored</span>
+        </div>
+      </div>
+      <div class="facility-stats reveal" style="--d:100ms">
+        <div class="fac-stat"><span class="fac-stat-num" data-count="40" data-suffix="+">40+</span><div class="fac-stat-label">Years Clinical Experience</div></div>
+        <div class="fac-stat"><span class="fac-stat-num" data-count="100" data-suffix="%">100%</span><div class="fac-stat-label">Natural Formulations</div></div>
+        <div class="fac-stat"><span class="fac-stat-num">Custom</span><div class="fac-stat-label">Every Prescription</div></div>
       </div>
     </div>
-    <div class="facility-stats reveal-right">
-      <div class="fac-stat"><span class="fac-stat-num" data-count="40" data-suffix="+">40+</span><div class="fac-stat-label">Years Clinical Experience</div></div>
-      <div class="fac-stat"><span class="fac-stat-num" data-count="100" data-suffix="%">100%</span><div class="fac-stat-label">Natural Formulations</div></div>
-      <div class="fac-stat"><span class="fac-stat-num">Custom</span><div class="fac-stat-label">Every Prescription</div></div>
-    </div>
-  </div>
-  <div class="facility-practice-wrap reveal" style="--d:150ms">
-    <div style="border-radius:1.2rem;overflow:hidden;aspect-ratio:16/6;position:relative;">
-      <img src="assets/images/practice-dispensary.webp" alt="Herbernie International dispensary — natural remedies on shelf" width="999" height="562" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
+    <div class="facility-image-col reveal-right">
+      <img src="assets/images/practice-dispensary.webp" alt="Herbernie International dispensary — natural remedies on shelf" width="2296" height="4080" loading="lazy">
     </div>
   </div>
 </section>
