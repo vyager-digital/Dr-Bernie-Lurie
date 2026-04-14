@@ -85,46 +85,46 @@
 
   /* HERO */
   .hero {
-    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     min-height: calc(100vh - 80px);
+  }
+  .hero-left {
+    background: #F5EDE6;
     display: flex;
-    align-items: flex-start;
-    padding: 8vh 0 8vh;
-    background-image:
-      linear-gradient(to right,
-        rgba(30, 20, 16, 0.92) 0%,
-        rgba(30, 20, 16, 0.75) 45%,
-        rgba(30, 20, 16, 0.15) 65%,
-        transparent 80%
-      ),
-      url('assets/images/hero-woman.webp');
-    background-size: cover;
-    background-position: center right;
+    align-items: center;
+    padding: 6rem 7% 6rem 9%;
+  }
+  .hero-right {
+    overflow: hidden;
+  }
+  .hero-right img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
   }
 
   .hero-content {
-    position: relative;
-    z-index: 2;
-    padding: 0 7%;
-    max-width: 680px;
+    max-width: 540px;
   }
   .hero-kicker {
     font-family: 'Jost', sans-serif;
     font-size: 0.72rem; font-weight: 500;
     letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--blush-deep);
+    color: #C8735A;
     display: flex; align-items: center; gap: 0.9rem;
     margin-bottom: 1.2rem;
     opacity: 0; animation: riseIn 0.85s 0.2s forwards;
   }
-  .hero-kicker::before { content: ''; width: 2rem; height: 1px; background: var(--rose-soft); }
+  .hero-kicker::before { content: ''; width: 2rem; height: 1px; background: #C8735A; }
 
   .hero-headline {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(2.8rem, 4.4vw, 5.2rem);
+    font-size: clamp(2.6rem, 3.8vw, 4.8rem);
     font-weight: 700;
     line-height: 1.0;
-    color: #ffffff;
+    color: #1e1410;
     margin-bottom: 1.2rem;
     letter-spacing: -0.02em;
   }
@@ -135,7 +135,7 @@
     opacity: 0; animation: riseIn 0.85s 0.54s forwards;
   }
   .hero-headline .sage-word {
-    color: #ffffff; display: block;
+    color: #1e1410; display: block;
     font-weight: 400; margin-top: 0.4rem;
     opacity: 0; animation: riseIn 0.85s 0.70s forwards;
   }
@@ -143,8 +143,8 @@
   .hero-tagline {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(1.1rem, 1.5vw, 1.28rem);
-    font-weight: 300; line-height: 1.7;
-    color: #F0E8E0;
+    font-weight: 400; line-height: 1.7;
+    color: #4a3a34;
     max-width: 46ch;
     margin-bottom: 2rem;
     opacity: 0; animation: riseIn 0.85s 0.88s forwards;
@@ -669,9 +669,8 @@
     .nav-links { display: none; }
     .nav-cta { font-size: 0.72rem; padding: 0.6rem 1.2rem; white-space: nowrap; }
 
-    .hero { min-height: calc(100svh - 70px); padding: 7vh 0 6vh; }
-    .hero-content { padding: 0 3rem; }
-    .hero-trust { bottom: 2.5rem; right: 2rem; }
+    .hero { min-height: calc(100svh - 70px); }
+    .hero-left { padding: 4rem 5% 4rem 6%; }
 
     .wyg-section { padding: 4rem 2.5rem; }
     .wyg-grid { grid-template-columns: 1fr 1fr; gap: 1.2rem; }
@@ -728,12 +727,12 @@
     .nav-cta::after { content: 'Book Now'; font-size: 0.78rem; letter-spacing: 0.03em; }
 
     /* Hero */
-    .hero { min-height: calc(100svh - 64px); padding: 6vh 0 5vh; background-position: 70% center; }
-    .hero-content { padding: 0 1.4rem; }
+    .hero { grid-template-columns: 1fr; grid-template-rows: 52vw auto; min-height: unset; }
+    .hero-right { order: 1; }
+    .hero-left { order: 2; padding: 3rem 1.4rem; }
     .hero-headline { font-size: clamp(2rem, 7.5vw, 2.5rem) !important; line-height: 1.08; }
-    .hero-tagline { font-size: 1rem; font-weight: 400; max-width: none; }
+    .hero-tagline { font-size: 1rem; max-width: none; }
     .btn-hero { width: 100%; justify-content: center; font-size: 0.88rem; }
-    .hero-trust { display: none; }
 
     /* What you receive */
     .wyg-section { padding: 3rem 1.4rem; }
@@ -878,23 +877,27 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-content">
-    <div class="hero-kicker">Women's Hormonal Healing</div>
-    <h1 class="hero-headline">
-      <span class="hl-line">Stop Accepting</span>
-      <span class="script">This as Normal.</span>
-      <span class="sage-word">Your body knows how to heal.</span>
-    </h1>
-    <p class="hero-tagline">Hot flushes, mood swings, sleepless nights, the fog, the weight — none of it is inevitable. It's addressable. And you deserve answers that actually work.</p>
-    <a href="#consult" class="btn-hero">
-      I'm Done Managing. Let's Fix This
-      <span class="btn-hero-arrow">→</span>
-    </a>
+  <div class="hero-left">
+    <div class="hero-content">
+      <div class="hero-kicker">Women's Hormonal Healing</div>
+      <h1 class="hero-headline">
+        <span class="hl-line">Stop Accepting</span>
+        <span class="script">This as Normal.</span>
+        <span class="sage-word">Your body knows how to heal.</span>
+      </h1>
+      <p class="hero-tagline">Hot flushes, mood swings, sleepless nights, the fog, the weight — none of it is inevitable. It's addressable. And you deserve answers that actually work.</p>
+      <a href="#consult" class="btn-hero">
+        I'm Done Managing. Let's Fix This
+        <span class="btn-hero-arrow">→</span>
+      </a>
+    </div>
   </div>
-
-  <div class="hero-trust">
-    <span class="hero-trust-num">Thousands</span>
-    <span class="hero-trust-label">of Women Helped</span>
+  <div class="hero-right">
+    <img
+      src="assets/images/hero-woman.webp"
+      alt="Woman relaxed and confident after hormonal healing"
+      width="960" height="1080"
+    >
   </div>
 </section>
 
