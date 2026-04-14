@@ -125,12 +125,12 @@
     font-family: 'Jost', sans-serif;
     font-size: 0.72rem; font-weight: 500;
     letter-spacing: 0.22em; text-transform: uppercase;
-    color: #C8735A;
+    color: var(--rose);
     display: flex; align-items: center; gap: 0.9rem;
     margin-bottom: 1.2rem;
     opacity: 0; animation: riseIn 0.85s 0.2s forwards;
   }
-  .hero-kicker::before { content: ''; width: 2rem; height: 1px; background: #C8735A; }
+  .hero-kicker::before { content: ''; width: 2rem; height: 1px; background: var(--rose); }
 
   .hero-headline {
     font-family: 'Playfair Display', serif;
@@ -144,7 +144,7 @@
   .hl-line { display: block; opacity: 0; animation: riseIn 0.85s 0.38s forwards; }
   .hero-headline .script {
     font-style: italic; font-weight: 400; display: block;
-    color: #C8735A;
+    color: var(--rose);
     opacity: 0; animation: riseIn 0.85s 0.54s forwards;
   }
   .hero-headline .sage-word {
@@ -264,7 +264,7 @@
   .truth-subtext {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.3rem;
-    font-weight: 300;
+    font-weight: 400;
     color: var(--text-mid);
     line-height: 1.7;
     max-width: 560px;
@@ -318,7 +318,7 @@
     font-size: 0.97rem;
     color: var(--text-mid);
     line-height: 1.75;
-    font-weight: 300;
+    font-weight: 400;
     max-width: 90%;
   }
   .truth-explanation strong {
@@ -401,7 +401,7 @@
   }
   .section-subtext {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.18rem; font-weight: 300; line-height: 1.75; color: var(--text-mid);
+    font-size: 1.18rem; font-weight: 400; line-height: 1.75; color: var(--text-mid);
   }
 
   /* CAUSES */
@@ -436,12 +436,12 @@
   }
   .mid-cta-text {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.2rem, 2vw, 1.55rem); font-style: italic; font-weight: 300;
+    font-size: clamp(1.2rem, 2vw, 1.55rem); font-style: italic; font-weight: 400;
     color: white; max-width: 52ch; line-height: 1.5;
   }
   .mid-cta-btn {
     background: white; color: var(--rose-dark);
-    font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 600;
+    font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 500;
     letter-spacing: 0.1em; text-transform: uppercase;
     padding: 0.9rem 2.2rem; border-radius: 3rem;
     text-decoration: none; white-space: nowrap; flex-shrink: 0;
@@ -508,7 +508,7 @@
     list-style: none; margin-top: 1rem;
     display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem 1.5rem;
   }
-  .step-list li { font-size: 0.95rem; color: var(--text-light); display: flex; align-items: baseline; gap: 0.45rem; }
+  .step-list li { font-size: 0.95rem; color: var(--text-mid); display: flex; align-items: baseline; gap: 0.45rem; }
   .step-list li::before { content: '✦'; color: var(--rose-soft); font-size: 0.5rem; flex-shrink: 0; }
 
   /* FACILITY */
@@ -572,7 +572,7 @@
   .team-section { background: var(--parchment); }
   .team-inner { max-width: 1200px; margin: 0 auto; }
   .team-header { text-align: center; margin-bottom: 1.5rem; }
-  .team-intro { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 300; line-height: 1.8; color: var(--text-mid); max-width: 62ch; margin: 0 auto 4rem; text-align: center; }
+  .team-intro { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 400; line-height: 1.8; color: var(--text-mid); max-width: 62ch; margin: 0 auto 4rem; text-align: center; }
   .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
   .team-card { background: white; border: 1px solid var(--blush-deep); border-radius: 1.5rem; overflow: hidden; }
   .team-photo-badge {
@@ -586,7 +586,7 @@
   .team-card-body { padding: 2rem; }
   .team-name { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; color: var(--text-dark); margin-bottom: 0.3rem; }
   .team-title { font-size: 0.76rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rose); font-weight: 500; margin-bottom: 1.2rem; line-height: 1.5; }
-  .team-bio { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 300; line-height: 1.8; color: var(--text-mid); margin-bottom: 1.5rem; }
+  .team-bio { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 400; line-height: 1.8; color: var(--text-mid); margin-bottom: 1.5rem; }
   .team-creds { display: flex; flex-direction: column; gap: 0.5rem; }
   .team-cred-row { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.88rem; color: var(--text-mid); }
   .team-cred-pip { width: 6px; height: 6px; border-radius: 50%; background: var(--rose-soft); flex-shrink: 0; margin-top: 0.37rem; }
@@ -612,7 +612,7 @@
   .cta-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; position: relative; z-index: 2; }
   .cta-headline { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.2vw, 3.2rem); font-weight: 700; line-height: 1.1; color: var(--text-dark); margin-bottom: 1.2rem; }
   .cta-headline em { font-style: italic; color: var(--rose); }
-  .cta-sub { font-family: 'Cormorant Garamond', serif; font-size: 1.18rem; font-weight: 300; line-height: 1.75; color: var(--text-mid); margin-bottom: 2rem; }
+  .cta-sub { font-family: 'Cormorant Garamond', serif; font-size: 1.18rem; font-weight: 400; line-height: 1.75; color: var(--text-mid); margin-bottom: 2rem; }
   .cta-inclusions { display: flex; flex-direction: column; gap: 0.9rem; margin-bottom: 2rem; }
   .cta-inc-row { display: flex; align-items: flex-start; gap: 0.9rem; font-size: 0.85rem; color: var(--text-mid); line-height: 1.5; }
   .inc-icon { width: 28px; height: 28px; border-radius: 50%; background: rgba(196,121,106,0.12); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; }
@@ -621,7 +621,7 @@
   .booking-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--rose-soft), var(--rose), var(--mauve)); }
   .booking-label { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rose); font-weight: 500; margin-bottom: 1.5rem; }
   .booking-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--text-dark); margin-bottom: 0.5rem; }
-  .booking-sub { font-size: 1rem; color: var(--text-light); margin-bottom: 2rem; line-height: 1.6; }
+  .booking-sub { font-size: 1rem; color: var(--text-mid); margin-bottom: 2rem; line-height: 1.6; }
   .form-group { margin-bottom: 1.2rem; }
   .form-label { font-size: 0.82rem; color: var(--text-mid); font-weight: 500; letter-spacing: 0.04em; display: block; margin-bottom: 0.4rem; }
   .form-input, .form-select {
