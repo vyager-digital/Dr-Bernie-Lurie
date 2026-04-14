@@ -85,28 +85,40 @@
 
   /* HERO */
   .hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    position: relative;
     min-height: calc(100vh - 80px);
-  }
-  .hero-left {
-    background: #F5EDE6;
     display: flex;
     align-items: center;
-    padding: 6rem 7% 6rem 9%;
-  }
-  .hero-right {
+    padding: 8vh 0;
     overflow: hidden;
   }
-  .hero-right img {
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+  }
+  .hero-bg img {
     width: 100%; height: 100%;
     object-fit: cover;
-    object-position: center top;
+    object-position: center right;
     display: block;
+  }
+  .hero-bg::before {
+    content: '';
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(to right,
+      #F5EDE6 0%,
+      #F5EDE6 28%,
+      rgba(245, 237, 230, 0.88) 40%,
+      rgba(245, 237, 230, 0.35) 58%,
+      transparent 72%
+    );
   }
 
   .hero-content {
-    max-width: 540px;
+    position: relative;
+    z-index: 2;
+    padding: 0 7%;
+    max-width: 620px;
   }
   .hero-kicker {
     font-family: 'Jost', sans-serif;
@@ -669,8 +681,8 @@
     .nav-links { display: none; }
     .nav-cta { font-size: 0.72rem; padding: 0.6rem 1.2rem; white-space: nowrap; }
 
-    .hero { min-height: calc(100svh - 70px); }
-    .hero-left { padding: 4rem 5% 4rem 6%; }
+    .hero { min-height: calc(100svh - 70px); padding: 7vh 0 6vh; }
+    .hero-content { padding: 0 3rem; }
 
     .wyg-section { padding: 4rem 2.5rem; }
     .wyg-grid { grid-template-columns: 1fr 1fr; gap: 1.2rem; }
@@ -727,9 +739,10 @@
     .nav-cta::after { content: 'Book Now'; font-size: 0.78rem; letter-spacing: 0.03em; }
 
     /* Hero */
-    .hero { grid-template-columns: 1fr; grid-template-rows: 52vw auto; min-height: unset; }
-    .hero-right { order: 1; }
-    .hero-left { order: 2; padding: 3rem 1.4rem; }
+    .hero { min-height: calc(100svh - 64px); padding: 6vh 0 5vh; }
+    .hero-bg img { object-position: 65% center; }
+    .hero-bg::before { background: linear-gradient(to right, #F5EDE6 0%, #F5EDE6 35%, rgba(245,237,230,0.9) 50%, rgba(245,237,230,0.2) 75%, transparent 90%); }
+    .hero-content { padding: 0 1.4rem; }
     .hero-headline { font-size: clamp(2rem, 7.5vw, 2.5rem) !important; line-height: 1.08; }
     .hero-tagline { font-size: 1rem; max-width: none; }
     .btn-hero { width: 100%; justify-content: center; font-size: 0.88rem; }
@@ -877,27 +890,25 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-left">
-    <div class="hero-content">
-      <div class="hero-kicker">Women's Hormonal Healing</div>
-      <h1 class="hero-headline">
-        <span class="hl-line">Stop Accepting</span>
-        <span class="script">This as Normal.</span>
-        <span class="sage-word">Your body knows how to heal.</span>
-      </h1>
-      <p class="hero-tagline">Hot flushes, mood swings, sleepless nights, the fog, the weight — none of it is inevitable. It's addressable. And you deserve answers that actually work.</p>
-      <a href="#consult" class="btn-hero">
-        I'm Done Managing. Let's Fix This
-        <span class="btn-hero-arrow">→</span>
-      </a>
-    </div>
-  </div>
-  <div class="hero-right">
+  <div class="hero-bg">
     <img
       src="assets/images/hero-woman.webp"
       alt="Woman relaxed and confident after hormonal healing"
-      width="960" height="1080"
+      width="1920" height="1080"
     >
+  </div>
+  <div class="hero-content">
+    <div class="hero-kicker">Women's Hormonal Healing</div>
+    <h1 class="hero-headline">
+      <span class="hl-line">Stop Accepting</span>
+      <span class="script">This as Normal.</span>
+      <span class="sage-word">Your body knows how to heal.</span>
+    </h1>
+    <p class="hero-tagline">Hot flushes, mood swings, sleepless nights, the fog, the weight — none of it is inevitable. It's addressable. And you deserve answers that actually work.</p>
+    <a href="#consult" class="btn-hero">
+      I'm Done Managing. Let's Fix This
+      <span class="btn-hero-arrow">→</span>
+    </a>
   </div>
 </section>
 
