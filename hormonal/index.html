@@ -738,10 +738,11 @@
     .nav-cta::after { content: 'Book Now'; font-size: 0.78rem; letter-spacing: 0.03em; }
 
     /* Hero */
-    .hero { min-height: calc(100svh - 64px); padding: 6vh 0 5vh; }
-    .hero-bg img { object-position: 65% center; }
-    .hero-bg::before { background: linear-gradient(to right, #F5EDE6 0%, #F5EDE6 35%, rgba(245,237,230,0.9) 50%, rgba(245,237,230,0.2) 75%, transparent 90%); }
-    .hero-content { padding: 0 1.4rem; }
+    .hero { display: flex; flex-direction: column; min-height: unset; padding: 0; }
+    .hero-bg { position: relative; height: 72vw; flex-shrink: 0; }
+    .hero-bg img { object-position: center 10%; }
+    .hero-bg::before { display: none; }
+    .hero-content { background: #F5EDE6; position: static; z-index: auto; padding: 2.5rem 1.4rem; }
     .hero-headline { font-size: clamp(2rem, 7.5vw, 2.5rem) !important; line-height: 1.08; }
     .hero-tagline { font-size: 1rem; max-width: none; }
     .btn-hero { width: 100%; justify-content: center; font-size: 0.88rem; }
