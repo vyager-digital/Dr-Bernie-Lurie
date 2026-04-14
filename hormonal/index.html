@@ -56,8 +56,10 @@
     font-family: 'Playfair Display', serif;
     font-size: 1.05rem; font-weight: 600;
     color: var(--rose-dark);
-    display: flex; flex-direction: column; gap: 0.15rem; line-height: 1;
+    display: flex; flex-direction: row; align-items: center; gap: 0.55rem; line-height: 1;
   }
+  .nav-logo-icon { width: 34px; height: 34px; flex-shrink: 0; }
+  .nav-logo-text { display: flex; flex-direction: column; gap: 0.15rem; }
   .nav-logo-main { white-space: nowrap; }
   .nav-logo-main > span { font-style: italic; color: var(--sage-dark); }
   .nav-logo-sub {
@@ -150,6 +152,7 @@
     font-weight: 400; margin-top: 0.4rem;
     opacity: 0; animation: riseIn 0.85s 0.70s forwards;
   }
+  .hero-leaf { height: 1.1em; width: auto; vertical-align: middle; margin-left: 0.2em; display: inline; }
 
   .hero-tagline {
     font-family: 'Cormorant Garamond', serif;
@@ -878,7 +881,13 @@
 <body>
 
 <nav>
-  <div class="nav-logo"><span class="nav-logo-sub">herbernie</span><span class="nav-logo-main">Natural <span>Healing</span> for Life</span></div>
+  <div class="nav-logo">
+    <img src="assets/images/herbernie-logo.webp" alt="" class="nav-logo-icon" width="34" height="34">
+    <div class="nav-logo-text">
+      <span class="nav-logo-sub">herbernie</span>
+      <span class="nav-logo-main">Natural <span>Healing</span> for Life</span>
+    </div>
+  </div>
   <div class="nav-links">
     <a href="#causes">Why You're Not Getting Better</a>
     <a href="#process">What Healing Looks Like</a>
@@ -902,7 +911,7 @@
     <h1 class="hero-headline">
       <span class="hl-line">Stop Accepting</span>
       <span class="script">This as Normal.</span>
-      <span class="sage-word">Your body knows how to heal.</span>
+      <span class="sage-word">Your body knows how to heal. <img src="assets/images/herbernie-logo.webp" alt="" class="hero-leaf" width="48" height="48"></span>
     </h1>
     <p class="hero-tagline">Hot flushes, mood swings, sleepless nights, the fog, the weight — none of it is inevitable. It's addressable. And you deserve answers that actually work.</p>
     <a href="#consult" class="btn-hero">
