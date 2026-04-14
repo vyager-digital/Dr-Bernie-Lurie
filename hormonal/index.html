@@ -746,14 +746,13 @@
 
     /* Hero */
     .hero { min-height: calc(100svh - 64px); padding: 6vh 0 5vh; }
-    .hero-bg img { object-position: 25% center; }
+    .hero-bg img { object-position: 35% center; }
+    .hero-bg::before { background: linear-gradient(to bottom, rgba(12,8,6,0.72) 0%, rgba(12,8,6,0.55) 60%, rgba(12,8,6,0.7) 100%); }
     .hero-content { padding: 0 1.4rem; }
-    .hero-headline { font-size: clamp(2.6rem, 9vw, 3.2rem) !important; line-height: 1.0; }
-    .hero-tagline { font-size: 1.1rem; font-weight: 400; max-width: none; }
-    .btn-hero { width: 100%; justify-content: center; font-size: 0.9rem; }
-    .hero-trust { bottom: auto; top: 5.5rem; right: 1.4rem; }
-    .hero-trust-num { font-size: 1.8rem; }
-    .hero-trust-label { font-size: 0.62rem; }
+    .hero-headline { font-size: clamp(2rem, 7.5vw, 2.5rem) !important; line-height: 1.08; }
+    .hero-tagline { font-size: 1rem; font-weight: 400; max-width: none; }
+    .btn-hero { width: 100%; justify-content: center; font-size: 0.88rem; }
+    .hero-trust { display: none; }
 
     /* What you receive */
     .wyg-section { padding: 3rem 1.4rem; }
