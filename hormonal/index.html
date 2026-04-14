@@ -846,19 +846,24 @@
   .transform-section { background: var(--warm-white); padding: 7rem 6rem; border-bottom: 1px solid var(--blush-deep); }
   .transform-inner { max-width: 1200px; margin: 0 auto; }
   .transform-header { text-align: center; margin-bottom: 5rem; }
-  .transform-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4rem 2.5rem; }
+  .transform-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 2.5rem; }
   .transform-card {
-    display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 1rem;
+    display: grid;
+    grid-row: span 5;
+    grid-template-rows: subgrid;
+    justify-items: center; text-align: center; padding: 0 1rem;
+    row-gap: 0;
     opacity: 0; transform: translateY(40px);
     transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
     transition-delay: var(--d, 0ms);
   }
   .transform-card.visible { opacity: 1; transform: none; }
-  .transform-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--sage-pale); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.2rem; font-size: 1.2rem; color: var(--sage-dark); flex-shrink: 0; }
-  .transform-before { font-family: 'Jost', sans-serif; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose-dark); line-height: 1.5; min-height: 3.2em; display: flex; align-items: flex-end; justify-content: center; }
-  .transform-arrow { font-size: 1rem; color: var(--rose); margin: 0.5rem 0; line-height: 1; flex-shrink: 0; }
-  .transform-after { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 600; color: var(--sage-dark); line-height: 1.25; margin-bottom: 0.7rem; min-height: 5.5rem; display: flex; align-items: flex-start; }
-  .transform-detail { font-size: 0.92rem; font-weight: 400; line-height: 1.7; color: var(--text-dark); margin-top: auto; }
+  .transform-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--sage-pale); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--sage-dark); align-self: end; margin-bottom: 1.2rem; }
+  .transform-before { font-family: 'Jost', sans-serif; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose-dark); line-height: 1.5; align-self: end; padding-bottom: 0.2rem; }
+  .transform-arrow { font-size: 1rem; color: var(--rose); padding: 0.4rem 0; line-height: 1; align-self: center; }
+  .transform-after { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 600; color: var(--sage-dark); line-height: 1.25; align-self: start; padding-bottom: 0.7rem; }
+  .transform-detail { font-size: 0.92rem; font-weight: 400; line-height: 1.7; color: var(--text-dark); align-self: start; padding-top: 0.3rem; }
+  .transform-card:nth-child(n+4) .transform-icon { margin-top: 4rem; }
   .transform-footer { text-align: center; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--blush-deep); }
   .transform-footer p { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 400; color: var(--text-mid); max-width: 620px; margin: 0 auto; line-height: 1.6; }
   /* Team photo */
@@ -866,13 +871,17 @@
   .team-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
   @media (max-width: 900px) {
     .transform-section { padding: 5rem 3rem; }
-    .transform-grid { grid-template-columns: 1fr 1fr; gap: 3rem 2rem; }
+    .transform-grid { grid-template-columns: repeat(2, 1fr); gap: 0 2rem; }
+    .transform-card:nth-child(odd):nth-child(n+3) .transform-icon { margin-top: 4rem; }
+    .transform-card:nth-child(even):nth-child(n+4) .transform-icon { margin-top: 4rem; }
+    .transform-card:nth-child(n+4) .transform-icon { margin-top: 0; }
   }
   @media (max-width: 600px) {
     .transform-section { padding: 4rem 1.4rem; }
     .transform-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .transform-card { --d: 0ms !important; }
-    .transform-before { font-size: 0.78rem; min-height: unset; }
+    .transform-card { display: flex; flex-direction: column; align-items: center; grid-row: auto; --d: 0ms !important; }
+    .transform-card:nth-child(n+4) .transform-icon { margin-top: 0; }
+    .transform-before { font-size: 0.78rem; }
     .transform-detail { font-size: 1rem; font-weight: 400; line-height: 1.65; }
     .transform-after { font-size: 1.45rem; }
   }
