@@ -747,6 +747,28 @@
     display: flex; align-items: center; justify-content: center;
     font-size: 0.8rem; color: var(--rose);
   }
+
+  /* Screen 1a — symptom selection (checkbox-style) */
+  .symptom-check-list { display: flex; flex-direction: column; gap: 0.5rem; }
+  .symptom-check-row {
+    display: flex; align-items: center; gap: 0.9rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--blush-deep); border-radius: 1rem;
+    cursor: pointer; transition: all 0.2s; min-height: 52px;
+  }
+  .symptom-check-row:hover { border-color: var(--rose-soft); background: var(--blush-light); }
+  .symptom-check-row.selected { border-color: var(--rose); background: rgba(196,121,106,0.06); }
+  .symptom-check-label { flex: 1; font-size: 0.92rem; color: var(--text-dark); line-height: 1.4; }
+  .symptom-check-dot {
+    width: 22px; height: 22px; flex-shrink: 0;
+    border: 2px solid var(--blush-deep); border-radius: 5px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+  .symptom-check-dot i { color: transparent; font-size: 0.7rem; transition: color 0.15s; }
+  .symptom-check-row.selected .symptom-check-dot { border-color: var(--rose); background: var(--rose); }
+  .symptom-check-row.selected .symptom-check-dot i { color: white; }
+
   .sev-btns { display: flex; gap: 0.4rem; flex-shrink: 0; }
   .sev-btn {
     padding: 0.4rem 0.75rem;
@@ -1604,108 +1626,93 @@
       </div>
     </div>
 
-    <!-- Screen 1: Symptoms -->
+    <!-- Screen 1: Symptom Selection -->
     <div class="quiz-screen" id="qs-1">
       <div class="quiz-card">
-        <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:25%"></div></div>
-        <div class="quiz-step-label">Step 1 of 4</div>
-        <h3 class="quiz-headline">What's been making daily life<br>harder than it should be?</h3>
-        <p class="quiz-subtext">Select everything that applies — then tell us how much it's getting in the way.</p>
-        <div class="symptom-list">
-          <div class="symptom-row">
-            <div class="symptom-label"><div class="symptom-icon"><i class="fa-solid fa-fire-flame-curved"></i></div><span>Hot flushes / night sweats</span></div>
-            <div class="sev-btns">
-              <button class="sev-btn" onclick="quizSev('hot-flushes','mild',this)">Mild</button>
-              <button class="sev-btn" onclick="quizSev('hot-flushes','noticeable',this)">Noticeable</button>
-              <button class="sev-btn" onclick="quizSev('hot-flushes','affecting',this)">Affecting my life</button>
-            </div>
+        <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:20%"></div></div>
+        <div class="quiz-step-label">Step 1 of 5</div>
+        <h3 class="quiz-headline">Which of these sound familiar?</h3>
+        <p class="quiz-subtext">Select everything that applies to you.</p>
+        <div class="symptom-check-list">
+          <div class="symptom-check-row" data-symptom="hot-flushes" onclick="quizToggleSymptom(this)">
+            <div class="symptom-icon"><i class="fa-solid fa-fire-flame-curved"></i></div>
+            <span class="symptom-check-label">Hot flushes / night sweats</span>
+            <div class="symptom-check-dot"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
           </div>
-          <div class="symptom-row">
-            <div class="symptom-label"><div class="symptom-icon"><i class="fa-solid fa-moon"></i></div><span>Broken sleep or waking at 3am</span></div>
-            <div class="sev-btns">
-              <button class="sev-btn" onclick="quizSev('broken-sleep','mild',this)">Mild</button>
-              <button class="sev-btn" onclick="quizSev('broken-sleep','noticeable',this)">Noticeable</button>
-              <button class="sev-btn" onclick="quizSev('broken-sleep','affecting',this)">Affecting my life</button>
-            </div>
+          <div class="symptom-check-row" data-symptom="broken-sleep" onclick="quizToggleSymptom(this)">
+            <div class="symptom-icon"><i class="fa-solid fa-moon"></i></div>
+            <span class="symptom-check-label">Broken sleep or waking at 3am</span>
+            <div class="symptom-check-dot"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
           </div>
-          <div class="symptom-row">
-            <div class="symptom-label"><div class="symptom-icon"><i class="fa-solid fa-battery-quarter"></i></div><span>Fatigue that rest doesn't fix</span></div>
-            <div class="sev-btns">
-              <button class="sev-btn" onclick="quizSev('fatigue','mild',this)">Mild</button>
-              <button class="sev-btn" onclick="quizSev('fatigue','noticeable',this)">Noticeable</button>
-              <button class="sev-btn" onclick="quizSev('fatigue','affecting',this)">Affecting my life</button>
-            </div>
+          <div class="symptom-check-row" data-symptom="fatigue" onclick="quizToggleSymptom(this)">
+            <div class="symptom-icon"><i class="fa-solid fa-battery-quarter"></i></div>
+            <span class="symptom-check-label">Fatigue that rest doesn't fix</span>
+            <div class="symptom-check-dot"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
           </div>
-          <div class="symptom-row">
-            <div class="symptom-label"><div class="symptom-icon"><i class="fa-solid fa-brain"></i></div><span>Brain fog or forgetfulness</span></div>
-            <div class="sev-btns">
-              <button class="sev-btn" onclick="quizSev('brain-fog','mild',this)">Mild</button>
-              <button class="sev-btn" onclick="quizSev('brain-fog','noticeable',this)">Noticeable</button>
-              <button class="sev-btn" onclick="quizSev('brain-fog','affecting',this)">Affecting my life</button>
-            </div>
+          <div class="symptom-check-row" data-symptom="brain-fog" onclick="quizToggleSymptom(this)">
+            <div class="symptom-icon"><i class="fa-solid fa-brain"></i></div>
+            <span class="symptom-check-label">Brain fog or forgetfulness</span>
+            <div class="symptom-check-dot"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
           </div>
-          <div class="symptom-row">
-            <div class="symptom-label"><div class="symptom-icon"><i class="fa-solid fa-cloud-bolt"></i></div><span>Mood swings or irritability that don't feel like "you"</span></div>
-            <div class="sev-btns">
-              <button class="sev-btn" onclick="quizSev('mood-swings','mild',this)">Mild</button>
-              <button class="sev-btn" onclick="quizSev('mood-swings','noticeable',this)">Noticeable</button>
-              <button class="sev-btn" onclick="quizSev('mood-swings','affecting',this)">Affecting my life</button>
-            </div>
+          <div class="symptom-check-row" data-symptom="mood-swings" onclick="quizToggleSymptom(this)">
+            <div class="symptom-icon"><i class="fa-solid fa-cloud-bolt"></i></div>
+            <span class="symptom-check-label">Mood swings or irritability that don't feel like "you"</span>
+            <div class="symptom-check-dot"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
           </div>
-          <div class="symptom-row">
-            <div class="symptom-label"><div class="symptom-icon"><i class="fa-solid fa-scale-balanced"></i></div><span>Weight that won't shift no matter what you do</span></div>
-            <div class="sev-btns">
-              <button class="sev-btn" onclick="quizSev('weight','mild',this)">Mild</button>
-              <button class="sev-btn" onclick="quizSev('weight','noticeable',this)">Noticeable</button>
-              <button class="sev-btn" onclick="quizSev('weight','affecting',this)">Affecting my life</button>
-            </div>
+          <div class="symptom-check-row" data-symptom="weight" onclick="quizToggleSymptom(this)">
+            <div class="symptom-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+            <span class="symptom-check-label">Weight that won't shift no matter what you do</span>
+            <div class="symptom-check-dot"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
           </div>
-          <div class="symptom-row">
-            <div class="symptom-label"><div class="symptom-icon"><i class="fa-solid fa-wind"></i></div><span>Anxiety or a low mood that's crept in</span></div>
-            <div class="sev-btns">
-              <button class="sev-btn" onclick="quizSev('anxiety','mild',this)">Mild</button>
-              <button class="sev-btn" onclick="quizSev('anxiety','noticeable',this)">Noticeable</button>
-              <button class="sev-btn" onclick="quizSev('anxiety','affecting',this)">Affecting my life</button>
-            </div>
+          <div class="symptom-check-row" data-symptom="anxiety" onclick="quizToggleSymptom(this)">
+            <div class="symptom-icon"><i class="fa-solid fa-wind"></i></div>
+            <span class="symptom-check-label">Anxiety or a low mood that's crept in</span>
+            <div class="symptom-check-dot"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
           </div>
-          <div class="symptom-row">
-            <div class="symptom-label"><div class="symptom-icon"><i class="fa-solid fa-rotate"></i></div><span>Irregular or changing cycles</span></div>
-            <div class="sev-btns">
-              <button class="sev-btn" onclick="quizSev('cycles','mild',this)">Mild</button>
-              <button class="sev-btn" onclick="quizSev('cycles','noticeable',this)">Noticeable</button>
-              <button class="sev-btn" onclick="quizSev('cycles','affecting',this)">Affecting my life</button>
-            </div>
+          <div class="symptom-check-row" data-symptom="cycles" onclick="quizToggleSymptom(this)">
+            <div class="symptom-icon"><i class="fa-solid fa-rotate"></i></div>
+            <span class="symptom-check-label">Irregular or changing cycles</span>
+            <div class="symptom-check-dot"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
           </div>
-          <div class="symptom-row">
-            <div class="symptom-label"><div class="symptom-icon"><i class="fa-solid fa-heart-crack"></i></div><span>Low libido or feeling disconnected from your body</span></div>
-            <div class="sev-btns">
-              <button class="sev-btn" onclick="quizSev('libido','mild',this)">Mild</button>
-              <button class="sev-btn" onclick="quizSev('libido','noticeable',this)">Noticeable</button>
-              <button class="sev-btn" onclick="quizSev('libido','affecting',this)">Affecting my life</button>
-            </div>
+          <div class="symptom-check-row" data-symptom="libido" onclick="quizToggleSymptom(this)">
+            <div class="symptom-icon"><i class="fa-solid fa-heart-crack"></i></div>
+            <span class="symptom-check-label">Low libido or feeling disconnected from your body</span>
+            <div class="symptom-check-dot"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
           </div>
-          <div class="symptom-row">
-            <div class="symptom-label"><div class="symptom-icon"><i class="fa-solid fa-bone"></i></div><span>Joint aches or bone pain</span></div>
-            <div class="sev-btns">
-              <button class="sev-btn" onclick="quizSev('joint-pain','mild',this)">Mild</button>
-              <button class="sev-btn" onclick="quizSev('joint-pain','noticeable',this)">Noticeable</button>
-              <button class="sev-btn" onclick="quizSev('joint-pain','affecting',this)">Affecting my life</button>
-            </div>
+          <div class="symptom-check-row" data-symptom="joint-pain" onclick="quizToggleSymptom(this)">
+            <div class="symptom-icon"><i class="fa-solid fa-bone"></i></div>
+            <span class="symptom-check-label">Joint aches or bone pain</span>
+            <div class="symptom-check-dot"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
           </div>
         </div>
-        <p class="quiz-note">There are no wrong answers here. The more honestly you respond, the more useful your consultation will be.</p>
         <div class="quiz-nav">
           <button class="quiz-btn-back" onclick="quizGoTo(0)"><i class="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
-          <button class="quiz-btn-primary" onclick="quizGoTo(2)">Next &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
+          <button class="quiz-btn-primary" onclick="quizBuildSeverity()">Next &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
         </div>
       </div>
     </div>
 
-    <!-- Screen 2: Duration + Prior Help -->
+    <!-- Screen 2: Severity (built dynamically from selections) -->
     <div class="quiz-screen" id="qs-2">
       <div class="quiz-card">
-        <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:50%"></div></div>
-        <div class="quiz-step-label">Step 2 of 4</div>
+        <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:40%"></div></div>
+        <div class="quiz-step-label">Step 2 of 5</div>
+        <h3 class="quiz-headline">For the ones you've selected —<br>how much are they getting in the way?</h3>
+        <p class="quiz-subtext">This is where we start to understand the real impact.</p>
+        <div class="symptom-list" id="severity-list"></div>
+        <p class="quiz-note">There are no wrong answers here. The more honestly you respond, the more useful your consultation will be.</p>
+        <div class="quiz-nav">
+          <button class="quiz-btn-back" onclick="quizGoTo(1)"><i class="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
+          <button class="quiz-btn-primary" onclick="quizGoTo(3)">Next &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Screen 3: Duration + Prior Help -->
+    <div class="quiz-screen" id="qs-3">
+      <div class="quiz-card">
+        <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:60%"></div></div>
+        <div class="quiz-step-label">Step 3 of 5</div>
         <div class="choice-group-label">How long have you been feeling like this?</div>
         <div class="choice-group">
           <div class="choice-card" data-group="duration" onclick="quizChoice('duration','under-6m',this)">
@@ -1738,17 +1745,17 @@
         </div>
         <p class="quiz-note">Take your time. There's no rush here.</p>
         <div class="quiz-nav">
-          <button class="quiz-btn-back" onclick="quizGoTo(1)"><i class="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
-          <button class="quiz-btn-primary" onclick="quizGoTo(3)">Next &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
+          <button class="quiz-btn-back" onclick="quizGoTo(2)"><i class="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
+          <button class="quiz-btn-primary" onclick="quizGoTo(4)">Next &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
         </div>
       </div>
     </div>
 
-    <!-- Screen 3: Goals -->
-    <div class="quiz-screen" id="qs-3">
+    <!-- Screen 4: Goals -->
+    <div class="quiz-screen" id="qs-4">
       <div class="quiz-card">
-        <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:75%"></div></div>
-        <div class="quiz-step-label">Step 3 of 4</div>
+        <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:80%"></div></div>
+        <div class="quiz-step-label">Step 4 of 5</div>
         <h3 class="quiz-headline">What would feeling like yourself again<br>actually give you?</h3>
         <p class="quiz-subtext" style="margin-bottom:1.4rem;">If your energy and balance were restored — what's the first thing you'd do differently?</p>
         <div class="goal-grid">
@@ -1774,17 +1781,17 @@
           </div>
         </div>
         <div class="quiz-nav" style="margin-top:1.8rem;">
-          <button class="quiz-btn-back" onclick="quizGoTo(2)"><i class="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
-          <button class="quiz-btn-primary" onclick="quizGoTo(4)">Next &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
+          <button class="quiz-btn-back" onclick="quizGoTo(3)"><i class="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
+          <button class="quiz-btn-primary" onclick="quizGoTo(5)">Next &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
         </div>
       </div>
     </div>
 
-    <!-- Screen 4: Contact -->
-    <div class="quiz-screen" id="qs-4">
+    <!-- Screen 5: Contact -->
+    <div class="quiz-screen" id="qs-5">
       <div class="quiz-card">
         <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:100%"></div></div>
-        <div class="quiz-step-label">Step 4 of 4</div>
+        <div class="quiz-step-label">Step 5 of 5</div>
         <h3 class="quiz-headline">To send your personalised assessment,<br>we just need a few details.</h3>
         <p class="quiz-subtext">Where should we send your consultation details?</p>
         <div class="quiz-form-group">
@@ -1802,13 +1809,13 @@
         <button class="quiz-btn-primary" style="width:100%;justify-content:center;margin-top:0.5rem;" onclick="quizSubmit()">Book My Personal Consultation &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
         <p class="quiz-disclaimer" style="margin-top:1rem;">This assessment is for informational purposes only and does not constitute medical advice.</p>
         <div class="quiz-nav" style="margin-top:1.2rem;justify-content:flex-start;">
-          <button class="quiz-btn-back" onclick="quizGoTo(3)"><i class="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
+          <button class="quiz-btn-back" onclick="quizGoTo(4)"><i class="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
         </div>
       </div>
     </div>
 
-    <!-- Screen 5: Confirmation -->
-    <div class="quiz-screen" id="qs-5">
+    <!-- Screen 6: Confirmation -->
+    <div class="quiz-screen" id="qs-6">
       <div class="quiz-card" style="text-align:center;">
         <div class="quiz-confirm-icon"><i class="fa-solid fa-leaf"></i></div>
         <h3 class="quiz-confirm-headline">Assessment complete</h3>
@@ -1894,6 +1901,31 @@
     }
   }
 
+  function quizToggleSymptom(row) {
+    row.classList.toggle('selected');
+  }
+
+  function quizBuildSeverity() {
+    const selected = [...document.querySelectorAll('.symptom-check-row.selected')];
+    quizData.symptoms = {};
+    if (selected.length === 0) { quizGoTo(3); return; }
+    const list = document.getElementById('severity-list');
+    list.innerHTML = selected.map(row => {
+      const id    = row.dataset.symptom;
+      const icon  = row.querySelector('.symptom-icon').innerHTML;
+      const label = row.querySelector('.symptom-check-label').textContent;
+      return `<div class="symptom-row">
+        <div class="symptom-label"><div class="symptom-icon">${icon}</div><span>${label}</span></div>
+        <div class="sev-btns">
+          <button class="sev-btn" onclick="quizSev('${id}','mild',this)">Mild</button>
+          <button class="sev-btn" onclick="quizSev('${id}','noticeable',this)">Noticeable</button>
+          <button class="sev-btn" onclick="quizSev('${id}','affecting',this)">Affecting my life</button>
+        </div>
+      </div>`;
+    }).join('');
+    quizGoTo(2);
+  }
+
   function quizSev(symptomId, severity, btn) {
     btn.closest('.sev-btns').querySelectorAll('.sev-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
@@ -1949,7 +1981,7 @@
     document.getElementById('quiz-summary-text').textContent = summary;
 
     // TODO: wire up Formspree / WhatsApp / mailto submission here
-    quizGoTo(5);
+    quizGoTo(6);
   }
 
   // Animated number counters
