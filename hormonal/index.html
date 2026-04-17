@@ -1626,8 +1626,35 @@
       </div>
     </div>
 
-    <!-- Screen 1: Symptom Selection -->
+    <!-- Screen 1: Contact Details -->
     <div class="quiz-screen" id="qs-1">
+      <div class="quiz-card">
+        <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:20%"></div></div>
+        <div class="quiz-step-label">Step 1 of 5</div>
+        <h3 class="quiz-headline">To book your consultation,<br>we need a few details first.</h3>
+        <p class="quiz-subtext">We'll also send your personalised assessment to this address once you complete the questionnaire.</p>
+        <div class="quiz-form-group">
+          <label class="quiz-form-label" for="q-name">First name</label>
+          <input class="quiz-form-input" id="q-name" type="text" placeholder="Your name" autocomplete="given-name">
+        </div>
+        <div class="quiz-form-group">
+          <label class="quiz-form-label" for="q-email">Email address</label>
+          <input class="quiz-form-input" id="q-email" type="email" placeholder="your@email.com" autocomplete="email">
+        </div>
+        <div class="quiz-form-group">
+          <label class="quiz-form-label" for="q-whatsapp">WhatsApp <span class="quiz-optional">(optional — for appointment reminders only)</span></label>
+          <input class="quiz-form-input" id="q-whatsapp" type="tel" placeholder="+27 ..." autocomplete="tel">
+        </div>
+        <p class="quiz-disclaimer" style="margin-bottom:1.2rem;">By continuing, you consent to Herbernie International collecting and using your personal information to process your consultation request and send your assessment results, in accordance with the Protection of Personal Information Act (POPIA). Your details will not be shared with third parties.</p>
+        <div class="quiz-nav">
+          <button class="quiz-btn-back" onclick="quizGoTo(0)"><i class="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
+          <button class="quiz-btn-primary" onclick="quizGoTo(2)">Next &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Screen 2: Symptom Selection -->
+    <div class="quiz-screen" id="qs-2">
       <div class="quiz-card">
         <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:20%"></div></div>
         <div class="quiz-step-label">Step 1 of 5</div>
@@ -1686,30 +1713,30 @@
           </div>
         </div>
         <div class="quiz-nav">
-          <button class="quiz-btn-back" onclick="quizGoTo(0)"><i class="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
+          <button class="quiz-btn-back" onclick="quizGoTo(1)"><i class="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
           <button class="quiz-btn-primary" onclick="quizBuildSeverity()">Next &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
         </div>
       </div>
     </div>
 
-    <!-- Screen 2: Severity (built dynamically) -->
-    <div class="quiz-screen" id="qs-2">
+    <!-- Screen 3: Severity (built dynamically) -->
+    <div class="quiz-screen" id="qs-3">
       <div class="quiz-card">
-        <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:40%"></div></div>
-        <div class="quiz-step-label">Step 2 of 5</div>
+        <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:60%"></div></div>
+        <div class="quiz-step-label">Step 3 of 5</div>
         <h3 class="quiz-headline">For the ones you've selected —<br>how much are they getting in the way?</h3>
         <p class="quiz-subtext">This is where we start to understand the real impact.</p>
         <div class="symptom-list" id="severity-list"></div>
         <p class="quiz-note">There are no wrong answers here. The more honestly you respond, the more useful your consultation will be.</p>
         <div class="quiz-nav">
-          <button class="quiz-btn-back" onclick="quizGoTo(1)"><i class="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
-          <button class="quiz-btn-primary" onclick="quizGoTo(3)">Next &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
+          <button class="quiz-btn-back" onclick="quizGoTo(2)"><i class="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
+          <button class="quiz-btn-primary" onclick="quizGoTo(4)">Next &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
         </div>
       </div>
     </div>
 
-    <!-- Screen 3: Duration + Prior Help -->
-    <div class="quiz-screen" id="qs-3">
+    <!-- Screen 4: Duration + Prior Help -->
+    <div class="quiz-screen" id="qs-4">
       <div class="quiz-card">
         <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:60%"></div></div>
         <div class="quiz-step-label">Step 3 of 5</div>
@@ -1746,13 +1773,13 @@
         <p class="quiz-note">Take your time. There's no rush here.</p>
         <div class="quiz-nav">
           <button class="quiz-btn-back" onclick="quizBackFromDuration()"><i class="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
-          <button class="quiz-btn-primary" onclick="quizGoTo(4)">Next &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
+          <button class="quiz-btn-primary" onclick="quizGoTo(5)">Next &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
         </div>
       </div>
     </div>
 
-    <!-- Screen 4: Goals -->
-    <div class="quiz-screen" id="qs-4">
+    <!-- Screen 5: Goals -->
+    <div class="quiz-screen" id="qs-5">
       <div class="quiz-card">
         <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:80%"></div></div>
         <div class="quiz-step-label">Step 4 of 5</div>
@@ -1781,35 +1808,8 @@
           </div>
         </div>
         <div class="quiz-nav" style="margin-top:1.8rem;">
-          <button class="quiz-btn-back" onclick="quizGoTo(3)"><i class="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
-          <button class="quiz-btn-primary" onclick="quizGoTo(5)">Next &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Screen 5: Contact Details -->
-    <div class="quiz-screen" id="qs-5">
-      <div class="quiz-card">
-        <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:100%"></div></div>
-        <div class="quiz-step-label">Step 5 of 5</div>
-        <h3 class="quiz-headline">To book your consultation,<br>we need a few details first.</h3>
-        <p class="quiz-subtext">We'll also send your personalised assessment to this address once you complete the questionnaire.</p>
-        <div class="quiz-form-group">
-          <label class="quiz-form-label" for="q-name">First name</label>
-          <input class="quiz-form-input" id="q-name" type="text" placeholder="Your name" autocomplete="given-name">
-        </div>
-        <div class="quiz-form-group">
-          <label class="quiz-form-label" for="q-email">Email address</label>
-          <input class="quiz-form-input" id="q-email" type="email" placeholder="your@email.com" autocomplete="email">
-        </div>
-        <div class="quiz-form-group">
-          <label class="quiz-form-label" for="q-whatsapp">WhatsApp <span class="quiz-optional">(optional — for appointment reminders only)</span></label>
-          <input class="quiz-form-input" id="q-whatsapp" type="tel" placeholder="+27 ..." autocomplete="tel">
-        </div>
-        <button class="quiz-btn-primary" style="width:100%;justify-content:center;margin-top:0.5rem;" onclick="quizSubmit()">See My Results &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
-        <p class="quiz-disclaimer" style="margin-top:1rem;">By continuing, you consent to Herbernie International collecting and using your personal information to process your consultation request and send your assessment results, in accordance with the Protection of Personal Information Act (POPIA). Your details will not be shared with third parties.</p>
-        <div class="quiz-nav" style="margin-top:1.2rem;justify-content:flex-start;">
           <button class="quiz-btn-back" onclick="quizGoTo(4)"><i class="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
+          <button class="quiz-btn-primary" onclick="quizSubmit()">See My Results &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
         </div>
       </div>
     </div>
