@@ -1615,19 +1615,8 @@
 <section class="quiz-section" id="consult">
   <div class="quiz-wrap">
 
-    <!-- Screen 0: Intro -->
-    <div class="quiz-screen active" id="qs-0">
-      <div class="quiz-intro-wrap">
-        <div class="section-eyebrow" style="justify-content:center;margin-bottom:1.5rem;">Your First Step</div>
-        <h2 class="quiz-main-headline">Before your consultation,<br><em>tell us what's been going on.</em></h2>
-        <p class="quiz-intro-sub">This takes about 3 minutes. Your answers go directly to Dr. Lurie and Joanne before your session — so they already understand your situation when you meet.</p>
-        <p class="quiz-privacy"><i class="fa-solid fa-lock"></i> Your information is kept private and secure.</p>
-        <button class="quiz-btn-primary" onclick="quizGoTo(1)">Begin My Assessment &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
-      </div>
-    </div>
-
     <!-- Screen 1: Contact Details -->
-    <div class="quiz-screen" id="qs-1">
+    <div class="quiz-screen active" id="qs-1">
       <div class="quiz-card">
         <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:20%"></div></div>
         <div class="quiz-step-label">Step 1 of 5</div>
@@ -1646,8 +1635,7 @@
           <input class="quiz-form-input" id="q-whatsapp" type="tel" placeholder="+27 ..." autocomplete="tel">
         </div>
         <p class="quiz-disclaimer" style="margin-bottom:1.2rem;">By continuing, you consent to Herbernie International collecting and using your personal information to process your consultation request and send your assessment results, in accordance with the Protection of Personal Information Act (POPIA). Your details will not be shared with third parties.</p>
-        <div class="quiz-nav">
-          <button class="quiz-btn-back" onclick="quizGoTo(0)"><i class="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
+        <div class="quiz-nav" style="justify-content:flex-end;">
           <button class="quiz-btn-primary" onclick="quizGoTo(2)">Next &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
         </div>
       </div>
