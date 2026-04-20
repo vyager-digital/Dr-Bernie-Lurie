@@ -730,6 +730,10 @@
     font-size: 0.85rem; color: var(--rose);
     margin-bottom: 0.75rem; text-align: center;
   }
+  .quiz-field-error {
+    font-size: 0.8rem; color: var(--rose);
+    margin-top: 0.3rem; margin-bottom: 0;
+  }
 
   /* Symptom rows */
   .symptom-list { display: flex; flex-direction: column; }
@@ -1640,10 +1644,12 @@
         <div class="quiz-form-group">
           <label class="quiz-form-label" for="q-name">First name</label>
           <input class="quiz-form-input" id="q-name" type="text" placeholder="Your name" autocomplete="given-name">
+          <p class="quiz-field-error" id="err-name" style="display:none;">Please enter your first name.</p>
         </div>
         <div class="quiz-form-group">
           <label class="quiz-form-label" for="q-email">Email address</label>
           <input class="quiz-form-input" id="q-email" type="email" placeholder="your@email.com" autocomplete="email">
+          <p class="quiz-field-error" id="err-email" style="display:none;">Please enter a valid email address.</p>
         </div>
         <div class="quiz-form-group">
           <label class="quiz-form-label" for="q-whatsapp">WhatsApp <span class="quiz-optional">(optional — for appointment reminders only)</span></label>
@@ -1652,7 +1658,7 @@
         <p class="quiz-disclaimer" style="margin-bottom:1.2rem;">By continuing, you consent to Herbernie International collecting and using your personal information to process your consultation request and send your assessment results, in accordance with the Protection of Personal Information Act (POPIA). Your details will not be shared with third parties.</p>
         <div class="quiz-nav">
           <button class="quiz-btn-back" onclick="quizGoTo(0)"><i class="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
-          <button class="quiz-btn-primary" onclick="quizGoTo(2)">Next &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
+          <button class="quiz-btn-primary" onclick="quizValidateContact()">Next &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
         </div>
       </div>
     </div>
@@ -1896,6 +1902,18 @@
 
   // Questionnaire
   const quizData = { symptoms: {}, duration: null, priorHelp: null, goal: null };
+
+  function quizValidateContact() {
+    const name  = document.getElementById('q-name').value.trim();
+    const email = document.getElementById('q-email').value.trim();
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    let valid = true;
+    const errName  = document.getElementById('err-name');
+    const errEmail = document.getElementById('err-email');
+    if (!name)    { errName.style.display  = 'block'; valid = false; } else { errName.style.display  = 'none'; }
+    if (!emailOk) { errEmail.style.display = 'block'; valid = false; } else { errEmail.style.display = 'none'; }
+    if (valid) quizGoTo(2);
+  }
 
   function quizGoTo(step) {
     document.querySelectorAll('.quiz-screen').forEach(s => s.classList.remove('active'));
