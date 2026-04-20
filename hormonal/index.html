@@ -942,6 +942,10 @@
   .quiz-offer-row { display: flex; align-items: flex-start; gap: 0.7rem; font-size: 0.85rem; color: var(--text-mid); line-height: 1.5; }
   .quiz-offer-row i { color: var(--sage); margin-top: 2px; flex-shrink: 0; }
   .quiz-disclaimer { font-size: 0.72rem; color: var(--text-light); text-align: center; line-height: 1.65; margin-top: 1rem; }
+  .quiz-tos-label { display: flex; align-items: center; gap: 0.65rem; font-family: 'Jost', sans-serif; font-size: 0.88rem; color: var(--text-mid); margin: 1.4rem 0 1.2rem; cursor: pointer; }
+  .quiz-tos-label input[type="checkbox"] { width: 18px; height: 18px; flex-shrink: 0; accent-color: var(--rose); cursor: pointer; }
+  .quiz-tos-link { color: var(--rose); text-decoration: underline; }
+  .quiz-btn-primary:disabled { opacity: 0.45; cursor: not-allowed; pointer-events: none; }
 
   /* ── Quiz tablet ── */
   @media (max-width: 960px) {
@@ -1863,9 +1867,13 @@
           </div>
           <p style="font-size:0.82rem;color:var(--text-light,#9a8880);margin:1.2rem 0 0;font-family:'Jost',sans-serif;">Consultation fee only. Prescribed medication and supplements are billed separately.</p>
         </div>
+        <label class="quiz-tos-label">
+          <input type="checkbox" id="tos-check" onchange="document.getElementById('confirm-btn').disabled=!this.checked">
+          <span>I agree to the <a href="#" class="quiz-tos-link">Terms of Service</a></span>
+        </label>
         <div class="quiz-nav" style="margin-top:0;">
           <button class="quiz-btn-back" onclick="quizGoTo(5)"><i class="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
-          <button class="quiz-btn-primary" style="flex:1;justify-content:center;">Confirm My Booking &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
+          <button class="quiz-btn-primary" id="confirm-btn" disabled style="flex:1;justify-content:center;">Confirm My Booking &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
         </div>
         <p class="quiz-disclaimer">Secure online payment.</p>
       </div>
