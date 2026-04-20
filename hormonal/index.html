@@ -531,10 +531,10 @@
   .facility-left-col { display: flex; flex-direction: column; gap: 2.5rem; justify-content: center; }
   .facility-image-col {
     border-radius: 1.4rem; overflow: hidden;
-    min-height: 540px;
+    display: flex; align-items: center; justify-content: center;
   }
   .facility-image-col img {
-    width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;
+    width: 100%; height: auto; display: block;
   }
   .facility-eyebrow {
     font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
@@ -1006,7 +1006,7 @@
 
     .facility-section { padding: 4rem 2.5rem; }
     .facility-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-    .facility-image-col { min-height: 340px; }
+    .facility-image-col { min-height: unset; }
 
     .test-grid { grid-template-columns: 1fr 1fr; gap: 1.2rem; }
 
