@@ -1712,6 +1712,7 @@
             <div class="symptom-check-dot"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
           </div>
         </div>
+        <p class="quiz-error" id="symptom-error" style="display:none;">Please select at least one symptom to continue.</p>
         <div class="quiz-nav">
           <button class="quiz-btn-back" onclick="quizGoTo(1)"><i class="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
           <button class="quiz-btn-primary" onclick="quizBuildSeverity()">Next &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
@@ -1903,12 +1904,20 @@
 
   function quizToggleSymptom(row) {
     row.classList.toggle('selected');
+    const err = document.getElementById('symptom-error');
+    if (err && document.querySelectorAll('.symptom-check-row.selected').length > 0) {
+      err.style.display = 'none';
+    }
   }
 
   function quizBuildSeverity() {
     const selected = [...document.querySelectorAll('.symptom-check-row.selected')];
     quizData.symptoms = {};
-    if (selected.length === 0) { quizGoTo(3); return; }
+    if (selected.length === 0) {
+      const err = document.getElementById('symptom-error');
+      if (err) err.style.display = 'block';
+      return;
+    }
     const list = document.getElementById('severity-list');
     list.innerHTML = selected.map(row => {
       const id    = row.dataset.symptom;
