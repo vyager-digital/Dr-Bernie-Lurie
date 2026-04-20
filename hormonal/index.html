@@ -925,6 +925,8 @@
     color: var(--text-mid); text-align: center;
     max-width: 52ch; margin: 0 auto 2rem;
   }
+  .quiz-confirm-summary p { margin: 0 0 1.1rem; }
+  .quiz-confirm-summary p:last-child { margin-bottom: 0; }
   .quiz-confirm-summary strong { color: var(--text-dark); }
   .quiz-divider { height: 1px; background: var(--blush-deep); margin: 0 0 2rem; }
   .quiz-offer-card {
@@ -1845,7 +1847,7 @@
       <div class="quiz-card" style="text-align:center;">
         <div class="quiz-confirm-icon"><i class="fa-solid fa-leaf"></i></div>
         <h3 class="quiz-confirm-headline">Assessment complete</h3>
-        <p class="quiz-confirm-summary" id="quiz-summary-text"></p>
+        <div class="quiz-confirm-summary" id="quiz-summary-text"></div>
         <div class="quiz-divider"></div>
         <div class="quiz-offer-card" style="text-align:left;">
           <div class="quiz-offer-label">✦ Your Initial Consultation</div>
@@ -1996,40 +1998,59 @@
   }
 
   function quizSubmit() {
-    const name  = document.getElementById('q-name').value.trim();
-    const email = document.getElementById('q-email').value.trim();
+    const name = document.getElementById('q-name').value.trim();
+    const namePrefix = name ? name + ', ' : '';
 
-    const symptomLabels = {
-      'hot-flushes': 'hot flushes', 'broken-sleep': 'broken sleep',
-      'fatigue': 'persistent fatigue', 'brain-fog': 'brain fog',
-      'mood-swings': 'mood swings', 'weight': 'stubborn weight changes',
-      'anxiety': 'anxiety or low mood', 'cycles': 'irregular cycles',
-      'libido': 'feeling disconnected from your body', 'joint-pain': 'joint or bone pain'
+    const severities = Object.values(quizData.symptoms);
+    const hasAffecting  = severities.includes('affecting');
+    const hasNoticeable = severities.includes('noticeable');
+
+    // Para 1 — duration-aware opening
+    let para1;
+    const dur = quizData.duration;
+    if (dur === 'under-6m') {
+      para1 = `${namePrefix}you're catching this early — and that matters. The pattern you've described has a clear hormonal signature. Addressing it now is far easier than waiting for it to compound.`;
+    } else if (dur === '6m-1yr') {
+      para1 = `${namePrefix}six months to a year of this is long enough to know it isn't going to resolve on its own. What you've described is a recognisable hormonal pattern — one Dr. Lurie and Joanne work through regularly, with meaningful results.`;
+    } else if (dur === '1-3yr') {
+      para1 = `${namePrefix}you've been managing this for over a year. That's long enough for the body to develop real compensation patterns — which is also why targeted, personalised support makes such a difference over general advice.`;
+    } else {
+      para1 = `${namePrefix}years of managing this means your body has been working around the problem rather than through it. That's more common than most people realise — and it doesn't make recovery harder. It just means the starting point needs to be understood properly, which is exactly what the consultation does.`;
+    }
+
+    // Para 2 — prior help, the most validating insight
+    let para2;
+    if (quizData.priorHelp === 'told-normal') {
+      para2 = `Being told your results are "normal" when you feel anything but is one of the most common — and most frustrating — things Dr. Lurie hears. Standard blood panels don't capture hormonal patterns over time, or how those patterns interact with one another. What gets missed is often exactly what explains how you've been feeling.`;
+    } else if (quizData.priorHelp === 'tried-hrt') {
+      para2 = `Having already tried HRT or prescription medication — and still looking for answers — suggests your body needs a more tailored approach. Herbal treatment works with the body's own hormonal feedback mechanisms, not just around them. For many women who've been through the prescription route, this is where things finally shift.`;
+    } else if (quizData.priorHelp === 'tried-natural') {
+      para2 = `Supplements without a proper protocol rarely address the root cause. The right herbal formulation — timed specifically to your cycle and prepared for your individual profile — is a meaningfully different approach. Many patients who've tried natural remedies before find this is the piece they were missing.`;
+    } else {
+      para2 = `Not knowing where to start is a very common place to be. Most women aren't told that what they're experiencing has a name, a recognisable pattern, and a clear path through it. That clarity tends to come quickly once someone with the right clinical experience looks at the full picture.`;
+    }
+
+    // Para 3 — severity signal + goal, closing with warm urgency
+    const goalMap = {
+      'patient':  'being patient and present with the people you love',
+      'work':     'showing up at work the way you want to again',
+      'movement': 'moving freely without paying for it the next day',
+      'myself':   'feeling like yourself again',
+      'other':    'what comes next for you'
     };
-    const durationMap = {
-      'under-6m': 'less than six months', '6m-1yr': 'six months to a year',
-      '1-3yr': 'one to three years', '3yr-plus': 'more than three years'
-    };
-    const helpMap = {
-      'told-normal': 'You\'ve looked for answers and been told everything looked normal.',
-      'tried-hrt': 'You\'ve tried HRT or prescription medication.',
-      'tried-natural': 'You\'ve tried natural supplements, with mixed results.',
-      'no-help': 'You haven\'t known where to start — until now.'
-    };
+    const goalText = goalMap[quizData.goal] || 'feeling well again';
 
-    const selected = Object.keys(quizData.symptoms).map(k => symptomLabels[k]).filter(Boolean);
-    let symptomsText;
-    if (selected.length === 0)      symptomsText = 'a number of symptoms';
-    else if (selected.length === 1) symptomsText = selected[0];
-    else if (selected.length === 2) symptomsText = selected[0] + ' and ' + selected[1];
-    else symptomsText = selected.slice(0,2).join(', ') + ', and ' + (selected.length - 2) + ' other' + (selected.length > 3 ? 's' : '');
+    let para3;
+    if (hasAffecting) {
+      para3 = `When symptoms are actively disrupting daily life, that's the body signalling it has been compensating for too long. Dr. Lurie's patients regularly describe meaningful improvement within 2–4 weeks of starting treatment. ${namePrefix}${goalText} is not a distant outcome — it's a reasonable expectation. Your consultation is where that process begins.`;
+    } else if (hasNoticeable) {
+      para3 = `Symptoms at this level don't tend to plateau on their own. The earlier targeted support begins, the less work the body has to do to recalibrate. ${namePrefix}${goalText} is closer than it feels right now — and your consultation is the clearest next step toward it.`;
+    } else {
+      para3 = `${namePrefix}${goalText} is a reasonable goal — and one that hormonal rebalancing directly supports. Dr. Lurie's patients regularly describe this kind of shift within the first few months of treatment. Your consultation is where the plan is built, specifically for you.`;
+    }
 
-    const durationText = durationMap[quizData.duration] || 'some time';
-    const helpText     = helpMap[quizData.priorHelp]    || '';
-    const namePrefix   = name ? name + ', you\'ve' : 'You\'ve';
-
-    const summary = `${namePrefix} been managing ${symptomsText} for ${durationText}. ${helpText} Dr. Lurie and Joanne see this combination regularly. It is not something you simply have to live with.`;
-    document.getElementById('quiz-summary-text').textContent = summary;
+    document.getElementById('quiz-summary-text').innerHTML =
+      [para1, para2, para3].map(p => `<p>${p}</p>`).join('');
 
     // TODO: wire up Formspree / WhatsApp / mailto submission here
     quizGoTo(6);
