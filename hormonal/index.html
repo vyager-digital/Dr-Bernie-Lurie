@@ -2022,7 +2022,7 @@
     // Para 2 — prior help, the most validating insight
     let para2;
     if (quizData.priorHelp === 'told-normal') {
-      para2 = `Being told your results are "normal" when you feel anything but is one of the most common — and most frustrating — things Dr. Lurie hears. Standard blood panels don't capture hormonal patterns over time, or how those patterns interact with one another. What gets missed is often exactly what explains how you've been feeling.`;
+      para2 = `Being told your results are "normal" when you feel anything but is one of the most common — and most frustrating — things Dr. Lurie and Joanne hear. Standard blood panels don't capture hormonal patterns over time, or how those patterns interact with one another. What gets missed is often exactly what explains how you've been feeling.`;
     } else if (quizData.priorHelp === 'tried-hrt') {
       para2 = `Having already tried HRT or prescription medication — and still looking for answers — suggests your body needs a more tailored approach. Herbal treatment works with the body's own hormonal feedback mechanisms, not just around them. For many women who've been through the prescription route, this is where things finally shift.`;
     } else if (quizData.priorHelp === 'tried-natural') {
@@ -2043,11 +2043,11 @@
 
     let para3;
     if (hasAffecting) {
-      para3 = `When symptoms are actively disrupting daily life, that's the body signalling it has been compensating for too long. Dr. Lurie's patients regularly describe meaningful improvement within 2–4 weeks of starting treatment. ${namePrefix}${goalText} is not a distant outcome — it's a reasonable expectation. Your consultation is where that process begins.`;
+      para3 = `When symptoms are actively disrupting daily life, that's the body signalling it has been compensating for too long. Dr. Lurie and Joanne's patients regularly describe meaningful improvement within 2–4 weeks of starting treatment. ${namePrefix}${goalText} is not a distant outcome — it's a reasonable expectation. Your consultation is where that process begins.`;
     } else if (hasNoticeable) {
       para3 = `Symptoms at this level don't tend to plateau on their own. The earlier targeted support begins, the less work the body has to do to recalibrate. ${namePrefix}${goalText} is closer than it feels right now — and your consultation is the clearest next step toward it.`;
     } else {
-      para3 = `${namePrefix}${goalText} is a reasonable goal — and one that hormonal rebalancing directly supports. Dr. Lurie's patients regularly describe this kind of shift within the first few months of treatment. Your consultation is where the plan is built, specifically for you.`;
+      para3 = `${namePrefix}${goalText} is a reasonable goal — and one that hormonal rebalancing directly supports. Dr. Lurie and Joanne's patients regularly describe this kind of shift within the first few months of treatment. Your consultation is where the plan is built, specifically for you.`;
     }
 
     document.getElementById('quiz-summary-text').innerHTML =
