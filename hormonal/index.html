@@ -973,8 +973,6 @@
 
   /* FOOTER */
   footer { background: var(--parchment); border-top: 1px solid var(--blush-deep); padding: 3rem 6rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
-  .footer-logo { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--rose-dark); font-weight: 600; }
-  .footer-logo span { font-style: italic; color: var(--sage-dark); }
   .footer-note { font-size: 0.82rem; color: var(--text-light); max-width: 45ch; line-height: 1.65; text-align: center; }
   .footer-links { display: flex; gap: 1.5rem; }
   .footer-links a { font-size: 0.82rem; color: var(--text-light); text-decoration: none; transition: color 0.3s; }
@@ -1900,7 +1898,13 @@
 </section>
 
 <footer>
-  <div class="footer-logo">Nature's <span>Healing</span> Process</div>
+  <div class="nav-logo">
+    <img src="assets/images/herbernie-logo.webp" alt="" class="nav-logo-icon" width="34" height="34">
+    <div class="nav-logo-text">
+      <span class="nav-logo-sub">herbernie</span>
+      <span class="nav-logo-main">Natural <span>Healing</span> for Life</span>
+    </div>
+  </div>
   <p class="footer-note">The information provided reflects the clinical observations of Dr. Bernard Lurie, N.D., and is for educational purposes. It does not constitute medical advice. Always work with a qualified natural health practitioner. Consult your physician for emergencies and acute medical care.</p>
   <div class="footer-links"><a href="#">Privacy</a><a href="#">Disclaimer</a><a href="#">Contact</a></div>
 </footer>
