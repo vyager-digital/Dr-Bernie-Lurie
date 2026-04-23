@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Herbernie International</title>
+  <link rel="icon" type="image/webp" href="/assets/images/herbernie-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap"></noscript>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { overflow-x: hidden; }
+
+    :root {
+      --blush:      #f2ddd5;
+      --blush-light:#fdf5f2;
+      --blush-deep: #e8cfc5;
+      --rose:       #c4796a;
+      --rose-soft:  #d4978a;
+      --sage:       #7a9e7e;
+      --sage-dark:  #5a7e5e;
+      --warm-white: #fdf8f5;
+      --parchment:  #f8f2ed;
+      --text-dark:  #3d2e2a;
+      --text-mid:   #6b5550;
+      --text-light: #9a8880;
+    }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--warm-white);
+      color: var(--text-dark);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .page-meta-bar {
+      background: var(--parchment);
+      border-bottom: 1px solid var(--blush-deep);
+      padding: 0.75rem 2rem;
+      text-align: center;
+    }
+    .page-meta-label {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem; color: var(--text-light); letter-spacing: 0.04em;
+    }
+
+    .content-wrap {
+      max-width: 740px; margin: 0 auto;
+      padding: 2rem 2rem 4rem;
+    }
+
+    .toc {
+      background: var(--parchment);
+      border: 1px solid var(--blush-deep);
+      border-radius: 12px;
+      padding: 1.8rem 2rem;
+      margin-bottom: 3.5rem;
+    }
+    .toc-title {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--text-light); font-weight: 500; margin-bottom: 1rem;
+    }
+    .toc ol { padding-left: 1.2rem; }
+    .toc li { margin-bottom: 0.35rem; }
+    .toc a {
+      font-family: 'Jost', sans-serif; font-size: 0.9rem;
+      color: var(--text-mid); text-decoration: none; transition: color 0.2s;
+    }
+    .toc a:hover { color: var(--rose); }
+
+    .section { margin-bottom: 3rem; }
+    .section-anchor { display: block; position: relative; top: -80px; visibility: hidden; }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem; font-weight: 500;
+      color: var(--text-dark); line-height: 1.3;
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--blush-deep);
+    }
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-weight: 500; font-style: italic;
+      color: var(--text-mid); margin: 1.4rem 0 0.5rem;
+    }
+    p { font-size: 0.96rem; color: var(--text-mid); margin-bottom: 1rem; line-height: 1.75; }
+    p:last-child { margin-bottom: 0; }
+    ul, ol { padding-left: 1.4rem; margin-bottom: 1rem; }
+    li { font-size: 0.96rem; color: var(--text-mid); margin-bottom: 0.4rem; line-height: 1.7; }
+    strong { color: var(--text-dark); font-weight: 500; }
+    a { color: var(--rose); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .callout {
+      background: var(--blush-light);
+      border-left: 3px solid var(--rose-soft);
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.2rem;
+      margin: 1.2rem 0;
+    }
+    .callout p { margin: 0; font-size: 0.92rem; }
+
+    .data-table {
+      width: 100%; border-collapse: collapse;
+      margin: 1.2rem 0;
+    }
+    .data-table th {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-light); font-weight: 500;
+      text-align: left; padding: 0.6rem 0.8rem;
+      border-bottom: 2px solid var(--blush-deep);
+    }
+    .data-table td {
+      font-size: 0.92rem; color: var(--text-mid);
+      padding: 0.75rem 0.8rem; vertical-align: top;
+      border-bottom: 1px solid var(--blush-deep); line-height: 1.6;
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+
+    @media (max-width: 768px) {
+      .content-wrap { padding: 2rem 1.2rem 3rem; }
+      .data-table { display: block; overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-meta-bar">
+  <span class="page-meta-label">Herbernie International &nbsp;·&nbsp; Last updated: April 2026</span>
+</div>
+
+<div class="content-wrap">
+
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <ol>
+      <li><a href="#who">Who We Are</a></li>
+      <li><a href="#what-we-collect">What Information We Collect</a></li>
+      <li><a href="#how-we-collect">How We Collect It</a></li>
+      <li><a href="#why-we-use">Why We Use Your Information</a></li>
+      <li><a href="#legal-basis">Legal Basis for Processing</a></li>
+      <li><a href="#sharing">Who We Share It With</a></li>
+      <li><a href="#retention">How Long We Keep It</a></li>
+      <li><a href="#security">How We Protect It</a></li>
+      <li><a href="#rights">Your Rights Under POPIA</a></li>
+      <li><a href="#cookies">Cookies and Analytics</a></li>
+      <li><a href="#changes">Changes to This Policy</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ol>
+  </div>
+
+  <div class="section">
+    <span class="section-anchor" id="who"></span>
+    <h2>1. Who We Are</h2>
+    <p>This Privacy Policy explains how <strong>Herbernie International</strong> ("we", "us", "our") collects, uses, and protects your personal information when you visit our website or use our services.</p>
+    <p>Herbernie International is a natural health practice based in Gqeberha (Port Elizabeth), South Africa, led by <strong>Dr. Bernard Lurie, N.D.</strong> We are the responsible party (operator) under the Protection of Personal Information Act 4 of 2013 (POPIA).</p>
+    <p>By using this website or booking a consultation, you confirm that you have read and understood this policy.</p>
+  </div>
+
+  <div class="section">
+    <span class="section-anchor" id="what-we-collect"></span>
+    <h2>2. What Information We Collect</h2>
+    <h3>Contact information</h3>
+    <ul>
+      <li>First name</li>
+      <li>Email address</li>
+      <li>WhatsApp or telephone number (where provided)</li>
+    </ul>
+    <h3>Health information</h3>
+    <ul>
+      <li>Responses to the online health assessment questionnaire</li>
+      <li>Health history and symptoms shared during consultations</li>
+      <li>Treatment notes and prescribed protocols</li>
+    </ul>
+    <h3>Payment information</h3>
+    <p>Payment is processed by our third-party payment provider. We do not collect or store your card details.</p>
+    <h3>Usage information</h3>
+    <p>When you visit our website, we may collect standard technical data such as your IP address, browser type, and pages visited. This is used only for website performance and analytics purposes.</p>
+  </div>
+
+  <div class="section">
+    <span class="section-anchor" id="how-we-collect"></span>
+    <h2>3. How We Collect It</h2>
+    <p>We collect your personal information in the following ways:</p>
+    <ul>
+      <li><strong>Directly from you</strong> — when you complete the health assessment, book a consultation, or contact us</li>
+      <li><strong>During your consultation</strong> — information shared verbally or in writing with our practitioners</li>
+      <li><strong>Automatically</strong> — basic usage data collected when you browse the website</li>
+    </ul>
+    <p>We do not purchase, rent, or obtain personal information from third-party data brokers.</p>
+  </div>
+
+  <div class="section">
+    <span class="section-anchor" id="why-we-use"></span>
+    <h2>4. Why We Use Your Information</h2>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Purpose</th>
+          <th>Information used</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>To process and confirm your consultation booking</td>
+          <td>Name, email, phone</td>
+        </tr>
+        <tr>
+          <td>To deliver your health assessment results</td>
+          <td>Name, email, questionnaire responses</td>
+        </tr>
+        <tr>
+          <td>To provide treatment and follow-up care</td>
+          <td>Health information, contact details</td>
+        </tr>
+        <tr>
+          <td>To send appointment reminders</td>
+          <td>Email, WhatsApp number</td>
+        </tr>
+        <tr>
+          <td>To send health updates or relevant information (where consented)</td>
+          <td>Email</td>
+        </tr>
+        <tr>
+          <td>To comply with legal and regulatory obligations</td>
+          <td>Health records, contact details</td>
+        </tr>
+        <tr>
+          <td>To improve our website and services</td>
+          <td>Anonymised usage data</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>We will not use your information for any purpose beyond what is described here without your consent.</p>
+  </div>
+
+  <div class="section">
+    <span class="section-anchor" id="legal-basis"></span>
+    <h2>5. Legal Basis for Processing</h2>
+    <p>Under POPIA, we process your personal information on the following grounds:</p>
+    <ul>
+      <li><strong>Contract</strong> — to fulfil your consultation booking and deliver the services you have requested</li>
+      <li><strong>Consent</strong> — for optional communications such as health newsletters or follow-up marketing, which you can withdraw at any time</li>
+      <li><strong>Legal obligation</strong> — to retain health records as required by South African law</li>
+      <li><strong>Legitimate interest</strong> — for website analytics and service improvement, where this does not override your rights</li>
+    </ul>
+    <p>Because we process special personal information (health data), we do so only with your explicit consent, or where necessary to carry out your treatment.</p>
+  </div>
+
+  <div class="section">
+    <span class="section-anchor" id="sharing"></span>
+    <h2>6. Who We Share It With</h2>
+    <p>We do not sell your personal information. We share it only in the following limited circumstances:</p>
+    <ul>
+      <li><strong>Our practitioners</strong> — Dr. Lurie and clinical staff involved in your care, on a need-to-know basis</li>
+      <li><strong>Payment processor</strong> — your payment details are handled by our payment provider under their own privacy policy</li>
+      <li><strong>Communication tools</strong> — email and WhatsApp platforms used to send your assessment results and appointment reminders</li>
+      <li><strong>Legal requirements</strong> — if required to do so by a court order, regulator, or applicable South African law</li>
+    </ul>
+    <p>Any third party we work with is required to handle your information securely and in accordance with POPIA.</p>
+  </div>
+
+  <div class="section">
+    <span class="section-anchor" id="retention"></span>
+    <h2>7. How Long We Keep It</h2>
+    <p>We retain your information for as long as necessary to fulfil the purposes described in this policy, or as required by law.</p>
+    <ul>
+      <li><strong>Health records</strong> — retained for a minimum of 5 years following your last consultation, in line with South African health record requirements</li>
+      <li><strong>Contact and booking information</strong> — retained for 3 years after your last interaction, then deleted or anonymised</li>
+      <li><strong>Marketing communications</strong> — until you unsubscribe or withdraw consent</li>
+    </ul>
+    <p>When information is no longer needed, it is securely deleted or anonymised.</p>
+  </div>
+
+  <div class="section">
+    <span class="section-anchor" id="security"></span>
+    <h2>8. How We Protect It</h2>
+    <p>We take the security of your personal information seriously. Our measures include:</p>
+    <ul>
+      <li>Secure, encrypted connections (HTTPS) across the website</li>
+      <li>Access to health records restricted to authorised practitioners only</li>
+      <li>Payment processing handled by PCI-compliant third-party providers</li>
+      <li>Regular review of our data handling practices</li>
+    </ul>
+    <div class="callout">
+      <p>No method of electronic transmission or storage is completely secure. While we take every reasonable precaution, we cannot guarantee absolute security. If you believe your information has been compromised, please contact us immediately.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="section-anchor" id="rights"></span>
+    <h2>9. Your Rights Under POPIA</h2>
+    <p>As a data subject under POPIA, you have the following rights:</p>
+    <ul>
+      <li><strong>Right of access</strong> — you may request a copy of the personal information we hold about you</li>
+      <li><strong>Right to correction</strong> — you may ask us to correct inaccurate or incomplete information</li>
+      <li><strong>Right to deletion</strong> — you may request that we delete your information, subject to any legal retention obligations</li>
+      <li><strong>Right to object</strong> — you may object to certain uses of your information, including direct marketing</li>
+      <li><strong>Right to withdraw consent</strong> — where processing is based on consent, you may withdraw it at any time without affecting prior processing</li>
+      <li><strong>Right to complain</strong> — you have the right to lodge a complaint with the <strong>Information Regulator of South Africa</strong> if you believe your rights have been violated</li>
+    </ul>
+    <p>To exercise any of these rights, contact us using the details in Section 12. We will respond within a reasonable time and in accordance with POPIA requirements.</p>
+    <p style="font-size:0.88rem;color:var(--text-light);margin-top:0.8rem;">Information Regulator contact: <a href="mailto:inforeg@justice.gov.za">inforeg@justice.gov.za</a></p>
+  </div>
+
+  <div class="section">
+    <span class="section-anchor" id="cookies"></span>
+    <h2>10. Cookies and Analytics</h2>
+    <p>Our website may use cookies and similar technologies to understand how visitors interact with the site. This data is aggregated and anonymised — it is not linked to your personal identity.</p>
+    <p>We do not use cookies to serve targeted advertising. If we introduce analytics or advertising tools in future, this policy will be updated accordingly.</p>
+    <p>You can control cookies through your browser settings at any time. Disabling cookies may affect some functionality of the site.</p>
+  </div>
+
+  <div class="section">
+    <span class="section-anchor" id="changes"></span>
+    <h2>11. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. The current version is always available at this URL, with the revision date noted at the top.</p>
+    <p>If we make material changes that affect how we use your health information, we will notify you directly by email where we hold your contact details.</p>
+  </div>
+
+  <div class="section">
+    <span class="section-anchor" id="contact"></span>
+    <h2>12. Contact Us</h2>
+    <p>For any questions about this policy, to request access to your information, or to exercise your POPIA rights:</p>
+    <ul>
+      <li><strong>Practice:</strong> Herbernie International</li>
+      <li><strong>Location:</strong> Gqeberha (Port Elizabeth), South Africa</li>
+      <li><strong>Email:</strong> <a href="mailto:info@herbernie.co.za">info@herbernie.co.za</a></li>
+    </ul>
+    <p style="margin-top:1.2rem;font-size:0.88rem;color:var(--text-light);">We aim to respond to all privacy-related enquiries within 5 business days.</p>
+  </div>
+
+</div>
+
+</body>
+</html>

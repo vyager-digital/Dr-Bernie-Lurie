@@ -1945,6 +1945,17 @@
   </div>
 </section>
 
+<!-- Privacy Modal -->
+<div class="tos-modal-overlay" id="privacy-modal" role="dialog" aria-modal="true" aria-label="Privacy Policy" onclick="if(event.target===this)closePrivacyModal()">
+  <div class="tos-modal">
+    <div class="tos-modal-header">
+      <span class="tos-modal-title">Privacy Policy</span>
+      <button class="tos-modal-close" onclick="closePrivacyModal()" aria-label="Close">&times;</button>
+    </div>
+    <iframe src="/privacy.html" title="Privacy Policy" loading="lazy"></iframe>
+  </div>
+</div>
+
 <!-- TOS Modal -->
 <div class="tos-modal-overlay" id="tos-modal" role="dialog" aria-modal="true" aria-label="Terms of Service" onclick="if(event.target===this)closeTosModal()">
   <div class="tos-modal">
@@ -1965,7 +1976,7 @@
     </div>
   </div>
   <p class="footer-note">The information provided reflects the clinical observations of Dr. Bernard Lurie, N.D., and is for educational purposes. It does not constitute medical advice. Always work with a qualified natural health practitioner. Consult your physician for emergencies and acute medical care.</p>
-  <div class="footer-links"><a href="/terms.html">Terms</a><a href="#">Privacy</a><a href="#">Contact</a></div>
+  <div class="footer-links"><a href="/terms.html">Terms</a><a href="/privacy.html" onclick="openPrivacyModal(event)">Privacy</a><a href="#">Contact</a></div>
 </footer>
 
 <script>
@@ -2162,7 +2173,18 @@
     document.getElementById('tos-modal').classList.remove('open');
     document.body.style.overflow = '';
   }
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeTosModal(); });
+  function openPrivacyModal(e) {
+    e.preventDefault();
+    document.getElementById('privacy-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closePrivacyModal() {
+    document.getElementById('privacy-modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeTosModal(); closePrivacyModal(); }
+  });
 
   // Animated number counters
   function animateCounter(el) {
