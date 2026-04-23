@@ -946,7 +946,39 @@
   .quiz-disclaimer { font-size: 0.72rem; color: var(--text-light); text-align: center; line-height: 1.65; margin-top: 1rem; }
   .quiz-tos-label { display: flex; align-items: center; gap: 0.65rem; font-family: 'Jost', sans-serif; font-size: 0.88rem; color: var(--text-mid); margin: 1.4rem 0 1.2rem; cursor: pointer; }
   .quiz-tos-label input[type="checkbox"] { width: 18px; height: 18px; flex-shrink: 0; accent-color: var(--rose); cursor: pointer; }
-  .quiz-tos-link { color: var(--rose); text-decoration: underline; }
+  .quiz-tos-link { color: var(--rose); text-decoration: underline; cursor: pointer; }
+
+  /* TOS modal */
+  .tos-modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 1000;
+    background: rgba(61,46,42,0.5); backdrop-filter: blur(4px);
+    align-items: center; justify-content: center; padding: 1.5rem;
+  }
+  .tos-modal-overlay.open { display: flex; }
+  .tos-modal {
+    background: var(--warm-white); border-radius: 16px;
+    width: 100%; max-width: 680px; max-height: 80vh;
+    display: flex; flex-direction: column;
+    box-shadow: 0 24px 60px rgba(61,46,42,0.18);
+    overflow: hidden;
+  }
+  .tos-modal-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid var(--blush-deep);
+    flex-shrink: 0;
+  }
+  .tos-modal-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--text-dark); }
+  .tos-modal-close {
+    width: 32px; height: 32px; border-radius: 50%; border: none;
+    background: var(--blush); color: var(--text-mid);
+    cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .tos-modal-close:hover { background: var(--blush-deep); }
+  .tos-modal iframe {
+    flex: 1; border: none; width: 100%; min-height: 0;
+  }
   .quiz-btn-primary:disabled { opacity: 0.45; cursor: not-allowed; pointer-events: none; }
 
   /* ── Quiz tablet ── */
@@ -1899,7 +1931,7 @@
         </div>
         <label class="quiz-tos-label">
           <input type="checkbox" id="tos-check" onchange="document.getElementById('confirm-btn').disabled=!this.checked">
-          <span>I agree to the <a href="#" class="quiz-tos-link">Terms of Service</a></span>
+          <span>I agree to the <a href="/terms.html" class="quiz-tos-link" onclick="openTosModal(event)">Terms of Service</a></span>
         </label>
         <div class="quiz-nav" style="margin-top:0;">
           <button class="quiz-btn-back" onclick="quizGoTo(5)"><i class="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
@@ -1912,6 +1944,17 @@
   </div>
 </section>
 
+<!-- TOS Modal -->
+<div class="tos-modal-overlay" id="tos-modal" role="dialog" aria-modal="true" aria-label="Terms of Service" onclick="if(event.target===this)closeTosModal()">
+  <div class="tos-modal">
+    <div class="tos-modal-header">
+      <span class="tos-modal-title">Terms of Service</span>
+      <button class="tos-modal-close" onclick="closeTosModal()" aria-label="Close">&times;</button>
+    </div>
+    <iframe src="/terms.html" title="Terms of Service" loading="lazy"></iframe>
+  </div>
+</div>
+
 <footer>
   <div class="nav-logo">
     <img src="assets/images/herbernie-logo.webp" alt="" class="nav-logo-icon" width="34" height="34">
@@ -1921,7 +1964,7 @@
     </div>
   </div>
   <p class="footer-note">The information provided reflects the clinical observations of Dr. Bernard Lurie, N.D., and is for educational purposes. It does not constitute medical advice. Always work with a qualified natural health practitioner. Consult your physician for emergencies and acute medical care.</p>
-  <div class="footer-links"><a href="#">Privacy</a><a href="#">Disclaimer</a><a href="#">Contact</a></div>
+  <div class="footer-links"><a href="/terms.html">Terms</a><a href="#">Privacy</a><a href="#">Contact</a></div>
 </footer>
 
 <script>
@@ -2107,6 +2150,18 @@
     // TODO: wire up Formspree / WhatsApp / mailto submission here
     quizGoTo(6);
   }
+
+  // TOS modal
+  function openTosModal(e) {
+    e.preventDefault();
+    document.getElementById('tos-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeTosModal() {
+    document.getElementById('tos-modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeTosModal(); });
 
   // Animated number counters
   function animateCounter(el) {

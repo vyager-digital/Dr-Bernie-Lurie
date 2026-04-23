@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service — Herbernie International</title>
+  <link rel="icon" type="image/webp" href="/hormonal/assets/images/herbernie-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap"></noscript>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { overflow-x: hidden; }
+
+    :root {
+      --blush:      #f2ddd5;
+      --blush-light:#fdf5f2;
+      --blush-deep: #e8cfc5;
+      --rose:       #c4796a;
+      --rose-soft:  #d4978a;
+      --sage:       #7a9e7e;
+      --sage-dark:  #5a7e5e;
+      --warm-white: #fdf8f5;
+      --parchment:  #f8f2ed;
+      --text-dark:  #3d2e2a;
+      --text-mid:   #6b5550;
+      --text-light: #9a8880;
+    }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--warm-white);
+      color: var(--text-dark);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(253,248,245,0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--blush-deep);
+      padding: 1rem 4rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 0.65rem; text-decoration: none; }
+    .nav-logo-icon { width: 32px; height: 32px; flex-shrink: 0; }
+    .nav-logo-text { display: flex; flex-direction: column; gap: 0.1rem; }
+    .nav-logo-sub { font-family: 'Jost', sans-serif; font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-light); font-weight: 400; }
+    .nav-logo-main { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--text-dark); white-space: nowrap; }
+    .nav-logo-main > span { font-style: italic; color: var(--sage-dark); }
+    .nav-back { font-family: 'Jost', sans-serif; font-size: 0.82rem; color: var(--text-mid); text-decoration: none; letter-spacing: 0.04em; display: flex; align-items: center; gap: 0.4rem; transition: color 0.2s; }
+    .nav-back:hover { color: var(--rose); }
+    .nav-back svg { width: 14px; height: 14px; }
+
+    /* ── Hero ── */
+    .page-hero {
+      background: var(--parchment);
+      border-bottom: 1px solid var(--blush-deep);
+      padding: 4rem 4rem 3.5rem;
+      text-align: center;
+    }
+    .page-eyebrow {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--rose); font-weight: 500; margin-bottom: 1rem;
+    }
+    .page-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 400; color: var(--text-dark); line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .page-meta {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.84rem; color: var(--text-light);
+    }
+
+    /* ── Content ── */
+    .content-wrap {
+      max-width: 740px; margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+
+    .toc {
+      background: var(--parchment);
+      border: 1px solid var(--blush-deep);
+      border-radius: 12px;
+      padding: 1.8rem 2rem;
+      margin-bottom: 3.5rem;
+    }
+    .toc-title {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--text-light); font-weight: 500; margin-bottom: 1rem;
+    }
+    .toc ol { padding-left: 1.2rem; }
+    .toc li { margin-bottom: 0.35rem; }
+    .toc a {
+      font-family: 'Jost', sans-serif; font-size: 0.9rem;
+      color: var(--text-mid); text-decoration: none; transition: color 0.2s;
+    }
+    .toc a:hover { color: var(--rose); }
+
+    .section { margin-bottom: 3rem; }
+    .section-anchor { display: block; position: relative; top: -80px; visibility: hidden; }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem; font-weight: 500;
+      color: var(--text-dark); line-height: 1.3;
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--blush-deep);
+    }
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-weight: 500; font-style: italic;
+      color: var(--text-mid); margin: 1.4rem 0 0.5rem;
+    }
+    p { font-size: 0.96rem; color: var(--text-mid); margin-bottom: 1rem; line-height: 1.75; }
+    p:last-child { margin-bottom: 0; }
+    ul, ol { padding-left: 1.4rem; margin-bottom: 1rem; }
+    li { font-size: 0.96rem; color: var(--text-mid); margin-bottom: 0.4rem; line-height: 1.7; }
+    strong { color: var(--text-dark); font-weight: 500; }
+    a { color: var(--rose); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .callout {
+      background: var(--blush-light);
+      border-left: 3px solid var(--rose-soft);
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.2rem;
+      margin: 1.2rem 0;
+    }
+    .callout p { margin: 0; font-size: 0.92rem; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--parchment);
+      border-top: 1px solid var(--blush-deep);
+      padding: 2.5rem 4rem;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1.2rem;
+    }
+    .footer-note { font-size: 0.8rem; color: var(--text-light); max-width: 50ch; line-height: 1.6; }
+    .footer-links { display: flex; gap: 1.4rem; }
+    .footer-links a { font-size: 0.8rem; color: var(--text-light); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--rose); }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.4rem; }
+      .page-hero { padding: 3rem 1.4rem 2.5rem; }
+      .content-wrap { padding: 2.5rem 1.4rem 4rem; }
+      footer { flex-direction: column; align-items: center; text-align: center; padding: 2rem 1.4rem; }
+      .footer-links { flex-wrap: wrap; justify-content: center; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/hormonal/" class="nav-logo">
+    <img src="/hormonal/assets/images/herbernie-logo.webp" alt="Herbernie logo" class="nav-logo-icon" width="32" height="32">
+    <div class="nav-logo-text">
+      <span class="nav-logo-sub">herbernie</span>
+      <span class="nav-logo-main">Natural <span>Healing</span> for Life</span>
+    </div>
+  </a>
+  <a href="javascript:history.back()" class="nav-back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Back
+  </a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-eyebrow">Legal</div>
+  <h1 class="page-title">Terms of Service</h1>
+  <p class="page-meta">Herbernie International &nbsp;·&nbsp; Last updated: April 2026</p>
+</div>
+
+<div class="content-wrap">
+
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <ol>
+      <li><a href="#about">About Herbernie International</a></li>
+      <li><a href="#services">Our Services</a></li>
+      <li><a href="#appointments">Appointments and Cancellations</a></li>
+      <li><a href="#payment">Payment and Refunds</a></li>
+      <li><a href="#medical">Medical Disclaimer</a></li>
+      <li><a href="#privacy">Personal Information and POPIA</a></li>
+      <li><a href="#ip">Intellectual Property</a></li>
+      <li><a href="#liability">Limitation of Liability</a></li>
+      <li><a href="#conduct">Acceptable Use</a></li>
+      <li><a href="#governing">Governing Law</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ol>
+  </div>
+
+  <div class="section">
+    <span class="section-anchor" id="about"></span>
+    <h2>1. About Herbernie International</h2>
+    <p>These Terms of Service ("Terms") govern your use of the Herbernie International website and all services offered through it, including online consultations, health assessments, and the purchase of prescribed natural health products.</p>
+    <p>Herbernie International is a natural health practice based in Gqeberha (Port Elizabeth), South Africa. The practice is founded and led by <strong>Dr. Bernard Lurie, N.D.</strong>, a naturopathic doctor, iridologist, osteopath, and herbal medicine practitioner with over four decades of clinical experience.</p>
+    <p>By accessing this website or booking a consultation, you agree to be bound by these Terms. If you do not agree, please do not use our services.</p>
+  </div>
+
+  <div class="section">
+    <span class="section-anchor" id="services"></span>
+    <h2>2. Our Services</h2>
+    <p>Herbernie International offers the following:</p>
+    <ul>
+      <li><strong>Online consultations</strong> — conducted via video call or telephone by Dr. Lurie or a registered natural health practitioner at the practice</li>
+      <li><strong>Health assessments</strong> — including the online hormonal health questionnaire available on this website</li>
+      <li><strong>Prescribed natural health products</strong> — herbal formulations, tinctures, and supplements prepared and dispensed from our in-house clinical facility</li>
+      <li><strong>Ongoing treatment plans</strong> — personalised protocols developed following your initial consultation</li>
+    </ul>
+    <p>All services are provided in accordance with the scope of practice of natural health medicine in South Africa. We do not provide emergency medical care, acute diagnostic services, or prescription pharmaceutical treatments.</p>
+  </div>
+
+  <div class="section">
+    <span class="section-anchor" id="appointments"></span>
+    <h2>3. Appointments and Cancellations</h2>
+    <h3>Booking</h3>
+    <p>Appointments are confirmed only upon receipt of full payment. You will receive a confirmation with your appointment time and video call link by email.</p>
+    <h3>Cancellations by you</h3>
+    <p>If you need to cancel or reschedule, please notify us at least <strong>24 hours before your appointment</strong>. Cancellations made within 24 hours of the appointment time are non-refundable. To cancel or reschedule, contact us at the details listed in Section 11.</p>
+    <h3>Cancellations by us</h3>
+    <p>In the unlikely event that we need to cancel your appointment, we will notify you as early as possible and offer a full refund or reschedule at your preference.</p>
+    <h3>Late arrivals</h3>
+    <p>Please join your online consultation on time. If you are more than 15 minutes late without prior notice, the appointment may be forfeited and the fee retained.</p>
+  </div>
+
+  <div class="section">
+    <span class="section-anchor" id="payment"></span>
+    <h2>4. Payment and Refunds</h2>
+    <p>Consultation fees are charged in South African Rand (ZAR). The current fee for an initial 30-minute online consultation is <strong>R490</strong>. This fee covers the consultation only. Prescribed medication and supplements are billed separately following your session.</p>
+    <p>Payment is processed securely through our online payment provider. Herbernie International does not store your payment card details.</p>
+    <h3>Refunds</h3>
+    <p>Refunds for completed consultations are not offered as a general policy. If you believe an error has occurred with your payment, contact us within 7 days and we will investigate and resolve it promptly.</p>
+  </div>
+
+  <div class="section">
+    <span class="section-anchor" id="medical"></span>
+    <h2>5. Medical Disclaimer</h2>
+    <div class="callout">
+      <p>The information on this website, including health assessments, articles, and treatment descriptions, is provided for general educational purposes only. It does not constitute medical advice and is not a substitute for professional diagnosis or treatment.</p>
+    </div>
+    <p>Always seek the guidance of a qualified health practitioner with any questions you have regarding a medical condition. Do not disregard professional medical advice or delay seeking it because of something you have read on this website.</p>
+    <p>Natural health treatments work alongside — not as a replacement for — emergency care, acute medical intervention, or treatment prescribed by your physician. If you are experiencing a medical emergency, contact emergency services immediately.</p>
+    <p>Results described on this website reflect general clinical observations. Individual results vary. No specific outcome is guaranteed.</p>
+  </div>
+
+  <div class="section">
+    <span class="section-anchor" id="privacy"></span>
+    <h2>6. Personal Information and POPIA</h2>
+    <p>Herbernie International is committed to protecting your personal information in accordance with the <strong>Protection of Personal Information Act 4 of 2013 (POPIA)</strong>.</p>
+    <h3>What we collect</h3>
+    <ul>
+      <li>Contact information: your name, email address, and telephone or WhatsApp number</li>
+      <li>Health information: responses to health questionnaires and information shared during consultations</li>
+      <li>Payment information: processed by our payment provider — we do not retain card details</li>
+    </ul>
+    <h3>How we use it</h3>
+    <ul>
+      <li>To process your consultation booking and send your assessment results</li>
+      <li>To provide treatment, follow-up, and appointment reminders</li>
+      <li>To send relevant health information, where you have consented to receive it</li>
+    </ul>
+    <h3>Your rights</h3>
+    <p>You have the right to access, correct, or request deletion of your personal information at any time. To exercise these rights, contact us using the details in Section 11. We will respond within a reasonable time and in accordance with POPIA requirements.</p>
+    <h3>Retention</h3>
+    <p>We retain your health records for a minimum period required by applicable South African law. Information no longer needed is securely deleted.</p>
+    <h3>Third parties</h3>
+    <p>We do not sell or share your personal information with third parties for marketing purposes. Information is shared only where necessary to deliver your consultation (for example, with your practitioner or our payment processor), and only under appropriate data processing agreements.</p>
+  </div>
+
+  <div class="section">
+    <span class="section-anchor" id="ip"></span>
+    <h2>7. Intellectual Property</h2>
+    <p>All content on this website — including text, design, images, health assessments, and formulations — is the property of Herbernie International or its licensed contributors. You may not reproduce, redistribute, or use any content commercially without prior written permission.</p>
+    <p>You are welcome to share links to this website for personal, non-commercial purposes.</p>
+  </div>
+
+  <div class="section">
+    <span class="section-anchor" id="liability"></span>
+    <h2>8. Limitation of Liability</h2>
+    <p>To the fullest extent permitted by South African law, Herbernie International and its practitioners are not liable for any indirect, incidental, or consequential damages arising from your use of this website or our services.</p>
+    <p>Our liability in connection with any consultation or service is limited to the amount paid for that service. Nothing in these Terms limits our liability for gross negligence or wilful misconduct.</p>
+  </div>
+
+  <div class="section">
+    <span class="section-anchor" id="conduct"></span>
+    <h2>9. Acceptable Use</h2>
+    <p>When using this website or attending a consultation, you agree to:</p>
+    <ul>
+      <li>Provide accurate and truthful information about yourself and your health</li>
+      <li>Treat our practitioners and staff with respect</li>
+      <li>Not use this website in any manner that is unlawful, harmful, or disruptive</li>
+      <li>Not attempt to access restricted areas of the website or circumvent any security measures</li>
+    </ul>
+    <p>We reserve the right to refuse or discontinue service to anyone who violates these expectations.</p>
+  </div>
+
+  <div class="section">
+    <span class="section-anchor" id="governing"></span>
+    <h2>10. Governing Law</h2>
+    <p>These Terms are governed by the laws of the Republic of South Africa. Any dispute arising from these Terms or your use of our services will be subject to the jurisdiction of the courts of South Africa.</p>
+    <p>We may update these Terms from time to time. The current version is always available on this page, with the revision date noted at the top. Continued use of our services after any update constitutes acceptance of the revised Terms.</p>
+  </div>
+
+  <div class="section">
+    <span class="section-anchor" id="contact"></span>
+    <h2>11. Contact Us</h2>
+    <p>If you have questions about these Terms, wish to exercise your POPIA rights, or need to reach us regarding a booking, please contact us:</p>
+    <ul>
+      <li><strong>Practice:</strong> Herbernie International</li>
+      <li><strong>Location:</strong> Gqeberha (Port Elizabeth), South Africa</li>
+      <li><strong>Email:</strong> <a href="mailto:info@herbernie.co.za">info@herbernie.co.za</a></li>
+    </ul>
+    <p style="margin-top:1.2rem;font-size:0.88rem;color:var(--text-light);">We aim to respond to all enquiries within 2 business days.</p>
+  </div>
+
+</div>
+
+<footer>
+  <a href="/hormonal/" class="nav-logo" style="text-decoration:none;">
+    <img src="/hormonal/assets/images/herbernie-logo.webp" alt="" width="30" height="30" style="width:30px;height:30px;flex-shrink:0;">
+    <div class="nav-logo-text">
+      <span class="nav-logo-sub">herbernie</span>
+      <span class="nav-logo-main" style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;color:var(--text-dark);">Natural <span style="font-style:italic;color:var(--sage-dark);">Healing</span> for Life</span>
+    </div>
+  </a>
+  <p class="footer-note">The information on this website reflects the clinical observations of Dr. Bernard Lurie, N.D., and is for educational purposes only. It does not constitute medical advice.</p>
+  <div class="footer-links">
+    <a href="/terms.html">Terms</a>
+    <a href="#">Privacy</a>
+    <a href="#">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>
