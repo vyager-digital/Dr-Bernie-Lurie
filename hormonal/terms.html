@@ -36,52 +36,22 @@
       line-height: 1.7;
     }
 
-    /* ── Nav ── */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(253,248,245,0.96);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--blush-deep);
-      padding: 1rem 4rem;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .nav-logo { display: flex; align-items: center; gap: 0.65rem; text-decoration: none; }
-    .nav-logo-icon { width: 32px; height: 32px; flex-shrink: 0; }
-    .nav-logo-text { display: flex; flex-direction: column; gap: 0.1rem; }
-    .nav-logo-sub { font-family: 'Jost', sans-serif; font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-light); font-weight: 400; }
-    .nav-logo-main { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--text-dark); white-space: nowrap; }
-    .nav-logo-main > span { font-style: italic; color: var(--sage-dark); }
-    .nav-back { font-family: 'Jost', sans-serif; font-size: 0.82rem; color: var(--text-mid); text-decoration: none; letter-spacing: 0.04em; display: flex; align-items: center; gap: 0.4rem; transition: color 0.2s; }
-    .nav-back:hover { color: var(--rose); }
-    .nav-back svg { width: 14px; height: 14px; }
-
-    /* ── Hero ── */
-    .page-hero {
+    /* ── Meta bar ── */
+    .page-meta-bar {
       background: var(--parchment);
       border-bottom: 1px solid var(--blush-deep);
-      padding: 4rem 4rem 3.5rem;
+      padding: 0.75rem 2rem;
       text-align: center;
     }
-    .page-eyebrow {
+    .page-meta-label {
       font-family: 'Jost', sans-serif;
-      font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--rose); font-weight: 500; margin-bottom: 1rem;
-    }
-    .page-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4vw, 2.8rem);
-      font-weight: 400; color: var(--text-dark); line-height: 1.2;
-      margin-bottom: 1rem;
-    }
-    .page-meta {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.84rem; color: var(--text-light);
+      font-size: 0.78rem; color: var(--text-light); letter-spacing: 0.04em;
     }
 
     /* ── Content ── */
     .content-wrap {
       max-width: 740px; margin: 0 auto;
-      padding: 4rem 2rem 6rem;
+      padding: 2rem 2rem 4rem;
     }
 
     .toc {
@@ -137,49 +107,16 @@
     }
     .callout p { margin: 0; font-size: 0.92rem; }
 
-    /* ── Footer ── */
-    footer {
-      background: var(--parchment);
-      border-top: 1px solid var(--blush-deep);
-      padding: 2.5rem 4rem;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 1.2rem;
-    }
-    .footer-note { font-size: 0.8rem; color: var(--text-light); max-width: 50ch; line-height: 1.6; }
-    .footer-links { display: flex; gap: 1.4rem; }
-    .footer-links a { font-size: 0.8rem; color: var(--text-light); text-decoration: none; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--rose); }
-
     /* ── Responsive ── */
     @media (max-width: 768px) {
-      nav { padding: 1rem 1.4rem; }
-      .page-hero { padding: 3rem 1.4rem 2.5rem; }
-      .content-wrap { padding: 2.5rem 1.4rem 4rem; }
-      footer { flex-direction: column; align-items: center; text-align: center; padding: 2rem 1.4rem; }
-      .footer-links { flex-wrap: wrap; justify-content: center; gap: 1rem; }
+      .content-wrap { padding: 2rem 1.2rem 3rem; }
     }
   </style>
 </head>
 <body>
 
-<nav>
-  <a href="/" class="nav-logo">
-    <img src="/assets/images/herbernie-logo.webp" alt="Herbernie logo" class="nav-logo-icon" width="32" height="32">
-    <div class="nav-logo-text">
-      <span class="nav-logo-sub">herbernie</span>
-      <span class="nav-logo-main">Natural <span>Healing</span> for Life</span>
-    </div>
-  </a>
-  <a href="javascript:history.back()" class="nav-back">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-    Back
-  </a>
-</nav>
-
-<div class="page-hero">
-  <div class="page-eyebrow">Legal</div>
-  <h1 class="page-title">Terms of Service</h1>
-  <p class="page-meta">Herbernie International &nbsp;·&nbsp; Last updated: April 2026</p>
+<div class="page-meta-bar">
+  <span class="page-meta-label">Herbernie International &nbsp;·&nbsp; Last updated: April 2026</span>
 </div>
 
 <div class="content-wrap">
@@ -327,21 +264,6 @@
 
 </div>
 
-<footer>
-  <a href="/" class="nav-logo" style="text-decoration:none;">
-    <img src="/assets/images/herbernie-logo.webp" alt="" width="30" height="30" style="width:30px;height:30px;flex-shrink:0;">
-    <div class="nav-logo-text">
-      <span class="nav-logo-sub">herbernie</span>
-      <span class="nav-logo-main" style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;color:var(--text-dark);">Natural <span style="font-style:italic;color:var(--sage-dark);">Healing</span> for Life</span>
-    </div>
-  </a>
-  <p class="footer-note">The information on this website reflects the clinical observations of Dr. Bernard Lurie, N.D., and is for educational purposes only. It does not constitute medical advice.</p>
-  <div class="footer-links">
-    <a href="/terms.html">Terms</a>
-    <a href="#">Privacy</a>
-    <a href="#">Contact</a>
-  </div>
-</footer>
 
 </body>
 </html>
