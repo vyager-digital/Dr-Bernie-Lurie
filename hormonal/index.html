@@ -2026,7 +2026,7 @@
 
   function quizBackFromDuration() {
     const hasSeverity = document.getElementById('severity-list').children.length > 0;
-    quizGoTo(hasSeverity ? 2 : 1);
+    quizGoTo(hasSeverity ? 2 : 0);
   }
 
   function quizSev(symptomId, severity, btn) {
@@ -2089,15 +2089,16 @@
       'other':    'what comes next for you'
     };
     const goalText = goalMap[quizData.goal] || 'feeling well again';
-    const nameBr = name ? `<br>${namePrefix}` : '';
+    const capGoal = goalText.charAt(0).toUpperCase() + goalText.slice(1);
+    const nameBr = name ? `<br>${namePrefix}` : ' ';
 
     let para3;
     if (hasAffecting) {
-      para3 = `When symptoms are actively disrupting daily life, that's the body signalling it has been compensating for too long. Dr. Lurie and Joanne's patients regularly describe meaningful improvement within 2–4 weeks of starting treatment.${nameBr}${goalText} is not a distant outcome — it's a reasonable expectation. Your consultation is where that process begins.`;
+      para3 = `When symptoms are actively disrupting daily life, that's the body signalling it has been compensating for too long. Dr. Lurie and Joanne's patients regularly describe meaningful improvement within 2–4 weeks of starting treatment.${nameBr}${name ? goalText : capGoal} is not a distant outcome — it's a reasonable expectation. Your consultation is where that process begins.`;
     } else if (hasNoticeable) {
-      para3 = `Symptoms at this level don't tend to plateau on their own. The earlier targeted support begins, the less work the body has to do to recalibrate.${nameBr}${goalText} is closer than it feels right now — and your consultation is the clearest next step toward it.`;
+      para3 = `Symptoms at this level don't tend to plateau on their own. The earlier targeted support begins, the less work the body has to do to recalibrate.${nameBr}${name ? goalText : capGoal} is closer than it feels right now — and your consultation is the clearest next step toward it.`;
     } else {
-      para3 = `${namePrefix}${goalText} is a reasonable goal — and one that hormonal rebalancing directly supports. Dr. Lurie and Joanne's patients regularly describe this kind of shift within the first few months of treatment. Your consultation is where the plan is built, specifically for you.`;
+      para3 = `${namePrefix}${name ? goalText : capGoal} is a reasonable goal — and one that hormonal rebalancing directly supports. Dr. Lurie and Joanne's patients regularly describe this kind of shift within the first few months of treatment. Your consultation is where the plan is built, specifically for you.`;
     }
 
     document.getElementById('quiz-summary-text').innerHTML =
