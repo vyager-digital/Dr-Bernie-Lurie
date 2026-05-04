@@ -55,7 +55,7 @@ export async function onRequestPost(context) {
   if (!yocoRes.ok) {
     let details;
     try { details = await yocoRes.json(); } catch {}
-    return jsonError('Payment creation failed', 502, details);
+    return jsonError('Payment creation failed', 502, { yocoStatus: yocoRes.status, yocoBody: details });
   }
 
   const data = await yocoRes.json();
