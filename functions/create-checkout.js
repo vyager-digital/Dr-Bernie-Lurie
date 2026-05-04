@@ -28,7 +28,6 @@ export async function onRequestPost(context) {
     successUrl: CAL_BOOKING_URL,
     cancelUrl: SITE_URL,
     failureUrl: SITE_URL,
-    description: "After payment, you'll be taken directly to our booking calendar to choose your appointment time. The consultation is confirmed once both steps are complete.",
   };
 
   if (body.name || body.email) {

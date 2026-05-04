@@ -2253,7 +2253,11 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email }),
       });
-      if (!res.ok) throw new Error('Payment creation failed');
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({}));
+        console.error('Checkout error:', JSON.stringify(errData));
+        throw new Error('Payment creation failed');
+      }
       const data = await res.json();
       if (!data.redirectUrl) throw new Error('No redirect URL received');
       window.location.href = data.redirectUrl;
