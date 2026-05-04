@@ -1943,7 +1943,7 @@
         </label>
         <div class="quiz-nav" style="margin-top:0;">
           <button class="quiz-btn-back" onclick="quizGoTo(5)"><i class="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
-          <button class="quiz-btn-primary" id="confirm-btn" disabled onclick="window.open('https://pay.yoco.com/dr-bernard-lurie?amount=5.00&redirectOnPaymentSuccess=https%3A%2F%2Fcal.com%2Fherbernie-int-l-hus2wy%2Fconsultation','_blank')" style="flex:1;justify-content:center;min-width:0;">Confirm My Booking &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
+          <button class="quiz-btn-primary" id="confirm-btn" disabled onclick="initiatePayment()" style="flex:1;justify-content:center;min-width:0;">Confirm My Booking &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
         </div>
         <p class="quiz-disclaimer">Secure online payment.</p>
       </div>
@@ -2236,6 +2236,40 @@
     });
   }, { threshold: 0.5 });
   counterEls.forEach(el => counterObserver.observe(el));
+
+  async function initiatePayment() {
+    const btn = document.getElementById('confirm-btn');
+    const originalHTML = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = 'Redirecting to payment… <i class="fa-solid fa-spinner fa-spin"></i>';
+
+    const name  = document.getElementById('q-name')?.value.trim() || '';
+    const email = document.getElementById('q-email')?.value.trim() || '';
+
+    try {
+      const res = await fetch('/create-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email }),
+      });
+      if (!res.ok) throw new Error('Payment creation failed');
+      const data = await res.json();
+      if (!data.redirectUrl) throw new Error('No redirect URL received');
+      window.location.href = data.redirectUrl;
+    } catch {
+      btn.disabled = false;
+      btn.innerHTML = originalHTML;
+      const disclaimer = document.querySelector('.quiz-disclaimer');
+      if (disclaimer) {
+        disclaimer.style.color = '#c0392b';
+        disclaimer.textContent = 'Something went wrong. Please try again or contact us at info@herbernie.co.za.';
+        setTimeout(() => {
+          disclaimer.style.color = '';
+          disclaimer.textContent = 'Secure online payment.';
+        }, 6000);
+      }
+    }
+  }
 </script>
 </body>
 </html>
