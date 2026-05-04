@@ -876,6 +876,10 @@
   .quiz-form-input:focus { border-color: var(--rose-soft); }
   .quiz-form-input::placeholder { color: var(--text-light); }
   .quiz-optional { font-size: 0.75rem; color: var(--text-light); font-style: italic; margin-left: 0.3rem; }
+  .quiz-phone-wrap { display: flex; align-items: center; border: 1px solid var(--blush-deep); border-radius: 0.8rem; background: var(--warm-white); transition: border-color 0.3s; }
+  .quiz-phone-wrap:focus-within { border-color: var(--rose-soft); }
+  .quiz-phone-prefix { padding: 0.85rem 0 0.85rem 1.2rem; font-size: 1rem; font-family: 'Jost', sans-serif; color: var(--text-dark); white-space: nowrap; }
+  .quiz-phone-input { border: none !important; border-radius: 0 0.8rem 0.8rem 0; padding-left: 0.4rem; flex: 1; background: transparent; }
 
   /* Navigation */
   .quiz-nav {
@@ -1729,7 +1733,10 @@
         </div>
         <div class="quiz-form-group">
           <label class="quiz-form-label" for="q-whatsapp">WhatsApp <span class="quiz-optional">(optional)</span></label>
-          <input class="quiz-form-input" id="q-whatsapp" type="tel" placeholder="+27 ..." autocomplete="tel">
+          <div class="quiz-phone-wrap">
+            <span class="quiz-phone-prefix">+27</span>
+            <input class="quiz-form-input quiz-phone-input" id="q-whatsapp" type="tel" placeholder="082 123 4567" autocomplete="tel">
+          </div>
         </div>
         <p class="quiz-disclaimer" style="margin-bottom:1.2rem;">By continuing, you consent to Herbernie International collecting and using your personal information to process your consultation request and send your assessment results, in accordance with the Protection of Personal Information Act (POPIA). Your details will not be shared with third parties.</p>
         <div class="quiz-nav">
@@ -2162,7 +2169,8 @@
     // Submit questionnaire data to Formspree
     const _name     = document.getElementById('q-name').value.trim();
     const _email    = document.getElementById('q-email').value.trim();
-    const _whatsapp = document.getElementById('q-whatsapp').value.trim();
+    const _whatsappRaw = document.getElementById('q-whatsapp').value.trim();
+    const _whatsapp = _whatsappRaw ? '+27 ' + _whatsappRaw : '—';
     const _symptoms = Object.entries(quizData.symptoms)
       .map(([k, v]) => `${k}: ${v}`).join('\n') || '—';
     fetch('https://formspree.io/f/mlgzjzjy', {
