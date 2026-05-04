@@ -2159,7 +2159,25 @@
     document.getElementById('quiz-summary-text').innerHTML =
       [para1, para2, para3].map(p => `<p>${p}</p>`).join('');
 
-    // TODO: wire up Formspree / WhatsApp / mailto submission here
+    // Submit questionnaire data to Formspree
+    const _name     = document.getElementById('q-name').value.trim();
+    const _email    = document.getElementById('q-email').value.trim();
+    const _whatsapp = document.getElementById('q-whatsapp').value.trim();
+    const _symptoms = Object.entries(quizData.symptoms)
+      .map(([k, v]) => `${k}: ${v}`).join('\n') || '—';
+    fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        name:       _name,
+        email:      _email,
+        whatsapp:   _whatsapp || '—',
+        symptoms:   _symptoms,
+        duration:   quizData.duration  || '—',
+        prior_help: quizData.priorHelp || '—',
+        goal:       quizData.goal      || '—'
+      })
+    }).catch(() => {});
     quizGoTo(6);
   }
 
