@@ -22,10 +22,15 @@ export async function onRequestPost(context) {
   let body = {};
   try { body = await request.json(); } catch {}
 
+  const calParams = new URLSearchParams();
+  if (body.name)  calParams.set('name', body.name);
+  if (body.email) calParams.set('email', body.email);
+  const calUrl = calParams.toString() ? `${CAL_BOOKING_URL}?${calParams}` : CAL_BOOKING_URL;
+
   const payload = {
     amount: 500, // TEST: R5.00 — change to 49000 (R490.00) before going live
     currency: 'ZAR',
-    successUrl: CAL_BOOKING_URL,
+    successUrl: calUrl,
     cancelUrl: SITE_URL,
     failureUrl: SITE_URL,
   };
