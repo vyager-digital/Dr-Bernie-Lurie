@@ -1941,11 +1941,12 @@
           <input type="checkbox" id="tos-check" onchange="document.getElementById('confirm-btn').disabled=!this.checked">
           <span>I agree to the <a href="/terms.html" class="quiz-tos-link" onclick="openTosModal(event)">Terms of Service</a></span>
         </label>
+        <p class="quiz-disclaimer" style="margin-bottom:1rem;">After payment, you'll be taken directly to our booking calendar to choose your appointment time. The consultation is confirmed once both steps are complete.</p>
         <div class="quiz-nav" style="margin-top:0;">
           <button class="quiz-btn-back" onclick="quizGoTo(5)"><i class="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
           <button class="quiz-btn-primary" id="confirm-btn" disabled onclick="initiatePayment()" style="flex:1;justify-content:center;min-width:0;">Confirm My Booking &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
         </div>
-        <p class="quiz-disclaimer">Secure online payment.</p>
+        <p class="quiz-disclaimer" id="payment-status"><i class="fa-solid fa-lock" style="font-size:0.75rem;margin-right:0.3rem;opacity:0.6;"></i>Secure online payment.</p>
       </div>
     </div>
 
@@ -2259,13 +2260,13 @@
     } catch {
       btn.disabled = false;
       btn.innerHTML = originalHTML;
-      const disclaimer = document.querySelector('.quiz-disclaimer');
+      const disclaimer = document.getElementById('payment-status');
       if (disclaimer) {
         disclaimer.style.color = '#c0392b';
         disclaimer.textContent = 'Something went wrong. Please try again or contact us at info@herbernie.co.za.';
         setTimeout(() => {
           disclaimer.style.color = '';
-          disclaimer.textContent = 'Secure online payment.';
+          disclaimer.innerHTML = '<i class="fa-solid fa-lock" style="font-size:0.75rem;margin-right:0.3rem;opacity:0.6;"></i>Secure online payment.';
         }, 6000);
       }
     }
