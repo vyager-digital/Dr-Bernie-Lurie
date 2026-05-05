@@ -153,7 +153,26 @@
       color: var(--text-mid);
       line-height: 1.65;
       max-width: 56ch;
-      margin: 0 auto;
+      margin: 0 auto 2rem;
+    }
+
+    .scroll-cue {
+      display: flex;
+      justify-content: center;
+    }
+    .scroll-cue svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--blush-deep);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      animation: bounce 2s ease-in-out infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(6px); }
     }
 
     /* ── DIVIDER ── */
@@ -362,6 +381,9 @@
     You're on your way to feeling<br><em>like yourself again.</em>
   </h1>
   <p class="confirm-sub">Your consultation with Dr.&nbsp;Bernard Lurie and Joanne has been booked. A confirmation email with your Google Meet link is on its way to your inbox.</p>
+  <div class="scroll-cue">
+    <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+  </div>
 </section>
 
 <!-- WHAT TO EXPECT + CONTACT -->
