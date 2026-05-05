@@ -131,9 +131,14 @@
     }
 
     #cal-embed {
+      width: 100%;
       max-width: 900px;
       margin: 0 auto;
       padding: 0 5vw 3rem;
+    }
+    #cal-embed iframe {
+      width: 100% !important;
+      border: none;
     }
 
     /* ── STATE: CONFIRMED ── */
@@ -491,7 +496,7 @@
   Cal("inline", {
     elementOrSelector: "#cal-embed",
     calLink: "herbernie-int-l-hus2wy/consultation",
-    config: { name: patientName, email: patientEmail }
+    config: { name: patientName, email: patientEmail, theme: "light" }
   });
 
   Cal("on", {
