@@ -325,10 +325,12 @@
     footer {
       background: var(--warm-white);
       border-top: 1px solid var(--blush-deep);
-      padding: 2.5rem 5vw;
-      display: flex; flex-direction: column;
-      align-items: center; gap: 1.2rem;
-      text-align: center;
+      padding: 3rem 6vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
     }
     .footer-note { font-size: 0.82rem; color: var(--text-light); max-width: 45ch; line-height: 1.65; }
     .footer-links { display: flex; gap: 1.5rem; }
@@ -340,6 +342,8 @@
       .bottom-inner { grid-template-columns: 1fr; gap: 2.5rem; }
       .nav-contact { display: none; }
       .confirm-hero { padding: 2rem 5vw 1.8rem; }
+      footer { flex-direction: column; align-items: center; text-align: center; padding: 2.5rem 5vw; }
+      .footer-links { justify-content: center; }
     }
   </style>
 </head>
