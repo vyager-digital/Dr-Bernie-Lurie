@@ -359,9 +359,9 @@
   @media (max-width: 600px) {
     .truth-section { padding: 4rem 1.4rem; }
     .truth-header { margin-bottom: 3.5rem; }
-    .truth-subtext { font-size: 1.1rem; font-weight: 600; }
+    .truth-subtext { font-size: 1.1rem; }
     .truth-quote { font-size: 1.35rem; font-weight: 600; }
-    .truth-explanation { font-size: 1rem; font-weight: 500; }
+    .truth-explanation { font-size: 1rem; }
     .truth-closing-text { font-size: 1.15rem; font-weight: 600; }
   }
 
@@ -1082,19 +1082,8 @@
   /* ── MOBILE (≤ 600px) ── */
   @media (max-width: 600px) {
 
-    /* ── Cormorant Garamond weight fix ──
-       weight 300 is too thin to read on phone screens.
-       Bump ALL light-weight serif text to 400 (normal). */
-    .hero-tagline,
-    .section-subtext,
-    .facility-body,
-    .team-bio,
-    .team-intro,
-    .cta-sub { font-weight: 600; }
-
-    /* Italic serif (testimonials, quote, scripture) — also boost weight */
-    .test-body,
-    .bernie-quote-text { font-weight: 500; font-style: italic; }
+    /* Cormorant italic elements — slight weight boost so they read on small screens */
+    .test-body { font-weight: 500; font-style: italic; }
 
     /* Botanical quote strip inline style override */
     .botanical-strip p { font-weight: 500 !important; }
