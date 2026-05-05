@@ -1,5 +1,5 @@
 const YOCO_CHECKOUT_URL = 'https://payments.yoco.com/api/checkouts';
-const CAL_BOOKING_URL = 'https://cal.com/herbernie-int-l-hus2wy/consultation';
+const THANKYOU_URL = 'https://www.herbernie.co.za/thankyou';
 const SITE_URL = 'https://www.herbernie.co.za';
 
 const CORS_HEADERS = {
@@ -22,15 +22,15 @@ export async function onRequestPost(context) {
   let body = {};
   try { body = await request.json(); } catch {}
 
-  const calParams = new URLSearchParams();
-  if (body.name)  calParams.set('name', body.name);
-  if (body.email) calParams.set('email', body.email);
-  const calUrl = calParams.toString() ? `${CAL_BOOKING_URL}?${calParams}` : CAL_BOOKING_URL;
+  const successParams = new URLSearchParams();
+  if (body.name)  successParams.set('name', body.name);
+  if (body.email) successParams.set('email', body.email);
+  const successUrl = successParams.toString() ? `${THANKYOU_URL}?${successParams}` : THANKYOU_URL;
 
   const payload = {
     amount: 500, // TEST: R5.00 — change to 49000 (R490.00) before going live
     currency: 'ZAR',
-    successUrl: calUrl,
+    successUrl,
     cancelUrl: SITE_URL,
     failureUrl: SITE_URL,
   };

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Booking Confirmed — Herbernie Natural Healing</title>
+  <title>Book Your Consultation — Herbernie Natural Healing</title>
   <meta name="robots" content="noindex, nofollow">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,20 +70,75 @@
       white-space: nowrap;
     }
     .nav-logo-main > span { font-style: italic; color: var(--sage-dark); }
-
     .nav-contact {
       font-family: 'Jost', sans-serif;
       font-size: 0.85rem;
       color: var(--text-mid);
     }
-    .nav-contact a {
-      color: var(--rose-dark);
-      text-decoration: none;
-      font-weight: 500;
-    }
+    .nav-contact a { color: var(--rose-dark); text-decoration: none; font-weight: 500; }
     .nav-contact a:hover { color: var(--rose); }
 
-    /* ── CONFIRMATION HERO ── */
+    /* ── STATE: BOOKING ── */
+    .payment-banner {
+      text-align: center;
+      padding: clamp(2rem, 4vw, 3rem) 5vw 1.5rem;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .payment-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--sage-pale);
+      margin-bottom: 1.2rem;
+    }
+    .payment-badge svg {
+      width: 26px; height: 26px;
+      stroke: var(--sage-dark); fill: none;
+      stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
+    }
+    .payment-kicker {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sage-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-bottom: 0.9rem;
+    }
+    .payment-kicker::before,
+    .payment-kicker::after { content: ''; width: 1.5rem; height: 1px; background: var(--sage-light); }
+    .payment-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 600;
+      color: var(--text-dark);
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
+    }
+    .payment-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+
+    #cal-embed {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 5vw 3rem;
+    }
+
+    /* ── STATE: CONFIRMED ── */
+    #state-confirmed[hidden] { display: none; }
+
     .confirm-hero {
       text-align: center;
       padding: clamp(2.5rem, 5vw, 4rem) 5vw clamp(2rem, 4vw, 3.5rem);
@@ -91,27 +146,20 @@
       max-width: 720px;
       margin: 0 auto;
     }
-
     .confirm-badge {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 64px;
-      height: 64px;
+      width: 64px; height: 64px;
       border-radius: 50%;
       background: var(--sage-pale);
       margin-bottom: 1.5rem;
     }
     .confirm-badge svg {
-      width: 36px;
-      height: 36px;
-      stroke: var(--sage-dark);
-      fill: none;
-      stroke-width: 2.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+      width: 36px; height: 36px;
+      stroke: var(--sage-dark); fill: none;
+      stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
     }
-
     .confirm-kicker {
       font-family: 'Jost', sans-serif;
       font-size: 0.8rem;
@@ -126,13 +174,7 @@
       gap: 0.6rem;
     }
     .confirm-kicker::before,
-    .confirm-kicker::after {
-      content: '';
-      width: 2rem;
-      height: 1px;
-      background: var(--sage-light);
-    }
-
+    .confirm-kicker::after { content: ''; width: 2rem; height: 1px; background: var(--sage-light); }
     .confirm-headline {
       font-family: 'Playfair Display', serif;
       font-size: clamp(2rem, 5vw, 3rem);
@@ -141,46 +183,25 @@
       line-height: 1.2;
       margin-bottom: 1.4rem;
     }
-    .confirm-headline em {
-      font-style: italic;
-      color: var(--rose);
-    }
-
+    .confirm-headline em { font-style: italic; color: var(--rose); }
     .confirm-sub {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(1.1rem, 2.5vw, 1.3rem);
-      font-weight: 400;
       color: var(--text-mid);
       line-height: 1.65;
       max-width: 56ch;
       margin: 0 auto 2rem;
     }
-
-    .scroll-cue {
-      display: flex;
-      justify-content: center;
-    }
+    .scroll-cue { display: flex; justify-content: center; }
     .scroll-cue svg {
-      width: 22px;
-      height: 22px;
-      stroke: var(--blush-deep);
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+      width: 22px; height: 22px;
+      stroke: var(--blush-deep); fill: none;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
       animation: bounce 2s ease-in-out infinite;
     }
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
       50%       { transform: translateY(6px); }
-    }
-
-    /* ── DIVIDER ── */
-    .section-divider {
-      width: 48px;
-      height: 2px;
-      background: var(--blush-deep);
-      margin: 0 auto;
     }
 
     /* ── COMBINED SECTION ── */
@@ -196,8 +217,6 @@
       gap: 3rem;
       align-items: start;
     }
-
-    /* Steps column */
     .expect-label {
       font-family: 'Jost', sans-serif;
       font-size: 0.78rem;
@@ -205,9 +224,7 @@
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--rose);
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
+      display: flex; align-items: center; gap: 0.6rem;
       margin-bottom: 1rem;
     }
     .expect-label::before { content: ''; width: 1.5rem; height: 1px; background: var(--rose-soft); }
@@ -231,73 +248,53 @@
     .expect-step:not(:last-child) .step-number::after {
       content: '';
       position: absolute;
-      left: 20px;
-      top: 40px;
-      bottom: 0;
+      left: 20px; top: 40px; bottom: 0;
       width: 1px;
       background: var(--blush-deep);
     }
     .step-number {
       position: relative;
-      width: 40px;
-      height: 40px;
+      width: 40px; height: 40px;
       border-radius: 50%;
       background: var(--warm-white);
       border: 1.5px solid var(--blush-deep);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--rose);
-      flex-shrink: 0;
+      font-size: 1rem; font-weight: 600;
+      color: var(--rose); flex-shrink: 0;
     }
     .step-body { padding-top: 0.5rem; }
     .step-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text-dark);
-      margin-bottom: 0.3rem;
+      font-size: 1rem; font-weight: 600;
+      color: var(--text-dark); margin-bottom: 0.3rem;
     }
     .step-text { font-size: 0.95rem; color: var(--text-mid); line-height: 1.6; }
-
-    /* Contact column */
     .contact-col { display: flex; flex-direction: column; }
     .contact-label {
       font-family: 'Jost', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
+      font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
       color: var(--rose);
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
+      display: flex; align-items: center; gap: 0.6rem;
       margin-bottom: 1rem;
     }
     .contact-label::before { content: ''; width: 1.5rem; height: 1px; background: var(--rose-soft); }
     .contact-heading {
       font-family: 'Playfair Display', serif;
       font-size: clamp(1.3rem, 3vw, 1.7rem);
-      font-weight: 600;
-      color: var(--text-dark);
-      line-height: 1.3;
-      margin-bottom: 0.6rem;
+      font-weight: 600; color: var(--text-dark);
+      line-height: 1.3; margin-bottom: 0.6rem;
     }
     .contact-note { font-size: 0.95rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 1.5rem; }
     .contact-details { display: flex; flex-direction: column; gap: 0.85rem; }
     .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
+      display: flex; align-items: center; gap: 1rem;
       padding: 1rem 1.2rem;
       background: var(--warm-white);
       border: 1px solid var(--blush-deep);
       border-radius: 10px;
-      text-decoration: none;
-      color: var(--text-dark);
+      text-decoration: none; color: var(--text-dark);
       transition: border-color 0.25s, transform 0.2s;
     }
     .contact-item:hover { border-color: var(--rose-soft); transform: translateY(-2px); }
@@ -324,28 +321,13 @@
       background: var(--warm-white);
       border-top: 1px solid var(--blush-deep);
       padding: 2.5rem 5vw;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.2rem;
+      display: flex; flex-direction: column;
+      align-items: center; gap: 1.2rem;
       text-align: center;
     }
-    .footer-note {
-      font-size: 0.82rem;
-      color: var(--text-light);
-      max-width: 45ch;
-      line-height: 1.65;
-    }
-    .footer-links {
-      display: flex;
-      gap: 1.5rem;
-    }
-    .footer-links a {
-      font-size: 0.82rem;
-      color: var(--text-light);
-      text-decoration: none;
-      transition: color 0.3s;
-    }
+    .footer-note { font-size: 0.82rem; color: var(--text-light); max-width: 45ch; line-height: 1.65; }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { font-size: 0.82rem; color: var(--text-light); text-decoration: none; transition: color 0.3s; }
     .footer-links a:hover { color: var(--rose); }
 
     /* ── RESPONSIVE ── */
@@ -369,88 +351,102 @@
   <div class="nav-contact">Need help? <a href="tel:0732390423">073 239 0423</a></div>
 </nav>
 
-<!-- CONFIRMATION HERO -->
-<section class="confirm-hero">
-  <div class="confirm-badge">
-    <svg viewBox="0 0 24 24">
-      <polyline points="20 6 9 17 4 12"></polyline>
-    </svg>
+<!-- STATE 1: BOOK A SLOT -->
+<div id="state-booking">
+  <div class="payment-banner">
+    <div class="payment-badge">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    </div>
+    <div class="payment-kicker">Payment Received</div>
+    <h1 class="payment-heading">Select a time for your consultation</h1>
+    <p class="payment-sub">Your R490 payment was successful. Choose a slot below to confirm your appointment with Dr.&nbsp;Lurie or Joanne.</p>
   </div>
-  <div class="confirm-kicker">Booking Confirmed</div>
-  <h1 class="confirm-headline">
-    You're on your way to feeling<br><em>like yourself again.</em>
-  </h1>
-  <p class="confirm-sub">Your consultation with Dr.&nbsp;Bernard Lurie and Joanne has been booked. A confirmation email with your Google Meet link is on its way to your inbox.</p>
-  <div class="scroll-cue">
-    <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
-  </div>
-</section>
+  <div id="cal-embed"></div>
+</div>
 
-<!-- WHAT TO EXPECT + CONTACT -->
-<section class="bottom-section">
-  <div class="bottom-inner">
+<!-- STATE 2: BOOKING CONFIRMED (shown after Cal.com bookingSuccessful event) -->
+<div id="state-confirmed" hidden>
 
-    <div class="expect-col">
-      <div class="expect-label">Before Your Appointment</div>
-      <h2 class="expect-heading">What happens next</h2>
-      <div class="expect-steps">
-        <div class="expect-step">
-          <div class="step-number">1</div>
-          <div class="step-body">
-            <div class="step-title">Check your inbox</div>
-            <p class="step-text">A confirmation email with your Google Meet link is on its way. Check your spam folder if it doesn't arrive.</p>
+  <section class="confirm-hero">
+    <div class="confirm-badge">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    </div>
+    <div class="confirm-kicker">Booking Confirmed</div>
+    <h1 class="confirm-headline">
+      You're on your way to feeling<br><em>like yourself again.</em>
+    </h1>
+    <p class="confirm-sub">Your consultation with Dr.&nbsp;Bernard Lurie and Joanne has been booked. A confirmation email with your Google Meet link is on its way to your inbox.</p>
+    <div class="scroll-cue">
+      <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    </div>
+  </section>
+
+  <section class="bottom-section">
+    <div class="bottom-inner">
+
+      <div class="expect-col">
+        <div class="expect-label">Before Your Appointment</div>
+        <h2 class="expect-heading">What happens next</h2>
+        <div class="expect-steps">
+          <div class="expect-step">
+            <div class="step-number">1</div>
+            <div class="step-body">
+              <div class="step-title">Check your inbox</div>
+              <p class="step-text">A confirmation email with your Google Meet link is on its way. Check your spam folder if it doesn't arrive.</p>
+            </div>
           </div>
-        </div>
-        <div class="expect-step">
-          <div class="step-number">2</div>
-          <div class="step-body">
-            <div class="step-title">Prepare for your consultation</div>
-            <p class="step-text">Note your main symptoms, how long you've had them, and what you've already tried. The fuller the picture, the more useful the session.</p>
+          <div class="expect-step">
+            <div class="step-number">2</div>
+            <div class="step-body">
+              <div class="step-title">Prepare for your consultation</div>
+              <p class="step-text">Note your main symptoms, how long you've had them, and what you've already tried. The fuller the picture, the more useful the session.</p>
+            </div>
           </div>
-        </div>
-        <div class="expect-step">
-          <div class="step-number">3</div>
-          <div class="step-body">
-            <div class="step-title">Your 30-minute consultation</div>
-            <p class="step-text">Dr.&nbsp;Lurie or Joanne will work through your full picture and outline a clear, personalised path forward.</p>
+          <div class="expect-step">
+            <div class="step-number">3</div>
+            <div class="step-body">
+              <div class="step-title">Your 30-minute consultation</div>
+              <p class="step-text">Dr.&nbsp;Lurie or Joanne will work through your full picture and outline a clear, personalised path forward.</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="contact-col">
-      <div class="contact-label">Get in Touch</div>
-      <h2 class="contact-heading">Any questions before your appointment?</h2>
-      <p class="contact-note">Reach out anytime. We're happy to help.</p>
-      <div class="contact-details">
-        <a href="tel:0732390423" class="contact-item">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.37 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path>
-            </svg>
-          </div>
-          <div>
-            <div class="contact-item-label">Phone</div>
-            <div class="contact-item-value">073 239 0423</div>
-          </div>
-        </a>
-        <a href="mailto:info@herbernie.co.za" class="contact-item">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-              <polyline points="22,6 12,13 2,6"></polyline>
-            </svg>
-          </div>
-          <div>
-            <div class="contact-item-label">Email</div>
-            <div class="contact-item-value">info@herbernie.co.za</div>
-          </div>
-        </a>
+      <div class="contact-col">
+        <div class="contact-label">Get in Touch</div>
+        <h2 class="contact-heading">Any questions before your appointment?</h2>
+        <p class="contact-note">Reach out anytime. We're happy to help.</p>
+        <div class="contact-details">
+          <a href="tel:0732390423" class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.37 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Phone</div>
+              <div class="contact-item-value">073 239 0423</div>
+            </div>
+          </a>
+          <a href="mailto:info@herbernie.co.za" class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Email</div>
+              <div class="contact-item-value">info@herbernie.co.za</div>
+            </div>
+          </a>
+        </div>
       </div>
-    </div>
 
-  </div>
-</section>
+    </div>
+  </section>
+
+</div><!-- /state-confirmed -->
 
 <footer>
   <div class="nav-logo">
@@ -467,6 +463,46 @@
     <a href="mailto:info@herbernie.co.za">Contact</a>
   </div>
 </footer>
+
+<script type="text/javascript">
+  (function (C, A, L) {
+    let p = function (a, ar) { a.q.push(ar); };
+    let d = C.document;
+    C.Cal = C.Cal || function () {
+      let cal = C.Cal; let ar = arguments;
+      if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; }
+      if (ar[0] === L) {
+        const api = function () { p(api, arguments); };
+        const namespace = ar[1]; api.q = api.q || [];
+        if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["-", api]); }
+        else { p(cal, ar); }
+        return;
+      }
+      p(cal, ar);
+    };
+  })(window, "https://app.cal.com/embed/embed.js", "init");
+
+  Cal("init", { origin: "https://cal.com" });
+
+  const params = new URLSearchParams(window.location.search);
+  const patientName  = params.get('name')  || '';
+  const patientEmail = params.get('email') || '';
+
+  Cal("inline", {
+    elementOrSelector: "#cal-embed",
+    calLink: "herbernie-int-l-hus2wy/consultation",
+    config: { name: patientName, email: patientEmail }
+  });
+
+  Cal("on", {
+    action: "bookingSuccessful",
+    callback: function () {
+      document.getElementById('state-booking').style.display = 'none';
+      document.getElementById('state-confirmed').removeAttribute('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+</script>
 
 </body>
 </html>
