@@ -1100,10 +1100,10 @@
 
     /* Hero */
     .hero { display: flex; flex-direction: column; min-height: unset; padding: 0; }
-    .hero-bg { display: none; }
+    .hero-bg { position: relative; height: 72vw; flex-shrink: 0; order: 2; }
     .hero-bg img { object-position: center 10%; }
     .hero-bg::before { display: none; }
-    .hero-content { background: #F5EDE6; position: static; z-index: auto; padding: 2.5rem 1.4rem; order: 1; }
+    .hero-content { background: #F5EDE6; position: static; z-index: auto; padding: 2.5rem 1.4rem; order: 1; min-height: calc(100svh - 70px); display: flex; flex-direction: column; justify-content: center; }
     .hero-headline { font-size: clamp(2.6rem, 9vw, 3.2rem) !important; line-height: 1.08; }
     .hero-kicker { font-size: 0.78rem; letter-spacing: 0.16em; }
     .hero-kicker::before { display: none; }
