@@ -28,7 +28,7 @@ export async function onRequestPost(context) {
   const successUrl = successParams.toString() ? `${THANKYOU_URL}?${successParams}` : THANKYOU_URL;
 
   const payload = {
-    amount: 500, // TEST: R5.00 — change to 49000 (R490.00) before going live
+    amount: 49000,
     currency: 'ZAR',
     successUrl,
     cancelUrl: SITE_URL,
