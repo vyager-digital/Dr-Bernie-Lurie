@@ -1767,11 +1767,12 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
           <p class="quiz-field-error" id="err-email" style="display:none;">Please enter a valid email address.</p>
         </div>
         <div class="quiz-form-group">
-          <label class="quiz-form-label" for="q-whatsapp">WhatsApp <span class="quiz-optional">(optional)</span></label>
+          <label class="quiz-form-label" for="q-whatsapp">WhatsApp</label>
           <div class="quiz-phone-wrap">
             <span class="quiz-phone-prefix">+27</span>
             <input class="quiz-form-input quiz-phone-input" id="q-whatsapp" type="tel" placeholder="082 123 4567" autocomplete="tel">
           </div>
+          <div class="quiz-field-error" id="err-whatsapp" style="display:none;">Please enter your WhatsApp number</div>
         </div>
         <p class="quiz-disclaimer" style="margin-bottom:1.2rem;">By continuing, you consent to Herbernie International collecting and using your personal information to process your consultation request and send your assessment results, in accordance with the Protection of Personal Information Act (POPIA). Your details will not be shared with third parties.</p>
         <div class="quiz-nav">
@@ -2100,14 +2101,17 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
   const quizData = { symptoms: {}, duration: null, priorHelp: null, goal: null };
 
   function quizValidateContact() {
-    const name  = document.getElementById('q-name').value.trim();
-    const email = document.getElementById('q-email').value.trim();
-    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const name     = document.getElementById('q-name').value.trim();
+    const email    = document.getElementById('q-email').value.trim();
+    const whatsapp = document.getElementById('q-whatsapp').value.trim();
+    const emailOk  = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     let valid = true;
-    const errName  = document.getElementById('err-name');
-    const errEmail = document.getElementById('err-email');
-    if (!name)    { errName.style.display  = 'block'; valid = false; } else { errName.style.display  = 'none'; }
-    if (!emailOk) { errEmail.style.display = 'block'; valid = false; } else { errEmail.style.display = 'none'; }
+    const errName     = document.getElementById('err-name');
+    const errEmail    = document.getElementById('err-email');
+    const errWhatsapp = document.getElementById('err-whatsapp');
+    if (!name)     { errName.style.display     = 'block'; valid = false; } else { errName.style.display     = 'none'; }
+    if (!emailOk)  { errEmail.style.display    = 'block'; valid = false; } else { errEmail.style.display    = 'none'; }
+    if (!whatsapp) { errWhatsapp.style.display = 'block'; valid = false; } else { errWhatsapp.style.display = 'none'; }
     if (valid) quizGoTo(2);
   }
 
