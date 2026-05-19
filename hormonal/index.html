@@ -907,10 +907,10 @@
   .quiz-form-input:focus { border-color: var(--rose-soft); }
   .quiz-form-input::placeholder { color: var(--text-light); }
   .quiz-optional { font-size: 0.75rem; color: var(--text-light); font-style: italic; margin-left: 0.3rem; }
-  .quiz-phone-wrap { display: flex; align-items: center; border: 1px solid var(--blush-deep); border-radius: 0.8rem; background: var(--warm-white); transition: border-color 0.3s; }
+  .quiz-phone-wrap { display: flex; align-items: center; border: 1px solid var(--blush-deep); border-radius: 0.8rem; background: var(--warm-white); transition: border-color 0.3s; overflow: hidden; }
   .quiz-phone-wrap:focus-within { border-color: var(--rose-soft); }
-  .quiz-phone-prefix { padding: 0.85rem 0 0.85rem 1.2rem; font-size: 1rem; font-family: 'DM Sans', sans-serif; color: var(--text-dark); white-space: nowrap; }
-  .quiz-phone-input { border: none !important; border-radius: 0 0.8rem 0.8rem 0; padding-left: 0.4rem; flex: 1; background: transparent; }
+  .quiz-phone-select { border: none; border-right: 1px solid var(--blush-deep); background: var(--blush-light); padding: 0.85rem 0.5rem 0.85rem 1rem; font-size: 0.9rem; font-family: 'DM Sans', sans-serif; color: var(--text-dark); cursor: pointer; outline: none; appearance: none; -webkit-appearance: none; min-width: 80px; }
+  .quiz-phone-input { border: none !important; border-radius: 0; padding-left: 0.75rem; flex: 1; background: transparent; }
 
   /* Navigation */
   .quiz-nav {
@@ -1769,7 +1769,22 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
         <div class="quiz-form-group">
           <label class="quiz-form-label" for="q-whatsapp">WhatsApp</label>
           <div class="quiz-phone-wrap">
-            <span class="quiz-phone-prefix">+27</span>
+            <select class="quiz-phone-select" id="q-dialcode">
+              <option value="+27">🇿🇦 +27</option>
+              <option value="+55">🇧🇷 +55</option>
+              <option value="+1">🇺🇸 +1</option>
+              <option value="+44">🇬🇧 +44</option>
+              <option value="+61">🇦🇺 +61</option>
+              <option value="+64">🇳🇿 +64</option>
+              <option value="+49">🇩🇪 +49</option>
+              <option value="+31">🇳🇱 +31</option>
+              <option value="+33">🇫🇷 +33</option>
+              <option value="+971">🇦🇪 +971</option>
+              <option value="+254">🇰🇪 +254</option>
+              <option value="+263">🇿🇼 +263</option>
+              <option value="+267">🇧🇼 +267</option>
+              <option value="+264">🇳🇦 +264</option>
+            </select>
             <input class="quiz-form-input quiz-phone-input" id="q-whatsapp" type="tel" placeholder="082 123 4567" autocomplete="tel">
           </div>
           <div class="quiz-field-error" id="err-whatsapp" style="display:none;">Please enter your WhatsApp number</div>
@@ -2241,7 +2256,8 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
     const _name     = document.getElementById('q-name').value.trim();
     const _email    = document.getElementById('q-email').value.trim();
     const _whatsappRaw = document.getElementById('q-whatsapp').value.trim();
-    const _whatsapp = _whatsappRaw ? '+27 ' + _whatsappRaw : '—';
+    const _dialCode = document.getElementById('q-dialcode').value;
+    const _whatsapp = _whatsappRaw ? _dialCode + ' ' + _whatsappRaw : '—';
     const _symptoms = Object.entries(quizData.symptoms)
       .map(([k, v]) => `${k}: ${v}`).join('\n') || '—';
     fetch('https://formspree.io/f/mlgzjzjy', {
