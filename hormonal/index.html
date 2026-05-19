@@ -77,6 +77,36 @@
   .nav-links a:hover { color: var(--rose-dark); }
   nav.scrolled { box-shadow: 0 2px 24px rgba(61,46,42,0.12); border-bottom-color: transparent; }
   .nav-links a.active { color: var(--rose); }
+  .nav-hamburger {
+    display: none; flex-direction: column; justify-content: center; gap: 5px;
+    width: 40px; height: 40px; background: none; border: none; cursor: pointer;
+    padding: 4px; flex-shrink: 0;
+  }
+  .nav-hamburger span {
+    display: block; width: 22px; height: 2px;
+    background: var(--text-dark); border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-menu {
+    display: none; position: fixed; top: 68px; left: 0; right: 0;
+    background: var(--warm-white); border-bottom: 1px solid var(--blush-deep);
+    padding: 1.2rem 2rem 1.6rem; z-index: 999;
+    box-shadow: 0 8px 24px rgba(61,46,42,0.1);
+  }
+  .mobile-menu.open { display: block; }
+  .mobile-menu a {
+    display: block; padding: 0.85rem 0;
+    font-family: 'DM Sans', sans-serif; font-size: 0.85rem;
+    font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text-mid); text-decoration: none;
+    border-bottom: 1px solid var(--blush-light);
+    transition: color 0.2s;
+  }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a:hover { color: var(--rose); }
   .nav-cta {
     background: var(--rose); color: white;
     padding: 0.7rem 1.8rem; border-radius: 3rem;
@@ -1046,6 +1076,7 @@
     body { padding-top: 68px; }
     nav { padding: 1rem 2rem; }
     .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
     .nav-cta { font-size: 0.72rem; padding: 0.6rem 1.2rem; white-space: nowrap; }
 
     .hero { min-height: calc(100svh - 70px); padding: 7vh 0 6vh; }
@@ -1266,8 +1297,18 @@
     <a href="#stories">Real Stories</a>
     <a href="#about">Your Practitioners</a>
   </div>
-  <a href="#consult" class="nav-cta">Book Online Consultation</a>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+  <a href="#consult" class="nav-cta">Book Now</a>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#causes" class="mobile-nav-link">Why You're Not Getting Better</a>
+  <a href="#process" class="mobile-nav-link">What Healing Looks Like</a>
+  <a href="#stories" class="mobile-nav-link">Real Stories</a>
+  <a href="#about" class="mobile-nav-link">Your Practitioners</a>
+  <a href="#consult" class="mobile-nav-link" style="color:var(--rose);font-weight:600;">Book Online Consultation</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -1970,6 +2011,20 @@
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 20);
   }, { passive: true });
+
+  // Mobile menu
+  const hamburger = document.getElementById('navHamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+  });
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+    });
+  });
 
   // Nav active state
   const navLinks = document.querySelectorAll('.nav-links a');
