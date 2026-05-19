@@ -1787,7 +1787,7 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
             </select>
             <input class="quiz-form-input quiz-phone-input" id="q-whatsapp" type="tel" placeholder="082 123 4567" autocomplete="tel">
           </div>
-          <div class="quiz-field-error" id="err-whatsapp" style="display:none;">Please enter your WhatsApp number</div>
+          <div class="quiz-field-error" id="err-whatsapp" style="display:none;">Please enter a valid WhatsApp number (digits only, 7–12 digits)</div>
         </div>
         <p class="quiz-disclaimer" style="margin-bottom:1.2rem;">By continuing, you consent to Herbernie International collecting and using your personal information to process your consultation request and send your assessment results, in accordance with the Protection of Personal Information Act (POPIA). Your details will not be shared with third parties.</p>
         <div class="quiz-nav">
@@ -2119,14 +2119,23 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
     const name     = document.getElementById('q-name').value.trim();
     const email    = document.getElementById('q-email').value.trim();
     const whatsapp = document.getElementById('q-whatsapp').value.trim();
-    const emailOk  = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    // RFC 5322-inspired email check — requires valid local part, @, domain, and TLD ≥2 chars
+    const emailOk = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/.test(email);
+
+    // Strip all non-digits, then check 7–12 digits (covers all E.164 local numbers globally)
+    const digits = whatsapp.replace(/\D/g, '');
+    const phoneOk = digits.length >= 7 && digits.length <= 12;
+
     let valid = true;
     const errName     = document.getElementById('err-name');
     const errEmail    = document.getElementById('err-email');
     const errWhatsapp = document.getElementById('err-whatsapp');
-    if (!name)     { errName.style.display     = 'block'; valid = false; } else { errName.style.display     = 'none'; }
-    if (!emailOk)  { errEmail.style.display    = 'block'; valid = false; } else { errEmail.style.display    = 'none'; }
-    if (!whatsapp) { errWhatsapp.style.display = 'block'; valid = false; } else { errWhatsapp.style.display = 'none'; }
+
+    if (!name)    { errName.style.display     = 'block'; valid = false; } else { errName.style.display     = 'none'; }
+    if (!emailOk) { errEmail.style.display    = 'block'; valid = false; } else { errEmail.style.display    = 'none'; }
+    if (!phoneOk) { errWhatsapp.style.display = 'block'; valid = false; } else { errWhatsapp.style.display = 'none'; }
+
     if (valid) quizGoTo(2);
   }
 
