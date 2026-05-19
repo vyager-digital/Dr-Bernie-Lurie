@@ -1280,6 +1280,23 @@
     .transform-after { font-size: 1.75rem; }
   }
 </style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1297058208673280');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -2011,6 +2028,23 @@
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 20);
   }, { passive: true });
+
+  // Meta Pixel — Assessment start
+  const assessmentBtn = document.querySelector('button.quiz-btn-primary[onclick="quizGoTo(1)"]');
+  if (assessmentBtn) {
+    assessmentBtn.addEventListener('click', () => fbq('track', 'Lead'));
+  }
+
+  // Meta Pixel — Booking intent (all #consult CTAs)
+  document.querySelectorAll('a[href="#consult"]').forEach(el => {
+    el.addEventListener('click', () => fbq('track', 'Schedule'));
+  });
+
+  // Meta Pixel — Booking confirmed (payment button)
+  const confirmBtn = document.getElementById('confirm-btn');
+  if (confirmBtn) {
+    confirmBtn.addEventListener('click', () => fbq('track', 'Schedule'));
+  }
 
   // Mobile menu
   const hamburger = document.getElementById('navHamburger');
