@@ -1764,7 +1764,7 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
         </div>
         <div class="quiz-form-group">
           <label class="quiz-form-label" for="q-email">Email address</label>
-          <input class="quiz-form-input" id="q-email" type="email" placeholder="your@email.com" autocomplete="email">
+          <input class="quiz-form-input" id="q-email" type="email" placeholder="your@email.com" autocomplete="email" oninput="this.value=this.value.replace(/\s/g,'')">
           <p class="quiz-field-error" id="err-email" style="display:none;">Please enter a valid email address.</p>
         </div>
         <div class="quiz-form-group">
@@ -1786,7 +1786,7 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
               <option value="+267">🇧🇼 +267</option>
               <option value="+264">🇳🇦 +264</option>
             </select>
-            <input class="quiz-form-input quiz-phone-input" id="q-whatsapp" type="tel" placeholder="082 123 4567" autocomplete="tel">
+            <input class="quiz-form-input quiz-phone-input" id="q-whatsapp" type="tel" placeholder="082 123 4567" autocomplete="tel" inputmode="numeric" oninput="this.value=this.value.replace(/[^\d\s\-]/g,'')">
           </div>
           <div class="quiz-field-error" id="err-whatsapp" style="display:none;">Please enter a valid WhatsApp number (digits only, 7–12 digits)</div>
         </div>
