@@ -1788,7 +1788,7 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
             </select>
             <input class="quiz-form-input quiz-phone-input" id="q-whatsapp" type="tel" placeholder="082 123 4567" autocomplete="tel" inputmode="numeric" oninput="this.value=this.value.replace(/[^\d\s\-]/g,'')">
           </div>
-          <div class="quiz-field-error" id="err-whatsapp" style="display:none;">Please enter a valid WhatsApp number (digits only, 7–12 digits)</div>
+          <div class="quiz-field-error" id="err-whatsapp" style="display:none;">Enter your local number only — don't include the country code</div>
         </div>
         <p class="quiz-disclaimer" style="margin-bottom:1.2rem;">By continuing, you consent to Herbernie International collecting and using your personal information to process your consultation request and send your assessment results, in accordance with the Protection of Personal Information Act (POPIA). Your details will not be shared with third parties.</p>
         <div class="quiz-nav">
@@ -2124,9 +2124,11 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
     // RFC 5322-inspired email check — requires valid local part, @, domain, and TLD ≥2 chars
     const emailOk = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/.test(email);
 
-    // Strip all non-digits, then check 7–12 digits (covers all E.164 local numbers globally)
+    // Strip non-digits, check length, and detect double country code entry
     const digits = whatsapp.replace(/\D/g, '');
-    const phoneOk = digits.length >= 7 && digits.length <= 12;
+    const dialCode = document.getElementById('q-dialcode').value.replace('+', '');
+    const startsWithCode = digits.startsWith(dialCode);
+    const phoneOk = digits.length >= 7 && digits.length <= 10 && !startsWithCode;
 
     let valid = true;
     const errName     = document.getElementById('err-name');
