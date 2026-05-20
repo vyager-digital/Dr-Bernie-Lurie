@@ -2128,7 +2128,12 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
     const digits = whatsapp.replace(/\D/g, '');
     const dialCode = document.getElementById('q-dialcode').value.replace('+', '');
     const startsWithCode = digits.startsWith(dialCode);
-    const phoneOk = digits.length >= 7 && digits.length <= 10 && !startsWithCode;
+    let phoneMsg = '';
+    if (!digits.length)           phoneMsg = 'Please enter your WhatsApp number';
+    else if (startsWithCode)      phoneMsg = 'Enter your local number only — don\'t include the country code';
+    else if (digits.length < 7)   phoneMsg = 'That number is too short — please check it';
+    else if (digits.length > 10)  phoneMsg = 'That number is too long — please check it';
+    const phoneOk = !phoneMsg;
 
     let valid = true;
     const errName     = document.getElementById('err-name');
@@ -2137,7 +2142,7 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
 
     if (!name)    { errName.style.display     = 'block'; valid = false; } else { errName.style.display     = 'none'; }
     if (!emailOk) { errEmail.style.display    = 'block'; valid = false; } else { errEmail.style.display    = 'none'; }
-    if (!phoneOk) { errWhatsapp.style.display = 'block'; valid = false; } else { errWhatsapp.style.display = 'none'; }
+    if (!phoneOk) { errWhatsapp.textContent = phoneMsg; errWhatsapp.style.display = 'block'; valid = false; } else { errWhatsapp.style.display = 'none'; }
 
     if (valid) quizGoTo(2);
   }
