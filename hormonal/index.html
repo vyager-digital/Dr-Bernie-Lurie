@@ -12,6 +12,7 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap"></noscript>
 <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" onload="this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+<script defer src="https://www.payfast.co.za/onsite/engine.js"></script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -2370,7 +2371,7 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
     const btn = document.getElementById('confirm-btn');
     const originalHTML = btn.innerHTML;
     btn.disabled = true;
-    btn.innerHTML = 'Redirecting to payment… <i class="fa-solid fa-spinner fa-spin"></i>';
+    btn.innerHTML = 'Loading payment… <i class="fa-solid fa-spinner fa-spin"></i>';
 
     const name  = document.getElementById('q-name')?.value.trim() || '';
     const email = document.getElementById('q-email')?.value.trim() || '';
@@ -2387,8 +2388,22 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
         throw new Error('Payment creation failed');
       }
       const data = await res.json();
-      if (!data.redirectUrl) throw new Error('No redirect URL received');
-      window.location.href = data.redirectUrl;
+      if (!data.uuid) throw new Error('No payment identifier received');
+
+      btn.disabled = false;
+      btn.innerHTML = originalHTML;
+
+      window.payfast_do_onsite_payment(
+        { uuid: data.uuid },
+        function(result) {
+          if (result === true) {
+            const params = new URLSearchParams();
+            if (name)  params.set('name', name);
+            if (email) params.set('email', email);
+            window.location.href = '/hormonal/thankyou.html' + (params.toString() ? '?' + params : '');
+          }
+        }
+      );
     } catch {
       btn.disabled = false;
       btn.innerHTML = originalHTML;
