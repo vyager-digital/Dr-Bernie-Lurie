@@ -2075,8 +2075,7 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
   // Meta Pixel — Assessment start
   // DEV: skip quiz for payment testing
   const tosCheck = document.getElementById('tos-check');
-  const confirmBtn = document.getElementById('confirm-btn');
-  if (tosCheck && confirmBtn) { tosCheck.checked = true; confirmBtn.disabled = false; }
+  if (tosCheck) { tosCheck.checked = true; document.getElementById('confirm-btn').disabled = false; }
 
   const assessmentBtn = document.querySelector('button.quiz-btn-primary[onclick="quizGoTo(1)"]');
   if (assessmentBtn) {
