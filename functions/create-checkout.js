@@ -1,4 +1,4 @@
-import { createHash } from 'node:crypto';
+import { createHash } from 'node:crypto'; // nodejs_compat required
 
 const PAYFAST_URL  = 'https://www.payfast.co.za/onsite/process';
 const THANKYOU_URL = 'https://www.herbernie.co.za/hormonal/thankyou.html';
