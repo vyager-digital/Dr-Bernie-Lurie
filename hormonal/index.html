@@ -1044,9 +1044,20 @@
   /* FOOTER */
   footer { background: var(--parchment); border-top: 1px solid var(--blush-deep); padding: 3rem 6rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
   .footer-note { font-size: 0.82rem; color: var(--text-light); max-width: 45ch; line-height: 1.65; text-align: center; }
+  .footer-contact { display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-end; }
+  .footer-contact a { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-mid); text-decoration: none; transition: color 0.3s; font-family: 'DM Sans', sans-serif; }
+  .footer-contact a:hover { color: var(--rose); }
+  .footer-contact a i { font-size: 0.9rem; }
+  .footer-contact .wa-link { color: var(--sage-dark); }
+  .footer-contact .wa-link:hover { color: var(--sage); }
   .footer-links { display: flex; gap: 1.5rem; }
   .footer-links a { font-size: 0.82rem; color: var(--text-light); text-decoration: none; transition: color 0.3s; }
   .footer-links a:hover { color: var(--rose); }
+
+  /* WHATSAPP FLOAT */
+  .wa-float { position: fixed; bottom: 2rem; right: 2rem; z-index: 999; display: flex; align-items: center; gap: 0.6rem; background: #25D366; color: #fff; text-decoration: none; padding: 0.75rem 1.2rem 0.75rem 1rem; border-radius: 3rem; box-shadow: 0 4px 20px rgba(37,211,102,0.35); font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; transition: transform 0.2s, box-shadow 0.2s; }
+  .wa-float:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(37,211,102,0.45); }
+  .wa-float i { font-size: 1.25rem; }
 
   /* SCROLL REVEAL */
   .reveal {
@@ -1108,6 +1119,7 @@
     .cta-inner { grid-template-columns: 1fr; gap: 3rem; }
 
     footer { flex-direction: column; align-items: center; text-align: center; padding: 2.5rem 2rem; gap: 1rem; }
+    .footer-contact { align-items: center; }
     .footer-links { justify-content: center; }
   }
 
@@ -1241,8 +1253,10 @@
     /* Footer */
     footer { padding: 2rem 1.4rem; gap: 1rem; }
     .footer-note { font-size: 0.82rem; }
+    .footer-contact { align-items: center; }
     .footer-links a { font-size: 0.82rem; }
     .footer-links { flex-wrap: wrap; gap: 0.8rem; justify-content: center; }
+    .wa-float { bottom: 1.2rem; right: 1.2rem; padding: 0.7rem 1rem; font-size: 0.82rem; }
   }
 
   /* WHAT HEALING LOOKS LIKE */
@@ -2036,8 +2050,16 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
     </div>
   </div>
   <p class="footer-note">The information provided reflects the clinical observations of Dr. Bernard Lurie, N.D., and is for educational purposes. It does not constitute medical advice. Always work with a qualified natural health practitioner. Consult your physician for emergencies and acute medical care.</p>
-  <div class="footer-links"><a href="/terms.html">Terms</a><a href="/privacy.html" onclick="openPrivacyModal(event)">Privacy</a><a href="mailto:info@herbernie.co.za">Contact</a></div>
+  <div class="footer-contact">
+    <a href="tel:+27413781531"><i class="fa-solid fa-phone"></i> (+27) 41 378 1531</a>
+    <a href="https://wa.me/27762390423" class="wa-link" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> (+27) 76 239 0423</a>
+    <div class="footer-links"><a href="/terms.html">Terms</a><a href="/privacy.html" onclick="openPrivacyModal(event)">Privacy</a><a href="mailto:info@herbernie.co.za">Contact</a></div>
+  </div>
 </footer>
+
+<a href="https://wa.me/27762390423" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+</a>
 
 <script>
   // Nav scroll shadow
