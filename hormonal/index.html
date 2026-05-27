@@ -4,20 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nature's Healing Process — Hormonal Harmony for Women</title>
-<link rel="icon" type="image/webp" href="/hormonal/assets/images/herbernie-logo.webp">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" onload="this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap"></noscript>
-<link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" onload="this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
     --blush:       #f2ddd5;
     --blush-light: #faf3f0;
-    --blush-deep:  #ead0c8;
+    --blush-deep:  #e4c5b8;
     --rose:        #c4796a;
     --rose-dark:   #a05c4e;
     --rose-soft:   #d4938a;
@@ -30,14 +25,14 @@
     --gold:        #c9a87c;
     --warm-white:  #fdf8f5;
     --parchment:   #f7ede5;
-    --text-dark:   #3a2528;
-    --text-mid:    #6e5a54;
+    --text-dark:   #3d2e2a;
+    --text-mid:    #7a5f57;
     --text-light:  #b09990;
   }
 
-  html { scroll-behavior: smooth; overflow-x: hidden; }
+  html { scroll-behavior: smooth; }
   body {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Jost', sans-serif;
     background: var(--warm-white);
     color: var(--text-dark);
     overflow-x: hidden;
@@ -57,15 +52,13 @@
     font-family: 'Playfair Display', serif;
     font-size: 1.05rem; font-weight: 600;
     color: var(--rose-dark);
-    display: flex; flex-direction: row; align-items: center; gap: 0.55rem; line-height: 1;
+    display: flex; flex-direction: column; gap: 0.15rem; line-height: 1;
   }
-  .nav-logo-icon { width: 34px; height: 34px; flex-shrink: 0; }
-  .nav-logo-text { display: flex; flex-direction: column; gap: 0.15rem; }
   .nav-logo-main { white-space: nowrap; }
   .nav-logo-main > span { font-style: italic; color: var(--sage-dark); }
   .nav-logo-sub {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.68rem; font-weight: 500; letter-spacing: 0.22em;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.58rem; font-weight: 400; letter-spacing: 0.22em;
     text-transform: uppercase; color: var(--text-light);
   }
   .nav-links { display: flex; gap: 2.5rem; }
@@ -91,75 +84,80 @@
     position: relative;
     min-height: calc(100vh - 80px);
     display: flex;
-    align-items: center;
-    padding: 8vh 0;
-    overflow: hidden;
+    align-items: flex-start;
+    padding: 8vh 0 8vh;
   }
   .hero-bg {
     position: absolute;
     inset: 0;
+    overflow: hidden;
   }
   .hero-bg img {
     width: 100%; height: 100%;
     object-fit: cover;
-    object-position: right top;
+    object-position: 72% center;
     display: block;
   }
   .hero-bg::before {
     content: '';
     position: absolute; inset: 0; z-index: 1;
-    background: linear-gradient(to right,
-      #F5EDE6 0%,
-      #F5EDE6 24%,
-      rgba(245, 237, 230, 0.7) 32%,
-      transparent 42%
+    background: linear-gradient(
+      100deg,
+      rgba(12, 8, 6, 0.88) 0%,
+      rgba(12, 8, 6, 0.62) 32%,
+      rgba(12, 8, 6, 0.22) 58%,
+      transparent 76%
     );
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(to top, rgba(12, 8, 6, 0.55) 0%, transparent 45%);
   }
 
   .hero-content {
     position: relative;
     z-index: 2;
     padding: 0 7%;
-    max-width: 620px;
+    max-width: 680px;
   }
   .hero-kicker {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Jost', sans-serif;
     font-size: 0.72rem; font-weight: 500;
     letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--rose);
+    color: var(--blush-deep);
     display: flex; align-items: center; gap: 0.9rem;
     margin-bottom: 1.2rem;
     opacity: 0; animation: riseIn 0.85s 0.2s forwards;
   }
-  .hero-kicker::before { content: ''; width: 2rem; height: 1px; background: var(--rose); }
+  .hero-kicker::before { content: ''; width: 2rem; height: 1px; background: var(--rose-soft); }
 
   .hero-headline {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(2.6rem, 3.8vw, 4.8rem);
+    font-size: clamp(2.8rem, 4.4vw, 5.2rem);
     font-weight: 700;
     line-height: 1.0;
-    color: var(--text-dark);
+    color: white;
     margin-bottom: 1.2rem;
     letter-spacing: -0.02em;
   }
   .hl-line { display: block; opacity: 0; animation: riseIn 0.85s 0.38s forwards; }
   .hero-headline .script {
     font-style: italic; font-weight: 400; display: block;
-    color: var(--rose);
+    color: var(--rose-soft);
     opacity: 0; animation: riseIn 0.85s 0.54s forwards;
   }
   .hero-headline .sage-word {
-    color: var(--text-dark); display: block;
+    color: white; display: block;
     font-weight: 400; margin-top: 0.4rem;
     opacity: 0; animation: riseIn 0.85s 0.70s forwards;
   }
-  .hero-leaf { height: 1.1em; width: auto; vertical-align: middle; margin-left: -0.1em; display: inline; }
 
   .hero-tagline {
-    font-family: 'DM Sans', sans-serif;
-    font-size: clamp(1rem, 1.2vw, 1.1rem);
-    font-weight: 400; line-height: 1.65;
-    color: #4a3a34;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 1.5vw, 1.28rem);
+    font-weight: 300; line-height: 1.7;
+    color: rgba(255, 255, 255, 0.76);
     max-width: 46ch;
     margin-bottom: 2rem;
     opacity: 0; animation: riseIn 0.85s 0.88s forwards;
@@ -169,7 +167,7 @@
     display: inline-flex; align-items: center; gap: 1rem;
     background: var(--rose); color: white;
     padding: 1.1rem 2.6rem; border-radius: 3rem;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Jost', sans-serif;
     font-size: 0.84rem; font-weight: 500; letter-spacing: 0.1em;
     text-transform: uppercase; text-decoration: none;
     transition: all 0.3s;
@@ -193,7 +191,7 @@
     color: white; line-height: 1; letter-spacing: -0.02em;
   }
   .hero-trust-label {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Jost', sans-serif;
     font-size: 0.68rem; letter-spacing: 0.16em;
     text-transform: uppercase;
     color: rgba(255,255,255,0.55);
@@ -240,14 +238,13 @@
     font-family: 'Playfair Display', serif;
     font-size: 0.98rem; font-weight: 600; color: var(--text-dark);
   }
-  .wyg-card-body { font-size: 1rem; line-height: 1.7; color: var(--text-mid); padding-left: calc(40px + 1rem); }
+  .wyg-card-body { font-size: 0.9rem; line-height: 1.7; color: var(--text-mid); padding-left: calc(40px + 1rem); }
 
   /* TRUTH SECTION */
   .truth-section {
     background: var(--warm-white);
     padding: 7rem 6rem;
     border-bottom: 1px solid var(--blush-deep);
-    overflow: hidden;
   }
   .truth-inner { max-width: 1100px; margin: 0 auto; }
 
@@ -262,12 +259,12 @@
     margin: 0.8rem auto 1.4rem;
     line-height: 1.2;
   }
-  .truth-header .section-headline em { color: var(--rose); font-style: italic; }
+  .truth-header .section-headline em { color: var(--rose); font-style: italic; white-space: nowrap; }
   .truth-subtext {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 1.3rem;
-    font-weight: 400;
-    color: var(--text-dark);
+    font-weight: 300;
+    color: var(--text-mid);
     line-height: 1.7;
     max-width: 560px;
     margin: 0 auto;
@@ -289,7 +286,6 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     gap: 1.1rem;
   }
   .truth-card::before {
@@ -308,20 +304,20 @@
     font-family: 'Playfair Display', serif;
     font-size: 1.18rem;
     font-style: italic;
-    color: var(--text-dark);
+    color: var(--rose-dark);
     line-height: 1.5;
     font-weight: 400;
     position: relative;
     padding-left: 1.1rem;
-    border-left: 1.5px solid #e5bfb3;
+    border-left: 2.5px solid var(--rose-soft);
     max-width: 85%;
   }
   .truth-explanation {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.97rem;
     color: var(--text-mid);
     line-height: 1.75;
-    font-weight: 400;
+    font-weight: 300;
     max-width: 90%;
   }
   .truth-explanation strong {
@@ -340,9 +336,9 @@
     margin: 0 auto 2rem;
   }
   .truth-closing-text {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1.15rem;
-    font-weight: 500;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.45rem;
+    font-weight: 400;
     line-height: 1.7;
     color: var(--text-dark);
     max-width: 640px;
@@ -359,10 +355,10 @@
   @media (max-width: 600px) {
     .truth-section { padding: 4rem 1.4rem; }
     .truth-header { margin-bottom: 3.5rem; }
-    .truth-subtext { font-size: 1.1rem; }
-    .truth-quote { font-size: 1.5rem; font-weight: 600; }
-    .truth-explanation { font-size: 1rem; }
-    .truth-closing-text { font-size: 1.15rem; font-weight: 600; }
+    .truth-subtext { font-size: 1.1rem; font-weight: 400; }
+    .truth-quote { font-size: 1.05rem; }
+    .truth-explanation { font-size: 0.93rem; font-weight: 400; }
+    .truth-closing-text { font-size: 1.2rem; font-weight: 400; }
   }
 
   /* WHAT YOU RECEIVE SECTION */
@@ -382,8 +378,8 @@
   @keyframes marqueeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   .marquee-item {
     display: flex; align-items: center; gap: 1rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase;
     color: var(--sage-pale); flex-shrink: 0;
   }
   .mpetal { color: var(--sage-light); display: flex; align-items: center; }
@@ -403,8 +399,8 @@
     font-weight: 700; line-height: 1.15; color: var(--text-dark); margin-bottom: 1rem;
   }
   .section-subtext {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1.18rem; font-weight: 400; line-height: 1.75; color: var(--text-mid);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.18rem; font-weight: 300; line-height: 1.75; color: var(--text-mid);
   }
 
   /* CAUSES */
@@ -413,7 +409,6 @@
     max-width: 1200px; margin: 0 auto;
     display: grid; grid-template-columns: 1fr 1.7fr; gap: 5rem; align-items: start;
   }
-  .causes-subheading { font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rose); margin-bottom: 1.5rem; }
   .causes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
   .cause-card {
     background: white; border: 1px solid var(--blush-deep);
@@ -427,9 +422,9 @@
   }
   .cause-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(196,121,106,0.12); }
   .cause-card:hover::before { opacity: 1; }
-  .cause-icon { font-size: 1.8rem; color: var(--rose); margin-bottom: 0.75rem; }
+  .cause-icon { font-size: 1.1rem; color: var(--rose); margin-bottom: 0.75rem; }
   .cause-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--rose-dark); margin-bottom: 0.6rem; }
-  .cause-desc { font-size: 1rem; line-height: 1.75; color: var(--text-mid); }
+  .cause-desc { font-size: 0.9rem; line-height: 1.75; color: var(--text-mid); }
 
   /* MID-PAGE CTA */
   .mid-cta {
@@ -438,13 +433,13 @@
     display: flex; align-items: center; justify-content: space-between; gap: 2rem;
   }
   .mid-cta-text {
-    font-family: 'DM Sans', sans-serif;
-    font-size: clamp(1.1rem, 2vw, 1.35rem); font-style: normal; font-weight: 400;
-    color: white; max-width: 52ch; line-height: 1.6;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.2rem, 2vw, 1.55rem); font-style: italic; font-weight: 300;
+    color: white; max-width: 52ch; line-height: 1.5;
   }
   .mid-cta-btn {
     background: white; color: var(--rose-dark);
-    font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 500;
+    font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 600;
     letter-spacing: 0.1em; text-transform: uppercase;
     padding: 0.9rem 2.2rem; border-radius: 3rem;
     text-decoration: none; white-space: nowrap; flex-shrink: 0;
@@ -506,12 +501,12 @@
   }
   .step-card:nth-child(2) .step-badge { background: rgba(196,121,106,0.1); }
   .step-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--text-dark); margin-bottom: 0.5rem; }
-  .step-body { font-size: 1rem; line-height: 1.75; color: var(--text-mid); }
+  .step-body { font-size: 0.9rem; line-height: 1.75; color: var(--text-mid); }
   .step-list {
     list-style: none; margin-top: 1rem;
     display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem 1.5rem;
   }
-  .step-list li { font-size: 0.95rem; color: var(--text-mid); display: flex; align-items: baseline; gap: 0.45rem; }
+  .step-list li { font-size: 0.875rem; color: var(--text-light); display: flex; align-items: baseline; gap: 0.45rem; }
   .step-list li::before { content: '✦'; color: var(--rose-soft); font-size: 0.5rem; flex-shrink: 0; }
 
   /* FACILITY */
@@ -528,16 +523,8 @@
   }
   .facility-inner {
     max-width: 1200px; margin: 0 auto;
-    display: grid; grid-template-columns: 1fr 420px; gap: 4rem; align-items: stretch;
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center;
     position: relative; z-index: 2;
-  }
-  .facility-left-col { display: flex; flex-direction: column; gap: 2.5rem; justify-content: center; }
-  .facility-image-col {
-    border-radius: 1.4rem; overflow: hidden;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .facility-image-col img {
-    width: 100%; height: auto; display: block;
   }
   .facility-eyebrow {
     font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
@@ -546,10 +533,18 @@
   }
   .facility-eyebrow::before { content: ''; width: 1.5rem; height: 1px; background: rgba(255,255,255,0.4); }
   .facility-headline { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 2.8vw, 2.6rem); font-weight: 700; line-height: 1.15; color: white; margin-bottom: 1.2rem; }
-  .facility-headline em { font-style: italic; color: rgba(255,255,255,0.9); }
-  .facility-body { font-family: 'DM Sans', sans-serif; font-size: 1.15rem; font-weight: 400; line-height: 1.75; color: rgba(255,255,255,0.92); margin-bottom: 2rem; }
+  .facility-headline em { font-style: italic; color: rgba(255,255,255,0.75); }
+  .facility-body { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 300; line-height: 1.75; color: rgba(255,255,255,0.8); margin-bottom: 2rem; }
   .facility-pills { display: flex; flex-wrap: wrap; gap: 0.6rem; }
   .f-pill { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.25); color: white; font-size: 0.78rem; padding: 0.45rem 1rem; border-radius: 2rem; letter-spacing: 0.03em; }
+  .facility-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .fac-stat {
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 1.2rem; padding: 1.8rem; text-align: center; transition: all 0.35s;
+  }
+  .fac-stat:hover { background: rgba(255,255,255,0.18); transform: translateY(-3px); }
+  .fac-stat-num { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; color: white; display: block; }
+  .fac-stat-label { font-size: 0.76rem; color: rgba(255,255,255,0.65); letter-spacing: 0.05em; margin-top: 0.3rem; }
 
   /* TESTIMONIALS */
   .testimonials-section { background: var(--blush-light); }
@@ -567,38 +562,53 @@
   .test-body { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-style: italic; line-height: 1.7; color: var(--text-dark); margin-bottom: 1.5rem; }
   .test-divider { height: 1px; background: var(--blush); margin-bottom: 1.2rem; }
   .test-meta { display: flex; align-items: center; gap: 0.9rem; }
-  .test-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--rose); font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.05em; color: white; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .test-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--rose); font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.05em; color: white; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .test-name { font-size: 0.85rem; font-weight: 500; color: var(--text-dark); }
   .test-condition { font-size: 0.8rem; color: var(--rose); letter-spacing: 0.04em; }
 
-  /* TEAM */
-  .team-section { background: var(--parchment); }
-  .team-inner { max-width: 1200px; margin: 0 auto; }
-  .team-header { text-align: center; margin-bottom: 1.5rem; }
-  .team-intro { font-family: 'DM Sans', sans-serif; font-size: 1.15rem; font-weight: 400; line-height: 1.8; color: var(--text-dark); max-width: 62ch; margin: 0 auto 4rem; text-align: center; }
-  .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
-  .team-card { background: white; border: 1px solid var(--blush-deep); border-radius: 1.5rem; overflow: hidden; }
-  .team-photo-badge {
-    position: absolute; bottom: 1.2rem; left: 1.2rem;
-    background: white; border-radius: 0.9rem; padding: 0.65rem 1rem;
-    display: flex; flex-direction: column; align-items: flex-start;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  /* DR BERNIE */
+  .bernie-section { background: var(--parchment); }
+  .bernie-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 5rem; align-items: start; }
+  .bernie-inner .reveal-left { position: sticky; top: 6rem; }
+  .bernie-badge {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: rgba(196,121,106,0.1); border: 1px solid rgba(196,121,106,0.25);
+    border-radius: 2rem; padding: 0.45rem 1.2rem;
+    font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--rose-dark); margin-bottom: 1.5rem;
   }
-  .team-photo-badge-num { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--rose-dark); line-height: 1; }
-  .team-photo-badge-label { font-size: 0.65rem; color: var(--text-light); letter-spacing: 0.04em; margin-top: 0.15rem; }
-  .team-card-body { padding: 2rem; }
-  .team-name { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; color: var(--text-dark); margin-bottom: 0.3rem; }
-  .team-title { font-size: 0.76rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rose); font-weight: 500; margin-bottom: 1.2rem; line-height: 1.5; }
-  .team-bio { font-family: 'DM Sans', sans-serif; font-size: 1.05rem; font-weight: 400; line-height: 1.8; color: var(--text-dark); margin-bottom: 1.5rem; }
-  .team-creds { display: flex; flex-direction: column; gap: 0.5rem; }
-  .team-cred-row { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.88rem; color: var(--text-mid); }
-  .team-cred-pip { width: 6px; height: 6px; border-radius: 50%; background: var(--rose-soft); flex-shrink: 0; margin-top: 0.37rem; }
-  /* Shared quote card (used in team section) */
+  .bernie-headline { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 2.8vw, 2.7rem); font-weight: 700; line-height: 1.15; color: var(--text-dark); margin-bottom: 1.2rem; }
+  .bernie-headline em { font-style: italic; color: var(--rose); }
+  .bernie-text { font-family: 'Cormorant Garamond', serif; font-size: 1.12rem; font-weight: 300; line-height: 1.8; color: var(--text-mid); margin-bottom: 1.2rem; }
+  .bernie-creds { display: flex; flex-direction: column; gap: 0.7rem; margin-top: 2rem; }
+  .cred-row { display: flex; align-items: flex-start; gap: 0.8rem; font-size: 0.9rem; color: var(--text-mid); }
+  .cred-pip { width: 7px; height: 7px; border-radius: 50%; background: var(--rose-soft); flex-shrink: 0; margin-top: 0.35rem; }
+  .bernie-photo-col { display: flex; flex-direction: column; gap: 1.5rem; }
+  .bernie-photo-frame {
+    position: relative; border-radius: 1.5rem; overflow: hidden;
+    aspect-ratio: 4/5; width: 100%;
+    box-shadow: 0 20px 60px rgba(61,46,42,0.15);
+  }
+  .bernie-photo-img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;
+  }
+  .bernie-photo-badge {
+    position: absolute; bottom: 1.5rem; left: 1.5rem;
+    background: white; border-radius: 1rem; padding: 0.8rem 1.2rem;
+    display: flex; flex-direction: column; align-items: flex-start;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  }
+  .bernie-photo-badge-num {
+    font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700;
+    color: var(--rose-dark); line-height: 1;
+  }
+  .bernie-photo-badge-label { font-size: 0.7rem; color: var(--text-light); letter-spacing: 0.04em; margin-top: 0.2rem; }
   .bernie-quote-card { background: white; border: 1px solid var(--blush-deep); border-radius: 1.8rem; padding: 2.5rem; position: relative; overflow: hidden; }
   .bernie-quote-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--rose-soft), var(--mauve-light), var(--sage-light)); }
   .bqc-mark { font-family: 'Playfair Display', serif; font-size: 5rem; line-height: 1; color: var(--blush-deep); margin-bottom: 0.5rem; }
-  .bernie-quote-text { font-family: 'DM Sans', sans-serif; font-size: 1rem; font-style: italic; line-height: 1.75; color: var(--text-dark); margin-bottom: 1.5rem; }
+  .bernie-quote-text { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; line-height: 1.7; color: var(--text-dark); margin-bottom: 1.5rem; }
   .bernie-quote-attr { font-size: 0.8rem; color: var(--rose); font-weight: 500; letter-spacing: 0.06em; }
+  .scripture { margin-top: 1.5rem; border-top: 1px solid var(--blush); padding-top: 1.2rem; font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; font-style: italic; color: var(--text-light); line-height: 1.5; }
 
   /* CTA */
   .cta-section {
@@ -615,7 +625,7 @@
   .cta-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; position: relative; z-index: 2; }
   .cta-headline { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.2vw, 3.2rem); font-weight: 700; line-height: 1.1; color: var(--text-dark); margin-bottom: 1.2rem; }
   .cta-headline em { font-style: italic; color: var(--rose); }
-  .cta-sub { font-family: 'DM Sans', sans-serif; font-size: 1.18rem; font-weight: 400; line-height: 1.75; color: var(--text-dark); margin-bottom: 2rem; }
+  .cta-sub { font-family: 'Cormorant Garamond', serif; font-size: 1.18rem; font-weight: 300; line-height: 1.75; color: var(--text-mid); margin-bottom: 2rem; }
   .cta-inclusions { display: flex; flex-direction: column; gap: 0.9rem; margin-bottom: 2rem; }
   .cta-inc-row { display: flex; align-items: flex-start; gap: 0.9rem; font-size: 0.85rem; color: var(--text-mid); line-height: 1.5; }
   .inc-icon { width: 28px; height: 28px; border-radius: 50%; background: rgba(196,121,106,0.12); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; }
@@ -624,13 +634,13 @@
   .booking-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--rose-soft), var(--rose), var(--mauve)); }
   .booking-label { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rose); font-weight: 500; margin-bottom: 1.5rem; }
   .booking-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--text-dark); margin-bottom: 0.5rem; }
-  .booking-sub { font-size: 1rem; color: var(--text-mid); margin-bottom: 2rem; line-height: 1.6; }
+  .booking-sub { font-size: 0.9rem; color: var(--text-light); margin-bottom: 2rem; line-height: 1.6; }
   .form-group { margin-bottom: 1.2rem; }
   .form-label { font-size: 0.82rem; color: var(--text-mid); font-weight: 500; letter-spacing: 0.04em; display: block; margin-bottom: 0.4rem; }
   .form-input, .form-select {
     width: 100%; padding: 0.85rem 1.2rem;
     border: 1px solid var(--blush-deep); border-radius: 0.8rem;
-    font-size: 1rem; font-family: 'DM Sans', sans-serif;
+    font-size: 1rem; font-family: 'Jost', sans-serif;
     color: var(--text-dark); background: var(--warm-white);
     outline: none; transition: border-color 0.3s; appearance: none;
   }
@@ -641,377 +651,16 @@
     width: 100%; padding: 1.1rem;
     background: var(--rose); color: white; border: none; border-radius: 3rem;
     font-size: 0.88rem; font-weight: 500; letter-spacing: 0.05em; cursor: pointer;
-    transition: all 0.35s; font-family: 'DM Sans', sans-serif;
+    transition: all 0.35s; font-family: 'Jost', sans-serif;
     box-shadow: 0 6px 24px rgba(196,121,106,0.35); margin-top: 0.5rem;
   }
   .btn-submit:hover { background: var(--rose-dark); transform: translateY(-2px); box-shadow: 0 10px 32px rgba(196,121,106,0.45); }
   .form-disclaimer { font-size: 0.72rem; color: var(--text-light); text-align: center; margin-top: 1rem; line-height: 1.6; }
 
-  /* ── QUESTIONNAIRE ── */
-  .quiz-section {
-    background: linear-gradient(155deg, var(--blush-light) 0%, var(--parchment) 40%, var(--sage-pale) 100%);
-    padding: 8rem 2rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .quiz-section::before {
-    content: ''; position: absolute; top: -20%; right: -10%;
-    width: 55%; height: 140%;
-    background: radial-gradient(ellipse, rgba(196,121,106,0.07) 0%, transparent 60%);
-    border-radius: 40% 60%;
-    animation: petaldrift 12s ease-in-out infinite;
-  }
-  .quiz-wrap { max-width: 680px; margin: 0 auto; position: relative; z-index: 2; }
-
-  .quiz-screen { display: none; animation: quizFadeIn 0.4s ease; }
-  .quiz-screen.active { display: block; }
-  @keyframes quizFadeIn {
-    from { opacity: 0; transform: translateY(14px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  /* Intro */
-  .quiz-intro-wrap { text-align: center; }
-  .quiz-main-headline {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 4.5vw, 3rem);
-    font-weight: 700; line-height: 1.15;
-    color: var(--text-dark); margin-bottom: 1.4rem;
-  }
-  .quiz-main-headline em { font-style: italic; color: var(--rose); }
-  .quiz-intro-sub {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1.15rem; line-height: 1.8;
-    color: var(--text-dark);
-    max-width: 52ch; margin: 0 auto 1.2rem;
-  }
-  .quiz-privacy {
-    font-size: 0.8rem; color: var(--text-light);
-    display: flex; align-items: center; justify-content: center;
-    gap: 0.4rem; margin-bottom: 2.5rem;
-  }
-
-  /* Card wraps steps 1–4 + confirmation */
-  .quiz-card {
-    background: white;
-    border: 1px solid var(--blush-deep);
-    border-radius: 2rem;
-    padding: 3rem;
-    box-shadow: 0 16px 64px rgba(196,121,106,0.1);
-    position: relative; overflow: hidden;
-  }
-  .quiz-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
-    background: linear-gradient(90deg, var(--rose-soft), var(--rose), var(--mauve));
-  }
-
-  /* Progress */
-  .quiz-progress-bar {
-    height: 3px; background: var(--blush-deep);
-    border-radius: 2px; margin-bottom: 2rem; overflow: hidden;
-  }
-  .quiz-progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--rose-soft), var(--rose));
-    border-radius: 2px; transition: width 0.5s ease;
-  }
-  .quiz-step-label {
-    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--rose); font-weight: 500; margin-bottom: 1.2rem;
-  }
-  .quiz-headline {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.35rem, 3vw, 1.85rem);
-    font-weight: 700; line-height: 1.2;
-    color: var(--text-dark); margin-bottom: 0.6rem;
-  }
-  .truth-transition {
-    max-width: 640px; margin: 2.5rem auto 0;
-    text-align: center;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1.15rem; font-weight: 400;
-    color: var(--text-dark);
-    line-height: 1.7;
-  }
-  .truth-bridge {
-    font-size: 1.05rem; color: var(--text-mid);
-    line-height: 1.7; max-width: 640px;
-    margin: 1.4rem auto 0;
-  }
-  .quiz-subtext {
-    font-size: 0.92rem; color: var(--text-mid);
-    line-height: 1.6; margin-bottom: 1.8rem;
-  }
-  .quiz-error {
-    font-size: 0.85rem; color: var(--rose);
-    margin-bottom: 0.75rem; text-align: center;
-  }
-  .quiz-field-error {
-    font-size: 0.8rem; color: var(--rose);
-    margin-top: 0.3rem; margin-bottom: 0;
-  }
-
-  /* Symptom rows */
-  .symptom-list { display: flex; flex-direction: column; }
-  .symptom-row {
-    display: flex; align-items: center;
-    justify-content: space-between; gap: 1rem;
-    padding: 0.9rem 0;
-    border-bottom: 1px solid var(--blush-light);
-  }
-  .symptom-row:last-child { border-bottom: none; }
-  .symptom-label {
-    display: flex; align-items: center;
-    gap: 0.7rem; flex: 1; min-width: 0;
-    font-size: 0.92rem; color: var(--text-dark);
-  }
-  .symptom-icon {
-    width: 34px; height: 34px; flex-shrink: 0;
-    border-radius: 50%; background: var(--blush-light);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.8rem; color: var(--rose);
-  }
-
-  /* Screen 1a — symptom selection (checkbox-style) */
-  .symptom-check-list { display: flex; flex-direction: column; gap: 0.5rem; }
-  .symptom-check-row {
-    display: flex; align-items: center; gap: 0.9rem;
-    padding: 0.85rem 1rem;
-    border: 1px solid var(--blush-deep); border-radius: 1rem;
-    cursor: pointer; transition: all 0.2s; min-height: 52px;
-  }
-  .symptom-check-row:hover { border-color: var(--rose-soft); background: var(--blush-light); }
-  .symptom-check-row.selected { border-color: var(--rose); background: rgba(196,121,106,0.06); }
-  .symptom-check-label { flex: 1; font-size: 0.92rem; color: var(--text-dark); line-height: 1.4; }
-  .symptom-check-dot {
-    width: 22px; height: 22px; flex-shrink: 0;
-    border: 2px solid var(--blush-deep); border-radius: 5px;
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.2s;
-  }
-  .symptom-check-dot i { color: transparent; font-size: 0.7rem; transition: color 0.15s; }
-  .symptom-check-row.selected .symptom-check-dot { border-color: var(--rose); background: var(--rose); }
-  .symptom-check-row.selected .symptom-check-dot i { color: white; }
-
-  .sev-btns { display: flex; gap: 0.4rem; flex-shrink: 0; }
-  .sev-btn {
-    padding: 0.4rem 0.75rem;
-    border: 1px solid var(--blush-deep);
-    border-radius: 2rem;
-    font-size: 0.72rem; font-family: 'DM Sans', sans-serif;
-    color: var(--text-mid); background: transparent;
-    cursor: pointer; transition: all 0.2s;
-    white-space: nowrap; min-height: 44px;
-    display: flex; align-items: center;
-  }
-  .sev-btn:hover { border-color: var(--rose-soft); color: var(--rose); }
-  .sev-btn.active {
-    background: var(--rose); border-color: var(--rose);
-    color: white; font-weight: 500;
-  }
-
-  /* Single-choice cards */
-  .choice-group-label {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.05rem; font-weight: 600;
-    color: var(--text-dark); margin-bottom: 0.8rem;
-  }
-  .choice-group { display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 1.8rem; }
-  .choice-card {
-    display: flex; align-items: center; gap: 1rem;
-    padding: 0.9rem 1.1rem;
-    border: 1px solid var(--blush-deep); border-radius: 1rem;
-    cursor: pointer; transition: all 0.2s;
-    font-size: 0.92rem; color: var(--text-dark);
-    min-height: 52px;
-  }
-  .choice-card:hover { border-color: var(--rose-soft); background: var(--blush-light); }
-  .choice-card.selected {
-    border-color: var(--rose); background: rgba(196,121,106,0.06);
-  }
-  .choice-radio {
-    width: 18px; height: 18px;
-    border: 2px solid var(--blush-deep); border-radius: 50%;
-    flex-shrink: 0; transition: all 0.2s; position: relative;
-  }
-  .choice-card.selected .choice-radio { border-color: var(--rose); background: var(--rose); }
-  .choice-card.selected .choice-radio::after {
-    content: ''; position: absolute;
-    top: 50%; left: 50%; transform: translate(-50%,-50%);
-    width: 6px; height: 6px; border-radius: 50%; background: white;
-  }
-
-  /* Goal cards */
-  .goal-grid { display: flex; flex-direction: column; gap: 0.55rem; }
-  .goal-card {
-    display: flex; align-items: center; gap: 1rem;
-    padding: 0.9rem 1.1rem;
-    border: 1px solid var(--blush-deep); border-radius: 1rem;
-    cursor: pointer; transition: all 0.2s; min-height: 52px;
-  }
-  .goal-card:hover { border-color: var(--rose-soft); background: var(--blush-light); }
-  .goal-card.selected { border-color: var(--rose); background: rgba(196,121,106,0.06); }
-  .goal-icon {
-    width: 38px; height: 38px; flex-shrink: 0;
-    border-radius: 50%; background: var(--blush-light);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.9rem; color: var(--rose); transition: all 0.2s;
-  }
-  .goal-card.selected .goal-icon { background: rgba(196,121,106,0.15); }
-  .goal-text { font-size: 0.92rem; color: var(--text-dark); line-height: 1.5; }
-
-  /* Contact form */
-  .quiz-form-group { margin-bottom: 1.2rem; }
-  .quiz-form-label {
-    font-size: 0.82rem; color: var(--text-mid);
-    font-weight: 500; letter-spacing: 0.04em;
-    display: block; margin-bottom: 0.4rem;
-  }
-  .quiz-form-input {
-    width: 100%; padding: 0.85rem 1.2rem;
-    border: 1px solid var(--blush-deep); border-radius: 0.8rem;
-    font-size: 1rem; font-family: 'DM Sans', sans-serif;
-    color: var(--text-dark); background: var(--warm-white);
-    outline: none; transition: border-color 0.3s;
-  }
-  .quiz-form-input:focus { border-color: var(--rose-soft); }
-  .quiz-form-input::placeholder { color: var(--text-light); }
-  .quiz-optional { font-size: 0.75rem; color: var(--text-light); font-style: italic; margin-left: 0.3rem; }
-  .quiz-phone-wrap { display: flex; align-items: center; border: 1px solid var(--blush-deep); border-radius: 0.8rem; background: var(--warm-white); transition: border-color 0.3s; }
-  .quiz-phone-wrap:focus-within { border-color: var(--rose-soft); }
-  .quiz-phone-prefix { padding: 0.85rem 0 0.85rem 1.2rem; font-size: 1rem; font-family: 'DM Sans', sans-serif; color: var(--text-dark); white-space: nowrap; }
-  .quiz-phone-input { border: none !important; border-radius: 0 0.8rem 0.8rem 0; padding-left: 0.4rem; flex: 1; background: transparent; }
-
-  /* Navigation */
-  .quiz-nav {
-    display: flex; align-items: center;
-    justify-content: space-between;
-    margin-top: 2rem; gap: 1rem;
-  }
-  .quiz-btn-primary {
-    background: var(--rose); color: white; border: none;
-    padding: 0.9rem 2rem; border-radius: 3rem;
-    font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em;
-    cursor: pointer; font-family: 'DM Sans', sans-serif;
-    transition: all 0.3s;
-    box-shadow: 0 6px 24px rgba(196,121,106,0.3);
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    min-height: 52px;
-  }
-  .quiz-btn-primary:hover { background: var(--rose-dark); transform: translateY(-1px); box-shadow: 0 10px 32px rgba(196,121,106,0.4); }
-  .quiz-btn-back {
-    background: transparent; color: var(--text-mid);
-    border: 1px solid var(--blush-deep);
-    padding: 0.9rem 1.4rem; border-radius: 3rem;
-    font-size: 0.85rem; font-family: 'DM Sans', sans-serif;
-    cursor: pointer; transition: all 0.2s;
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    min-height: 52px;
-  }
-  .quiz-btn-back:hover { border-color: var(--rose-soft); color: var(--rose); }
-  .quiz-note {
-    font-size: 0.8rem; color: var(--text-light);
-    font-style: italic; text-align: center;
-    margin-top: 1.2rem; line-height: 1.6;
-  }
-
-  /* Confirmation */
-  .quiz-confirm-icon {
-    width: 64px; height: 64px;
-    background: rgba(196,121,106,0.1); border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.6rem; color: var(--rose);
-    margin: 0 auto 1.5rem;
-  }
-  .quiz-confirm-headline {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700;
-    color: var(--text-dark); text-align: center; margin-bottom: 1.2rem;
-  }
-  .quiz-confirm-summary {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1.12rem; line-height: 1.85;
-    color: var(--text-dark); text-align: center;
-    max-width: 52ch; margin: 0 auto 2rem;
-  }
-  .quiz-confirm-summary p { margin: 0 0 1.1rem; }
-  .quiz-confirm-summary p:last-child { margin-bottom: 0; }
-  .quiz-confirm-summary strong { color: var(--text-dark); }
-  .quiz-divider { height: 1px; background: var(--blush-deep); margin: 0 0 2rem; }
-  .quiz-offer-card {
-    background: var(--blush-light); border: 1px solid var(--blush-deep);
-    border-radius: 1.4rem; padding: 1.8rem; margin-bottom: 1.5rem;
-  }
-  .quiz-offer-label { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rose); font-weight: 500; margin-bottom: 0.4rem; }
-  .quiz-offer-title { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--text-dark); margin-bottom: 0.3rem; }
-  .quiz-offer-price { font-size: 1.4rem; font-weight: 600; color: var(--rose); margin-bottom: 1.2rem; }
-  .quiz-offer-rows { display: flex; flex-direction: column; gap: 0.55rem; }
-  .quiz-offer-row { display: flex; align-items: flex-start; gap: 0.7rem; font-size: 0.85rem; color: var(--text-mid); line-height: 1.5; }
-  .quiz-offer-row i { color: var(--sage); margin-top: 2px; flex-shrink: 0; }
-  .quiz-disclaimer { font-size: 0.72rem; color: var(--text-light); text-align: center; line-height: 1.65; margin-top: 1rem; }
-  .quiz-tos-label { display: flex; align-items: center; gap: 0.65rem; font-family: 'DM Sans', sans-serif; font-size: 0.88rem; color: var(--text-mid); margin: 1.4rem 0 1.2rem; cursor: pointer; }
-  .quiz-tos-label input[type="checkbox"] { width: 18px; height: 18px; flex-shrink: 0; accent-color: var(--rose); cursor: pointer; }
-  .quiz-tos-link { color: var(--rose); text-decoration: underline; cursor: pointer; }
-
-  /* TOS modal */
-  .tos-modal-overlay {
-    display: none; position: fixed; inset: 0; z-index: 1000;
-    background: rgba(61,46,42,0.5); backdrop-filter: blur(4px);
-    align-items: center; justify-content: center; padding: 1.5rem;
-  }
-  .tos-modal-overlay.open { display: flex; }
-  .tos-modal {
-    background: var(--warm-white); border-radius: 16px;
-    width: 100%; max-width: 680px;
-    height: 82vh; max-height: 720px;
-    display: flex; flex-direction: column;
-    box-shadow: 0 24px 60px rgba(61,46,42,0.18);
-    overflow: hidden;
-  }
-  .tos-modal-header {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.2rem 1.5rem;
-    border-bottom: 1px solid var(--blush-deep);
-    flex-shrink: 0;
-  }
-  .tos-modal-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--text-dark); }
-  .tos-modal-close {
-    width: 32px; height: 32px; border-radius: 50%; border: none;
-    background: var(--blush); color: var(--text-mid);
-    cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center;
-    transition: background 0.2s;
-  }
-  .tos-modal-close:hover { background: var(--blush-deep); }
-  .tos-modal iframe {
-    flex: 1; border: none; width: 100%; min-height: 0;
-  }
-  .quiz-btn-primary:disabled { opacity: 0.45; cursor: not-allowed; pointer-events: none; }
-
-  /* ── Quiz tablet ── */
-  @media (max-width: 960px) {
-    .quiz-section { padding: 6rem 2.5rem; }
-  }
-
-  /* ── Quiz mobile ── */
-  @media (max-width: 600px) {
-    .quiz-section { padding: 4rem 1.4rem; }
-    .quiz-card { padding: 1.8rem 1.2rem; border-radius: 1.2rem; }
-    .quiz-main-headline { font-size: 1.85rem; }
-    .quiz-intro-sub { font-size: 1.05rem; }
-
-    /* Symptoms stack */
-    .symptom-row { flex-direction: column; align-items: flex-start; gap: 0.6rem; padding: 1rem 0; }
-    .sev-btns { width: 100%; }
-    .sev-btn { flex: 1; justify-content: center; font-size: 0.78rem; padding: 0.5rem 0.3rem; }
-
-    /* Nav stack on mobile */
-    .quiz-nav { flex-direction: column-reverse; }
-    .quiz-btn-primary { width: 100%; justify-content: center; }
-    .quiz-btn-back { width: 100%; justify-content: center; }
-  }
-
   /* FOOTER */
   footer { background: var(--parchment); border-top: 1px solid var(--blush-deep); padding: 3rem 6rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--rose-dark); font-weight: 600; }
+  .footer-logo span { font-style: italic; color: var(--sage-dark); }
   .footer-note { font-size: 0.82rem; color: var(--text-light); max-width: 45ch; line-height: 1.65; text-align: center; }
   .footer-links { display: flex; gap: 1.5rem; }
   .footer-links a { font-size: 0.82rem; color: var(--text-light); text-decoration: none; transition: color 0.3s; }
@@ -1043,13 +692,13 @@
 
   /* ── TABLET (≤ 960px) ── */
   @media (max-width: 960px) {
-    body { padding-top: 68px; }
     nav { padding: 1rem 2rem; }
     .nav-links { display: none; }
     .nav-cta { font-size: 0.72rem; padding: 0.6rem 1.2rem; white-space: nowrap; }
 
     .hero { min-height: calc(100svh - 70px); padding: 7vh 0 6vh; }
     .hero-content { padding: 0 3rem; }
+    .hero-trust { bottom: 2.5rem; right: 2rem; }
 
     .wyg-section { padding: 4rem 2.5rem; }
     .wyg-grid { grid-template-columns: 1fr 1fr; gap: 1.2rem; }
@@ -1064,13 +713,11 @@
 
     .facility-section { padding: 4rem 2.5rem; }
     .facility-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-    .facility-image-col { min-height: unset; }
+    .facility-stats { grid-template-columns: 1fr 1fr; }
 
     .test-grid { grid-template-columns: 1fr 1fr; gap: 1.2rem; }
 
-    .team-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-
-    .mid-cta { padding: 2.2rem 2.5rem; }
+    .bernie-inner { grid-template-columns: 1fr 1fr; gap: 3rem; }
 
     .cta-section { padding: 5rem 2.5rem; }
     .cta-inner { grid-template-columns: 1fr; gap: 3rem; }
@@ -1082,40 +729,46 @@
   /* ── MOBILE (≤ 600px) ── */
   @media (max-width: 600px) {
 
-    /* Cormorant italic elements — slight weight boost so they read on small screens */
-    .test-body { font-weight: 500; font-style: italic; }
+    /* ── Cormorant Garamond weight fix ──
+       weight 300 is too thin to read on phone screens.
+       Bump ALL light-weight serif text to 400 (normal). */
+    .hero-tagline,
+    .section-subtext,
+    .facility-body,
+    .bernie-text,
+    .cta-sub { font-weight: 400; }
+
+    /* Italic serif (testimonials, quote, scripture) — also boost weight */
+    .test-body,
+    .bernie-quote-text { font-weight: 500; font-style: italic; }
+    .scripture { font-weight: 400; font-size: 0.9rem; }
 
     /* Botanical quote strip inline style override */
-    .botanical-strip p { font-weight: 500 !important; }
-
-    /* Marquee */
-    .marquee-track { animation-duration: 15s; }
+    .botanical-strip p { font-weight: 400 !important; }
 
     /* Nav */
-    body { padding-top: 58px; }
     nav { padding: 0.85rem 1rem; gap: 0.5rem; }
     .nav-logo { font-size: 0.9rem; }
     .nav-cta { font-size: 0; padding: 0.6rem 0.9rem; }
     .nav-cta::after { content: 'Book Now'; font-size: 0.78rem; letter-spacing: 0.03em; }
 
     /* Hero */
-    .hero { display: flex; flex-direction: column; min-height: unset; padding: 0; }
-    .hero-bg { position: relative; height: 72vw; flex-shrink: 0; order: 2; }
-    .hero-bg img { object-position: center 10%; }
-    .hero-bg::before { display: none; }
-    .hero-content { background: #F5EDE6; position: static; z-index: auto; padding: 2.5rem 1.4rem; order: 1; min-height: calc(100svh - 70px); display: flex; flex-direction: column; justify-content: center; }
-    .hero-headline { font-size: clamp(2.6rem, 9vw, 3.2rem) !important; line-height: 1.08; }
-    .hero-kicker { font-size: 0.78rem; letter-spacing: 0.16em; }
-    .hero-kicker::before { display: none; }
-    .hero-tagline { font-size: 1rem; max-width: none; }
-    .btn-hero { width: 100%; justify-content: center; font-size: 0.88rem; }
+    .hero { min-height: calc(100svh - 64px); padding: 6vh 0 5vh; }
+    .hero-bg img { object-position: 25% center; }
+    .hero-content { padding: 0 1.4rem; }
+    .hero-headline { font-size: clamp(2.6rem, 9vw, 3.2rem) !important; line-height: 1.0; }
+    .hero-tagline { font-size: 1.1rem; font-weight: 400; max-width: none; }
+    .btn-hero { width: 100%; justify-content: center; font-size: 0.9rem; }
+    .hero-trust { bottom: auto; top: 5.5rem; right: 1.4rem; }
+    .hero-trust-num { font-size: 1.8rem; }
+    .hero-trust-label { font-size: 0.62rem; }
 
     /* What you receive */
     .wyg-section { padding: 3rem 1.4rem; }
     .wyg-grid { grid-template-columns: 1fr; gap: 0.9rem; }
     .wyg-card { padding: 1.3rem; margin-bottom: 0; }
     .wyg-card-title { font-size: 1rem; }
-    .wyg-card-body { padding-left: 0; margin-top: 0.6rem; line-height: 1.7; }
+    .wyg-card-body { padding-left: 0; margin-top: 0.6rem; font-size: 0.95rem; line-height: 1.7; }
 
     /* Section commons */
     .section-wrap { padding: 3rem 1.4rem; }
@@ -1127,7 +780,7 @@
     .causes-grid { grid-template-columns: 1fr; gap: 0.9rem; }
     .cause-card { padding: 1.4rem; }
     .cause-title { font-size: 1.05rem; }
-    .cause-desc { line-height: 1.7; }
+    .cause-desc { font-size: 0.95rem; line-height: 1.7; }
 
     /* Process */
     .step-card { grid-template-columns: 52px 1fr; }
@@ -1136,8 +789,8 @@
     .step-content { padding: 1.4rem 1.2rem; }
     .step-badge { font-size: 0.72rem; }
     .step-title { font-size: 1.05rem; }
-    .step-body { line-height: 1.7; }
-    .step-list li { font-size: 0.95rem; }
+    .step-body { font-size: 0.95rem; line-height: 1.7; }
+    .step-list li { font-size: 0.9rem; }
 
     /* Botanical strip */
     .botanical-strip { height: 240px !important; }
@@ -1147,6 +800,10 @@
     .facility-eyebrow { font-size: 0.78rem; }
     .facility-body { font-size: 1.05rem; }
     .f-pill { font-size: 0.85rem; }
+    .facility-stats { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+    .fac-stat { padding: 1.1rem 0.7rem; }
+    .fac-stat-num { font-size: 1.7rem; }
+    .fac-stat-label { font-size: 0.78rem; }
 
     /* Testimonials */
     .test-grid { grid-template-columns: 1fr; gap: 0.9rem; }
@@ -1156,18 +813,18 @@
     .test-condition { font-size: 0.8rem; }
     .test-stars { font-size: 0.85rem; }
 
-    /* Team */
-    .team-grid { grid-template-columns: 1fr; gap: 1.2rem; }
-    .team-photo { aspect-ratio: 3/2; }
-    .team-card-body { padding: 1.4rem; }
-    .team-name { font-size: 1.2rem; }
-    .team-bio { font-size: 1.05rem; }
-    .team-cred-row { font-size: 0.95rem; }
-    .team-intro { font-size: 1.05rem; margin-bottom: 2rem; }
+    /* Dr Bernie */
+    .bernie-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .bernie-photo-col { order: -1; }
+    .bernie-photo-frame { aspect-ratio: 4/3; max-height: 260px; }
+    .bernie-badge { font-size: 0.78rem; }
+    .bernie-text { font-size: 1.05rem; }
+    .cred-row { font-size: 0.95rem; }
     .bernie-quote-card { padding: 1.5rem 1.2rem; }
     .bqc-mark { font-size: 3rem; }
     .bernie-quote-text { font-size: 1.05rem; }
     .bernie-quote-attr { font-size: 0.85rem; }
+    .scripture { font-size: 1rem; }
 
     /* CTA / Booking */
     .cta-section { padding: 3rem 1.4rem; }
@@ -1184,28 +841,6 @@
     .form-disclaimer { font-size: 0.82rem; }
     .btn-submit { font-size: 0.95rem; padding: 1.1rem; }
 
-    /* Mid-page CTA bar */
-    .mid-cta { flex-direction: column; align-items: flex-start; padding: 2rem 1.4rem; gap: 1rem; }
-    .mid-cta-text { font-size: 1.1rem; }
-    .mid-cta-btn { align-self: stretch; text-align: center; }
-
-    /* Process sticky header — not needed on single-column mobile */
-    .process-header { position: static; }
-
-    /* Font size floor — all readable content minimum 1rem */
-    .truth-transition { font-size: 1.15rem; }
-    .truth-explanation { font-size: 1rem; }
-    .quiz-subtext { font-size: 1rem; }
-    .choice-card { font-size: 1rem; }
-    .symptom-check-label { font-size: 1rem; }
-    .symptom-label { font-size: 1rem; }
-    .goal-text { font-size: 1rem; }
-    .quiz-offer-row { font-size: 0.95rem; }
-    .step-list li { font-size: 1rem; }
-
-    /* Truth section quote mark — reduce size to avoid overlap */
-    .truth-card::before { font-size: 4.5rem; top: 0.5rem; right: 1rem; }
-
     /* Footer */
     footer { padding: 2rem 1.4rem; gap: 1rem; }
     .footer-note { font-size: 0.82rem; }
@@ -1215,56 +850,41 @@
 
   /* WHAT HEALING LOOKS LIKE */
   .transform-section { background: var(--warm-white); padding: 7rem 6rem; border-bottom: 1px solid var(--blush-deep); }
-  .transform-inner { max-width: 1200px; margin: 0 auto; }
+  .transform-inner { max-width: 1100px; margin: 0 auto; }
   .transform-header { text-align: center; margin-bottom: 5rem; }
-  .transform-header .section-eyebrow { justify-content: center; }
-  .transform-grid { display: flex; flex-direction: column; gap: 0; max-width: 680px; margin: 0 auto; }
-  .transform-card {
-    display: flex; flex-direction: column; align-items: center; text-align: center;
-    padding: 3.5rem 2rem; border-bottom: 1px solid var(--blush-deep);
-    opacity: 0; transform: translateY(40px);
-    transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
-    transition-delay: var(--d, 0ms);
+  .transform-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4rem 2.5rem; }
+  .transform-card { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 1rem; }
+  .transform-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--sage-pale); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.2rem; font-size: 1.2rem; color: var(--sage-dark); flex-shrink: 0; }
+  .transform-before {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--rose-dark);
+    line-height: 1.5; min-height: 2.2em;
+    display: flex; align-items: flex-end; justify-content: center;
   }
-  .transform-card:last-child { border-bottom: none; }
-  .transform-card.visible { opacity: 1; transform: none; }
-  .transform-icon { width: 64px; height: 64px; border-radius: 50%; background: var(--sage-pale); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.2rem; font-size: 1.4rem; color: var(--sage-dark); flex-shrink: 0; }
-  .transform-before { font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--rose-dark); line-height: 1.5; margin-bottom: 0.5rem; }
-  .transform-arrow { font-size: 1.1rem; color: var(--rose); margin: 0.5rem 0; line-height: 1; }
-  .transform-after { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; color: var(--sage-dark); line-height: 1.2; margin-bottom: 1rem; }
-  .transform-detail { font-size: 1rem; font-weight: 400; line-height: 1.75; color: var(--text-mid); max-width: 52ch; }
+  .transform-arrow { font-size: 1rem; color: var(--rose); margin: 0.5rem 0; line-height: 1; flex-shrink: 0; }
+  .transform-after {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.45rem; font-weight: 600;
+    color: var(--sage-dark); line-height: 1.25;
+    margin-bottom: 0.7rem;
+  }
+  .transform-detail { font-size: 0.84rem; font-weight: 300; line-height: 1.7; color: var(--text-mid); }
   .transform-footer { text-align: center; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--blush-deep); }
-  .transform-footer p { font-family: 'DM Sans', sans-serif; font-size: 1.15rem; font-weight: 400; color: var(--text-dark); max-width: 620px; margin: 0 auto; line-height: 1.6; }
-  /* Team photo */
-  .team-photo { aspect-ratio: 4/5; width: 100%; position: relative; overflow: hidden; }
-  .team-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
-  @media (max-width: 900px) {
-    .transform-section { padding: 5rem 3rem; }
-  }
-  @media (max-width: 600px) {
-    .transform-section { padding: 4rem 1.4rem; }
-    .transform-card { padding: 2.5rem 1rem; --d: 0ms !important; }
-    .transform-after { font-size: 1.6rem; }
-    .transform-detail { font-size: 0.95rem; }
-    .transform-after { font-size: 1.75rem; }
-  }
+  .transform-footer p { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 400; color: var(--text-mid); max-width: 620px; margin: 0 auto; line-height: 1.6; }
+  @media (max-width: 900px) { .transform-section { padding: 5rem 3rem; } .transform-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .transform-section { padding: 4rem 1.4rem; } .transform-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="nav-logo">
-    <img src="assets/images/herbernie-logo.webp" alt="" class="nav-logo-icon" width="34" height="34">
-    <div class="nav-logo-text">
-      <span class="nav-logo-sub">herbernie</span>
-      <span class="nav-logo-main">Natural <span>Healing</span> for Life</span>
-    </div>
-  </div>
+  <div class="nav-logo"><span class="nav-logo-sub">herbernie</span><span class="nav-logo-main">Natural <span>Healing</span> for Life</span></div>
   <div class="nav-links">
-    <a href="#causes">Why You're Not Getting Better</a>
-    <a href="#process">What Healing Looks Like</a>
-    <a href="#stories">Real Stories</a>
-    <a href="#about">Your Practitioners</a>
+    <a href="#causes">Why You're Suffering</a>
+    <a href="#process">The Transformation</a>
+    <a href="#stories">Stories</a>
+    <a href="#about">Dr. Lurie</a>
   </div>
   <a href="#consult" class="nav-cta">Book Online Consultation</a>
 </nav>
@@ -1273,23 +893,29 @@
 <section class="hero">
   <div class="hero-bg">
     <img
-      src="assets/images/hero-woman.webp"
-      alt="Woman relaxed and confident after hormonal healing"
-      width="1920" height="1080"
+      src="assets/images/hero-new.png"
+      alt="Woman in a sunlit field gathering wild botanicals"
+      width="1400" height="500"
     >
   </div>
+
   <div class="hero-content">
-    <div class="hero-kicker">Your Health. The Full Picture.</div>
+    <div class="hero-kicker">Women's Hormonal Healing</div>
     <h1 class="hero-headline">
       <span class="hl-line">Stop Accepting</span>
       <span class="script">This as Normal.</span>
-      <span class="sage-word">Your body knows how to heal. <img src="assets/images/herbernie-logo.webp" alt="" class="hero-leaf" width="48" height="48"></span>
+      <span class="sage-word">Your body knows how to heal.</span>
     </h1>
     <p class="hero-tagline">Hot flushes, mood swings, sleepless nights, the fog, the weight — none of it is inevitable. It's addressable. And you deserve answers that actually work.</p>
     <a href="#consult" class="btn-hero">
-      I'm Done Managing. Let's Fix This
+      Book Your Online Consultation
       <span class="btn-hero-arrow">→</span>
     </a>
+  </div>
+
+  <div class="hero-trust">
+    <span class="hero-trust-num">Thousands</span>
+    <span class="hero-trust-label">of Women Helped</span>
   </div>
 </section>
 
@@ -1300,33 +926,30 @@
     <div class="truth-header reveal">
       <div class="section-eyebrow">What's Actually Happening</div>
       <h2 class="section-headline">
-        You Still Feel Like You Should Be Fine.<br>
-        <em>So Why Don't You Feel Like Yourself?</em>
+        You're Not Imagining It.<br>
+        You're Not Depressed.<br>
+        You're Not Getting Older <em>"Gracefully."</em>
       </h2>
-      <p class="truth-bridge">You wake up tired. You get through the day on willpower. By evening you're irritable for no reason you can name, and by the time your head hits the pillow, your mind won't stop. This isn't burnout. This isn't aging. This is a pattern — and patterns have a source.</p>
+      <p class="truth-subtext">You're hormonally imbalanced — and nobody's looked at the full picture.</p>
     </div>
 
     <div class="truth-grid">
       <div class="truth-card reveal" style="--d:0ms">
-        <p class="truth-quote">"I'm tired in a way I can't explain to anyone."</p>
-        <p class="truth-explanation">The exhaustion, the short fuse, the brain that won't cooperate — they didn't arrive all at once. They crept in slowly, which is partly why they're so easy to dismiss. <strong>Dismissed doesn't mean gone — it means unaddressed.</strong></p>
+        <p class="truth-quote">"My blood tests came back normal."</p>
+        <p class="truth-explanation">Normal compared to what? A single test on a single day tells your doctor almost nothing. Your hormones shift dramatically across a 28-day cycle. One snapshot — taken on the wrong day — looks completely different from a test taken two weeks later. <strong>A moving target is being treated as a fixed fact.</strong></p>
       </div>
       <div class="truth-card reveal" style="--d:120ms">
-        <p class="truth-quote">"Every doctor says something different. Nothing connects."</p>
-        <p class="truth-explanation">Broken sleep, low mood, weight that won't shift, energy that's gone — those aren't four separate problems. They're one pattern pointing to the same source. <strong>Treat them separately and none of them resolve.</strong></p>
+        <p class="truth-quote">"I've been on HRT and I'm getting worse."</p>
+        <p class="truth-explanation">That's not surprising. Most HRT adds more estrogen to a body that's already estrogen-saturated. Environmental chemicals in plastics, pesticides, and food packaging have been flooding your system with estrogen-mimicking compounds for decades. <strong>More estrogen isn't the answer. It may be the problem.</strong></p>
       </div>
       <div class="truth-card reveal" style="--d:240ms">
-        <p class="truth-quote">"I've been told my tests are normal. Or that it's stress. Or just aging."</p>
-        <p class="truth-explanation">You leave the appointment with no answers. Everything came back normal — but you don't feel normal. You go home and try to believe them. <strong>But the feeling doesn't go away. The cause was never found.</strong></p>
+        <p class="truth-quote">"I've been told it's stress. Or anxiety. Or just aging."</p>
+        <p class="truth-explanation">Some of those symptoms — the mood swings, the brain fog, the crashes, the sleeplessness — have a hormonal explanation that never got explored. The symptoms of hormonal imbalance and the symptoms of anxiety look identical on paper. <strong>One has a root cause that can be addressed.</strong></p>
       </div>
       <div class="truth-card reveal" style="--d:360ms">
         <p class="truth-quote">"I'm managing. But I'm not well."</p>
-        <p class="truth-explanation">Managing isn't healing. If you've restructured your life around symptoms you were told to accept, the problem hasn't gone away. <strong>You've gotten better at carrying it — not at healing from it.</strong></p>
+        <p class="truth-explanation">Managing isn't healing. If you've adjusted your life around symptoms you were told are just part of being a woman, you've been given an answer that <strong>stopped the conversation too early.</strong></p>
       </div>
-    </div>
-
-    <div class="truth-transition reveal">
-      <p>For most women in their 40s, these symptoms share a common thread: shifting hormone levels that affect everything from sleep and mood to weight and mental clarity. It's not a mystery. It's biology — and it's addressable.</p>
     </div>
 
     <div class="truth-closing reveal">
@@ -1337,56 +960,10 @@
   </div>
 </section>
 
-<!-- ROOT CAUSES -->
-<section class="causes-section section-wrap" id="causes">
-  <div class="causes-inner">
-    <div class="reveal-left">
-      <div class="section-eyebrow">What's Actually Going On</div>
-      <h2 class="section-headline">The Real Reason You Are Not Getting Better</h2>
-      <p class="section-subtext">Most women with hormonal imbalances have been given the wrong answer — often because they were asked the wrong question.</p>
-    </div>
-    <div class="causes-grid-wrap">
-      <div class="causes-subheading reveal">Hidden Barriers to Recovery</div>
-      <div class="causes-grid">
-        <div class="cause-card reveal" style="--d:0ms">
-          <div class="cause-icon"><i class="fas fa-flask"></i></div>
-          <div class="cause-title">Environmental Toxins</div>
-          <p class="cause-desc">Exposure to xenoestrogens in plastics (BPA), pesticides, and personal care products can mimic natural hormones. Many women are estrogen‑saturated long before their symptoms begin.</p>
-        </div>
-        <div class="cause-card reveal" style="--d:120ms">
-          <div class="cause-icon"><i class="fas fa-droplet"></i></div>
-          <div class="cause-title">Insulin Resistance</div>
-          <p class="cause-desc">High sugar intake and sedentary habits lead to insulin resistance, which is a primary driver of conditions like PCOS (polycystic ovary syndrome). If blood sugar isn't managed, hormonal treatments often fail.</p>
-        </div>
-        <div class="cause-card reveal" style="--d:240ms">
-          <div class="cause-icon"><i class="fas fa-bed"></i></div>
-          <div class="cause-title">Sleep Deprivation</div>
-          <p class="cause-desc">Most growth hormone production and hormonal resetting happens during deep sleep. Missing just one hour can lower insulin sensitivity and disrupt the balance of hunger and stress hormones.</p>
-        </div>
-        <div class="cause-card reveal" style="--d:360ms">
-          <div class="cause-icon"><i class="fas fa-triangle-exclamation"></i></div>
-          <div class="cause-title">The Blood Test Trap</div>
-          <p class="cause-desc">Your hormones shift hourly to daily across a 28‑day cycle. A test on the wrong day produces the wrong results — leading to the wrong treatment.</p>
-        </div>
-        <div class="cause-card reveal" style="--d:480ms">
-          <div class="cause-icon"><i class="fas fa-bolt"></i></div>
-          <div class="cause-title">Hormonal Shift</div>
-          <p class="cause-desc">For women, body changes at 40 originate from fluctuating hormone levels, and may include weight gain, muscle loss, dry skin, thinning hair, sleep issues, and brain fog — as well as decreased libido, mood swings, hot flashes, and irregular periods.</p>
-        </div>
-        <div class="cause-card reveal" style="--d:600ms">
-          <div class="cause-icon"><i class="fas fa-sun"></i></div>
-          <div class="cause-title">Stress Stealing Your Hormones</div>
-          <p class="cause-desc">Stress disrupts hormonal balance and affects ovulation. Elevated cortisol lowers estrogen and progesterone levels from the ovary. No supplement can fix this if the underlying stress load isn't addressed.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- MID-PAGE CTA -->
 <div class="mid-cta">
-  <p class="mid-cta-text">Now that you know what's actually going on — the next step is doing something about it.</p>
-  <a href="#consult" class="mid-cta-btn">This Is What I Want →</a>
+  <p class="mid-cta-text">Ready to understand what's really happening in your body — and finally get answers that work?</p>
+  <a href="#consult" class="mid-cta-btn">Book Your Consultation →</a>
 </div>
 
 <!-- WHAT HEALING LOOKS LIKE -->
@@ -1398,51 +975,84 @@
       <p class="section-subtext">Not a suppression of symptoms. A restoration of you.</p>
     </div>
     <div class="transform-grid">
-      <div class="transform-card" style="--d:0ms">
+      <div class="transform-card reveal" style="--d:0ms">
         <div class="transform-icon"><i class="fas fa-moon"></i></div>
         <div class="transform-before">Restless nights, 3am wake-ups</div>
         <div class="transform-arrow">↓</div>
-        <div class="transform-after">Waking up and actually feeling rested</div>
-        <p class="transform-detail">Progesterone (the relaxing hormone) is one of the body's primary sleep regulators. When it's balanced, sleep returns on its own.</p>
+        <div class="transform-after">Deep, uninterrupted sleep</div>
+        <p class="transform-detail">When progesterone is restored to its proper balance, sleep returns — naturally, without sedatives.</p>
       </div>
-      <div class="transform-card" style="--d:150ms">
+      <div class="transform-card reveal" style="--d:110ms">
         <div class="transform-icon"><i class="fas fa-brain"></i></div>
         <div class="transform-before">Brain fog, forgetfulness, the feeling of losing yourself</div>
         <div class="transform-arrow">↓</div>
-        <div class="transform-after">Finishing a thought without losing it halfway through</div>
+        <div class="transform-after">Mental clarity and confidence restored</div>
         <p class="transform-detail">Hormonal balance supports neurotransmitter function. The fog lifts. You think clearly again.</p>
       </div>
-      <div class="transform-card" style="--d:300ms">
+      <div class="transform-card reveal" style="--d:220ms">
         <div class="transform-icon"><i class="fas fa-heart"></i></div>
         <div class="transform-before">Mood swings, irritability, crying for no reason</div>
         <div class="transform-arrow">↓</div>
-        <div class="transform-after">Waking up and not immediately dreading the day</div>
+        <div class="transform-after">Emotional steadiness and calm</div>
         <p class="transform-detail">These aren't personality traits. They're symptoms. And symptoms with a hormonal root can be resolved.</p>
       </div>
-      <div class="transform-card" style="--d:0ms">
+      <div class="transform-card reveal" style="--d:0ms">
         <div class="transform-icon"><i class="fas fa-fire-flame-curved"></i></div>
         <div class="transform-before">Hot flushes, night sweats, constant discomfort</div>
         <div class="transform-arrow">↓</div>
         <div class="transform-after">Temperature stability, comfort in your own body</div>
-        <p class="transform-detail">Not managing the heat. Addressing what's causing it.</p>
+        <p class="transform-detail">Natural herbal protocols address the underlying deficiency — not just the sensation.</p>
       </div>
-      <div class="transform-card" style="--d:150ms">
+      <div class="transform-card reveal" style="--d:110ms">
         <div class="transform-icon"><i class="fas fa-battery-full"></i></div>
         <div class="transform-before">Fatigue that sleep doesn't fix</div>
         <div class="transform-arrow">↓</div>
-        <div class="transform-after">Getting to 4pm without running on fumes</div>
+        <div class="transform-after">Sustained energy through the day</div>
         <p class="transform-detail">When your hormones, thyroid, and adrenals work together as designed, energy stops being something you ration.</p>
       </div>
-      <div class="transform-card" style="--d:300ms">
+      <div class="transform-card reveal" style="--d:220ms">
         <div class="transform-icon"><i class="fas fa-person"></i></div>
         <div class="transform-before">Weight that doesn't move despite everything</div>
         <div class="transform-arrow">↓</div>
-        <div class="transform-after">Eating well, moving your body, and actually seeing it respond</div>
-        <p class="transform-detail">Hormonal imbalance is a primary driver of stubborn weight gain. When the root cause is corrected, the body's metabolism begins to respond.</p>
+        <div class="transform-after">Metabolic balance and body confidence</div>
+        <p class="transform-detail">Estrogen dominance directly drives weight gain. Address the cause, and the body responds.</p>
       </div>
     </div>
     <div class="transform-footer reveal">
-      <p>Most patients notice meaningful improvement within 2 weeks, with significant change within 3–6 months. Hormonal healing takes time — because it's real healing, not symptom management.</p>
+      <p>Most patients notice meaningful improvement within 4–6 weeks, with significant change within 3–6 months. Hormonal healing takes time — because it's real healing, not symptom management.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU RECEIVE -->
+<section class="wyg-section">
+  <div class="wyg-section-inner">
+    <div class="wyg-section-header">
+      <div class="section-eyebrow" style="justify-content:center;">What You Receive</div>
+      <h2 class="section-headline" style="text-align:center;">A Plan Built Around <em>You</em>,<br>Tailored to Your Body's Needs</h2>
+    </div>
+    <div class="wyg-grid">
+      <div class="wyg-card reveal" style="--d:0ms">
+        <div class="wyg-card-top">
+          <div class="wyg-icon rose-bg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg></div>
+          <div class="wyg-card-title">Your Personal Healing Plan</div>
+        </div>
+        <div class="wyg-card-body">A comprehensive, individually tailored transformation — diet, detox, lifestyle, and herbal support — built around your unique hormonal picture, not a generic template.</div>
+      </div>
+      <div class="wyg-card reveal" style="--d:110ms">
+        <div class="wyg-card-top">
+          <div class="wyg-icon sage-bg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sage-dark)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22C6.5 22 2 17.5 2 12c0-4 2.5-7.5 6-9"/><path d="M12 22c3-3 4-6 4-10 0-3-1-5.5-3-7.5"/><path d="M12 22c-3-3-4-6-4-10 0-2 .5-4 1.5-5.5"/><path d="M8 3c1.2 1.2 2.5 2.5 4 3s3.5 1 5 .5"/></svg></div>
+          <div class="wyg-card-title">Custom Natural Supplementation</div>
+        </div>
+        <div class="wyg-card-body">Targeted supplements and herbal formulations prescribed specifically for your condition — chosen with precision, not pulled off a shelf.</div>
+      </div>
+      <div class="wyg-card reveal" style="--d:220ms">
+        <div class="wyg-card-top">
+          <div class="wyg-icon gold-bg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6l1 7H8L9 3z"/><path d="M8 10c-2 2-3 4-3 6a7 7 0 0 0 14 0c0-2-1-4-3-6"/><line x1="9" y1="14" x2="15" y2="14"/></svg></div>
+          <div class="wyg-card-title">Remedies from Our Own Clinical Facility</div>
+        </div>
+        <div class="wyg-card-body">Many formulations are manufactured in our own clinical facility — ensuring the purity, potency, and therapeutic quality your healing demands.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1485,38 +1095,34 @@
   </div>
 </div>
 
-<!-- PROCESS -->
-<section class="process-section section-wrap" id="process">
-  <div class="process-inner">
-    <div class="process-header reveal">
-      <div class="section-eyebrow">How we work</div>
-      <h2 class="section-headline">A Diagnosis Built Around<br><em>Your Whole Cycle</em></h2>
-      <p class="section-subtext" style="margin-top:1rem;">Before any remedy is prescribed, we take the time to understand what you're actually dealing with. Not just a symptom list — the full picture of what's been happening in your body and your life.</p>
+<!-- ROOT CAUSES -->
+<section class="causes-section section-wrap" id="causes">
+  <div class="causes-inner">
+    <div class="reveal-left">
+      <div class="section-eyebrow">What's Actually Going On</div>
+      <h2 class="section-headline">The Real Reason You Haven't Gotten Better</h2>
+      <p class="section-subtext">Most women with hormonal imbalances have been given the wrong answer — often because they were asked the wrong question. A single blood test on a single day tells your doctor almost nothing. Your hormones change dramatically across a 28-day cycle. Treating one snapshot as the whole truth is why so many women don't improve. And sometimes get worse.</p>
     </div>
-    <div class="steps-row reveal">
-      <div class="step-card">
-        <div class="step-num-col"><div class="step-num">01</div></div>
-        <div class="step-content">
-          <span class="step-badge">Assessment</span>
-          <h3 class="step-title">Understanding What's Actually Happening</h3>
-          <p class="step-body">Before anything is prescribed, we'll want to understand what you've actually been experiencing — the fatigue, the sleep, the mood, the body, and when it all started.</p>
-        </div>
+    <div class="causes-grid">
+      <div class="cause-card reveal" style="--d:0ms">
+        <div class="cause-icon"><i class="fas fa-flask"></i></div>
+        <div class="cause-title">Xenoestrogen Overload</div>
+        <p class="cause-desc">Plastics, pesticides, and food packaging flood your body with estrogen-mimicking chemicals. Most women are estrogen-saturated long before symptoms begin.</p>
       </div>
-      <div class="step-card">
-        <div class="step-num-col"><div class="step-num">02</div></div>
-        <div class="step-content">
-          <span class="step-badge">Treatment</span>
-          <h3 class="step-title">Targeted Herbal Support</h3>
-          <p class="step-body">Balancing herbs work with the body's own intelligence. They restore its feedback mechanisms so it can regulate itself correctly — from within. Many formulations are prepared in our own clinical facility, timed specifically to your hormonal cycle where needed.</p>
-        </div>
+      <div class="cause-card reveal" style="--d:120ms">
+        <div class="cause-icon"><i class="fas fa-triangle-exclamation"></i></div>
+        <div class="cause-title">The Blood Test Trap</div>
+        <p class="cause-desc">Your hormones shift completely across a 28-day cycle. A test on the wrong day produces the wrong picture — and the wrong treatment.</p>
       </div>
-      <div class="step-card">
-        <div class="step-num-col"><div class="step-num">03</div></div>
-        <div class="step-content">
-          <span class="step-badge">Ongoing Care</span>
-          <h3 class="step-title">Continuous Care as You Heal</h3>
-          <p class="step-body">Hormonal healing is a process — and a meaningful one. As your body relearns how to regulate itself, your treatment is adjusted at every step. Most patients notice meaningful improvement within 2 weeks, with significant change within 3–6 months.</p>
-        </div>
+      <div class="cause-card reveal" style="--d:240ms">
+        <div class="cause-icon"><i class="fas fa-bolt"></i></div>
+        <div class="cause-title">Progesterone Deficiency</div>
+        <p class="cause-desc">After 40, progesterone drops faster than estrogen — causing hot flushes, depression, and night sweats that are medicated instead of corrected.</p>
+      </div>
+      <div class="cause-card reveal" style="--d:360ms">
+        <div class="cause-icon"><i class="fas fa-sun"></i></div>
+        <div class="cause-title">Stress Stealing Your Hormones</div>
+        <p class="cause-desc">Chronic stress steals the building blocks your body uses to make progesterone. No supplement can fix this if the underlying stress load isn't addressed.</p>
       </div>
     </div>
   </div>
@@ -1524,38 +1130,60 @@
 
 <!-- MID-PAGE CTA -->
 <div class="mid-cta">
-  <p class="mid-cta-text">You've been asking the right questions. Let's find the answers.</p>
-  <a href="#consult" class="mid-cta-btn">Book My Consultation →</a>
+  <p class="mid-cta-text">Ready to understand what's really happening in your body — and finally get answers that work?</p>
+  <a href="#consult" class="mid-cta-btn">Book Your Consultation →</a>
 </div>
 
-<!-- WHAT YOU RECEIVE -->
-<section class="wyg-section">
-  <div class="wyg-section-inner">
-    <div class="wyg-section-header">
-      <div class="section-eyebrow" style="justify-content:center;">What You Receive</div>
-      <h2 class="section-headline" style="text-align:center;">A Plan Built Around <em>You</em>,<br>Tailored to Your Body's Needs</h2>
+<!-- PROCESS -->
+<section class="process-section section-wrap" id="process">
+  <div class="process-inner">
+    <div class="process-header reveal">
+      <div class="section-eyebrow">How we work</div>
+      <h2 class="section-headline">A Diagnosis Built Around<br><em>Your Whole Cycle</em></h2>
+      <p class="section-subtext" style="margin-top:1rem;">Every woman's hormonal picture is unique — and your care should be too. Before any treatment, we take the time to understand exactly where you are in your cycle, which patterns dominate, and what your body truly needs to heal.</p>
     </div>
-    <div class="wyg-grid">
-      <div class="wyg-card reveal" style="--d:0ms">
-        <div class="wyg-card-top">
-          <div class="wyg-icon rose-bg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg></div>
-          <div class="wyg-card-title">Your Personal Healing Plan</div>
+    <div class="steps-row reveal">
+      <div class="step-card">
+        <div class="step-num-col"><div class="step-num">01</div></div>
+        <div class="step-content">
+          <span class="step-badge">Assessment</span>
+          <h3 class="step-title">Read the Full Picture</h3>
+          <p class="step-body">Most practitioners diagnose on a single visit. We assess symptom patterns across your entire cycle — because that's the only way to know whether you're dealing with estrogen dominance, progesterone deficiency, or both at different points in your month. That distinction determines everything that follows.</p>
+          <ul class="step-list">
+            <li>Full symptom history across the cycle</li>
+            <li>Estrogen vs progesterone mapping</li>
+            <li>Environmental & dietary factors</li>
+            <li>Stress and adrenal load assessed</li>
+          </ul>
         </div>
-        <div class="wyg-card-body">Not a protocol pulled from a template. Every recommendation — eating habits, lifestyle, and natural support — is built around what's actually happening in your body.</div>
       </div>
-      <div class="wyg-card reveal" style="--d:110ms">
-        <div class="wyg-card-top">
-          <div class="wyg-icon sage-bg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sage-dark)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22C6.5 22 2 17.5 2 12c0-4 2.5-7.5 6-9"/><path d="M12 22c3-3 4-6 4-10 0-3-1-5.5-3-7.5"/><path d="M12 22c-3-3-4-6-4-10 0-2 .5-4 1.5-5.5"/><path d="M8 3c1.2 1.2 2.5 2.5 4 3s3.5 1 5 .5"/></svg></div>
-          <div class="wyg-card-title">Custom Natural Supplementation</div>
+      <div class="step-card">
+        <div class="step-num-col"><div class="step-num">02</div></div>
+        <div class="step-content">
+          <span class="step-badge">Treatment</span>
+          <h3 class="step-title">Targeted Herbal Support</h3>
+          <p class="step-body">Balancing herbs don't force the body in one direction. They restore the body's own feedback mechanisms so it can regulate itself correctly — from within. Many formulations are prepared in our own clinical facility, timed specifically to your hormonal cycle where needed.</p>
+          <ul class="step-list">
+            <li>Herbs matched to your hormonal pattern</li>
+            <li>Formulations timed to your cycle</li>
+            <li>Nutritional deficiencies addressed</li>
+            <li>Hormone disruptors eliminated</li>
+          </ul>
         </div>
-        <div class="wyg-card-body">The supplements and herbal formulations prescribed here are chosen for your specific condition. What works for one woman may actively interfere with another's healing.</div>
       </div>
-      <div class="wyg-card reveal" style="--d:220ms">
-        <div class="wyg-card-top">
-          <div class="wyg-icon gold-bg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6l1 7H8L9 3z"/><path d="M8 10c-2 2-3 4-3 6a7 7 0 0 0 14 0c0-2-1-4-3-6"/><line x1="9" y1="14" x2="15" y2="14"/></svg></div>
-          <div class="wyg-card-title">Remedies from Our Own Clinical Facility</div>
+      <div class="step-card">
+        <div class="step-num-col"><div class="step-num">03</div></div>
+        <div class="step-content">
+          <span class="step-badge">Ongoing Care</span>
+          <h3 class="step-title">Monitor and Adjust</h3>
+          <p class="step-body">Hormonal healing takes months, not weeks. As your body relearns how to regulate itself, your transformation is adjusted accordingly. Most patients notice meaningful improvement within 4–6 weeks, with significant change within 3–6 months.</p>
+          <ul class="step-list">
+            <li>Symptom tracking across the full cycle</li>
+            <li>Plan refined as your body responds</li>
+            <li>Diet, stress and detox supported</li>
+            <li>No reliance on synthetic hormones</li>
+          </ul>
         </div>
-        <div class="wyg-card-body">Many formulations are manufactured in Dr. Lurie's own facility. That means what's on the label is what's in the bottle — at the strength your treatment actually requires.</div>
       </div>
     </div>
   </div>
@@ -1569,8 +1197,8 @@
   <div style="position:absolute;inset:0;background:rgba(42,32,28,0.38);"></div>
   <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:3rem;">
     <div>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,2.5vw,2.1rem);font-style:italic;font-weight:400;color:white;max-width:55ch;line-height:1.65;text-shadow:0 2px 24px rgba(0,0,0,0.5);">"The earth has given us everything we need. The art is in knowing how to use it."</p>
-      <p style="font-family:'DM Sans',sans-serif;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--blush-deep);margin-top:1.2rem;font-weight:500;text-shadow:0 1px 10px rgba(0,0,0,0.5);">— Dr. Bernard Lurie, N.D.</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,2.5vw,2.1rem);font-style:italic;font-weight:300;color:white;max-width:55ch;line-height:1.65;text-shadow:0 2px 24px rgba(0,0,0,0.5);">"The earth has given us everything we need. The art is in knowing how to use it."</p>
+      <p style="font-family:'Jost',sans-serif;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--blush-deep);margin-top:1.2rem;font-weight:500;text-shadow:0 1px 10px rgba(0,0,0,0.5);">— Dr. Bernard Lurie, N.D.</p>
     </div>
   </div>
 </div>
@@ -1578,23 +1206,23 @@
 <!-- FACILITY -->
 <section class="facility-section">
   <div class="facility-inner">
-    <div class="facility-left-col">
-      <div class="reveal-left">
-        <div class="facility-eyebrow">Dr. Lurie's Clinical Facility</div>
-        <h2 class="facility-headline">Remedies Made With Intention,<br><em>Crafted for Your Healing</em></h2>
-        <p class="facility-body">Unlike generic health supplements, many of the formulations Dr. Lurie prescribes are manufactured in his own clinical facility — ensuring precise potency, exceptional purity, and the therapeutic quality your body deserves. Each remedy is chosen and prepared specifically for you, not mass-produced for the shelf.</p>
-        <div class="facility-pills">
-          <span class="f-pill">Restful Sleep</span>
-          <span class="f-pill">Clear-Headed Days</span>
-          <span class="f-pill">Mood Stability</span>
-          <span class="f-pill">Balanced Cycles</span>
-          <span class="f-pill">Renewed Energy</span>
-          <span class="f-pill">Confidence Restored</span>
-        </div>
+    <div class="reveal-left">
+      <div class="facility-eyebrow">Dr. Lurie's Clinical Facility</div>
+      <h2 class="facility-headline">Remedies Made With Intention,<br><em>Crafted for Your Healing</em></h2>
+      <p class="facility-body">Unlike generic health supplements, many of the formulations Dr. Lurie prescribes are manufactured in his own clinical facility — ensuring precise potency, exceptional purity, and the therapeutic quality your body deserves. Each remedy is chosen and prepared specifically for you, not mass-produced for the shelf.</p>
+      <div class="facility-pills">
+        <span class="f-pill">Restful Sleep</span>
+        <span class="f-pill">Clear-Headed Days</span>
+        <span class="f-pill">Mood Stability</span>
+        <span class="f-pill">Balanced Cycles</span>
+        <span class="f-pill">Renewed Energy</span>
+        <span class="f-pill">Confidence Restored</span>
       </div>
     </div>
-    <div class="facility-image-col reveal-right">
-      <img src="assets/images/practice-dispensary.webp" alt="Herbernie International dispensary — natural remedies on shelf" width="1024" height="1024" loading="lazy">
+    <div class="facility-stats reveal-right">
+      <div class="fac-stat"><span class="fac-stat-num" data-count="40" data-suffix="+">40+</span><div class="fac-stat-label">Years Clinical Experience</div></div>
+      <div class="fac-stat"><span class="fac-stat-num" data-count="100" data-suffix="%">100%</span><div class="fac-stat-label">Natural Formulations</div></div>
+      <div class="fac-stat"><span class="fac-stat-num">Custom</span><div class="fac-stat-label">Every Prescription</div></div>
     </div>
   </div>
 </section>
@@ -1630,350 +1258,93 @@
   </div>
 </section>
 
-<!-- TEAM -->
-<section class="team-section section-wrap" id="about">
-  <div class="team-inner">
-    <div class="team-header reveal">
-      <div class="section-eyebrow" style="justify-content:center;">The Practice</div>
-      <h2 class="section-headline" style="text-align:center;">The People Behind<br><em>Your Healing</em></h2>
-    </div>
-    <p class="team-intro reveal" style="--d:100ms">Herbernie International is built on over four decades of clinical experience and a shared conviction: the body's capacity to heal is extraordinary — it simply needs the right support. Dr. Lurie and Joanne work together to ensure every patient receives care that is genuinely individual, thorough, and grounded in natural medicine.</p>
-    <div class="team-grid">
-      <div class="team-card reveal" style="--d:0ms">
-        <div class="team-photo">
-          <img src="assets/images/bernie-portrait.webp" alt="Dr. Bernard Lurie, N.D." width="1200" height="1200" loading="lazy">
-          <div class="team-photo-badge">
-            <span class="team-photo-badge-num">43+</span>
-            <span class="team-photo-badge-label">Years Practice</span>
-          </div>
-        </div>
-        <div class="team-card-body">
-          <div class="team-name">Dr. Bernard Lurie</div>
-          <div class="team-title">Naturopath (PhD) · Western Medical Herbalist (DSc)</div>
-          <p class="team-bio">Bernard Lurie has spent more than four decades working at the frontier of natural medicine. As founder of Herbernie International in Port Elizabeth, he has treated thousands of patients across South Africa — integrating herbal medicine, naturopathy, iridology, and osteopathy into a model of care that addresses root causes, not symptoms. His work is guided by a conviction held for over forty years: the body knows how to heal. The practitioner's role is to give it what healing requires.</p>
-          <div class="team-creds">
-            <div class="team-cred-row"><div class="team-cred-pip"></div>PhD Naturopathy · DSc Western Medical Herbalism</div>
-            <div class="team-cred-row"><div class="team-cred-pip"></div>Qualified in osteopathy, iridology &amp; nutrition</div>
-            <div class="team-cred-row"><div class="team-cred-pip"></div>Founder, Herbernie International — Port Elizabeth</div>
-            <div class="team-cred-row"><div class="team-cred-pip"></div>Online consultations available worldwide</div>
-          </div>
-        </div>
-      </div>
-      <div class="team-card reveal" style="--d:160ms">
-        <div class="team-photo">
-          <img src="assets/images/joanne-portrait.webp" alt="Joanne Buckingham, Natural Health Practitioner" width="1000" height="1334" loading="lazy">
-          <div class="team-photo-badge">
-            <span class="team-photo-badge-num">7+</span>
-            <span class="team-photo-badge-label">Years Clinical</span>
-          </div>
-        </div>
-        <div class="team-card-body">
-          <div class="team-name">Joanne Buckingham</div>
-          <div class="team-title">Registered Natural Health Practitioner</div>
-          <p class="team-bio">Joanne is a registered natural health practitioner specialising in herbal medicine and clinical nutrition. Over seven years working alongside Dr. Lurie, she has developed deep expertise in hormonal assessment, treatment planning, and long-term health optimisation. Her approach is patient-centred and practical — rooted in the same philosophy that drives the practice: understand the full picture first, then build a plan that actually works. She is also the co-founder of Soul Essentials, a natural beauty and wellness range for women.</p>
-          <div class="team-creds">
-            <div class="team-cred-row"><div class="team-cred-pip"></div>Diploma in Nutrition &amp; Advanced Herbalism</div>
-            <div class="team-cred-row"><div class="team-cred-pip"></div>Specialised in hormonal conditions &amp; women's health</div>
-            <div class="team-cred-row"><div class="team-cred-pip"></div>7 years clinical experience at Herbernie International</div>
-            <div class="team-cred-row"><div class="team-cred-pip"></div>Co-founder, Soul Essentials natural wellness range</div>
-          </div>
-        </div>
+<!-- DR BERNIE -->
+<section class="bernie-section section-wrap" id="about">
+  <div class="bernie-inner">
+    <div class="reveal-left">
+      <div class="bernie-badge">✦ About Dr. Lurie</div>
+      <h2 class="bernie-headline">Bernard Lurie, N.D.<br><em>Four Decades at the Frontier of Natural Healing</em></h2>
+      <p class="bernie-text">I didn't choose natural medicine — it chose me. After watching the system fail too many patients, too many women especially, I devoted my practice to what I'd seen actually work: restoring the body's own extraordinary capacity to heal.</p>
+      <p class="bernie-text">In my Christian faith, I see God's hand in the design of the human body. You may call it nature's intelligence or the body's innate wisdom. Whatever name you give it, the principle remains: when we stop fighting the body and start supporting it, healing follows.</p>
+      <div class="bernie-creds">
+        <div class="cred-row"><div class="cred-pip"></div>40+ years naturopathic clinical practice</div>
+        <div class="cred-row"><div class="cred-pip"></div>Specialized focus in women's hormonal conditions</div>
+        <div class="cred-row"><div class="cred-pip"></div>Own manufacturing facility for bespoke natural remedies</div>
+        <div class="cred-row"><div class="cred-pip"></div>Online consultations available worldwide</div>
       </div>
     </div>
-    <div class="bernie-quote-card reveal" style="margin-top:2.5rem;--d:200ms">
-      <div class="bqc-mark">"</div>
-      <p class="bernie-quote-text">I have never seen a body that didn't want to heal. What I've seen is bodies that haven't been given what healing requires — the right nourishment, the right environment, and the right support. That is what we provide.</p>
-      <div class="bernie-quote-attr">— Dr. Bernard Lurie, N.D.</div>
+    <div class="reveal-right">
+      <div class="bernie-photo-col">
+        <div class="bernie-photo-frame">
+          <img src="https://vyager.com.br/wp-content/uploads/2026/02/Dr-Bernie-Lurie.png" 
+               alt="Dr. Bernard Lurie, N.D." 
+               class="bernie-photo-img">
+          <div class="bernie-photo-badge">
+            <span class="bernie-photo-badge-num">40+</span>
+            <span class="bernie-photo-badge-label">Years of Practice</span>
+          </div>
+        </div>
+        <div class="bernie-quote-card">
+          <div class="bqc-mark">"</div>
+          <p class="bernie-quote-text">I have never seen a body that didn't want to heal. What I've seen is bodies that haven't been given what healing requires — the right nourishment, the right environment, and the right support. That is what we provide.</p>
+          <div class="bernie-quote-attr">— Dr. Bernard Lurie, N.D.</div>
+          <div class="scripture">"And God said, Behold, I have given you every herb bearing seed... to you it shall be for food." — Genesis 1:29</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- CONSULTATION QUESTIONNAIRE -->
-<section class="quiz-section" id="consult">
-  <div class="quiz-wrap">
-
-    <!-- Screen 0: Intro -->
-    <div class="quiz-screen active" id="qs-0">
-      <div class="quiz-intro-wrap">
-        <div class="section-eyebrow" style="justify-content:center;margin-bottom:1.5rem;">Your First Step</div>
-        <h2 class="quiz-main-headline">Before your consultation,<br><em>tell us what's been going on.</em></h2>
-        <p class="quiz-intro-sub">This takes about 3 minutes. Your answers go directly to Dr.&nbsp;Lurie and Joanne before your session — so they already understand your situation when you meet.</p>
-        <p class="quiz-privacy"><i class="fa-solid fa-lock"></i> Your information is kept private and secure.</p>
-        <button class="quiz-btn-primary" onclick="quizGoTo(1)">Begin My Assessment &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
+<!-- CONSULTATION CTA -->
+<section class="cta-section" id="consult">
+  <div class="cta-inner">
+    <div class="cta-left reveal-left">
+      <div class="section-eyebrow">Your First Step</div>
+      <h2 class="cta-headline">Book Your Personal<br><em>Consultation</em> with Dr. Lurie</h2>
+      <p class="cta-sub">In a one-on-one online consultation, we will map your complete hormonal cycle and build a treatment plan designed entirely around you — your personal path to lasting balance and healing.</p>
+      <div class="cta-inclusions">
+        <div class="cta-inc-row"><div class="inc-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg></div>A comprehensive personal natural health transformation</div>
+        <div class="cta-inc-row"><div class="inc-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22C6.5 22 2 17.5 2 12c0-4 2.5-7.5 6-9"/><path d="M12 22c3-3 4-6 4-10 0-3-1-5.5-3-7.5"/><path d="M12 22c-3-3-4-6-4-10 0-2 .5-4 1.5-5.5"/><path d="M8 3c1.5 1.5 3 2.5 4 3 1.5.5 3.5 1 5 .5"/></svg></div>Custom supplementation prescribed for your specific condition</div>
+        <div class="cta-inc-row"><div class="inc-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6l1 7H8L9 3z"/><path d="M8 10c-2 2-3 4-3 6a7 7 0 0 0 14 0c0-2-1-4-3-6"/><line x1="9" y1="14" x2="15" y2="14"/></svg></div>Natural remedies and formulations from Dr. Lurie's own facility</div>
+        <div class="cta-inc-row"><div class="inc-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>Available online — wherever in the world you are</div>
       </div>
     </div>
-
-    <!-- Screen 1: Contact Details -->
-    <div class="quiz-screen" id="qs-1">
-      <div class="quiz-card">
-        <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:20%"></div></div>
-        <div class="quiz-step-label">Step 1 of 5</div>
-        <h3 class="quiz-headline">To book your consultation,<br>we need a few details first.</h3>
-        <p class="quiz-subtext">We'll also send your personalised assessment to this address once you complete the questionnaire.</p>
-        <div class="quiz-form-group">
-          <label class="quiz-form-label" for="q-name">First name</label>
-          <input class="quiz-form-input" id="q-name" type="text" placeholder="Your name" autocomplete="given-name">
-          <p class="quiz-field-error" id="err-name" style="display:none;">Please enter your first name.</p>
+    <div class="reveal-right">
+      <div class="booking-card">
+        <div class="booking-label">✦ Online Consultation Request</div>
+        <h3 class="booking-title">Begin Your Healing Journey</h3>
+        <p class="booking-sub">Fill in your details and Dr. Lurie's team will reach out within 24 hours to schedule your appointment.</p>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" placeholder="Your name"></div>
+          <div class="form-group"><label class="form-label">Age</label><input class="form-input" type="number" placeholder="e.g. 42"></div>
         </div>
-        <div class="quiz-form-group">
-          <label class="quiz-form-label" for="q-email">Email address</label>
-          <input class="quiz-form-input" id="q-email" type="email" placeholder="your@email.com" autocomplete="email">
-          <p class="quiz-field-error" id="err-email" style="display:none;">Please enter a valid email address.</p>
+        <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" type="email" placeholder="your@email.com"></div>
+        <div class="form-group">
+          <label class="form-label">Primary Concern</label>
+          <select class="form-select">
+            <option value="" disabled selected>What brings you here?</option>
+            <option>Thyroid issues (hypothyroid / Hashimoto's)</option>
+            <option>PCOS / irregular cycles</option>
+            <option>Perimenopause / menopause symptoms</option>
+            <option>Adrenal fatigue / chronic exhaustion</option>
+            <option>Fertility challenges</option>
+            <option>Estrogen dominance / PMS</option>
+            <option>Weight gain / metabolic issues</option>
+            <option>General hormonal imbalance</option>
+          </select>
         </div>
-        <div class="quiz-form-group">
-          <label class="quiz-form-label" for="q-whatsapp">WhatsApp <span class="quiz-optional">(optional)</span></label>
-          <div class="quiz-phone-wrap">
-            <span class="quiz-phone-prefix">+27</span>
-            <input class="quiz-form-input quiz-phone-input" id="q-whatsapp" type="tel" placeholder="082 123 4567" autocomplete="tel">
-          </div>
-        </div>
-        <p class="quiz-disclaimer" style="margin-bottom:1.2rem;">By continuing, you consent to Herbernie International collecting and using your personal information to process your consultation request and send your assessment results, in accordance with the Protection of Personal Information Act (POPIA). Your details will not be shared with third parties.</p>
-        <div class="quiz-nav">
-          <button class="quiz-btn-back" onclick="quizGoTo(0)"><i class="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
-          <button class="quiz-btn-primary" onclick="quizValidateContact()">Next &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
-        </div>
+        <div class="form-group"><label class="form-label">Briefly describe your situation (optional)</label><textarea class="form-input" rows="3" placeholder="How long have you been struggling? What have you tried?" style="resize:vertical;font-family:'Jost',sans-serif;"></textarea></div>
+        <button class="btn-submit">Request My Consultation →</button>
+        <p class="form-disclaimer">This consultation is for educational and clinical guidance purposes. Dr. Lurie will recommend natural health transformations under qualified practitioner supervision. Not a substitute for emergency or acute medical care.</p>
       </div>
     </div>
-
-    <!-- Screen 2: Symptom Selection -->
-    <div class="quiz-screen" id="qs-2">
-      <div class="quiz-card">
-        <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:40%"></div></div>
-        <div class="quiz-step-label">Step 2 of 5</div>
-        <h3 class="quiz-headline">Which of these sound familiar?</h3>
-        <p class="quiz-subtext">Select everything that applies to you.</p>
-        <div class="symptom-check-list">
-          <div class="symptom-check-row" data-symptom="hot-flushes" onclick="quizToggleSymptom(this)">
-            <div class="symptom-icon"><i class="fa-solid fa-fire-flame-curved"></i></div>
-            <span class="symptom-check-label">Hot flushes / night sweats</span>
-            <div class="symptom-check-dot"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
-          </div>
-          <div class="symptom-check-row" data-symptom="broken-sleep" onclick="quizToggleSymptom(this)">
-            <div class="symptom-icon"><i class="fa-solid fa-moon"></i></div>
-            <span class="symptom-check-label">Broken sleep or waking at 3am</span>
-            <div class="symptom-check-dot"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
-          </div>
-          <div class="symptom-check-row" data-symptom="fatigue" onclick="quizToggleSymptom(this)">
-            <div class="symptom-icon"><i class="fa-solid fa-battery-quarter"></i></div>
-            <span class="symptom-check-label">Fatigue that rest doesn't fix</span>
-            <div class="symptom-check-dot"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
-          </div>
-          <div class="symptom-check-row" data-symptom="brain-fog" onclick="quizToggleSymptom(this)">
-            <div class="symptom-icon"><i class="fa-solid fa-brain"></i></div>
-            <span class="symptom-check-label">Brain fog or forgetfulness</span>
-            <div class="symptom-check-dot"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
-          </div>
-          <div class="symptom-check-row" data-symptom="mood-swings" onclick="quizToggleSymptom(this)">
-            <div class="symptom-icon"><i class="fa-solid fa-cloud-bolt"></i></div>
-            <span class="symptom-check-label">Mood swings or irritability that don't feel like "you"</span>
-            <div class="symptom-check-dot"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
-          </div>
-          <div class="symptom-check-row" data-symptom="weight" onclick="quizToggleSymptom(this)">
-            <div class="symptom-icon"><i class="fa-solid fa-scale-balanced"></i></div>
-            <span class="symptom-check-label">Weight that won't shift no matter what you do</span>
-            <div class="symptom-check-dot"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
-          </div>
-          <div class="symptom-check-row" data-symptom="anxiety" onclick="quizToggleSymptom(this)">
-            <div class="symptom-icon"><i class="fa-solid fa-wind"></i></div>
-            <span class="symptom-check-label">Anxiety or a low mood that's crept in</span>
-            <div class="symptom-check-dot"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
-          </div>
-          <div class="symptom-check-row" data-symptom="cycles" onclick="quizToggleSymptom(this)">
-            <div class="symptom-icon"><i class="fa-solid fa-rotate"></i></div>
-            <span class="symptom-check-label">Irregular or changing cycles</span>
-            <div class="symptom-check-dot"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
-          </div>
-          <div class="symptom-check-row" data-symptom="libido" onclick="quizToggleSymptom(this)">
-            <div class="symptom-icon"><i class="fa-solid fa-heart-crack"></i></div>
-            <span class="symptom-check-label">Low libido or feeling disconnected from your body</span>
-            <div class="symptom-check-dot"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
-          </div>
-          <div class="symptom-check-row" data-symptom="joint-pain" onclick="quizToggleSymptom(this)">
-            <div class="symptom-icon"><i class="fa-solid fa-bone"></i></div>
-            <span class="symptom-check-label">Joint aches or bone pain</span>
-            <div class="symptom-check-dot"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
-          </div>
-          <div class="symptom-check-row" data-symptom="vaginal-dryness" onclick="quizToggleSymptom(this)">
-            <div class="symptom-icon"><i class="fa-solid fa-heart-crack"></i></div>
-            <span class="symptom-check-label">Discomfort or dryness during intimacy</span>
-            <div class="symptom-check-dot"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
-          </div>
-          <div class="symptom-check-row" data-symptom="breast-tenderness" onclick="quizToggleSymptom(this)">
-            <div class="symptom-icon"><i class="fa-solid fa-circle-dot"></i></div>
-            <span class="symptom-check-label">Sore or tender breasts, especially around your cycle</span>
-            <div class="symptom-check-dot"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
-          </div>
-        </div>
-        <p class="quiz-error" id="symptom-error" style="display:none;">Please select at least one symptom to continue.</p>
-        <div class="quiz-nav">
-          <button class="quiz-btn-back" onclick="quizGoTo(0)"><i class="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
-          <button class="quiz-btn-primary" onclick="quizBuildSeverity()">Next &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Screen 3: Severity (built dynamically) -->
-    <div class="quiz-screen" id="qs-3">
-      <div class="quiz-card">
-        <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:60%"></div></div>
-        <div class="quiz-step-label">Step 3 of 5</div>
-        <h3 class="quiz-headline">For the ones you've selected —<br>how much are they getting in the way?</h3>
-        <p class="quiz-subtext">This is where we start to understand the real impact.</p>
-        <div class="symptom-list" id="severity-list"></div>
-        <p class="quiz-note">There are no wrong answers here. The more honestly you respond, the more useful your consultation will be.</p>
-        <div class="quiz-nav">
-          <button class="quiz-btn-back" onclick="quizGoTo(2)"><i class="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
-          <button class="quiz-btn-primary" onclick="quizGoTo(4)">Next &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Screen 4: Duration + Prior Help -->
-    <div class="quiz-screen" id="qs-4">
-      <div class="quiz-card">
-        <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:60%"></div></div>
-        <div class="quiz-step-label">Step 3 of 5</div>
-        <div class="choice-group-label">How long have you been feeling like this?</div>
-        <div class="choice-group">
-          <div class="choice-card" data-group="duration" onclick="quizChoice('duration','under-6m',this)">
-            <div class="choice-radio"></div><span>Less than 6 months</span>
-          </div>
-          <div class="choice-card" data-group="duration" onclick="quizChoice('duration','6m-1yr',this)">
-            <div class="choice-radio"></div><span>6 months to a year</span>
-          </div>
-          <div class="choice-card" data-group="duration" onclick="quizChoice('duration','1-3yr',this)">
-            <div class="choice-radio"></div><span>1 to 3 years</span>
-          </div>
-          <div class="choice-card" data-group="duration" onclick="quizChoice('duration','3yr-plus',this)">
-            <div class="choice-radio"></div><span>More than 3 years — I've been dealing with this for a long time</span>
-          </div>
-        </div>
-        <div class="choice-group-label">Have you tried to get help for this before?</div>
-        <div class="choice-group">
-          <div class="choice-card" data-group="priorHelp" onclick="quizChoice('priorHelp','told-normal',this)">
-            <div class="choice-radio"></div><span>Yes — and I was told everything looked normal</span>
-          </div>
-          <div class="choice-card" data-group="priorHelp" onclick="quizChoice('priorHelp','tried-hrt',this)">
-            <div class="choice-radio"></div><span>Yes — I've tried HRT or prescription medication</span>
-          </div>
-          <div class="choice-card" data-group="priorHelp" onclick="quizChoice('priorHelp','tried-natural',this)">
-            <div class="choice-radio"></div><span>Yes — I've tried natural supplements, with mixed results</span>
-          </div>
-          <div class="choice-card" data-group="priorHelp" onclick="quizChoice('priorHelp','no-help',this)">
-            <div class="choice-radio"></div><span>No — I haven't known where to start</span>
-          </div>
-        </div>
-        <p class="quiz-note">Take your time. There's no rush here.</p>
-        <div class="quiz-nav">
-          <button class="quiz-btn-back" onclick="quizBackFromDuration()"><i class="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
-          <button class="quiz-btn-primary" onclick="quizGoTo(5)">Next &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Screen 5: Goals -->
-    <div class="quiz-screen" id="qs-5">
-      <div class="quiz-card">
-        <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:80%"></div></div>
-        <div class="quiz-step-label">Step 4 of 5</div>
-        <h3 class="quiz-headline">What would feeling like yourself again<br>actually give you?</h3>
-        <p class="quiz-subtext" style="margin-bottom:1.4rem;">If your energy and balance were restored — what's the first thing you'd do differently?</p>
-        <div class="goal-grid">
-          <div class="goal-card" onclick="quizGoal('patient',this)">
-            <div class="goal-icon"><i class="fa-solid fa-heart"></i></div>
-            <span class="goal-text">Be more patient and present with the people I love</span>
-          </div>
-          <div class="goal-card" onclick="quizGoal('work',this)">
-            <div class="goal-icon"><i class="fa-solid fa-briefcase"></i></div>
-            <span class="goal-text">Show up the way I want to at work again</span>
-          </div>
-          <div class="goal-card" onclick="quizGoal('movement',this)">
-            <div class="goal-icon"><i class="fa-solid fa-person-walking"></i></div>
-            <span class="goal-text">Move my body without paying for it the next day</span>
-          </div>
-          <div class="goal-card" onclick="quizGoal('myself',this)">
-            <div class="goal-icon"><i class="fa-solid fa-face-smile-beam"></i></div>
-            <span class="goal-text">Just feel like me — the version of me I recognise</span>
-          </div>
-          <div class="goal-card" onclick="quizGoal('other',this)">
-            <div class="goal-icon"><i class="fa-solid fa-pen"></i></div>
-            <span class="goal-text">Something else — I have my own answer</span>
-          </div>
-        </div>
-        <div class="quiz-nav" style="margin-top:1.8rem;">
-          <button class="quiz-btn-back" onclick="quizGoTo(4)"><i class="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
-          <button class="quiz-btn-primary" onclick="quizSubmit()">See My Results &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Screen 6: Confirmation -->
-    <div class="quiz-screen" id="qs-6">
-      <div class="quiz-card" style="text-align:center;">
-        <div class="quiz-confirm-icon"><i class="fa-solid fa-leaf"></i></div>
-        <h3 class="quiz-confirm-headline">Assessment complete</h3>
-        <div class="quiz-confirm-summary" id="quiz-summary-text"></div>
-        <div class="quiz-divider"></div>
-        <div class="quiz-offer-card" style="text-align:left;">
-          <div class="quiz-offer-label">✦ Your Initial Consultation</div>
-          <div class="quiz-offer-title">30-Minute Online Consultation</div>
-          <div class="quiz-offer-price">R490</div>
-          <div class="quiz-offer-rows">
-            <div class="quiz-offer-row"><i class="fa-solid fa-circle-check"></i>A comprehensive personal natural health transformation</div>
-            <div class="quiz-offer-row"><i class="fa-solid fa-circle-check"></i>Custom supplementation prescribed for your specific condition</div>
-            <div class="quiz-offer-row"><i class="fa-solid fa-circle-check"></i>Natural remedies from Dr. Lurie's own clinical facility</div>
-            <div class="quiz-offer-row"><i class="fa-solid fa-circle-check"></i>Available online — wherever in the world you are</div>
-          </div>
-          <p style="font-size:0.82rem;color:var(--text-light,#9a8880);margin:1.2rem 0 0;font-family:'DM Sans',sans-serif;">Consultation fee only. Prescribed medication and supplements are billed separately.</p>
-        </div>
-<label class="quiz-tos-label">
-          <input type="checkbox" id="tos-check" onchange="document.getElementById('confirm-btn').disabled=!this.checked">
-          <span>I agree to the <a href="/terms.html" class="quiz-tos-link" onclick="openTosModal(event)">Terms of Service</a></span>
-        </label>
-        <p class="quiz-disclaimer" style="margin-bottom:1rem;">After payment, you'll be taken directly to our booking calendar to choose your appointment time. The consultation is confirmed once both steps are complete.</p>
-        <div class="quiz-nav" style="margin-top:0;">
-          <button class="quiz-btn-back" onclick="quizGoTo(5)"><i class="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
-          <button class="quiz-btn-primary" id="confirm-btn" disabled onclick="initiatePayment()" style="flex:1;justify-content:center;min-width:0;">Confirm My Booking &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
-        </div>
-        <p class="quiz-disclaimer" id="payment-status"><i class="fa-solid fa-lock" style="font-size:0.75rem;margin-right:0.3rem;opacity:0.6;"></i>Secure online payment.</p>
-      </div>
-    </div>
-
   </div>
 </section>
-
-<!-- Privacy Modal -->
-<div class="tos-modal-overlay" id="privacy-modal" role="dialog" aria-modal="true" aria-label="Privacy Policy" onclick="if(event.target===this)closePrivacyModal()">
-  <div class="tos-modal">
-    <div class="tos-modal-header">
-      <span class="tos-modal-title">Privacy Policy</span>
-      <button class="tos-modal-close" onclick="closePrivacyModal()" aria-label="Close">&times;</button>
-    </div>
-    <iframe src="/privacy.html" title="Privacy Policy" loading="lazy"></iframe>
-  </div>
-</div>
-
-<!-- TOS Modal -->
-<div class="tos-modal-overlay" id="tos-modal" role="dialog" aria-modal="true" aria-label="Terms of Service" onclick="if(event.target===this)closeTosModal()">
-  <div class="tos-modal">
-    <div class="tos-modal-header">
-      <span class="tos-modal-title">Terms of Service</span>
-      <button class="tos-modal-close" onclick="closeTosModal()" aria-label="Close">&times;</button>
-    </div>
-    <iframe src="/terms.html" title="Terms of Service" loading="lazy"></iframe>
-  </div>
-</div>
 
 <footer>
-  <div class="nav-logo">
-    <img src="assets/images/herbernie-logo.webp" alt="" class="nav-logo-icon" width="34" height="34">
-    <div class="nav-logo-text">
-      <span class="nav-logo-sub">herbernie</span>
-      <span class="nav-logo-main">Natural <span>Healing</span> for Life</span>
-    </div>
-  </div>
+  <div class="footer-logo">Nature's <span>Healing</span> Process</div>
   <p class="footer-note">The information provided reflects the clinical observations of Dr. Bernard Lurie, N.D., and is for educational purposes. It does not constitute medical advice. Always work with a qualified natural health practitioner. Consult your physician for emergencies and acute medical care.</p>
-  <div class="footer-links"><a href="/terms.html">Terms</a><a href="/privacy.html" onclick="openPrivacyModal(event)">Privacy</a><a href="mailto:info@herbernie.co.za">Contact</a></div>
+  <div class="footer-links"><a href="#">Privacy</a><a href="#">Disclaimer</a><a href="#">Contact</a></div>
 </footer>
 
 <script>
@@ -2007,201 +1378,6 @@
   }, { threshold: 0.12, rootMargin: '0px 0px -48px 0px' });
   revealEls.forEach(el => revealObserver.observe(el));
 
-  // Transform cards — scroll-reveal, one at a time
-  const transformCards = document.querySelectorAll('.transform-card');
-  const transformObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        transformObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.18, rootMargin: '0px 0px -60px 0px' });
-  transformCards.forEach(card => transformObserver.observe(card));
-
-  // Questionnaire
-  const quizData = { symptoms: {}, duration: null, priorHelp: null, goal: null };
-
-  function quizValidateContact() {
-    const name  = document.getElementById('q-name').value.trim();
-    const email = document.getElementById('q-email').value.trim();
-    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    let valid = true;
-    const errName  = document.getElementById('err-name');
-    const errEmail = document.getElementById('err-email');
-    if (!name)    { errName.style.display  = 'block'; valid = false; } else { errName.style.display  = 'none'; }
-    if (!emailOk) { errEmail.style.display = 'block'; valid = false; } else { errEmail.style.display = 'none'; }
-    if (valid) quizGoTo(2);
-  }
-
-  function quizGoTo(step) {
-    document.querySelectorAll('.quiz-screen').forEach(s => s.classList.remove('active'));
-    const target = document.getElementById('qs-' + step);
-    if (target) {
-      target.classList.add('active');
-      document.getElementById('consult').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
-
-  function quizToggleSymptom(row) {
-    row.classList.toggle('selected');
-    const err = document.getElementById('symptom-error');
-    if (err && document.querySelectorAll('.symptom-check-row.selected').length > 0) {
-      err.style.display = 'none';
-    }
-  }
-
-  function quizBuildSeverity() {
-    const selected = [...document.querySelectorAll('.symptom-check-row.selected')];
-    quizData.symptoms = {};
-    if (selected.length === 0) {
-      const err = document.getElementById('symptom-error');
-      if (err) err.style.display = 'block';
-      return;
-    }
-    const list = document.getElementById('severity-list');
-    list.innerHTML = selected.map(row => {
-      const id    = row.dataset.symptom;
-      const icon  = row.querySelector('.symptom-icon').innerHTML;
-      const label = row.querySelector('.symptom-check-label').textContent;
-      return `<div class="symptom-row">
-        <div class="symptom-label"><div class="symptom-icon">${icon}</div><span>${label}</span></div>
-        <div class="sev-btns">
-          <button class="sev-btn" onclick="quizSev('${id}','mild',this)">Mild</button>
-          <button class="sev-btn" onclick="quizSev('${id}','noticeable',this)">Noticeable</button>
-          <button class="sev-btn" onclick="quizSev('${id}','affecting',this)">Affecting my life</button>
-        </div>
-      </div>`;
-    }).join('');
-    quizGoTo(3);
-  }
-
-  function quizBackFromDuration() {
-    const hasSeverity = document.getElementById('severity-list').children.length > 0;
-    quizGoTo(hasSeverity ? 2 : 0);
-  }
-
-  function quizSev(symptomId, severity, btn) {
-    btn.closest('.sev-btns').querySelectorAll('.sev-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    quizData.symptoms[symptomId] = severity;
-  }
-
-  function quizChoice(groupName, value, card) {
-    document.querySelectorAll(`[data-group="${groupName}"]`).forEach(c => c.classList.remove('selected'));
-    card.classList.add('selected');
-    quizData[groupName] = value;
-  }
-
-  function quizGoal(value, card) {
-    document.querySelectorAll('.goal-card').forEach(c => c.classList.remove('selected'));
-    card.classList.add('selected');
-    quizData.goal = value;
-  }
-
-  function quizSubmit() {
-    const name = document.getElementById('q-name').value.trim();
-    const namePrefix = name ? name + ', ' : '';
-
-    const severities = Object.values(quizData.symptoms);
-    const hasAffecting  = severities.includes('affecting');
-    const hasNoticeable = severities.includes('noticeable');
-
-    // Para 1 — duration-aware opening
-    let para1;
-    const dur = quizData.duration;
-    if (dur === 'under-6m') {
-      para1 = `${namePrefix}you're catching this early — and that matters. The pattern you've described has a clear hormonal signature. Addressing it now is far easier than waiting for it to compound.`;
-    } else if (dur === '6m-1yr') {
-      para1 = `${namePrefix}six months to a year of this is long enough to know it isn't going to resolve on its own. What you've described is a recognisable hormonal pattern — one Dr. Lurie and Joanne work through regularly, with meaningful results.`;
-    } else if (dur === '1-3yr') {
-      para1 = `${namePrefix}you've been managing this for over a year. That's long enough for the body to develop real compensation patterns — which is also why targeted, personalised support makes such a difference over general advice.`;
-    } else {
-      para1 = `${namePrefix}years of managing this means your body has been working around the problem rather than through it. That's more common than most people realise — and it doesn't make recovery harder. It just means the starting point needs to be understood properly, which is exactly what the consultation does.`;
-    }
-
-    // Para 2 — prior help, the most validating insight
-    let para2;
-    if (quizData.priorHelp === 'told-normal') {
-      para2 = `Being told your results are "normal" when you feel anything but is one of the most common — and most frustrating — things Dr. Lurie and Joanne hear. Standard blood panels don't capture hormonal patterns over time, or how those patterns interact with one another. What gets missed is often exactly what explains how you've been feeling.`;
-    } else if (quizData.priorHelp === 'tried-hrt') {
-      para2 = `Having already tried HRT or prescription medication — and still looking for answers — suggests your body needs a more tailored approach. Herbal treatment works with the body's own hormonal feedback mechanisms, not just around them. For many women who've been through the prescription route, this is where things finally shift.`;
-    } else if (quizData.priorHelp === 'tried-natural') {
-      para2 = `Supplements without a proper protocol rarely address the root cause. The right herbal formulation — timed specifically to your cycle and prepared for your individual profile — is a meaningfully different approach. Many patients who've tried natural remedies before find this is the piece they were missing.`;
-    } else {
-      para2 = `Not knowing where to start is a very common place to be. Most women aren't told that what they're experiencing has a name, a recognisable pattern, and a clear path through it. That clarity tends to come quickly once someone with the right clinical experience looks at the full picture.`;
-    }
-
-    // Para 3 — severity signal + goal, closing with warm urgency
-    const goalMap = {
-      'patient':  'being patient and present with the people you love',
-      'work':     'showing up at work the way you want to again',
-      'movement': 'moving freely without paying for it the next day',
-      'myself':   'feeling like yourself again',
-      'other':    'what comes next for you'
-    };
-    const goalText = goalMap[quizData.goal] || 'feeling well again';
-    const capGoal = goalText.charAt(0).toUpperCase() + goalText.slice(1);
-    const nameBr = name ? `<br>${namePrefix}` : ' ';
-
-    let para3;
-    if (hasAffecting) {
-      para3 = `When symptoms are actively disrupting daily life, that's the body signalling it has been compensating for too long. Dr. Lurie and Joanne's patients regularly describe meaningful improvement within 2–4 weeks of starting treatment.${nameBr}${name ? goalText : capGoal} is not a distant outcome — it's a reasonable expectation. Your consultation is where that process begins.`;
-    } else if (hasNoticeable) {
-      para3 = `Symptoms at this level don't tend to plateau on their own. The earlier targeted support begins, the less work the body has to do to recalibrate.${nameBr}${name ? goalText : capGoal} is closer than it feels right now — and your consultation is the clearest next step toward it.`;
-    } else {
-      para3 = `${namePrefix}${name ? goalText : capGoal} is a reasonable goal — and one that hormonal rebalancing directly supports. Dr. Lurie and Joanne's patients regularly describe this kind of shift within the first few months of treatment. Your consultation is where the plan is built, specifically for you.`;
-    }
-
-    document.getElementById('quiz-summary-text').innerHTML =
-      [para1, para2, para3].map(p => `<p>${p}</p>`).join('');
-
-    // Submit questionnaire data to Formspree
-    const _name     = document.getElementById('q-name').value.trim();
-    const _email    = document.getElementById('q-email').value.trim();
-    const _whatsappRaw = document.getElementById('q-whatsapp').value.trim();
-    const _whatsapp = _whatsappRaw ? '+27 ' + _whatsappRaw : '—';
-    const _symptoms = Object.entries(quizData.symptoms)
-      .map(([k, v]) => `${k}: ${v}`).join('\n') || '—';
-    fetch('https://formspree.io/f/mlgzjzjy', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({
-        name:       _name,
-        email:      _email,
-        whatsapp:   _whatsapp || '—',
-        symptoms:   _symptoms,
-        duration:   quizData.duration  || '—',
-        prior_help: quizData.priorHelp || '—',
-        goal:       quizData.goal      || '—'
-      })
-    }).catch(() => {});
-    quizGoTo(6);
-  }
-
-  // TOS modal
-  function openTosModal(e) {
-    e.preventDefault();
-    document.getElementById('tos-modal').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeTosModal() {
-    document.getElementById('tos-modal').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  function openPrivacyModal(e) {
-    e.preventDefault();
-    document.getElementById('privacy-modal').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closePrivacyModal() {
-    document.getElementById('privacy-modal').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') { closeTosModal(); closePrivacyModal(); }
-  });
-
   // Animated number counters
   function animateCounter(el) {
     const target = parseInt(el.dataset.count, 10);
@@ -2226,44 +1402,6 @@
     });
   }, { threshold: 0.5 });
   counterEls.forEach(el => counterObserver.observe(el));
-
-  async function initiatePayment() {
-    const btn = document.getElementById('confirm-btn');
-    const originalHTML = btn.innerHTML;
-    btn.disabled = true;
-    btn.innerHTML = 'Redirecting to payment… <i class="fa-solid fa-spinner fa-spin"></i>';
-
-    const name  = document.getElementById('q-name')?.value.trim() || '';
-    const email = document.getElementById('q-email')?.value.trim() || '';
-
-    try {
-      const res = await fetch('/create-checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email }),
-      });
-      if (!res.ok) {
-        const errData = await res.json().catch(() => ({}));
-        console.error('Checkout error:', JSON.stringify(errData));
-        throw new Error('Payment creation failed');
-      }
-      const data = await res.json();
-      if (!data.redirectUrl) throw new Error('No redirect URL received');
-      window.location.href = data.redirectUrl;
-    } catch {
-      btn.disabled = false;
-      btn.innerHTML = originalHTML;
-      const disclaimer = document.getElementById('payment-status');
-      if (disclaimer) {
-        disclaimer.style.color = '#c0392b';
-        disclaimer.textContent = 'Something went wrong. Please try again or contact us at info@herbernie.co.za.';
-        setTimeout(() => {
-          disclaimer.style.color = '';
-          disclaimer.innerHTML = '<i class="fa-solid fa-lock" style="font-size:0.75rem;margin-right:0.3rem;opacity:0.6;"></i>Secure online payment.';
-        }, 6000);
-      }
-    }
-  }
 </script>
 </body>
 </html>
