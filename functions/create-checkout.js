@@ -17,6 +17,8 @@ export async function onRequestOptions() {
 }
 
 export async function onRequestPost(context) {
+  return respond({ status: 'worker-alive', ts: Date.now() }, 200); // DIAGNOSTIC — remove after confirming
+
   try {
     const { env, request } = context;
 
