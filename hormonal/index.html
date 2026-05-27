@@ -1055,9 +1055,11 @@
   .footer-links a:hover { color: var(--rose); }
 
   /* WHATSAPP FLOAT */
-  .wa-float { position: fixed; bottom: 2rem; right: 2rem; z-index: 999; display: flex; align-items: center; gap: 0.6rem; background: #25D366; color: #fff; text-decoration: none; padding: 0.75rem 1.2rem 0.75rem 1rem; border-radius: 3rem; box-shadow: 0 4px 20px rgba(37,211,102,0.35); font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; transition: transform 0.2s, box-shadow 0.2s; }
-  .wa-float:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(37,211,102,0.45); }
-  .wa-float i { font-size: 1.25rem; }
+  .wa-float { position: fixed; bottom: 2rem; right: 2rem; z-index: 999; display: flex; align-items: center; justify-content: center; background: #25D366; color: #fff; text-decoration: none; width: 52px; height: 52px; border-radius: 50%; box-shadow: 0 4px 20px rgba(37,211,102,0.35); transition: transform 0.2s, box-shadow 0.2s; }
+  .wa-float:hover { transform: translateY(-2px) scale(1.08); box-shadow: 0 6px 24px rgba(37,211,102,0.45); }
+  .wa-float i { font-size: 1.5rem; }
+  .wa-float::after { content: 'Chat on WhatsApp'; position: absolute; right: calc(100% + 0.75rem); background: var(--text-dark); color: #fff; font-family: 'DM Sans', sans-serif; font-size: 0.78rem; white-space: nowrap; padding: 0.4rem 0.75rem; border-radius: 0.4rem; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+  .wa-float:hover::after { opacity: 1; }
 
   /* SCROLL REVEAL */
   .reveal {
@@ -1256,7 +1258,8 @@
     .footer-contact { align-items: center; }
     .footer-links a { font-size: 0.82rem; }
     .footer-links { flex-wrap: wrap; gap: 0.8rem; justify-content: center; }
-    .wa-float { bottom: 1.2rem; right: 1.2rem; padding: 0.75rem 1rem; font-size: 0.85rem; min-height: 44px; }
+    .wa-float { bottom: 1.2rem; right: 1.2rem; width: 48px; height: 48px; }
+    .wa-float::after { display: none; }
   }
 
   /* WHAT HEALING LOOKS LIKE */
@@ -2058,7 +2061,7 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
 </footer>
 
 <a href="https://wa.me/27762390423" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-  <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+  <i class="fa-brands fa-whatsapp"></i>
 </a>
 
 <script>
