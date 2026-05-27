@@ -67,12 +67,12 @@ export async function onRequestPost(context) {
 
     const text = await pfRes.text();
 
-    if (!pfRes.ok) return respond({ error: 'Payfast error', status: pfRes.status, body: text }, 502);
+    if (!pfRes.ok) return respond({ error: 'Payfast error', status: pfRes.status, body: text }, 500);
 
     let json;
-    try { json = JSON.parse(text); } catch { return respond({ error: 'Bad Payfast response', raw: text }, 502); }
+    try { json = JSON.parse(text); } catch { return respond({ error: 'Bad Payfast response', raw: text }, 500); }
 
-    if (!json.uuid) return respond({ error: 'No UUID', result: json }, 502);
+    if (!json.uuid) return respond({ error: 'No UUID', result: json }, 500);
 
     return respond({ uuid: json.uuid }, 200);
 
