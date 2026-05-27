@@ -59,6 +59,7 @@ export async function onRequestPost(context) {
       .map(([k, v]) => `${k}=${encodeURIComponent(String(v).trim())}`)
       .join('&');
 
+    console.log('[create-checkout] sending to Payfast:', bodyStr);
     const pfRes = await fetch(PAYFAST_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
