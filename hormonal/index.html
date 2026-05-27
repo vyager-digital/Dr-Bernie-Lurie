@@ -1758,7 +1758,7 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
   <div class="quiz-wrap">
 
     <!-- Screen 0: Intro -->
-    <div class="quiz-screen active" id="qs-0">
+    <div class="quiz-screen" id="qs-0">
       <div class="quiz-intro-wrap">
         <div class="section-eyebrow" style="justify-content:center;margin-bottom:1.5rem;">Your First Step</div>
         <h2 class="quiz-main-headline">Before your consultation,<br><em>tell us what's been going on.</em></h2>
@@ -1989,7 +1989,7 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
     </div>
 
     <!-- Screen 6: Confirmation -->
-    <div class="quiz-screen" id="qs-6">
+    <div class="quiz-screen active" id="qs-6">
       <div class="quiz-card" style="text-align:center;">
         <div class="quiz-confirm-icon"><i class="fa-solid fa-leaf"></i></div>
         <h3 class="quiz-confirm-headline">Assessment complete</h3>
@@ -2073,6 +2073,11 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
   }, { passive: true });
 
   // Meta Pixel — Assessment start
+  // DEV: skip quiz for payment testing
+  const tosCheck = document.getElementById('tos-check');
+  const confirmBtn = document.getElementById('confirm-btn');
+  if (tosCheck && confirmBtn) { tosCheck.checked = true; confirmBtn.disabled = false; }
+
   const assessmentBtn = document.querySelector('button.quiz-btn-primary[onclick="quizGoTo(1)"]');
   if (assessmentBtn) {
     assessmentBtn.addEventListener('click', () => fbq('track', 'Lead'));
