@@ -15,84 +15,92 @@ export async function onRequestOptions() {
 }
 
 export async function onRequestPost(context) {
-  const { env, request } = context;
-
-  if (!env.PAYFAST_MERCHANT_ID || !env.PAYFAST_MERCHANT_KEY) {
-    return jsonError('Server configuration error', 500);
-  }
-
-  let body = {};
-  try { body = await request.json(); } catch {}
-
-  const nameParts = (body.name || '').trim().split(' ');
-  const nameFirst = nameParts[0] || 'Patient';
-  const nameLast  = nameParts.slice(1).join(' ') || '';
-
-  const successParams = new URLSearchParams();
-  if (body.name)  successParams.set('name', body.name);
-  if (body.email) successParams.set('email', body.email);
-  const returnUrl = successParams.toString()
-    ? `${THANKYOU_URL}?${successParams}`
-    : THANKYOU_URL;
-
-  const data = {
-    merchant_id:   env.PAYFAST_MERCHANT_ID,
-    merchant_key:  env.PAYFAST_MERCHANT_KEY,
-    return_url:    returnUrl,
-    cancel_url:    CANCEL_URL,
-    notify_url:    NOTIFY_URL,
-    name_first:    nameFirst,
-    name_last:     nameLast,
-    email_address: body.email || '',
-    m_payment_id:  crypto.randomUUID(),
-    amount:        '1.00', // R1 TEST — change to '490.00' for live
-    item_name:     'Hormonal Harmony Consultation',
-  };
-
-  if (env.PAYFAST_PASSPHRASE) {
-    data.passphrase = env.PAYFAST_PASSPHRASE;
-  }
-
-  data.signature = generateSignature(data);
-  delete data.passphrase;
-
-  const pfParamString = Object.entries(data)
-    .filter(([, v]) => v !== '')
-    .map(([k, v]) => `${k}=${encodeURIComponent(String(v).trim())}`)
-    .join('&');
-
-  let pfRes;
   try {
-    pfRes = await fetch(PAYFAST_PROCESS_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: pfParamString,
+    const { env, request } = context;
+
+    if (!env.PAYFAST_MERCHANT_ID || !env.PAYFAST_MERCHANT_KEY) {
+      return jsonError('Server configuration error', 500);
+    }
+
+    let body = {};
+    try { body = await request.json(); } catch {}
+
+    const nameParts = (body.name || '').trim().split(' ');
+    const nameFirst = nameParts[0] || 'Patient';
+    const nameLast  = nameParts.slice(1).join(' ') || '';
+
+    const successParams = new URLSearchParams();
+    if (body.name)  successParams.set('name', body.name);
+    if (body.email) successParams.set('email', body.email);
+    const returnUrl = successParams.toString()
+      ? `${THANKYOU_URL}?${successParams}`
+      : THANKYOU_URL;
+
+    const data = {
+      merchant_id:   env.PAYFAST_MERCHANT_ID,
+      merchant_key:  env.PAYFAST_MERCHANT_KEY,
+      return_url:    returnUrl,
+      cancel_url:    CANCEL_URL,
+      notify_url:    NOTIFY_URL,
+      name_first:    nameFirst,
+      name_last:     nameLast,
+      email_address: body.email || '',
+      m_payment_id:  crypto.randomUUID(),
+      amount:        '1.00', // R1 TEST — change to '490.00' for live
+      item_name:     'Hormonal Harmony Consultation',
+    };
+
+    if (env.PAYFAST_PASSPHRASE) {
+      data.passphrase = env.PAYFAST_PASSPHRASE;
+    }
+
+    data.signature = generateSignature(data);
+    delete data.passphrase;
+
+    const pfParamString = Object.entries(data)
+      .filter(([, v]) => v !== '')
+      .map(([k, v]) => `${k}=${encodeURIComponent(String(v).trim())}`)
+      .join('&');
+
+    let pfRes;
+    try {
+      pfRes = await fetch(PAYFAST_PROCESS_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: pfParamString,
+      });
+    } catch (e) {
+      return jsonError('Failed to reach Payfast', 502, { msg: e.message });
+    }
+
+    const responseText = await pfRes.text();
+
+    if (!pfRes.ok) {
+      return jsonError('Payfast rejected the request', 502, { status: pfRes.status, body: responseText });
+    }
+
+    let result;
+    try {
+      result = JSON.parse(responseText);
+    } catch {
+      return jsonError('Invalid response from Payfast', 502, { raw: responseText });
+    }
+
+    if (!result.uuid) {
+      return jsonError('No UUID in Payfast response', 502, { result });
+    }
+
+    return new Response(JSON.stringify({ uuid: result.uuid }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
     });
+
   } catch (e) {
-    return jsonError('Failed to reach payment provider', 502);
+    return new Response(JSON.stringify({ error: 'Worker crashed', message: e.message, stack: e.stack }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
+    });
   }
-
-  if (!pfRes.ok) {
-    const details = await pfRes.text().catch(() => '');
-    return jsonError('Payment creation failed', 502, { pfStatus: pfRes.status, pfBody: details });
-  }
-
-  let result;
-  try {
-    result = await pfRes.json();
-  } catch {
-    const raw = await pfRes.text().catch(() => '');
-    return jsonError('Invalid response from payment provider', 502, { raw });
-  }
-
-  if (!result.uuid) {
-    return jsonError('No payment identifier received', 502, { result });
-  }
-
-  return new Response(JSON.stringify({ uuid: result.uuid }), {
-    status: 200,
-    headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
-  });
 }
 
 function generateSignature(data) {
@@ -114,69 +122,91 @@ function generateSignature(data) {
   return md5(pfOutput);
 }
 
-// Proven MD5 implementation (works with ASCII/URL-encoded strings)
-function md5(string) {
-  function RotateLeft(lValue, iShiftBits) {
-    return (lValue << iShiftBits) | (lValue >>> (32 - iShiftBits));
+// blueimp-md5 — battle-tested pure JS MD5
+function md5(inputStr) {
+  function safeAdd(x, y) {
+    var lsw = (x & 0xffff) + (y & 0xffff);
+    var msw = (x >> 16) + (y >> 16) + (lsw >> 16);
+    return (msw << 16) | (lsw & 0xffff);
   }
-  function AddUnsigned(lX, lY) {
-    const lX8 = lX & 0x80000000, lY8 = lY & 0x80000000;
-    const lX4 = lX & 0x40000000, lY4 = lY & 0x40000000;
-    const lResult = (lX & 0x3FFFFFFF) + (lY & 0x3FFFFFFF);
-    if (lX4 & lY4)  return lResult ^ 0x80000000 ^ lX8 ^ lY8;
-    if (lX4 | lY4)  return lResult & 0x40000000 ? lResult ^ 0xC0000000 ^ lX8 ^ lY8 : lResult ^ 0x40000000 ^ lX8 ^ lY8;
-    return lResult ^ lX8 ^ lY8;
-  }
-  const F = (x,y,z) => (x&y)|((~x)&z);
-  const G = (x,y,z) => (x&z)|(y&(~z));
-  const H = (x,y,z) => x^y^z;
-  const I = (x,y,z) => y^(x|(~z));
-  function XX(fn, a,b,c,d,x,s,ac) {
-    return AddUnsigned(RotateLeft(AddUnsigned(AddUnsigned(AddUnsigned(a, fn(b,c,d)), x), ac), s), b);
-  }
-  function ConvertToWordArray(str) {
-    const len = str.length;
-    const nw = (((len + 8) - ((len + 8) % 64)) / 64 + 1) * 16;
-    const wa = new Array(nw).fill(0);
-    for (let i = 0; i < len; i++) {
-      wa[i >> 2] |= str.charCodeAt(i) << ((i % 4) * 8);
+  function bitRotateLeft(num, cnt) { return (num << cnt) | (num >>> (32 - cnt)); }
+  function md5cmn(q, a, b, x, s, t) { return safeAdd(bitRotateLeft(safeAdd(safeAdd(a, q), safeAdd(x, t)), s), b); }
+  function md5ff(a,b,c,d,x,s,t) { return md5cmn((b&c)|(~b&d),a,b,x,s,t); }
+  function md5gg(a,b,c,d,x,s,t) { return md5cmn((b&d)|(c&~d),a,b,x,s,t); }
+  function md5hh(a,b,c,d,x,s,t) { return md5cmn(b^c^d,a,b,x,s,t); }
+  function md5ii(a,b,c,d,x,s,t) { return md5cmn(c^(b|~d),a,b,x,s,t); }
+
+  function rstr2binl(input) {
+    var output = new Array((input.length >> 2) + (input.length % 4 ? 1 : 0)).fill(0);
+    for (var i = 0; i < input.length * 8; i += 8) {
+      output[i >> 5] |= (input.charCodeAt(i / 8) & 0xff) << (i % 32);
     }
-    wa[len >> 2] |= 0x80 << ((len % 4) * 8);
-    wa[nw - 2] = len << 3;
-    wa[nw - 1] = len >>> 29;
-    return wa;
-  }
-  function WordToHex(v) {
-    let s = '';
-    for (let i = 0; i < 4; i++) s += ('0' + ((v >>> (i * 8)) & 0xFF).toString(16)).slice(-2);
-    return s;
+    return output;
   }
 
-  const x = ConvertToWordArray(string);
-  let a = 0x67452301, b = 0xEFCDAB89, c = 0x98BADCFE, d = 0x10325476;
-
-  for (let k = 0; k < x.length; k += 16) {
-    const [A,B,C,D] = [a,b,c,d];
-    a=XX(F,a,b,c,d,x[k+0],7,0xD76AA478);  d=XX(F,d,a,b,c,x[k+1],12,0xE8C7B756);  c=XX(F,c,d,a,b,x[k+2],17,0x242070DB);  b=XX(F,b,c,d,a,x[k+3],22,0xC1BDCEEE);
-    a=XX(F,a,b,c,d,x[k+4],7,0xF57C0FAF);  d=XX(F,d,a,b,c,x[k+5],12,0x4787C62A);  c=XX(F,c,d,a,b,x[k+6],17,0xA8304613);  b=XX(F,b,c,d,a,x[k+7],22,0xFD469501);
-    a=XX(F,a,b,c,d,x[k+8],7,0x698098D8);  d=XX(F,d,a,b,c,x[k+9],12,0x8B44F7AF);  c=XX(F,c,d,a,b,x[k+10],17,0xFFFF5BB1); b=XX(F,b,c,d,a,x[k+11],22,0x895CD7BE);
-    a=XX(F,a,b,c,d,x[k+12],7,0x6B901122); d=XX(F,d,a,b,c,x[k+13],12,0xFD987193); c=XX(F,c,d,a,b,x[k+14],17,0xA679438E); b=XX(F,b,c,d,a,x[k+15],22,0x49B40821);
-    a=XX(G,a,b,c,d,x[k+1],5,0xF61E2562);  d=XX(G,d,a,b,c,x[k+6],9,0xC040B340);   c=XX(G,c,d,a,b,x[k+11],14,0x265E5A51); b=XX(G,b,c,d,a,x[k+0],20,0xE9B6C7AA);
-    a=XX(G,a,b,c,d,x[k+5],5,0xD62F105D);  d=XX(G,d,a,b,c,x[k+10],9,0x02441453);  c=XX(G,c,d,a,b,x[k+15],14,0xD8A1E681); b=XX(G,b,c,d,a,x[k+4],20,0xE7D3FBC8);
-    a=XX(G,a,b,c,d,x[k+9],5,0x21E1CDE6);  d=XX(G,d,a,b,c,x[k+14],9,0xC33707D6);  c=XX(G,c,d,a,b,x[k+3],14,0xF4D50D87);  b=XX(G,b,c,d,a,x[k+8],20,0x455A14ED);
-    a=XX(G,a,b,c,d,x[k+13],5,0xA9E3E905); d=XX(G,d,a,b,c,x[k+2],9,0xFCEFA3F8);   c=XX(G,c,d,a,b,x[k+7],14,0x676F02D9);  b=XX(G,b,c,d,a,x[k+12],20,0x8D2A4C8A);
-    a=XX(H,a,b,c,d,x[k+5],4,0xFFFA3942);  d=XX(H,d,a,b,c,x[k+8],11,0x8771F681);  c=XX(H,c,d,a,b,x[k+11],14,0x6D9D6122); b=XX(H,b,c,d,a,x[k+14],23,0xFDE5380C);
-    a=XX(H,a,b,c,d,x[k+1],4,0xA4BEEA44);  d=XX(H,d,a,b,c,x[k+4],11,0x4BDECFA9);  c=XX(H,c,d,a,b,x[k+7],14,0xF6BB4B60);  b=XX(H,b,c,d,a,x[k+10],23,0xBEBFBC70);
-    a=XX(H,a,b,c,d,x[k+13],4,0x289B7EC6); d=XX(H,d,a,b,c,x[k+0],11,0xEAA127FA);  c=XX(H,c,d,a,b,x[k+3],14,0xD4EF3085);  b=XX(H,b,c,d,a,x[k+6],23,0x04881D05);
-    a=XX(H,a,b,c,d,x[k+9],4,0xD9D4D039);  d=XX(H,d,a,b,c,x[k+12],11,0xE6DB99E5); c=XX(H,c,d,a,b,x[k+15],14,0x1FA27CF8); b=XX(H,b,c,d,a,x[k+2],23,0xC4AC5665);
-    a=XX(I,a,b,c,d,x[k+0],6,0xF4292244);  d=XX(I,d,a,b,c,x[k+7],10,0x432AFF97);  c=XX(I,c,d,a,b,x[k+14],15,0xAB9423A7); b=XX(I,b,c,d,a,x[k+5],21,0xFC93A039);
-    a=XX(I,a,b,c,d,x[k+12],6,0x655B59C3); d=XX(I,d,a,b,c,x[k+3],10,0x8F0CCC92);  c=XX(I,c,d,a,b,x[k+10],15,0xFFEFF47D); b=XX(I,b,c,d,a,x[k+1],21,0x85845DD1);
-    a=XX(I,a,b,c,d,x[k+8],6,0x6FA87E4F);  d=XX(I,d,a,b,c,x[k+15],10,0xFE2CE6E0); c=XX(I,c,d,a,b,x[k+6],15,0xA3014314);  b=XX(I,b,c,d,a,x[k+13],21,0x4E0811A1);
-    a=XX(I,a,b,c,d,x[k+4],6,0xF7537E82);  d=XX(I,d,a,b,c,x[k+11],10,0xBD3AF235); c=XX(I,c,d,a,b,x[k+2],15,0x2AD7D2BB);  b=XX(I,b,c,d,a,x[k+9],21,0xEB86D391);
-    a=AddUnsigned(a,A); b=AddUnsigned(b,B); c=AddUnsigned(c,C); d=AddUnsigned(d,D);
+  function binl2rstr(input) {
+    var output = '';
+    for (var i = 0; i < input.length * 32; i += 8) {
+      output += String.fromCharCode((input[i >> 5] >>> (i % 32)) & 0xff);
+    }
+    return output;
   }
 
-  return (WordToHex(a)+WordToHex(b)+WordToHex(c)+WordToHex(d)).toLowerCase();
+  function binlMD5(x, len) {
+    x[len >> 5] |= 0x80 << (len % 32);
+    x[(((len + 64) >>> 9) << 4) + 14] = len;
+    var a = 1732584193, b = -271733879, c = -1732584194, d = 271733878;
+    for (var i = 0; i < x.length; i += 16) {
+      var olda = a, oldb = b, oldc = c, oldd = d;
+      a=md5ff(a,b,c,d,x[i],7,-680876936);    d=md5ff(d,a,b,c,x[i+1],12,-389564586);
+      c=md5ff(c,d,a,b,x[i+2],17,606105819);   b=md5ff(b,c,d,a,x[i+3],22,-1044525330);
+      a=md5ff(a,b,c,d,x[i+4],7,-176418897);   d=md5ff(d,a,b,c,x[i+5],12,1200080426);
+      c=md5ff(c,d,a,b,x[i+6],17,-1473231341); b=md5ff(b,c,d,a,x[i+7],22,-45705983);
+      a=md5ff(a,b,c,d,x[i+8],7,1770035416);   d=md5ff(d,a,b,c,x[i+9],12,-1958414417);
+      c=md5ff(c,d,a,b,x[i+10],17,-42063);      b=md5ff(b,c,d,a,x[i+11],22,-1990404162);
+      a=md5ff(a,b,c,d,x[i+12],7,1804603682);  d=md5ff(d,a,b,c,x[i+13],12,-40341101);
+      c=md5ff(c,d,a,b,x[i+14],17,-1502002290);b=md5ff(b,c,d,a,x[i+15],22,1236535329);
+      a=md5gg(a,b,c,d,x[i+1],5,-165796510);   d=md5gg(d,a,b,c,x[i+6],9,-1069501632);
+      c=md5gg(c,d,a,b,x[i+11],14,643717713);  b=md5gg(b,c,d,a,x[i],20,-373897302);
+      a=md5gg(a,b,c,d,x[i+5],5,-701558691);   d=md5gg(d,a,b,c,x[i+10],9,38016083);
+      c=md5gg(c,d,a,b,x[i+15],14,-660478335); b=md5gg(b,c,d,a,x[i+4],20,-405537848);
+      a=md5gg(a,b,c,d,x[i+9],5,568446438);    d=md5gg(d,a,b,c,x[i+14],9,-1019803690);
+      c=md5gg(c,d,a,b,x[i+3],14,-187363961);  b=md5gg(b,c,d,a,x[i+8],20,1163531501);
+      a=md5gg(a,b,c,d,x[i+13],5,-1444681467); d=md5gg(d,a,b,c,x[i+2],9,-51403784);
+      c=md5gg(c,d,a,b,x[i+7],14,1735328473);  b=md5gg(b,c,d,a,x[i+12],20,-1926607734);
+      a=md5hh(a,b,c,d,x[i+5],4,-378558);      d=md5hh(d,a,b,c,x[i+8],11,-2022574463);
+      c=md5hh(c,d,a,b,x[i+11],16,1839030562); b=md5hh(b,c,d,a,x[i+14],23,-35309556);
+      a=md5hh(a,b,c,d,x[i+1],4,-1530992060);  d=md5hh(d,a,b,c,x[i+4],11,1272893353);
+      c=md5hh(c,d,a,b,x[i+7],16,-155497632);  b=md5hh(b,c,d,a,x[i+10],23,-1094730640);
+      a=md5hh(a,b,c,d,x[i+13],4,681279174);   d=md5hh(d,a,b,c,x[i],11,-358537222);
+      c=md5hh(c,d,a,b,x[i+3],16,-722521979);  b=md5hh(b,c,d,a,x[i+6],23,76029189);
+      a=md5hh(a,b,c,d,x[i+9],4,-640364487);   d=md5hh(d,a,b,c,x[i+12],11,-421815835);
+      c=md5hh(c,d,a,b,x[i+15],16,530742520);  b=md5hh(b,c,d,a,x[i+2],23,-995338651);
+      a=md5ii(a,b,c,d,x[i],6,-198630844);      d=md5ii(d,a,b,c,x[i+7],10,1126891415);
+      c=md5ii(c,d,a,b,x[i+14],15,-1416354905);b=md5ii(b,c,d,a,x[i+5],21,-57434055);
+      a=md5ii(a,b,c,d,x[i+12],6,1700485571);  d=md5ii(d,a,b,c,x[i+3],10,-1894986606);
+      c=md5ii(c,d,a,b,x[i+10],15,-1051523);    b=md5ii(b,c,d,a,x[i+1],21,-2054922799);
+      a=md5ii(a,b,c,d,x[i+8],6,1873313359);   d=md5ii(d,a,b,c,x[i+15],10,-30611744);
+      c=md5ii(c,d,a,b,x[i+6],15,-1560198380); b=md5ii(b,c,d,a,x[i+13],21,1309151649);
+      a=md5ii(a,b,c,d,x[i+4],6,-145523070);   d=md5ii(d,a,b,c,x[i+11],10,-1120210379);
+      c=md5ii(c,d,a,b,x[i+2],15,718787259);   b=md5ii(b,c,d,a,x[i+9],21,-343485551);
+      a=safeAdd(a,olda); b=safeAdd(b,oldb); c=safeAdd(c,oldc); d=safeAdd(d,oldd);
+    }
+    return [a, b, c, d];
+  }
+
+  function rstr2hex(input) {
+    var hex = '0123456789abcdef', output = '';
+    for (var i = 0; i < input.length; i++) {
+      var x = input.charCodeAt(i);
+      output += hex.charAt((x >>> 4) & 0x0f) + hex.charAt(x & 0x0f);
+    }
+    return output;
+  }
+
+  // For our use case (URL-encoded ASCII), no UTF-8 conversion needed
+  var rstr = binl2rstr(binlMD5(rstr2binl(inputStr), inputStr.length * 8));
+  return rstr2hex(rstr);
 }
 
 function jsonError(message, status, details) {
