@@ -67,7 +67,8 @@ export async function onRequestPost(context) {
 
     const text = await pfRes.text();
 
-    if (!pfRes.ok) return respond({ error: 'Payfast error', status: pfRes.status, body: text }, 500);
+    const safePayload = bodyStr.replace(/merchant_key=[^&]+/, 'merchant_key=REDACTED');
+    if (!pfRes.ok) return respond({ error: 'Payfast error', status: pfRes.status, sent: safePayload }, 500);
 
     let json;
     try { json = JSON.parse(text); } catch { return respond({ error: 'Bad Payfast response', raw: text }, 500); }
