@@ -98,14 +98,10 @@ const FIELD_ORDER = [
   'email_confirmation','confirmation_address','currency','payment_method','passphrase',
 ];
 
-function pfEncode(v) {
-  return encodeURIComponent(String(v).trim()).replace(/%20/g, '+');
-}
-
 function sign(data) {
   const str = FIELD_ORDER
     .filter(k => data[k] !== undefined && data[k] !== '')
-    .map(k => `${k}=${pfEncode(data[k])}`)
+    .map(k => `${k}=${encodeURIComponent(String(data[k]).trim())}`)
     .join('&');
   return createHash('md5').update(str).digest('hex');
 }
