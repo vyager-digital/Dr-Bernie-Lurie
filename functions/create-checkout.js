@@ -44,7 +44,7 @@ export async function onRequestPost(context) {
       notify_url:    NOTIFY_URL,
       name_first:    nameFirst,
       name_last:     nameLast,
-      email_address: body.email || '',
+      email_address: body.email || 'test@herbernie.co.za',
       m_payment_id:  crypto.randomUUID(),
       amount:        '1.00',
       item_name:     'Hormonal Harmony Consultation',
@@ -98,10 +98,14 @@ const FIELD_ORDER = [
   'email_confirmation','confirmation_address','currency','payment_method','passphrase',
 ];
 
+function pfEncode(v) {
+  return encodeURIComponent(String(v).trim()).replace(/%20/g, '+');
+}
+
 function sign(data) {
   const str = FIELD_ORDER
     .filter(k => data[k] !== undefined && data[k] !== '')
-    .map(k => `${k}=${encodeURIComponent(String(data[k]).trim())}`)
+    .map(k => `${k}=${pfEncode(data[k])}`)
     .join('&');
   return createHash('md5').update(str).digest('hex');
 }
