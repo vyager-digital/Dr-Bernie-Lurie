@@ -1298,6 +1298,14 @@
     .transform-detail { font-size: 0.95rem; }
     .transform-after { font-size: 1.75rem; }
   }
+
+  /* Post-payment booking section */
+  #booking-section { min-height: 100vh; background: var(--warm-white); padding: 3rem 5vw 5rem; }
+  #cal-embed-inline { width: 100%; max-width: 900px; margin: 0 auto; padding: 0 0 2rem; }
+  #cal-embed-inline iframe { width: 100% !important; border: none; }
+  @media (max-width: 480px) {
+    #booking-section { padding: 2rem 1.2rem 4rem; }
+  }
 </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -2024,7 +2032,7 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
 </section>
 
 <!-- Post-payment booking section (hidden until payment succeeds) -->
-<section id="booking-section" style="display:none; background:var(--warm-white); padding:3rem 5vw 5rem;">
+<section id="booking-section" style="display:none;">
   <div style="max-width:720px; margin:0 auto; text-align:center; margin-bottom:2rem;">
     <div style="display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:var(--sage-pale);margin-bottom:1.2rem;">
       <svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:var(--sage-dark);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -2033,7 +2041,7 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
     <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:600;color:var(--text-dark);line-height:1.2;margin-bottom:0.9rem;">Select a time for your consultation</h2>
     <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--text-mid);line-height:1.6;">Your R490 payment was successful. Choose a slot below to confirm your appointment with Dr.&nbsp;Lurie and Joanne.</p>
   </div>
-  <div id="cal-embed-inline" style="max-width:900px;margin:0 auto;"></div>
+  <div id="cal-embed-inline"></div>
 </section>
 
 <!-- Privacy Modal -->
