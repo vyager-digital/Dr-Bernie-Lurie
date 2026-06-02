@@ -48,7 +48,6 @@ export async function onRequestPost(context) {
       m_payment_id:  crypto.randomUUID(),
       amount:        '5.00',
       item_name:     'Hormonal Harmony Consultation',
-      currency:      'ZAR',
     };
 
     if (env.PAYFAST_PASSPHRASE) data.passphrase = env.PAYFAST_PASSPHRASE;
