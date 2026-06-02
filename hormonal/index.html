@@ -2419,12 +2419,15 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
       btn.innerHTML = originalHTML;
 
       const quizSection = document.getElementById('consult');
+      const siteNav = document.querySelector('nav');
       if (quizSection) quizSection.style.visibility = 'hidden';
+      if (siteNav) siteNav.style.display = 'none';
 
       window.payfast_do_onsite_payment(
         { uuid: data.uuid },
         function(result) {
           if (quizSection) quizSection.style.visibility = '';
+          if (siteNav) siteNav.style.display = '';
           if (result) {
             if (quizSection) quizSection.style.display = 'none';
             const bookingSection = document.getElementById('booking-section');
