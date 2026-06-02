@@ -2397,9 +2397,13 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
       btn.disabled = false;
       btn.innerHTML = originalHTML;
 
+      const quizSection = document.getElementById('consult');
+      if (quizSection) quizSection.style.visibility = 'hidden';
+
       window.payfast_do_onsite_payment(
         { uuid: data.uuid },
         function(result) {
+          if (quizSection) quizSection.style.visibility = '';
           if (result === true) {
             const params = new URLSearchParams();
             if (name)  params.set('name', name);
