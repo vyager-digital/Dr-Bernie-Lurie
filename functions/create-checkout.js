@@ -46,7 +46,7 @@ export async function onRequestPost(context) {
       name_last:     nameLast,
       email_address: body.email || 'test@herbernie.co.za',
       m_payment_id:  crypto.randomUUID(),
-      amount:        '1.00',
+      amount:        '5.00',
       item_name:     'Hormonal Harmony Consultation',
     };
 
