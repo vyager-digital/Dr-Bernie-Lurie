@@ -2023,6 +2023,19 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
   </div>
 </section>
 
+<!-- Post-payment booking section (hidden until payment succeeds) -->
+<section id="booking-section" style="display:none; background:var(--warm-white); padding:3rem 5vw 5rem;">
+  <div style="max-width:720px; margin:0 auto; text-align:center; margin-bottom:2rem;">
+    <div style="display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:var(--sage-pale);margin-bottom:1.2rem;">
+      <svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:var(--sage-dark);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    </div>
+    <div style="font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--sage-dark);margin-bottom:0.75rem;">Payment Received</div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:600;color:var(--text-dark);line-height:1.2;margin-bottom:0.9rem;">Select a time for your consultation</h2>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--text-mid);line-height:1.6;">Your R490 payment was successful. Choose a slot below to confirm your appointment with Dr.&nbsp;Lurie and Joanne.</p>
+  </div>
+  <div id="cal-embed-inline" style="max-width:900px;margin:0 auto;"></div>
+</section>
+
 <!-- Privacy Modal -->
 <div class="tos-modal-overlay" id="privacy-modal" role="dialog" aria-modal="true" aria-label="Privacy Policy" onclick="if(event.target===this)closePrivacyModal()">
   <div class="tos-modal">
@@ -2405,10 +2418,14 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
         function(result) {
           if (quizSection) quizSection.style.visibility = '';
           if (result) {
-            const params = new URLSearchParams();
-            if (name)  params.set('name', name);
-            if (email) params.set('email', email);
-            window.location.href = '/hormonal/thankyou.html' + (params.toString() ? '?' + params : '');
+            if (quizSection) quizSection.style.display = 'none';
+            const bookingSection = document.getElementById('booking-section');
+            if (bookingSection) bookingSection.style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            (function(C,A,L){let p=function(a,ar){a.q.push(ar)};let d=C.document;C.Cal=C.Cal||function(){let cal=C.Cal;let ar=arguments;if(!cal.loaded){cal.ns={};cal.q=cal.q||[];d.head.appendChild(d.createElement("script")).src=A;cal.loaded=true}if(ar[0]===L){const api=function(){p(api,arguments)};const ns=ar[1];api.q=api.q||[];if(typeof ns==="string"){cal.ns[ns]=cal.ns[ns]||api;p(cal.ns[ns],ar);p(cal,["-",api])}else p(cal,ar);return}p(cal,ar)};})(window,"https://app.cal.com/embed/embed.js","init");
+            Cal("init",{origin:"https://cal.com"});
+            Cal("inline",{elementOrSelector:"#cal-embed-inline",calLink:"herbernie-int-l-hus2wy/consultation",config:{name:name,email:email,theme:"light"}});
           }
         }
       );
