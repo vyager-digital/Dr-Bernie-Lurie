@@ -2404,7 +2404,7 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
         { uuid: data.uuid },
         function(result) {
           if (quizSection) quizSection.style.visibility = '';
-          if (result === true) {
+          if (result) {
             const params = new URLSearchParams();
             if (name)  params.set('name', name);
             if (email) params.set('email', email);
