@@ -2455,7 +2455,10 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
     const quizSection = document.getElementById('consult');
     const bookingSection = document.getElementById('booking-section');
     if (quizSection) quizSection.style.display = 'none';
-    if (bookingSection) bookingSection.style.display = 'block';
+    if (bookingSection) {
+      bookingSection.style.display = 'block';
+      bookingSection.scrollIntoView();
+    }
     const name  = p.get('name')  || '';
     const email = p.get('email') || '';
     (function(C,A,L){let p=function(a,ar){a.q.push(ar)};let d=C.document;C.Cal=C.Cal||function(){let cal=C.Cal;let ar=arguments;if(!cal.loaded){cal.ns={};cal.q=cal.q||[];d.head.appendChild(d.createElement("script")).src=A;cal.loaded=true}if(ar[0]===L){const api=function(){p(api,arguments)};const ns=ar[1];api.q=api.q||[];if(typeof ns==="string"){cal.ns[ns]=cal.ns[ns]||api;p(cal.ns[ns],ar);p(cal,["-",api])}else p(cal,ar);return}p(cal,ar)};})(window,"https://app.cal.com/embed/embed.js","init");
