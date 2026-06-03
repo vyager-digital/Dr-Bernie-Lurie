@@ -2464,6 +2464,10 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
     (function(C,A,L){let p=function(a,ar){a.q.push(ar)};let d=C.document;C.Cal=C.Cal||function(){let cal=C.Cal;let ar=arguments;if(!cal.loaded){cal.ns={};cal.q=cal.q||[];d.head.appendChild(d.createElement("script")).src=A;cal.loaded=true}if(ar[0]===L){const api=function(){p(api,arguments)};const ns=ar[1];api.q=api.q||[];if(typeof ns==="string"){cal.ns[ns]=cal.ns[ns]||api;p(cal.ns[ns],ar);p(cal,["-",api])}else p(cal,ar);return}p(cal,ar)};})(window,"https://app.cal.com/embed/embed.js","init");
     Cal("init",{origin:"https://cal.com"});
     Cal("inline",{elementOrSelector:"#cal-embed-inline",calLink:"herbernie-int-l-hus2wy/consultation",config:{name:name,email:email,theme:"light"}});
+    Cal("on",{action:"bookingSuccessful",callback:function(){
+      const bs = document.getElementById('booking-section');
+      if (bs) bs.scrollIntoView({ behavior: 'smooth' });
+    }});
   })();
 </script>
 </body>
