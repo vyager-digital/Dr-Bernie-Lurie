@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto'; // nodejs_compat required
 
 const PAYFAST_URL  = 'https://www.payfast.co.za/onsite/process';
-const THANKYOU_URL = 'https://www.herbernie.co.za/hormonal/';
+const THANKYOU_URL = 'https://www.herbernie.co.za/hormonal/thankyou.html';
 const CANCEL_URL   = 'https://www.herbernie.co.za/hormonal/';
 const NOTIFY_URL   = 'https://www.herbernie.co.za/notify';
 const SITE_URL     = 'https://www.herbernie.co.za';
@@ -56,7 +56,7 @@ export async function onRequestPost(context) {
 
     const bodyStr = Object.entries(data)
       .filter(([, v]) => v !== '')
-      .map(([k, v]) => `${k}=${pfEncode(v)}`)
+      .map(([k, v]) => `${k}=${encodeURIComponent(String(v).trim())}`)
       .join('&');
 
     const pfRes = await fetch(PAYFAST_URL, {
