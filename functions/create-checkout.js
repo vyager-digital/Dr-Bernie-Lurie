@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto'; // nodejs_compat required
 
 const PAYFAST_URL  = 'https://www.payfast.co.za/onsite/process';
-const THANKYOU_URL = 'https://herbernie.co.za/hormonal/thankyou.html';
+const THANKYOU_URL = 'https://www.herbernie.co.za/hormonal/thankyou.html';
 const CANCEL_URL   = 'https://www.herbernie.co.za/hormonal/';
 const NOTIFY_URL   = 'https://www.herbernie.co.za/notify';
 const SITE_URL     = 'https://www.herbernie.co.za';
