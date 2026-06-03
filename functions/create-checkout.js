@@ -56,7 +56,7 @@ export async function onRequestPost(context) {
 
     const bodyStr = Object.entries(data)
       .filter(([, v]) => v !== '')
-      .map(([k, v]) => `${k}=${encodeURIComponent(String(v).trim())}`)
+      .map(([k, v]) => `${k}=${pfEncode(v)}`)
       .join('&');
 
     const pfRes = await fetch(PAYFAST_URL, {
