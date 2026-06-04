@@ -2317,24 +2317,63 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
       [para1, para2, para3].map(p => `<p>${p}</p>`).join('');
 
     // Submit questionnaire data to Formspree
-    const _name     = document.getElementById('q-name').value.trim();
-    const _email    = document.getElementById('q-email').value.trim();
+    const _name        = document.getElementById('q-name').value.trim();
+    const _email       = document.getElementById('q-email').value.trim();
     const _whatsappRaw = document.getElementById('q-whatsapp').value.trim();
-    const _dialCode = document.getElementById('q-dialcode').value;
-    const _whatsapp = _whatsappRaw ? _dialCode + ' ' + _whatsappRaw : '—';
+    const _dialCode    = document.getElementById('q-dialcode').value;
+    const _whatsapp    = _whatsappRaw ? _dialCode + ' ' + _whatsappRaw : '—';
+
+    const _symptomLabels = {
+      'hot-flushes':       'Hot flushes / night sweats',
+      'broken-sleep':      'Broken sleep or waking at 3am',
+      'fatigue':           'Fatigue that rest doesn\'t fix',
+      'brain-fog':         'Brain fog or forgetfulness',
+      'mood-swings':       'Mood swings or irritability',
+      'weight':            'Weight that won\'t shift',
+      'anxiety':           'Anxiety or low mood',
+      'cycles':            'Irregular or changing cycles',
+      'libido':            'Low libido or feeling disconnected',
+      'joint-pain':        'Joint aches or bone pain',
+      'vaginal-dryness':   'Discomfort or dryness during intimacy',
+      'breast-tenderness': 'Sore or tender breasts'
+    };
+    const _severityLabels = { mild: 'Mild', noticeable: 'Noticeable', affecting: 'Affecting my life' };
+    const _durationLabels = {
+      'under-6m': 'Less than 6 months',
+      '6m-1yr':   '6 months to a year',
+      '1-3yr':    '1 to 3 years',
+      '3yr-plus': 'More than 3 years'
+    };
+    const _priorHelpLabels = {
+      'told-normal':   'Yes — told everything looked normal',
+      'tried-hrt':     'Yes — tried HRT or prescription medication',
+      'tried-natural': 'Yes — tried natural supplements, with mixed results',
+      'no-help':       'No — didn\'t know where to start'
+    };
+    const _goalLabels = {
+      patient:  'Be more patient and present with the people I love',
+      work:     'Show up the way I want to at work again',
+      movement: 'Move my body without paying for it the next day',
+      myself:   'Just feel like me — the version I recognise',
+      other:    'Something else'
+    };
+
     const _symptoms = Object.entries(quizData.symptoms)
-      .map(([k, v]) => `${k}: ${v}`).join('\n') || '—';
+      .map(([k, v]) => `${_symptomLabels[k] || k} — ${_severityLabels[v] || v}`)
+      .join('\n') || '—';
+
     fetch('https://formspree.io/f/mlgzjzjy', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
-        name:       _name,
-        email:      _email,
-        whatsapp:   _whatsapp || '—',
-        symptoms:   _symptoms,
-        duration:   quizData.duration  || '—',
-        prior_help: quizData.priorHelp || '—',
-        goal:       quizData.goal      || '—'
+        _subject:          `New consultation assessment — ${_name}`,
+        Name:              _name,
+        Email:             _email,
+        WhatsApp:          _whatsapp,
+        Symptoms:          _symptoms,
+        'How long':        _durationLabels[quizData.duration]  || quizData.duration  || '—',
+        'Prior treatment': _priorHelpLabels[quizData.priorHelp] || quizData.priorHelp || '—',
+        Goal:              _goalLabels[quizData.goal] || quizData.goal || '—'
       })
     }).catch(() => {});
     quizGoTo(6);
