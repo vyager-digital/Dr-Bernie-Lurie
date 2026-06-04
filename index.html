@@ -15,19 +15,30 @@
 <style>
 /* ── VARIABLES ── */
 :root {
-  --forest: #1c3a2a;
-  --moss: #2e5c3e;
-  --sage: #6b8f71;
-  --leaf: #9ab89e;
-  --cream: #f5f0e6;
-  --parchment: #ede5d0;
-  --warm-white: #faf7f2;
-  --gold: #c8a96e;
-  --amber: #a07840;
-  --charcoal: #1a1a18;
-  --text-mid: #3d4a3e;
+  --teal-deep:   #1e3f4a;   /* deep teal — dark bands, footer */
+  --teal-dark:   #2e5f6e;   /* header teal — nav, about panel */
+  --teal-mid:    #428185;   /* logo green — buttons, accents */
+  --teal-light:  #7aadb0;   /* sage panel — softer UI elements */
+  --teal-mist:   #c4d8d6;   /* sage mist — subtle tints */
+  --warm-white:  #faf6f1;   /* main page background */
+  --off-white:   #f2ede7;   /* card / section bg variant */
+  --soft-gray:   #c8cbcc;   /* borders, dividers */
+  --charcoal:    #3a3830;   /* footer charcoal */
+  --text-dark:   #2c2820;   /* main body text */
+  --text-mid:    #4a5a5c;   /* secondary text */
+
+  /* aliases used throughout */
+  --forest:      var(--teal-deep);
+  --moss:        var(--teal-dark);
+  --sage:        var(--teal-light);
+  --leaf:        var(--teal-mist);
+  --cream:       var(--warm-white);
+  --parchment:   var(--off-white);
+  --gold:        var(--teal-mid);
+  --amber:       #306468;   /* darker teal for hover states */
+
   --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-accent: 'Josefin Sans', sans-serif;
+  --font-accent:  'Josefin Sans', sans-serif;
 }
 
 /* ── RESET ── */
@@ -52,15 +63,15 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(245,240,230,0.94);
+  background: rgba(250,246,241,0.94);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(200,169,110,0.18);
+  border-bottom: 1px solid rgba(66,129,133,0.18);
   transition: padding 0.3s ease, box-shadow 0.3s ease;
 }
 nav.scrolled {
   padding: 0.75rem 3.5rem;
-  box-shadow: 0 2px 24px rgba(28,58,42,0.07);
+  box-shadow: 0 2px 24px rgba(30,63,74,0.07);
 }
 .nav-brand { display: flex; align-items: center; gap: 0.8rem; }
 .nav-logo-img { height: 34px; width: auto; }
@@ -144,7 +155,7 @@ nav.scrolled {
   position: absolute;
   right: 0; top: 0;
   width: 45%; height: 100%;
-  background: linear-gradient(160deg, #deeade 0%, #c8deca 100%);
+  background: linear-gradient(160deg, #cce2e4 0%, #b4d0d4 100%);
   z-index: 0;
 }
 .hero-left {
@@ -226,15 +237,15 @@ nav.scrolled {
   text-transform: uppercase;
   color: var(--forest);
   padding: 1rem 2.25rem;
-  border: 1px solid rgba(28,58,42,0.3);
+  border: 1px solid rgba(30,63,74,0.3);
   transition: all 0.25s ease;
   display: inline-block;
 }
-.btn-secondary:hover { border-color: var(--forest); background: rgba(28,58,42,0.04); }
+.btn-secondary:hover { border-color: var(--forest); background: rgba(30,63,74,0.04); }
 .hero-stats {
   display: flex;
   gap: 0;
-  border-top: 1px solid rgba(200,169,110,0.22);
+  border-top: 1px solid rgba(66,129,133,0.22);
   padding-top: 2rem;
 }
 .hero-stat {
@@ -244,7 +255,7 @@ nav.scrolled {
 .hero-stat + .hero-stat {
   padding-left: 2rem;
   padding-right: 2rem;
-  border-left: 1px solid rgba(200,169,110,0.22);
+  border-left: 1px solid rgba(66,129,133,0.22);
 }
 .hero-stat:last-child { padding-right: 0; }
 .stat-num {
@@ -289,7 +300,7 @@ nav.scrolled {
   position: absolute;
   top: -18px; left: -18px;
   right: 18px; bottom: 18px;
-  border: 1px solid rgba(200,169,110,0.3);
+  border: 1px solid rgba(66,129,133,0.3);
   z-index: 0;
   pointer-events: none;
 }
@@ -339,7 +350,7 @@ nav.scrolled {
   background: var(--forest);
   overflow: hidden;
   padding: 0.9rem 0;
-  border-top: 1px solid rgba(200,169,110,0.15);
+  border-top: 1px solid rgba(66,129,133,0.15);
 }
 .marquee-track {
   display: flex;
@@ -426,7 +437,7 @@ nav.scrolled {
 .service-card {
   background: var(--cream);
   padding: 2.5rem 1.75rem;
-  border: 1px solid rgba(200,169,110,0.1);
+  border: 1px solid rgba(66,129,133,0.1);
   transition: background 0.3s ease, transform 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -446,12 +457,12 @@ nav.scrolled {
   font-family: var(--font-display);
   font-size: 3.5rem;
   font-weight: 300;
-  color: rgba(28,58,42,0.06);
+  color: rgba(30,63,74,0.06);
   line-height: 1;
   margin-bottom: -0.5rem;
   transition: color 0.3s;
 }
-.service-card:hover .service-num { color: rgba(245,240,230,0.08); }
+.service-card:hover .service-num { color: rgba(250,246,241,0.08); }
 .service-icon {
   font-size: 1.4rem;
   color: var(--gold);
@@ -498,7 +509,7 @@ nav.scrolled {
 .about-photo::after {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(to right, rgba(28,58,42,0.15), transparent);
+  background: linear-gradient(to right, rgba(30,63,74,0.15), transparent);
 }
 .about-content {
   background: var(--forest);
@@ -516,7 +527,7 @@ nav.scrolled {
   font-size: 1.1rem;
   font-weight: 300;
   line-height: 1.82;
-  color: rgba(154,184,158,0.9);
+  color: rgba(196,216,214,0.9);
   margin-bottom: 2rem;
 }
 .about-creds {
@@ -549,7 +560,7 @@ nav.scrolled {
   font-size: 1.2rem;
   font-weight: 300;
   line-height: 1.65;
-  color: rgba(245,240,230,0.65);
+  color: rgba(250,246,241,0.65);
   border-left: 2px solid var(--gold);
   padding-left: 1.5rem;
   margin-bottom: 2.5rem;
@@ -601,8 +612,8 @@ nav.scrolled {
 .treatment-overlay {
   position: absolute; inset: 0;
   background: linear-gradient(to top,
-    rgba(28,58,42,0.93) 0%,
-    rgba(28,58,42,0.25) 55%,
+    rgba(30,63,74,0.93) 0%,
+    rgba(30,63,74,0.25) 55%,
     transparent 100%
   );
   display: flex;
@@ -613,9 +624,9 @@ nav.scrolled {
 }
 .treatment-card:hover .treatment-overlay {
   background: linear-gradient(to top,
-    rgba(28,58,42,0.97) 0%,
-    rgba(28,58,42,0.45) 60%,
-    rgba(28,58,42,0.1) 100%
+    rgba(30,63,74,0.97) 0%,
+    rgba(30,63,74,0.45) 60%,
+    rgba(30,63,74,0.1) 100%
   );
 }
 .treatment-tag {
@@ -670,9 +681,9 @@ nav.scrolled {
 .dispensary-overlay {
   position: absolute; inset: 0;
   background: linear-gradient(90deg,
-    rgba(28,58,42,0.96) 0%,
-    rgba(28,58,42,0.88) 45%,
-    rgba(28,58,42,0.5) 100%
+    rgba(30,63,74,0.96) 0%,
+    rgba(30,63,74,0.88) 45%,
+    rgba(30,63,74,0.5) 100%
   );
 }
 .dispensary-content {
@@ -690,7 +701,7 @@ nav.scrolled {
   font-size: 1.1rem;
   font-weight: 300;
   line-height: 1.8;
-  color: rgba(154,184,158,0.9);
+  color: rgba(196,216,214,0.9);
   margin-bottom: 2rem;
 }
 .btn-gold {
@@ -726,7 +737,7 @@ nav.scrolled {
 .testimonial-card {
   background: var(--cream);
   padding: 2.5rem;
-  border: 1px solid rgba(200,169,110,0.12);
+  border: 1px solid rgba(66,129,133,0.12);
   position: relative;
 }
 .testimonial-card::before {
@@ -736,7 +747,7 @@ nav.scrolled {
   font-family: var(--font-display);
   font-size: 5rem;
   font-weight: 300;
-  color: rgba(200,169,110,0.18);
+  color: rgba(66,129,133,0.18);
   line-height: 1;
   pointer-events: none;
 }
@@ -823,7 +834,7 @@ nav.scrolled {
   font-weight: 300;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(154,184,158,0.7);
+  color: rgba(196,216,214,0.7);
   text-align: center;
 }
 
@@ -862,7 +873,7 @@ footer {
   font-size: 0.95rem;
   font-weight: 300;
   line-height: 1.8;
-  color: rgba(245,240,230,0.42);
+  color: rgba(250,246,241,0.42);
 }
 .footer-col-title {
   font-family: var(--font-accent);
@@ -882,7 +893,7 @@ footer {
   font-family: var(--font-display);
   font-size: 0.95rem;
   font-weight: 300;
-  color: rgba(245,240,230,0.48);
+  color: rgba(250,246,241,0.48);
   transition: color 0.2s;
 }
 .footer-links a:hover { color: var(--cream); }
@@ -890,7 +901,7 @@ footer {
   font-family: var(--font-display);
   font-size: 0.95rem;
   font-weight: 300;
-  color: rgba(245,240,230,0.48);
+  color: rgba(250,246,241,0.48);
   display: flex;
   gap: 0.7rem;
   align-items: flex-start;
@@ -914,7 +925,7 @@ footer {
   font-size: 0.58rem;
   font-weight: 300;
   letter-spacing: 0.1em;
-  color: rgba(245,240,230,0.25);
+  color: rgba(250,246,241,0.25);
   text-transform: uppercase;
 }
 .footer-socials { display: flex; gap: 0.75rem; }
@@ -924,7 +935,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(245,240,230,0.35);
+  color: rgba(250,246,241,0.35);
   font-size: 0.72rem;
   transition: all 0.2s;
 }
