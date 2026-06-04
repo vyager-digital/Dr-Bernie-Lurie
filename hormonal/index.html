@@ -2101,13 +2101,13 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
 
   // Meta Pixel — Booking intent (all #consult CTAs)
   document.querySelectorAll('a[href="#consult"]').forEach(el => {
-    el.addEventListener('click', () => fbq('track', 'Schedule'));
+    el.addEventListener('click', () => fbq('track', 'ViewContent'));
   });
 
   // Meta Pixel — Booking confirmed (payment button)
   const confirmBtn = document.getElementById('confirm-btn');
   if (confirmBtn) {
-    confirmBtn.addEventListener('click', () => fbq('track', 'Schedule'));
+    confirmBtn.addEventListener('click', () => fbq('track', 'InitiateCheckout'));
   }
 
   // Mobile menu
