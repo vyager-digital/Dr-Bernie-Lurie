@@ -2191,7 +2191,25 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
     if (!emailOk) { errEmail.style.display    = 'block'; valid = false; } else { errEmail.style.display    = 'none'; }
     if (!phoneOk) { errWhatsapp.textContent = phoneMsg; errWhatsapp.style.display = 'block'; valid = false; } else { errWhatsapp.style.display = 'none'; }
 
-    if (valid) quizGoTo(2);
+    if (valid) {
+      const _name        = document.getElementById('q-name').value.trim();
+      const _email       = document.getElementById('q-email').value.trim();
+      const _whatsappRaw = document.getElementById('q-whatsapp').value.trim();
+      const _dialCode    = document.getElementById('q-dialcode').value;
+      const _whatsapp    = _whatsappRaw ? _dialCode + ' ' + _whatsappRaw : '—';
+      fetch('https://formspree.io/f/mlgzjzjy', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: `Quiz started (incomplete) — ${_name}`,
+          Name:     _name,
+          Email:    _email,
+          WhatsApp: _whatsapp,
+          Status:   'Quiz started — did not complete'
+        })
+      }).catch(() => {});
+      quizGoTo(2);
+    }
   }
 
   function quizGoTo(step) {
