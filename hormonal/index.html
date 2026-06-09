@@ -1063,26 +1063,17 @@
   .footer-links a:hover { color: var(--rose); }
 
   /* WHATSAPP FLOAT */
-  .wa-float { position: fixed; bottom: 2rem; right: 2rem; z-index: 999; display: flex; align-items: center; justify-content: center; background: #25D366; color: #fff; border: none; cursor: pointer; width: 52px; height: 52px; border-radius: 50%; box-shadow: 0 4px 20px rgba(37,211,102,0.35); transition: transform 0.2s, box-shadow 0.2s; }
+  .wa-wrap { position: fixed; bottom: 2rem; right: 2rem; z-index: 999; display: flex; align-items: center; gap: 0.6rem; }
+  .wa-float { display: flex; align-items: center; justify-content: center; background: #25D366; color: #fff; text-decoration: none; width: 52px; height: 52px; border-radius: 50%; box-shadow: 0 4px 20px rgba(37,211,102,0.35); transition: transform 0.2s, box-shadow 0.2s; flex-shrink: 0; }
   .wa-float:hover { transform: translateY(-2px) scale(1.08); box-shadow: 0 6px 24px rgba(37,211,102,0.45); }
   .wa-float i { font-size: 1.5rem; }
-
-  /* WHATSAPP POPUP */
-  .wa-popup { position: fixed; bottom: 5.5rem; right: 2rem; z-index: 998; width: 300px; background: #fff; border-radius: 1rem; box-shadow: 0 8px 32px rgba(0,0,0,0.15); overflow: hidden; transform: scale(0.9) translateY(8px); transform-origin: bottom right; opacity: 0; pointer-events: none; transition: opacity 0.22s, transform 0.22s; }
-  .wa-popup.open { opacity: 1; transform: scale(1) translateY(0); pointer-events: all; }
-  .wa-popup-header { background: #25D366; padding: 1rem; display: flex; align-items: center; gap: 0.75rem; position: relative; }
-  .wa-popup-avatar { width: 42px; height: 42px; border-radius: 50%; background: rgba(255,255,255,0.25); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .wa-popup-avatar i { font-size: 1.4rem; color: #fff; }
-  .wa-popup-name { color: #fff; font-family: 'Jost', sans-serif; font-size: 0.95rem; font-weight: 600; margin: 0; }
-  .wa-popup-status { color: rgba(255,255,255,0.85); font-family: 'Jost', sans-serif; font-size: 0.75rem; margin: 0.15rem 0 0; display: flex; align-items: center; gap: 0.35rem; }
-  .wa-popup-dot { width: 7px; height: 7px; border-radius: 50%; background: #fff; display: inline-block; flex-shrink: 0; }
-  .wa-popup-close { position: absolute; top: 0.55rem; right: 0.7rem; background: none; border: none; color: rgba(255,255,255,0.8); font-size: 1.3rem; cursor: pointer; line-height: 1; padding: 0.2rem 0.4rem; transition: color 0.15s; }
-  .wa-popup-close:hover { color: #fff; }
-  .wa-popup-body { padding: 1rem; background: #ece5dd; display: flex; flex-direction: column; gap: 0.5rem; }
-  .wa-popup-bubble { background: #fff; padding: 0.65rem 0.9rem; border-radius: 0.75rem 0.75rem 0.75rem 0.15rem; font-family: 'Jost', sans-serif; font-size: 0.875rem; color: var(--text-dark); line-height: 1.5; box-shadow: 0 1px 2px rgba(0,0,0,0.08); }
-  .wa-popup-start { display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin: 0.75rem; background: #25D366; color: #fff; font-family: 'Jost', sans-serif; font-weight: 600; font-size: 0.9rem; text-decoration: none; padding: 0.7rem 1rem; border-radius: 0.5rem; transition: background 0.2s; }
-  .wa-popup-start:hover { background: #1da851; color: #fff; }
-  .wa-popup-start i { font-size: 1.1rem; }
+  .wa-label { background: var(--text-dark); color: #fff; font-family: 'Jost', sans-serif; font-size: 0.8rem; font-weight: 500; white-space: nowrap; padding: 0.38rem 0.75rem; border-radius: 2rem; opacity: 0; pointer-events: none; animation: waLabelIn 6s ease forwards; animation-delay: 4s; }
+  @keyframes waLabelIn {
+    0%   { opacity: 0; transform: translateX(6px); }
+    12%  { opacity: 1; transform: translateX(0); }
+    75%  { opacity: 1; transform: translateX(0); }
+    100% { opacity: 0; transform: translateX(6px); }
+  }
 
   /* SCROLL REVEAL */
   .reveal {
@@ -2104,43 +2095,14 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
   </div>
 </footer>
 
-<div class="wa-popup" id="wa-popup" role="dialog" aria-label="Chat to us on WhatsApp">
-  <div class="wa-popup-header">
-    <div class="wa-popup-avatar"><i class="fa-brands fa-whatsapp"></i></div>
-    <div>
-      <p class="wa-popup-name">Dr Bernie &amp; Jo-Anne</p>
-      <p class="wa-popup-status"><span class="wa-popup-dot"></span> Typically replies quickly</p>
-    </div>
-    <button class="wa-popup-close" onclick="closeWaPopup()" aria-label="Close">&#x2715;</button>
-  </div>
-  <div class="wa-popup-body">
-    <div class="wa-popup-bubble">Hi there! Have questions about working with Dr Bernie and Jo-Anne? We're happy to chat.</div>
-  </div>
-  <a href="https://wa.me/27762390423" class="wa-popup-start" target="_blank" rel="noopener" onclick="closeWaPopup()">
-    <i class="fa-brands fa-whatsapp"></i> Chat to us
+<div class="wa-wrap">
+  <span class="wa-label">Chat to us</span>
+  <a href="https://wa.me/27762390423" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
   </a>
 </div>
 
-<button class="wa-float" id="wa-toggle" aria-label="Chat on WhatsApp" onclick="toggleWaPopup()">
-  <i class="fa-brands fa-whatsapp"></i>
-</button>
-
 <script>
-  // WhatsApp popup
-  function toggleWaPopup() {
-    document.getElementById('wa-popup').classList.toggle('open');
-  }
-  function closeWaPopup() {
-    document.getElementById('wa-popup').classList.remove('open');
-  }
-  document.addEventListener('click', function(e) {
-    const popup = document.getElementById('wa-popup');
-    const toggle = document.getElementById('wa-toggle');
-    if (popup.classList.contains('open') && !popup.contains(e.target) && !toggle.contains(e.target)) {
-      popup.classList.remove('open');
-    }
-  });
-
   // Nav scroll shadow
   const nav = document.querySelector('nav');
   window.addEventListener('scroll', () => {
