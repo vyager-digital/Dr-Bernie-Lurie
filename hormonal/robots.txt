@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://herbernie.co.za/sitemap.xml
