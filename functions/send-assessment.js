@@ -40,7 +40,7 @@ export async function onRequestPost(context) {
     const priorHelp = body.priorHelp || '';
     const goal      = body.goal      || '';
 
-    const html = buildEmailHtml({ name, symptoms, duration, priorHelp, goal });
+    const html = buildEmailHtml({ name, email, symptoms, duration, priorHelp, goal });
 
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -95,8 +95,9 @@ const GOAL_TEXT = {
   other:    'whatever comes next for you'
 };
 
-function buildEmailHtml({ name, symptoms, duration, priorHelp, goal }) {
+function buildEmailHtml({ name, email, symptoms, duration, priorHelp, goal }) {
   const safeName = escapeHtml(name);
+  const ctaUrl = `https://herbernie.co.za/hormonal/?step=6&name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}#consult`;
 
   const para1 = DURATION_PARAS[duration]   || DURATION_PARAS['1-3yr'];
   const para2 = PRIOR_HELP_PARAS[priorHelp] || PRIOR_HELP_PARAS['no-help'];
@@ -163,12 +164,16 @@ function buildEmailHtml({ name, symptoms, duration, priorHelp, goal }) {
                 ${para3}
               </p>
 
+              <p style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.7; color:#3a2528; margin:0 0 16px;">
+                If you haven't booked your consultation yet, you can go ahead and do that now &mdash; just click below.
+              </p>
+
               <!-- CTA -->
               <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 0 28px;">
                 <tr>
                   <td style="border-radius:10px; background:#c4796a;">
-                    <a href="https://herbernie.co.za/hormonal/#consult" style="display:inline-block; padding:13px 28px; font-family:Arial, Helvetica, sans-serif; font-size:14px; font-weight:600; color:#ffffff; text-decoration:none; border-radius:10px;">
-                      Continue to Your Consultation
+                    <a href="${ctaUrl}" style="display:inline-block; padding:13px 28px; font-family:Arial, Helvetica, sans-serif; font-size:14px; font-weight:600; color:#ffffff; text-decoration:none; border-radius:10px;">
+                      Book My Consultation
                     </a>
                   </td>
                 </tr>
@@ -193,13 +198,17 @@ function buildEmailHtml({ name, symptoms, duration, priorHelp, goal }) {
               </p>
               <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 auto;">
                 <tr>
-                  <td style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#a05c4e; padding:0 10px;">
-                    <a href="tel:+27413781531" style="color:#a05c4e; text-decoration:none;">(+27) 41 378 1531</a>
+                  <td style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#a05c4e; padding:4px 0; text-align:center; white-space:nowrap;">
+                    Phone: <a href="tel:+27413781531" style="color:#a05c4e; text-decoration:none;">(+27) 41 378 1531</a>
                   </td>
-                  <td style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#a05c4e; padding:0 10px;">
-                    <a href="https://wa.me/27762390423" style="color:#a05c4e; text-decoration:none;">WhatsApp</a>
+                </tr>
+                <tr>
+                  <td style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#a05c4e; padding:4px 0; text-align:center; white-space:nowrap;">
+                    WhatsApp: <a href="https://wa.me/27762390423" style="color:#a05c4e; text-decoration:none;">(+27) 76 239 0423</a>
                   </td>
-                  <td style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#a05c4e; padding:0 10px;">
+                </tr>
+                <tr>
+                  <td style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#a05c4e; padding:4px 0; text-align:center; white-space:nowrap;">
                     <a href="mailto:info@herbernie.co.za" style="color:#a05c4e; text-decoration:none;">info@herbernie.co.za</a>
                   </td>
                 </tr>

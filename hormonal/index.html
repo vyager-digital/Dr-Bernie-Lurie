@@ -2547,6 +2547,20 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
     }
   }
 
+  // Returning from the assessment email — skip straight to booking
+  (function() {
+    const p = new URLSearchParams(window.location.search);
+    if (p.get('step') !== '6') return;
+    const name  = p.get('name')  || '';
+    const email = p.get('email') || '';
+    const nameField  = document.getElementById('q-name');
+    const emailField = document.getElementById('q-email');
+    if (nameField)  nameField.value  = name;
+    if (emailField) emailField.value = email;
+    document.getElementById('quiz-summary-text').innerHTML = `<p>${name ? name + ', w' : 'W'}elcome back. Whenever you're ready, here's your 30-minute online consultation with Dr. Lurie and Joanne.</p>`;
+    quizGoTo(6);
+  })();
+
   // Show booking section if returning from PayFast payment
   (function() {
     const p = new URLSearchParams(window.location.search);
