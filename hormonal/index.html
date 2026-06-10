@@ -2417,6 +2417,10 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
         Goal:              _goalLabels[quizData.goal] || quizData.goal || '—'
       })
     }).catch(() => {});
+
+    // Meta Pixel — Questionnaire completed
+    fbq('track', 'CompleteRegistration');
+
     quizGoTo(6);
   }
 
