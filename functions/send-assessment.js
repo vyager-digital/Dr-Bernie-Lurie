@@ -77,7 +77,7 @@ const DURATION_PARAS = {
   'under-6m': "You're catching this early, and that matters. What you've described has a clear hormonal signature, and addressing it now is far easier than waiting for it to compound.",
   '6m-1yr':   "Six months to a year of feeling this way is long enough to know it isn't going to resolve on its own. What you've described is a pattern Dr. Lurie and I see regularly, and one that responds well to the right support.",
   '1-3yr':    "You've been managing this for over a year now. That's long enough for your body to develop real compensation patterns, which is exactly why a personalised approach makes such a difference over general advice.",
-  '3yr-plus': "Years of managing this means your body has been working around the problem rather than through it. That's more common than people realise, and it doesn't make things harder to address. It just means we need to understand the starting point properly, which is exactly what your consultation is for."
+  '3yr-plus': "Years of managing this means your body has been working around the problem rather than through it. That's more common than people realise, and it doesn't make things harder to address. It just means we need to understand the starting point properly."
 };
 
 const PRIOR_HELP_PARAS = {
@@ -95,27 +95,85 @@ const GOAL_TEXT = {
   other:    'whatever comes next for you'
 };
 
+const SEVERITY_WEIGHT = { affecting: 3, noticeable: 2, mild: 1 };
+
+const SYMPTOM_REFLECTIONS = {
+  'hot-flushes':       'the hot flushes and night sweats',
+  'broken-sleep':      'the broken sleep',
+  'fatigue':           "the fatigue that doesn't lift",
+  'brain-fog':         'the brain fog',
+  'mood-swings':       "the mood swings that don't feel like you",
+  'weight':            "the weight that won't shift",
+  'anxiety':           "the anxiety that's crept in",
+  'cycles':            'the changes in your cycle',
+  'libido':            'feeling disconnected from your own body',
+  'joint-pain':        'the joint aches',
+  'vaginal-dryness':   'the discomfort during intimacy',
+  'breast-tenderness': 'the breast tenderness'
+};
+
+const SYMPTOM_CLUSTERS = {
+  'broken-sleep': 'sleep', 'fatigue': 'sleep', 'brain-fog': 'sleep',
+  'mood-swings': 'mood', 'anxiety': 'mood',
+  'hot-flushes': 'heat',
+  'cycles': 'cycle', 'libido': 'cycle', 'vaginal-dryness': 'cycle', 'breast-tenderness': 'cycle',
+  'weight': 'physical', 'joint-pain': 'physical'
+};
+
+const CLUSTER_ORDER = ['sleep', 'mood', 'heat', 'cycle', 'physical'];
+
+const CLUSTER_INSIGHT = {
+  sleep:    "Sleep, energy and mental clarity all run on the same hormonal rhythm. When progesterone and cortisol fall out of sync, the body struggles to reach deep, restorative sleep, which is exactly why the tiredness and fog don't lift no matter how much rest you get.",
+  mood:     "Mood and emotional steadiness are closely tied to the same hormones that regulate your cycle. When estrogen and progesterone fluctuate, the nervous system feels it first, often well before anything would show up on a standard blood test.",
+  heat:     "Hot flushes and night sweats come from the way the brain's temperature control responds to shifting estrogen levels. It's one of the clearest signals that hormonal rebalancing is the right place to start.",
+  cycle:    "Changes in your cycle, your libido and how your body feels day to day are all connected to the same estrogen-progesterone balance. When one shifts, the others tend to follow.",
+  physical: "Weight and joint discomfort are often the most visible signs of a hormonal shift. When estrogen drops, it changes how the body manages inflammation and where it stores fat, which is why these changes can feel so stubborn."
+};
+
+const CLUSTER_TOPIC = {
+  sleep:    "what's been happening with your sleep, energy and focus",
+  mood:     "what's been driving the shifts in your mood",
+  heat:     "what's behind the hot flushes and night sweats",
+  cycle:    "the changes in your cycle and how your body's been feeling",
+  physical: "what's been going on with your weight and how your body's been feeling"
+};
+
+function joinNaturally(items) {
+  if (items.length <= 1) return items[0] || '';
+  if (items.length === 2) return `${items[0]} and ${items[1]}`;
+  return `${items.slice(0, -1).join(', ')} and ${items[items.length - 1]}`;
+}
+
 function buildEmailHtml({ name, email, symptoms, duration, priorHelp, goal }) {
   const safeName = escapeHtml(name);
   const ctaUrl = `https://herbernie.co.za/hormonal/?step=6&name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}#consult`;
 
-  const para1 = DURATION_PARAS[duration]   || DURATION_PARAS['1-3yr'];
-  const para2 = PRIOR_HELP_PARAS[priorHelp] || PRIOR_HELP_PARAS['no-help'];
+  const symptomEntries = Object.entries(symptoms)
+    .filter(([key]) => SYMPTOM_REFLECTIONS[key])
+    .map(([key, severity], index) => ({ key, weight: SEVERITY_WEIGHT[severity] || 1, index }));
 
-  const severities    = Object.values(symptoms);
-  const hasAffecting  = severities.includes('affecting');
-  const hasNoticeable = severities.includes('noticeable');
+  const topReflections = [...symptomEntries]
+    .sort((a, b) => b.weight - a.weight || a.index - b.index)
+    .slice(0, 3)
+    .map(s => SYMPTOM_REFLECTIONS[s.key]);
+
+  const clusterWeights = {};
+  symptomEntries.forEach(s => {
+    const cluster = SYMPTOM_CLUSTERS[s.key];
+    clusterWeights[cluster] = (clusterWeights[cluster] || 0) + s.weight;
+  });
+  const dominantCluster = CLUSTER_ORDER.reduce((best, cluster) =>
+    (clusterWeights[cluster] || 0) > (clusterWeights[best] || 0) ? cluster : best, CLUSTER_ORDER[0]);
+
+  const para1 = topReflections.length === 1
+    ? `Reading through what you shared, ${topReflections[0]} stood out to me. ${CLUSTER_INSIGHT[dominantCluster]}`
+    : `Reading through what you shared, a few things stood out to me: ${joinNaturally(topReflections)}. ${CLUSTER_INSIGHT[dominantCluster]}`;
+
+  const para2 = DURATION_PARAS[duration]    || DURATION_PARAS['1-3yr'];
+  const para3 = PRIOR_HELP_PARAS[priorHelp] || PRIOR_HELP_PARAS['no-help'];
+
   const goalText = GOAL_TEXT[goal] || 'feeling well again';
-  const capGoal  = goalText.charAt(0).toUpperCase() + goalText.slice(1);
-
-  let para3;
-  if (hasAffecting) {
-    para3 = `When symptoms are actively getting in the way of daily life, that's your body telling us it's been compensating for too long. My patients regularly tell me they notice meaningful improvement within 2&ndash;4 weeks of starting treatment. ${capGoal} isn't a distant outcome &mdash; it's a reasonable expectation, and your consultation is where we begin.`;
-  } else if (hasNoticeable) {
-    para3 = `Symptoms at this level don't tend to settle on their own. The earlier we start with targeted support, the less work your body has to do to recalibrate. ${capGoal} is closer than it feels right now, and your consultation is the clearest next step toward it.`;
-  } else {
-    para3 = `${capGoal} is a reasonable goal, and one that hormonal rebalancing directly supports. My patients regularly describe this kind of shift within the first few months of treatment. Your consultation is where we build the plan, specifically for you.`;
-  }
+  const para4 = `In your consultation, we'll go through ${CLUSTER_TOPIC[dominantCluster]} in more detail, and start mapping out what's needed for ${goalText}.`;
 
   return `<!DOCTYPE html>
 <html lang="en">
