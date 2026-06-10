@@ -180,7 +180,7 @@ function buildEmailHtml({ name, email, symptoms, duration, priorHelp, goal }) {
               </table>
 
               <p style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.7; color:#3a2528; margin:0;">
-                Looking forward to going through this with you in your consultation.
+                Looking forward to going through all of this with you soon.
               </p>
               <p style="font-family:Georgia, serif; font-size:15px; line-height:1.6; color:#3a2528; margin:20px 0 0;">
                 Warmly,<br>
