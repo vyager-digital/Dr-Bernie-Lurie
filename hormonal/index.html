@@ -1168,7 +1168,8 @@
     .cause-desc { line-height: 1.7; }
 
     /* Process */
-    .step-card { grid-template-columns: 90px 1fr; }
+    .step-card { display: flex; flex-direction: column; }
+    .step-num-col { width: 100%; aspect-ratio: 4/3; border-right: none; border-bottom: 1px solid var(--blush-deep); }
     .step-num { width: 2rem; height: 2rem; font-size: 0.8rem; bottom: 0.6rem; left: 0.6rem; }
     .step-content { padding: 1.4rem 1.2rem; }
     .step-badge { font-size: 0.72rem; }
