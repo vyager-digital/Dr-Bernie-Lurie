@@ -575,6 +575,10 @@
   .test-inner { max-width: 1200px; margin: 0 auto; }
   .test-header { text-align: center; margin-bottom: 3.5rem; }
   .test-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+  .test-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 1000px; margin: 0 auto; }
+  @media (max-width: 900px) {
+    .test-grid-2 { grid-template-columns: 1fr; gap: 1.2rem; }
+  }
   .test-card {
     background: white; border-radius: 1.5rem; padding: 2.2rem;
     border: 1px solid var(--blush-deep); transition: all 0.4s;
@@ -1652,13 +1656,20 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
       <div class="section-eyebrow" style="justify-content:center;">Patient Stories</div>
       <h2 class="section-headline" style="text-align:center;">Women Who Found Their Way Back</h2>
     </div>
-    <div style="max-width:720px;margin:0 auto;">
+    <div class="test-grid-2">
       <div class="test-card reveal" style="--d:0ms">
         <div class="test-top"><div class="test-qmark">"</div><div class="test-stars">★★★★★</div></div>
         <p class="test-body">Thank you to Dr Lurie for helping me through the journey called menopause. I was determined to not use HRT and Dr validated my opinion. What he prescribed has been incredible. No hot flushes. No mood swings. No sweet cravings. I am calm as a cucumber.</p>
         <p class="test-body" style="margin-top:1rem;">He also diagnosed me with low salt levels, which contributed to my incontinence. It was a worrying and very embarrassing challenge I faced. Since taking in more salt, that issue is behind me. I can recommend Dr and Jo-Anne to absolutely everybody. Their expert advice is always just a WhatsApp away.</p>
         <div class="test-divider"></div>
         <div class="test-meta"><div class="test-avatar">EC</div><div><div class="test-name">Elmarie Crewe-Brown</div><div class="test-condition">Menopause</div></div></div>
+      </div>
+      <div class="test-card reveal" style="--d:120ms">
+        <div class="test-top"><div class="test-qmark">"</div><div class="test-stars">★★★★★</div></div>
+        <p class="test-body">I'd been to a gynaecologist who suggested a full hysterectomy. She felt I was heading into menopause and that, at 54, removal was the best option. She also told me my uterus was still growing, and that further down the line I'd be begging her to take it out. I'd gone to her because of regular vaginal discomfort and infections. I left her office traumatised and in tears.</p>
+        <p class="test-body" style="margin-top:1rem;">I wanted a second opinion, so I contacted Jo-anne at Herbernie. It's been two weeks since I started the herbal supplements she prescribed, and I feel like myself again. The discomfort is gone, and I haven't had a recurring bladder infection. For the first time in weeks, I can be intimate with my husband without dryness or pain. My mood has lifted, my constipation has cleared, and the bloated stomach I've carried for years is gone. I'm so grateful for this new lease on life.</p>
+        <div class="test-divider"></div>
+        <div class="test-meta"><div class="test-avatar">SV</div><div><div class="test-name">Sharon Van Vollenhoven</div><div class="test-condition">Menopause · Manaba Beach, KZN</div></div></div>
       </div>
     </div>
   </div>
