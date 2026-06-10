@@ -2419,6 +2419,20 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
       })
     }).catch(() => {});
 
+    // Email the personalised assessment to the patient, written by Joanne
+    fetch('/send-assessment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name:      _name,
+        email:     _email,
+        symptoms:  quizData.symptoms,
+        duration:  quizData.duration,
+        priorHelp: quizData.priorHelp,
+        goal:      quizData.goal
+      })
+    }).catch(() => {});
+
     // Meta Pixel — Questionnaire completed
     fbq('track', 'CompleteRegistration');
 
