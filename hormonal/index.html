@@ -383,6 +383,9 @@
     height: auto;
     border-radius: 1.4rem;
   }
+  @media (min-width: 901px) {
+    .truth-visual img { max-width: 480px; }
+  }
 
   .truth-closing {
     text-align: center;
@@ -1445,7 +1448,10 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
     </div>
 
     <div class="truth-visual reveal">
-      <img src="assets/images/full-picture.webp" alt="Illustration showing how perimenopause symptoms — sleep, mood, weight, brain fog, hot flashes, anxiety, fatigue, low libido, and blood sugar — are connected, not separate problems" width="840" height="1492" loading="lazy">
+      <picture>
+        <source media="(min-width: 901px)" srcset="assets/images/full-picture-desktop.webp">
+        <img src="assets/images/full-picture-mobile.webp" alt="Illustration showing how perimenopause symptoms — sleep, mood, weight, brain fog, hot flashes, anxiety, fatigue, low libido, and blood sugar — are connected, not separate problems" width="840" height="1492" loading="lazy">
+      </picture>
     </div>
 
     <div class="truth-transition reveal">
