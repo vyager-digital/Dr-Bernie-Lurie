@@ -83,7 +83,7 @@ const DURATION_PARAS = {
 const PRIOR_HELP_PARAS = {
   'told-normal':   'Being told your results are "normal" when you feel anything but is one of the most common things I hear, and one of the most frustrating. Standard blood panels don\'t capture hormonal patterns over time, or how those patterns interact with one another. What gets missed is often exactly what explains how you\'ve been feeling.',
   'tried-hrt':     "Having already tried HRT or prescription medication, and still looking for answers, tells me your body needs a more tailored approach. Herbal treatment works with your body's own hormonal feedback mechanisms, not just around them. For many of the women I see who've been through the prescription route, this is where things start to shift.",
-  'tried-natural': "Supplements without a proper protocol rarely get to the root cause. The right herbal formulation, timed to your cycle and prepared for your individual profile, is a meaningfully different approach. Many patients who've tried natural remedies before find this is the piece they were missing.",
+  'tried-natural': "Supplements without a proper protocol rarely get to the root cause. The right herbal formulation, prepared for your individual profile, is a meaningfully different approach. Many patients who've tried natural remedies before find this is the piece they were missing.",
   'no-help':       "Not knowing where to start is a very common place to be. Most women aren't told that what they're experiencing has a name, a recognisable pattern, and a clear path through it. That clarity tends to come quickly once we look at the full picture together."
 };
 
