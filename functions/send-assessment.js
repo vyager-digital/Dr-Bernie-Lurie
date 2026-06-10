@@ -51,7 +51,7 @@ export async function onRequestPost(context) {
       body: JSON.stringify({
         from:     'Joanne Buckingham · Herbernie International <assessments@send.herbernie.co.za>',
         to:       email,
-        bcc:      'info@herbernie.co.za',
+        bcc:      ['info@herbernie.co.za', 'hello@vyager.co'],
         reply_to: 'info@herbernie.co.za',
         subject:  `Your personalised assessment, ${name}`,
         html,
