@@ -487,11 +487,12 @@
     background: white;
     border: 1px solid var(--blush-deep);
     border-radius: 0; padding: 0;
-    display: grid; grid-template-columns: 80px 1fr;
+    display: grid; grid-template-columns: 160px 1fr;
     overflow: hidden;
     transition: all 0.3s;
     border-bottom: none;
   }
+  .step-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
   .step-card:first-child { border-radius: 1.4rem 1.4rem 0 0; }
   .step-card:last-child { border-radius: 0 0 1.4rem 1.4rem; border-bottom: 1px solid var(--blush-deep); }
   .step-card:hover { background: var(--warm-white); }
@@ -499,8 +500,8 @@
   .step-card:hover .step-num { color: white; }
   .step-num-col {
     background: var(--parchment);
-    display: flex; align-items: flex-start; justify-content: center;
-    padding: 2.2rem 0 2.2rem;
+    display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+    padding: 0;
     border-right: 1px solid var(--blush-deep);
     transition: background 0.3s;
   }
@@ -509,6 +510,7 @@
     color: var(--rose); line-height: 1;
     position: static; top: auto; right: auto;
     transition: color 0.3s;
+    padding: 0.8rem 0;
   }
   .step-card:nth-child(2) { border-color: var(--blush-deep); margin-top: 0; }
   .step-card:nth-child(2) .step-num { color: var(--rose); }
@@ -1164,8 +1166,8 @@
     .cause-desc { line-height: 1.7; }
 
     /* Process */
-    .step-card { grid-template-columns: 52px 1fr; }
-    .step-num-col { padding: 1.4rem 0; }
+    .step-card { grid-template-columns: 90px 1fr; }
+    .step-num-col { padding: 0; }
     .step-num { font-size: 1rem; }
     .step-content { padding: 1.4rem 1.2rem; }
     .step-badge { font-size: 0.72rem; }
@@ -1580,7 +1582,7 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
     </div>
     <div class="steps-row reveal">
       <div class="step-card">
-        <div class="step-num-col"><div class="step-num">01</div></div>
+        <div class="step-num-col"><img class="step-img" src="assets/images/process-step-01.webp" alt="" width="160" height="160" loading="lazy"><div class="step-num">01</div></div>
         <div class="step-content">
           <span class="step-badge">Assessment</span>
           <h3 class="step-title">Understanding What's Actually Happening</h3>
@@ -1588,7 +1590,7 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
         </div>
       </div>
       <div class="step-card">
-        <div class="step-num-col"><div class="step-num">02</div></div>
+        <div class="step-num-col"><img class="step-img" src="assets/images/process-step-02.webp" alt="" width="160" height="160" loading="lazy"><div class="step-num">02</div></div>
         <div class="step-content">
           <span class="step-badge">Treatment</span>
           <h3 class="step-title">Targeted Herbal Support</h3>
@@ -1596,7 +1598,7 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
         </div>
       </div>
       <div class="step-card">
-        <div class="step-num-col"><div class="step-num">03</div></div>
+        <div class="step-num-col"><img class="step-img" src="assets/images/process-step-03.webp" alt="" width="160" height="160" loading="lazy"><div class="step-num">03</div></div>
         <div class="step-content">
           <span class="step-badge">Ongoing Care</span>
           <h3 class="step-title">Continuous Care as You Heal</h3>
