@@ -2118,12 +2118,6 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
     nav.classList.toggle('scrolled', window.scrollY > 20);
   }, { passive: true });
 
-  // Meta Pixel — Assessment start
-  const assessmentBtn = document.querySelector('button.quiz-btn-primary[onclick="quizGoTo(1)"]');
-  if (assessmentBtn) {
-    assessmentBtn.addEventListener('click', () => fbq('track', 'Lead'));
-  }
-
   // Meta Pixel — Booking intent (all #consult CTAs)
   document.querySelectorAll('a[href="#consult"]').forEach(el => {
     el.addEventListener('click', () => fbq('track', 'ViewContent'));
@@ -2222,6 +2216,10 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
       const _whatsappRaw = document.getElementById('q-whatsapp').value.trim();
       const _dialCode    = document.getElementById('q-dialcode').value;
       const _whatsapp    = _whatsappRaw ? _dialCode + ' ' + _whatsappRaw : '—';
+
+      // Meta Pixel — Lead (contact details captured)
+      fbq('track', 'Lead');
+
       fetch('https://formspree.io/f/mlgzjzjy', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
