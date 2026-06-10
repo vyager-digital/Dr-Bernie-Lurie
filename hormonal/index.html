@@ -1092,10 +1092,11 @@
   /* ── TABLET (≤ 960px) ── */
   @media (max-width: 960px) {
     body { padding-top: 68px; }
-    nav { padding: 1rem 2rem; }
+    nav { padding: 1rem 2rem; justify-content: flex-start; gap: 0.9rem; }
     .nav-links { display: none; }
-    .nav-hamburger { display: flex; }
-    .nav-cta { display: none; }
+    .nav-logo { margin-right: auto; }
+    .nav-hamburger { display: flex; order: 3; }
+    .nav-cta { order: 2; padding: 0.6rem 1.3rem; }
 
     .hero { min-height: calc(100svh - 70px); padding: 7vh 0 6vh; }
     .hero-content { padding: 0 3rem; }
@@ -1142,7 +1143,7 @@
     body { padding-top: 58px; }
     nav { padding: 0.85rem 1rem; gap: 0.5rem; }
     .nav-logo { font-size: 0.9rem; }
-    .nav-cta { font-size: 0; padding: 0.6rem 0.9rem; }
+    .nav-cta { font-size: 0; padding: 0.7rem 1.05rem; }
     .nav-cta::after { content: 'Book Online'; font-size: 0.78rem; letter-spacing: 0.03em; }
 
     /* Hero */
@@ -1295,6 +1296,8 @@
   #cal-embed-inline iframe { width: 100% !important; border: none; }
   @media (max-width: 480px) {
     #booking-section { padding: 2rem 1.2rem 4rem; }
+    .nav-logo-main { display: none; }
+    .nav-logo-sub { font-size: 0.78rem; }
   }
 </style>
 <!-- Meta Pixel Code -->
@@ -1366,9 +1369,9 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
       <span class="script">This as Normal.</span>
       <span class="sage-word">Your body knows how to heal. <img src="assets/images/herbernie-logo-100.webp" srcset="assets/images/herbernie-logo-100.webp 1x, assets/images/herbernie-logo.webp 2x" alt="" class="hero-leaf" width="48" height="48"></span>
     </h1>
-    <p class="hero-tagline">Hot flushes, mood swings, sleepless nights, the fog, the weight — none of it is inevitable. It's addressable. And you deserve answers that actually work.</p>
+    <p class="hero-tagline">The fog, the fatigue, the mood swings, the broken sleep, the hot flushes, the weight — none of it is inevitable. It's addressable. And you deserve answers that actually work.</p>
     <a href="#consult" class="btn-hero">
-      I'm Done Managing. Let's Fix This
+      Start the 3-Minute Assessment
       <span class="btn-hero-arrow">→</span>
     </a>
     <div class="hero-online-note"><span class="pip"></span>Online Consultations · South Africa &amp; Worldwide</div>
@@ -1385,7 +1388,7 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
         You Still Feel Like You Should Be Fine.<br>
         <em>So Why Don't You Feel Like Yourself?</em>
       </h2>
-      <p class="truth-bridge">You wake up tired. You get through the day on willpower. By evening you're irritable for no reason you can name, and by the time your head hits the pillow, your mind won't stop. This isn't burnout. This isn't aging. This is a pattern — and patterns have a source.</p>
+      <p class="truth-bridge">You wake up tired. You get through the day on willpower. By evening you're irritable for no reason you can name, and by the time your head hits the pillow, your mind won't stop. This isn't burnout. This isn't aging. This is a pattern — and patterns have a source. For many women it begins in the early 40s, years before menopause, while cycles are still regular and blood tests still come back normal.</p>
     </div>
 
     <div class="truth-grid">
@@ -1422,6 +1425,12 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
   </div>
 </section>
 
+<!-- MID-PAGE CTA -->
+<div class="mid-cta">
+  <p class="mid-cta-text">If the last two years have felt like this, it's worth finding out why.</p>
+  <a href="#consult" class="mid-cta-btn">Start the 3-Minute Assessment →</a>
+</div>
+
 <!-- ROOT CAUSES -->
 <section class="causes-section section-wrap" id="causes">
   <div class="causes-inner">
@@ -1441,7 +1450,7 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
         <div class="cause-card reveal" style="--d:120ms">
           <div class="cause-illustration"><img src="assets/images/cause-insulin.webp" alt="" width="600" height="600" loading="lazy"></div>
           <div class="cause-title">Insulin Resistance</div>
-          <p class="cause-desc">High sugar intake and sedentary habits lead to insulin resistance, which is a primary driver of conditions like PCOS (polycystic ovary syndrome). If blood sugar isn't managed, hormonal treatments often fail.</p>
+          <p class="cause-desc">From your 40s, your body handles blood sugar less forgivingly, even when your habits haven't changed. The resulting insulin resistance is a primary driver of conditions like PCOS (polycystic ovary syndrome), and if it isn't addressed, hormonal treatments often fail.</p>
         </div>
         <div class="cause-card reveal" style="--d:240ms">
           <div class="cause-illustration"><img src="assets/images/cause-sleep.webp" alt="" width="600" height="600" loading="lazy"></div>
@@ -1461,7 +1470,7 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
         <div class="cause-card reveal" style="--d:600ms">
           <div class="cause-illustration"><img src="assets/images/cause-stress.webp" alt="" width="600" height="600" loading="lazy"></div>
           <div class="cause-title">Stress Stealing Your Hormones</div>
-          <p class="cause-desc">Stress disrupts hormonal balance and affects ovulation. Elevated cortisol lowers estrogen and progesterone levels from the ovary. No supplement can fix this if the underlying stress load isn't addressed.</p>
+          <p class="cause-desc">You may have been told it's "just stress" and sent home. The physiology is real: elevated cortisol measurably lowers the estrogen and progesterone your ovaries produce. No supplement can fix this if the underlying stress load isn't addressed.</p>
         </div>
       </div>
     </div>
