@@ -2167,15 +2167,14 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
       // Meta Pixel — Lead (contact details captured)
       fbq('track', 'Lead');
 
-      fetch('https://formspree.io/f/mlgzjzjy', {
+      fetch('/notify-lead', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          _subject: `Quiz started (incomplete) — ${_name}`,
-          Name:     _name,
-          Email:    _email,
-          WhatsApp: _whatsapp,
-          Status:   'Quiz started — did not complete'
+          type:     'lead',
+          name:     _name,
+          email:    _email,
+          whatsapp: _whatsapp
         })
       }).catch(() => {});
       quizGoTo(2);
@@ -2362,6 +2361,22 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
         'How long':        _durationLabels[quizData.duration]  || quizData.duration  || '—',
         'Prior treatment': _priorHelpLabels[quizData.priorHelp] || quizData.priorHelp || '—',
         Goal:              _goalLabels[quizData.goal] || quizData.goal || '—'
+      })
+    }).catch(() => {});
+
+    // Internal notification — full questionnaire completed
+    fetch('/notify-lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        type:      'completion',
+        name:      _name,
+        email:     _email,
+        whatsapp:  _whatsapp,
+        symptoms:  _symptoms,
+        duration:  _durationLabels[quizData.duration]  || quizData.duration  || '—',
+        priorHelp: _priorHelpLabels[quizData.priorHelp] || quizData.priorHelp || '—',
+        goal:      _goalLabels[quizData.goal] || quizData.goal || '—'
       })
     }).catch(() => {});
 
