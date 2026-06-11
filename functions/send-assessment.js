@@ -167,8 +167,8 @@ function buildEmailHtml({ name, email, symptoms, duration, priorHelp, goal }) {
     (clusterWeights[cluster] || 0) > (clusterWeights[best] || 0) ? cluster : best, CLUSTER_ORDER[0]);
 
   const para1 = topReflections.length === 1
-    ? `Reading through what you shared, ${topReflections[0]} stood out to me. ${CLUSTER_INSIGHT[dominantCluster]}`
-    : `Reading through what you shared, a few things stood out to me: ${joinNaturally(topReflections)}. ${CLUSTER_INSIGHT[dominantCluster]}`;
+    ? `From your answers, ${topReflections[0]} stands out. ${CLUSTER_INSIGHT[dominantCluster]}`
+    : `From your answers, a few things stand out: ${joinNaturally(topReflections)}. ${CLUSTER_INSIGHT[dominantCluster]}`;
 
   const para2 = DURATION_PARAS[duration]    || DURATION_PARAS['1-3yr'];
   const para3 = PRIOR_HELP_PARAS[priorHelp] || PRIOR_HELP_PARAS['no-help'];
@@ -211,7 +211,7 @@ function buildEmailHtml({ name, email, symptoms, duration, priorHelp, goal }) {
                 Hi ${safeName},
               </h1>
               <p style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.7; color:#3a2528; margin:0 0 16px;">
-                Thank you for taking the time to go through the assessment &mdash; I know it isn't always easy putting these things into words. Before we meet for your consultation, I wanted to share a few thoughts on what you described.
+                Thank you for taking the time to go through the assessment &mdash; I know it isn't always easy putting these things into words. Before we meet, I wanted to share a few thoughts on what you described.
               </p>
               <p style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.7; color:#3a2528; margin:0 0 16px;">
                 ${para1}
@@ -227,7 +227,7 @@ function buildEmailHtml({ name, email, symptoms, duration, priorHelp, goal }) {
               </p>
 
               <p style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.7; color:#3a2528; margin:0 0 16px;">
-                If you haven't booked your consultation yet, you can go ahead and do that now &mdash; just click below.
+                If you haven't booked yet, you can choose a time that suits you below.
               </p>
 
               <!-- CTA -->
