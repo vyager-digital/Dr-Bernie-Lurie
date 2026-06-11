@@ -1317,7 +1317,13 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1297058208673280');
+var amq = new URLSearchParams(location.search);
+var amData = {};
+var amEmail = (amq.get('email') || '').trim().toLowerCase();
+var amName  = (amq.get('name')  || '').trim().toLowerCase();
+if (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(amEmail)) amData.em = amEmail;
+if (amName) amData.fn = amName;
+fbq('init', '1297058208673280', amData);
 fbq('track', 'PageView');
 }
 </script>
