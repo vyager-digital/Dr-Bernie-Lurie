@@ -241,6 +241,9 @@ function buildEmailHtml({ name, email, symptoms, duration, priorHelp, goal }) {
                 </tr>
               </table>
 
+              <p style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.7; color:#3a2528; margin:0 0 16px;">
+                And if you have any questions before then, you can reply to this email directly or message us on WhatsApp at <a href="https://wa.me/27762390423" style="color:#a05c4e; text-decoration:none; white-space:nowrap;">(+27)&nbsp;76&nbsp;239&nbsp;0423</a>.
+              </p>
               <p style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.7; color:#3a2528; margin:0;">
                 Looking forward to going through all of this with you soon.
               </p>
