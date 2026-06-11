@@ -75,6 +75,9 @@ export async function onRequestPost(context) {
 
     if (!json.uuid) return respond({ error: 'No UUID', result: json }, 500);
 
+    // Fire-and-forget — must never block or fail the checkout response
+    context.waitUntil(notifyAttempt(env, body).catch(() => {}));
+
     return respond({ uuid: json.uuid }, 200);
 
   } catch (e) {
@@ -108,4 +111,72 @@ function sign(data) {
     .map(k => `${k}=${pfEncode(data[k])}`)
     .join('&');
   return createHash('md5').update(str).digest('hex');
+}
+
+async function notifyAttempt(env, body) {
+  if (!env.RESEND_API_KEY) return;
+
+  const esc   = s => String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+  const name  = esc((body.name || '').trim() || '—');
+  const email = esc((body.email || '').trim() || '—');
+  const time  = new Date().toLocaleString('en-ZA', { timeZone: 'Africa/Johannesburg', dateStyle: 'medium', timeStyle: 'short' });
+
+  const rows = [
+    ['Name', name],
+    ['Email', email],
+    ['Amount', 'R490.00'],
+    ['Time', `${time} (SAST)`],
+    ['Status', 'Clicked Confirm My Booking — PayFast checkout opened. If no payment appears in PayFast, the modal was closed without paying.'],
+  ].map(([label, value]) => `
+    <tr>
+      <td style="padding:6px 12px 6px 0; font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#6e5a54; font-weight:700; vertical-align:top; white-space:nowrap;">${label}</td>
+      <td style="padding:6px 0; font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#3a2528;">${value}</td>
+    </tr>`).join('');
+
+  const subject = `Payment attempt — ${(body.name || '').trim() || 'Unknown'}`;
+  const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${esc(subject)}</title>
+</head>
+<body style="margin:0; padding:0; background:#f2ddd5; font-family:Arial, Helvetica, sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f2ddd5; padding:24px 16px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:520px; background:#fdf8f5; border-radius:14px; overflow:hidden;">
+          <tr>
+            <td style="padding:20px 28px; border-bottom:1px solid #ead0c8;">
+              <div style="font-family:Georgia, serif; font-size:16px; font-weight:700; color:#a05c4e;">Hormonal Harmony Quiz</div>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:24px 28px;">
+              <h1 style="font-family:Georgia, serif; font-size:18px; color:#3a2528; margin:0 0 16px;">${esc(subject)}</h1>
+              <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;">
+                ${rows}
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`;
+
+  await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${env.RESEND_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      from:    'Herbernie Hormonal Quiz <notifications@send.herbernie.co.za>',
+      to:      ['hello@vyager.co', 'info@herbernie.co.za'],
+      subject,
+      html,
+    }),
+  });
 }
