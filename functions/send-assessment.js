@@ -248,7 +248,7 @@ function buildEmailHtml({ name, email, symptoms, duration, priorHelp, goal }) {
                 Looking forward to going through all of this with you soon.
               </p>
               <p style="font-family:Georgia, serif; font-size:15px; line-height:1.6; color:#3a2528; margin:20px 0 0;">
-                Warmly,<br>
+                Kind regards,<br>
                 <strong>Joanne Buckingham</strong><br>
                 <span style="font-family:Arial, Helvetica, sans-serif; font-size:12px; letter-spacing:0.04em; text-transform:uppercase; color:#6e5a54;">Registered Natural Health Practitioner</span>
               </p>
