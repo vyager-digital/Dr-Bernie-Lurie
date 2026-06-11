@@ -16,7 +16,18 @@
 <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 <script defer src="https://www.payfast.co.za/onsite/engine.js"></script>
 <script>
+    // Internal-traffic kill-switch: visit ?internal=1 once per device to hide
+    // that browser from Clarity + Meta Pixel permanently (?internal=0 undoes it)
+    (function(){
+        try {
+            var q = new URLSearchParams(location.search);
+            if (q.get('internal') === '1') localStorage.setItem('vy_internal', '1');
+            if (q.get('internal') === '0') localStorage.removeItem('vy_internal');
+            window.__vyInternal = localStorage.getItem('vy_internal') === '1';
+        } catch (e) { window.__vyInternal = false; }
+    })();
     window.addEventListener('load', function() {
+        if (window.__vyInternal) return;
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
             t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
@@ -1295,6 +1306,9 @@
 </style>
 <!-- Meta Pixel Code -->
 <script>
+if (window.__vyInternal) {
+window.fbq = function(){};
+} else {
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -1305,6 +1319,7 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1297058208673280');
 fbq('track', 'PageView');
+}
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
