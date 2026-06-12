@@ -973,6 +973,29 @@
   .quiz-confirm-summary p { margin: 0 0 1.1rem; }
   .quiz-confirm-summary p:last-child { margin-bottom: 0; }
   .quiz-confirm-summary strong { color: var(--text-dark); }
+  /* On-screen assessment (mirrors the emailed assessment) */
+  .assess-block { text-align: left; }
+  .assess-intro { font-size: 1.12rem; color: var(--text-dark); margin: 0 0 1.6rem; }
+  .assess-section { margin-bottom: 1.6rem; }
+  .assess-section-label {
+    font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--rose); font-weight: 600; margin-bottom: 0.65rem;
+  }
+  .assess-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+  .assess-list li { display: flex; align-items: baseline; gap: 0.6rem; font-size: 1rem; line-height: 1.6; color: var(--text-dark); }
+  .assess-list li::before { content: '✦'; color: var(--rose-soft); font-size: 0.55rem; flex-shrink: 0; }
+  .assess-sev { color: var(--text-mid); }
+  .assess-text { font-size: 1rem; line-height: 1.75; color: var(--text-mid); margin: 0 0 0.9rem; }
+  .assess-text:last-child { margin-bottom: 0; }
+  .assess-email-note {
+    display: flex; align-items: flex-start; gap: 0.8rem;
+    background: var(--blush-light); border: 1px solid var(--blush-deep);
+    border-radius: 0.9rem; padding: 1rem 1.2rem;
+    font-size: 1rem; line-height: 1.6; color: var(--text-mid);
+    overflow-wrap: anywhere; min-width: 0;
+  }
+  .assess-email-note i { color: var(--rose); margin-top: 3px; flex-shrink: 0; }
+  .assess-email-note strong { color: var(--text-dark); font-weight: 600; }
   .quiz-divider { height: 1px; background: var(--blush-deep); margin: 0 0 2rem; }
   .quiz-offer-card {
     background: var(--blush-light); border: 1px solid var(--blush-deep);
@@ -2308,62 +2331,6 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
   }
 
   function quizSubmit() {
-    const name = document.getElementById('q-name').value.trim();
-    const namePrefix = name ? name + ', ' : '';
-
-    const severities = Object.values(quizData.symptoms);
-    const hasAffecting  = severities.includes('affecting');
-    const hasNoticeable = severities.includes('noticeable');
-
-    // Para 1 — duration-aware opening
-    let para1;
-    const dur = quizData.duration;
-    if (dur === 'under-6m') {
-      para1 = `${namePrefix}you're catching this early — and that matters. The pattern you've described has a clear hormonal signature. Addressing it now is far easier than waiting for it to compound.`;
-    } else if (dur === '6m-1yr') {
-      para1 = `${namePrefix}six months to a year of this is long enough to know it isn't going to resolve on its own. What you've described is a recognisable hormonal pattern — one Dr. Lurie and Joanne work through regularly, with meaningful results.`;
-    } else if (dur === '1-3yr') {
-      para1 = `${namePrefix}you've been managing this for over a year. That's long enough for the body to develop real compensation patterns — which is also why targeted, personalised support makes such a difference over general advice.`;
-    } else {
-      para1 = `${namePrefix}years of managing this means your body has been working around the problem rather than through it. That's more common than most people realise — and it doesn't make recovery harder. It just means the starting point needs to be understood properly, which is exactly what the consultation does.`;
-    }
-
-    // Para 2 — prior help, the most validating insight
-    let para2;
-    if (quizData.priorHelp === 'told-normal') {
-      para2 = `Being told your results are "normal" when you feel anything but is one of the most common — and most frustrating — things Dr. Lurie and Joanne hear. Standard blood panels don't capture hormonal patterns over time, or how those patterns interact with one another. What gets missed is often exactly what explains how you've been feeling.`;
-    } else if (quizData.priorHelp === 'tried-hrt') {
-      para2 = `Having already tried HRT or prescription medication — and still looking for answers — suggests your body needs a more tailored approach. Herbal treatment works with the body's own hormonal feedback mechanisms, not just around them. For many women who've been through the prescription route, this is where things finally shift.`;
-    } else if (quizData.priorHelp === 'tried-natural') {
-      para2 = `Supplements without a proper protocol rarely address the root cause. The right herbal formulation — prepared specifically for your individual profile — is a meaningfully different approach. Many patients who've tried natural remedies before find this is the piece they were missing.`;
-    } else {
-      para2 = `Not knowing where to start is a very common place to be. Most women aren't told that what they're experiencing has a name, a recognisable pattern, and a clear path through it. That clarity tends to come quickly once someone with the right clinical experience looks at the full picture.`;
-    }
-
-    // Para 3 — severity signal + goal, closing with warm urgency
-    const goalMap = {
-      'patient':  'being patient and present with the people you love',
-      'work':     'showing up at work the way you want to again',
-      'movement': 'moving freely without paying for it the next day',
-      'myself':   'feeling like yourself again',
-      'other':    'what comes next for you'
-    };
-    const goalText = goalMap[quizData.goal] || 'feeling well again';
-    const capGoal = goalText.charAt(0).toUpperCase() + goalText.slice(1);
-    const nameBr = name ? `<br>${namePrefix}` : ' ';
-
-    let para3;
-    if (hasAffecting) {
-      para3 = `When symptoms are actively disrupting daily life, that's the body signalling it has been compensating for too long. Dr. Lurie and Joanne's patients regularly describe meaningful improvement within 2–4 weeks of starting treatment.${nameBr}${name ? goalText : capGoal} is not a distant outcome — it's a reasonable expectation. Your consultation is where that process begins.`;
-    } else if (hasNoticeable) {
-      para3 = `Symptoms at this level don't tend to plateau on their own. The earlier targeted support begins, the less work the body has to do to recalibrate.${nameBr}${name ? goalText : capGoal} is closer than it feels right now — and your consultation is the clearest next step toward it.`;
-    } else {
-      para3 = `${namePrefix}${name ? goalText : capGoal} is a reasonable goal — and one that hormonal rebalancing directly supports. Dr. Lurie and Joanne's patients regularly describe this kind of shift within the first few months of treatment. Your consultation is where the plan is built, specifically for you.`;
-    }
-
-    document.getElementById('quiz-summary-text').innerHTML =
-      [para1, para2, para3].map(p => `<p>${p}</p>`).join('');
-
     // Submit questionnaire data to Formspree
     const _name        = document.getElementById('q-name').value.trim();
     const _email       = document.getElementById('q-email').value.trim();
@@ -2409,6 +2376,90 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
     const _symptoms = Object.entries(quizData.symptoms)
       .map(([k, v]) => `${_symptomLabels[k] || k} — ${_severityLabels[v] || v}`)
       .join('\n') || '—';
+
+    // On-screen assessment — mirrors the logic of the emailed assessment
+    // (send-assessment worker) so the site and the inbox say the same thing
+    const _esc = s => String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+    const _sevWeight  = { affecting: 3, noticeable: 2, mild: 1 };
+    const _sevDisplay = { mild: 'mild', noticeable: 'noticeable', affecting: 'affecting daily life' };
+    const _clusters = {
+      'broken-sleep': 'sleep', 'fatigue': 'sleep', 'brain-fog': 'sleep',
+      'mood-swings': 'mood', 'anxiety': 'mood',
+      'hot-flushes': 'heat',
+      'cycles': 'cycle', 'libido': 'cycle', 'vaginal-dryness': 'cycle', 'breast-tenderness': 'cycle',
+      'weight': 'physical', 'joint-pain': 'physical'
+    };
+    const _clusterOrder = ['sleep', 'mood', 'heat', 'cycle', 'physical'];
+    const _clusterInsight = {
+      sleep:    "Sleep, energy and mental clarity all run on the same hormonal rhythm. When progesterone and cortisol fall out of sync, the body struggles to reach deep, restorative sleep, which is exactly why the tiredness and fog don't lift no matter how much rest you get.",
+      mood:     "Mood and emotional steadiness are closely tied to the same hormones that regulate your cycle. When estrogen and progesterone fluctuate, the nervous system feels it first, often well before anything would show up on a standard blood test.",
+      heat:     "Hot flushes and night sweats come from the way the brain's temperature control responds to shifting estrogen levels. It's one of the clearest signals that hormonal rebalancing is the right place to start.",
+      cycle:    "Changes in your cycle, your libido and how your body feels day to day are all connected to the same estrogen-progesterone balance. When one shifts, the others tend to follow.",
+      physical: "Weight and joint discomfort are often the most visible signs of a hormonal shift. When estrogen drops, it changes how the body manages inflammation and where it stores fat, which is why these changes can feel so stubborn."
+    };
+    const _clusterTopic = {
+      sleep:    "what's been happening with your sleep, energy and focus",
+      mood:     "what's been driving the shifts in your mood",
+      heat:     "what's behind the hot flushes and night sweats",
+      cycle:    "the changes in your cycle and how your body's been feeling",
+      physical: "what's been going on with your weight and how your body's been feeling"
+    };
+    const _durationNote = {
+      'under-6m': "You're catching this early, which makes it easier to address.",
+      '6m-1yr':   "After six months to a year, a pattern like this rarely resolves on its own.",
+      '1-3yr':    "After more than a year, the body develops real compensation patterns, which is why personalised support makes more difference than general advice.",
+      '3yr-plus': "After several years, the body has been working around the problem rather than through it. The starting point needs to be understood properly first."
+    };
+    const _priorNote = {
+      'told-normal':   "\"Normal\" blood results don't capture hormonal patterns over time, or how those patterns interact with one another. What gets missed is often exactly what explains how you've been feeling.",
+      'tried-hrt':     "Having tried HRT or prescription medication and still looking for answers suggests your body needs a more tailored approach.",
+      'tried-natural': "Supplements without a proper protocol rarely reach the root cause. A formulation prepared for your individual profile is a meaningfully different approach.",
+      'no-help':       "What you're experiencing has a name, a recognisable pattern, and a clear path through it."
+    };
+    const _goalText = ({
+      patient:  'being more patient and present with the people you love',
+      work:     'showing up at work the way you want to again',
+      movement: 'moving freely without paying for it the next day',
+      myself:   'feeling like yourself again',
+      other:    'whatever comes next for you'
+    })[quizData.goal] || 'feeling well again';
+
+    const _entries = Object.entries(quizData.symptoms)
+      .map(([k, v], i) => ({ k, v, w: _sevWeight[v] || 1, i }))
+      .sort((a, b) => b.w - a.w || a.i - b.i);
+
+    const _clusterWeights = {};
+    _entries.forEach(e => {
+      const c = _clusters[e.k];
+      if (c) _clusterWeights[c] = (_clusterWeights[c] || 0) + e.w;
+    });
+    const _dominant = _clusterOrder.reduce((best, c) =>
+      (_clusterWeights[c] || 0) > (_clusterWeights[best] || 0) ? c : best, _clusterOrder[0]);
+
+    const _bullets = _entries.map(e =>
+      `<li>${_symptomLabels[e.k] || e.k}<span class="assess-sev"> &middot; ${_sevDisplay[e.v] || e.v}</span></li>`).join('');
+
+    document.getElementById('quiz-summary-text').innerHTML = `
+      <div class="assess-block">
+        <p class="assess-intro">${_name ? _esc(_name) + ', here' : 'Here'}'s what your answers show.</p>
+        <div class="assess-section">
+          <div class="assess-section-label">What you told us</div>
+          <ul class="assess-list">${_bullets}</ul>
+        </div>
+        <div class="assess-section">
+          <div class="assess-section-label">What this pattern suggests</div>
+          <p class="assess-text">${_clusterInsight[_dominant]}</p>
+          <p class="assess-text">${_durationNote[quizData.duration] || _durationNote['1-3yr']} ${_priorNote[quizData.priorHelp] || _priorNote['no-help']}</p>
+        </div>
+        <div class="assess-section">
+          <div class="assess-section-label">What your consultation would cover</div>
+          <p class="assess-text">Dr. Lurie and Joanne will go through ${_clusterTopic[_dominant]} in more detail, and start mapping out what's needed for ${_goalText}.</p>
+        </div>
+        <div class="assess-email-note">
+          <i class="fa-solid fa-envelope"></i>
+          <span>Your full written assessment from <strong>Joanne Buckingham</strong> is on its way to <strong>${_esc(_email)}</strong>. It usually arrives within a few minutes. If you don't see it, check your spam or promotions folder.</span>
+        </div>
+      </div>`;
 
     fetch('https://formspree.io/f/mlgzjzjy', {
       method: 'POST',
