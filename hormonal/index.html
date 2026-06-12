@@ -1019,6 +1019,18 @@
   .quiz-disclaimer { font-size: 0.72rem; color: var(--text-light); text-align: center; line-height: 1.65; margin-top: 1rem; }
   .quiz-tos-label { display: flex; align-items: center; gap: 0.65rem; font-family: 'DM Sans', sans-serif; font-size: 0.88rem; color: var(--text-mid); margin: 1.4rem 0 1.2rem; cursor: pointer; }
   .quiz-tos-label input[type="checkbox"] { width: 18px; height: 18px; flex-shrink: 0; accent-color: var(--rose); cursor: pointer; }
+  .quiz-tos-label.tos-attn { animation: tosNudge 0.4s ease 2; }
+  .quiz-tos-label.tos-attn input[type="checkbox"] { outline: 2px solid var(--rose); outline-offset: 2px; border-radius: 3px; }
+  @keyframes tosNudge {
+    0%, 100% { transform: translateX(0); }
+    30% { transform: translateX(-5px); }
+    70% { transform: translateX(5px); }
+  }
+  .quiz-steps-strip { display: flex; align-items: flex-start; justify-content: center; margin-top: 1.5rem; }
+  .quiz-step { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; min-width: 76px; }
+  .quiz-step-num { width: 22px; height: 22px; border-radius: 50%; background: var(--blush); color: var(--rose-dark); font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .quiz-step-text { font-family: 'DM Sans', sans-serif; font-size: 0.78rem; color: var(--text-mid); line-height: 1.3; text-align: center; }
+  .quiz-step-line { flex: 1; min-width: 18px; max-width: 52px; height: 1px; background: var(--blush-deep); margin-top: 11px; }
   .quiz-tos-link { color: var(--rose); text-decoration: underline; cursor: pointer; }
 
   /* TOS modal */
@@ -1076,6 +1088,9 @@
     .quiz-nav { flex-direction: column-reverse; }
     .quiz-btn-primary { width: 100%; justify-content: center; }
     .quiz-btn-back { width: 100%; justify-content: center; }
+
+    /* Steps strip — keep three columns within 320px card width */
+    .quiz-step { min-width: 60px; }
   }
 
   /* FOOTER */
@@ -1096,12 +1111,12 @@
   .wa-float { display: flex; align-items: center; justify-content: center; background: #25D366; color: #fff; text-decoration: none; width: 52px; height: 52px; border-radius: 50%; box-shadow: 0 4px 20px rgba(37,211,102,0.35); transition: transform 0.2s, box-shadow 0.2s; flex-shrink: 0; }
   .wa-float:hover { transform: translateY(-2px) scale(1.08); box-shadow: 0 6px 24px rgba(37,211,102,0.45); }
   .wa-float i { font-size: 1.5rem; }
-  .wa-label { background: var(--text-dark); color: #fff; font-family: 'Jost', sans-serif; font-size: 0.8rem; font-weight: 500; white-space: nowrap; padding: 0.38rem 0.75rem; border-radius: 2rem; opacity: 0; pointer-events: none; animation: waLabelIn 6s ease forwards; animation-delay: 10s; }
+  .wa-label { background: var(--text-dark); color: #fff; font-family: 'Jost', sans-serif; font-size: 0.8rem; font-weight: 500; white-space: nowrap; padding: 0.38rem 0.75rem; border-radius: 2rem; text-decoration: none; cursor: pointer; opacity: 0; pointer-events: none; animation: waLabelIn 6s ease forwards; animation-delay: 10s; }
   @keyframes waLabelIn {
-    0%   { opacity: 0; transform: translateX(6px); }
-    12%  { opacity: 1; transform: translateX(0); }
-    75%  { opacity: 1; transform: translateX(0); }
-    100% { opacity: 0; transform: translateX(6px); }
+    0%   { opacity: 0; transform: translateX(6px); pointer-events: none; }
+    12%  { opacity: 1; transform: translateX(0); pointer-events: auto; }
+    75%  { opacity: 1; transform: translateX(0); pointer-events: auto; }
+    100% { opacity: 0; transform: translateX(6px); pointer-events: none; }
   }
 
   /* SCROLL REVEAL */
@@ -2061,22 +2076,28 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
             </div>
           </div>
           <div class="quiz-offer-rows">
-            <div class="quiz-offer-row"><i class="fa-solid fa-circle-check"></i>Your health assessed at root cause — not symptom level</div>
-            <div class="quiz-offer-row"><i class="fa-solid fa-circle-check"></i>Supplements prescribed to your exact condition and history</div>
-            <div class="quiz-offer-row"><i class="fa-solid fa-circle-check"></i>Remedies dispensed from Dr. Lurie's own facility</div>
-            <div class="quiz-offer-row"><i class="fa-solid fa-circle-check"></i>Available online to patients anywhere in the world</div>
+            <div class="quiz-offer-row"><i class="fa-solid fa-circle-check"></i>A full review of your symptoms and history, guided by your assessment</div>
+            <div class="quiz-offer-row"><i class="fa-solid fa-circle-check"></i>The root cause behind them identified and explained</div>
+            <div class="quiz-offer-row"><i class="fa-solid fa-circle-check"></i>A natural treatment plan prescribed for your individual profile</div>
+            <div class="quiz-offer-row"><i class="fa-solid fa-circle-check"></i>Clear next steps before the call ends</div>
           </div>
           <p style="font-size:0.82rem;color:var(--text-light,#9a8880);margin:1.2rem 0 0;font-family:'DM Sans',sans-serif;">Consultation fee only. Prescribed medication and supplements are billed separately.</p>
         </div>
-<label class="quiz-tos-label">
-          <input type="checkbox" id="tos-check" onchange="document.getElementById('confirm-btn').disabled=!this.checked">
+        <div class="quiz-steps-strip">
+          <div class="quiz-step"><span class="quiz-step-num">1</span><span class="quiz-step-text">Confirm &amp; pay</span></div>
+          <div class="quiz-step-line"></div>
+          <div class="quiz-step"><span class="quiz-step-num">2</span><span class="quiz-step-text">Choose your time</span></div>
+          <div class="quiz-step-line"></div>
+          <div class="quiz-step"><span class="quiz-step-num">3</span><span class="quiz-step-text">Meet online</span></div>
+        </div>
+        <label class="quiz-tos-label">
+          <input type="checkbox" id="tos-check" onchange="this.closest('.quiz-tos-label').classList.remove('tos-attn')">
           <span>I agree to the <a href="/terms.html" class="quiz-tos-link" onclick="openTosModal(event)">Terms of Service</a></span>
         </label>
         <div class="quiz-nav" style="margin-top:0;">
           <button class="quiz-btn-back" onclick="quizGoTo(5)"><i class="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
-          <button class="quiz-btn-primary" id="confirm-btn" disabled onclick="initiatePayment()" style="flex:1;justify-content:center;min-width:0;">Confirm My Booking &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
+          <button class="quiz-btn-primary" id="confirm-btn" onclick="initiatePayment()" style="flex:1;justify-content:center;min-width:0;">Confirm My Booking &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
         </div>
-        <p class="quiz-disclaimer" style="margin-top:0.75rem;font-size:0.9rem;">After payment, you'll be taken directly to our booking calendar to choose your appointment time. The consultation is confirmed once both steps are complete.</p>
         <p class="quiz-disclaimer" id="payment-status"><i class="fa-solid fa-lock" style="font-size:0.75rem;margin-right:0.3rem;opacity:0.6;"></i>Secure online payment.</p>
       </div>
     </div>
@@ -2137,7 +2158,7 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
 </footer>
 
 <div class="wa-wrap">
-  <span class="wa-label">Chat to us</span>
+  <a href="https://wa.me/27762390423" class="wa-label" target="_blank" rel="noopener">Chat to us</a>
   <a href="https://wa.me/27762390423" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
@@ -2154,12 +2175,6 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
   document.querySelectorAll('a[href="#consult"]').forEach(el => {
     el.addEventListener('click', () => fbq('track', 'ViewContent'));
   });
-
-  // Meta Pixel — Booking confirmed (payment button)
-  const confirmBtn = document.getElementById('confirm-btn');
-  if (confirmBtn) {
-    confirmBtn.addEventListener('click', () => fbq('track', 'InitiateCheckout'));
-  }
 
   // Mobile menu
   const hamburger = document.getElementById('navHamburger');
@@ -2604,6 +2619,16 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
   counterEls.forEach(el => counterObserver.observe(el));
 
   async function initiatePayment() {
+    const tos = document.getElementById('tos-check');
+    if (!tos.checked) {
+      const tosLabel = tos.closest('.quiz-tos-label');
+      tosLabel.classList.remove('tos-attn');
+      void tosLabel.offsetWidth;
+      tosLabel.classList.add('tos-attn');
+      return;
+    }
+    fbq('track', 'InitiateCheckout');
+
     const btn = document.getElementById('confirm-btn');
     const originalHTML = btn.innerHTML;
     btn.disabled = true;
