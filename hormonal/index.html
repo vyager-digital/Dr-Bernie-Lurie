@@ -1775,21 +1775,11 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
         <div class="quiz-step-label">Step 1 of 6</div>
         <h3 class="quiz-headline">First — how old are you?</h3>
         <p class="quiz-subtext">Hormonal patterns shift with each stage of life. This helps Dr.&nbsp;Lurie and Joanne understand yours.</p>
-        <div class="choice-group">
-          <div class="choice-card" data-group="age" onclick="quizChoice('age','under-40',this)">
-            <div class="choice-radio"></div><span>Under 40</span>
-          </div>
-          <div class="choice-card" data-group="age" onclick="quizChoice('age','40-49',this)">
-            <div class="choice-radio"></div><span>40 – 49</span>
-          </div>
-          <div class="choice-card" data-group="age" onclick="quizChoice('age','50-59',this)">
-            <div class="choice-radio"></div><span>50 – 59</span>
-          </div>
-          <div class="choice-card" data-group="age" onclick="quizChoice('age','60-plus',this)">
-            <div class="choice-radio"></div><span>60 or over</span>
-          </div>
+        <div class="quiz-form-group">
+          <label class="quiz-form-label" for="q-age">Your age</label>
+          <input class="quiz-form-input" id="q-age" type="text" inputmode="numeric" maxlength="3" placeholder="e.g. 48" oninput="this.value=this.value.replace(/\D/g,'')">
+          <p class="quiz-field-error" id="age-error" style="display:none;">Please enter your age.</p>
         </div>
-        <p class="quiz-error" id="age-error" style="display:none;">Please select your age range to continue.</p>
         <div class="quiz-nav">
           <button class="quiz-btn-back" onclick="quizGoTo(0)"><i class="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
           <button class="quiz-btn-primary" onclick="quizValidateAge()">Next &nbsp;<i class="fa-solid fa-arrow-right"></i></button>
@@ -2184,12 +2174,16 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
 
   // Age is captured for internal use only — never referenced in the on-page
   // summary or the patient assessment email
-  const _ageLabels = { 'under-40': 'Under 40', '40-49': '40–49', '50-59': '50–59', '60-plus': '60 or over' };
-
   function quizValidateAge() {
-    const err = document.getElementById('age-error');
-    if (!quizData.age) { err.style.display = 'block'; return; }
+    const input = document.getElementById('q-age');
+    const err   = document.getElementById('age-error');
+    const age   = parseInt(input.value, 10);
+    if (!input.value.trim() || isNaN(age) || age < 18 || age > 105) {
+      err.style.display = 'block';
+      return;
+    }
     err.style.display = 'none';
+    quizData.age = age;
     quizGoTo(1);
   }
 
@@ -2239,7 +2233,7 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
           name:     _name,
           email:    _email,
           whatsapp: _whatsapp,
-          age:      _ageLabels[quizData.age] || '—'
+          age:      quizData.age || '—'
         })
       }).catch(() => {});
       quizGoTo(2);
@@ -2424,7 +2418,7 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
         Name:              _name,
         Email:             _email,
         WhatsApp:          _whatsapp,
-        Age:               _ageLabels[quizData.age] || '—',
+        Age:               quizData.age || '—',
         Symptoms:          _symptoms,
         'How long':        _durationLabels[quizData.duration]  || quizData.duration  || '—',
         'Prior treatment': _priorHelpLabels[quizData.priorHelp] || quizData.priorHelp || '—',
@@ -2441,7 +2435,7 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
         name:      _name,
         email:     _email,
         whatsapp:  _whatsapp,
-        age:       _ageLabels[quizData.age] || '—',
+        age:       quizData.age || '—',
         symptoms:  _symptoms,
         duration:  _durationLabels[quizData.duration]  || quizData.duration  || '—',
         priorHelp: _priorHelpLabels[quizData.priorHelp] || quizData.priorHelp || '—',
