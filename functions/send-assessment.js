@@ -75,17 +75,23 @@ function escapeHtml(str) {
 }
 
 const DURATION_PARAS = {
-  'under-6m': "You're catching this early, and that matters. What you've described has a clear hormonal signature, and addressing it now is far easier than waiting for it to compound.",
-  '6m-1yr':   "Six months to a year of feeling this way is long enough to know it isn't going to resolve on its own. What you've described is a pattern Dr. Lurie and I see regularly, and one that responds well to the right support.",
-  '1-3yr':    "You've been managing this for over a year now. That's long enough for your body to develop real compensation patterns, which is exactly why a personalised approach makes such a difference over general advice.",
-  '3yr-plus': "Years of managing this means your body has been working around the problem rather than through it. That's more common than people realise, and it doesn't make things harder to address. It just means we need to understand the starting point properly."
+  'under-6m': "You're catching this early, and that matters. The pattern you've described has a clear hormonal signature, and addressing it now is far easier than waiting for it to compound.",
+  '6m-1yr':   "Six months to a year of this is long enough to know it isn't going to resolve on its own. What you've described is a recognisable hormonal pattern, and one that responds well to the right support.",
+  '1-3yr':    "You've been managing this for over a year. That's long enough for the body to develop real compensation patterns, and it's why targeted, personalised support makes more difference than general advice.",
+  '3yr-plus': "Years of managing this means your body has been working around the problem rather than through it. That's more common than most women realise, and it doesn't make recovery harder. It just means the starting point needs to be understood properly."
 };
 
 const PRIOR_HELP_PARAS = {
-  'told-normal':   'Being told your results are "normal" when you feel anything but is one of the most common things I hear, and one of the most frustrating. Standard blood panels don\'t capture hormonal patterns over time, or how those patterns interact with one another. What gets missed is often exactly what explains how you\'ve been feeling.',
-  'tried-hrt':     "Having already tried HRT or prescription medication, and still looking for answers, tells me your body needs a more tailored approach. Herbal treatment works with your body's own hormonal feedback mechanisms, not just around them. For many of the women I see who've been through the prescription route, this is where things start to shift.",
-  'tried-natural': "Supplements without a proper protocol rarely get to the root cause. The right herbal formulation, prepared for your individual profile, is a meaningfully different approach. Many patients who've tried natural remedies before find this is the piece they were missing.",
-  'no-help':       "Not knowing where to start is a very common place to be. Most women aren't told that what they're experiencing has a name, a recognisable pattern, and a clear path through it. That clarity tends to come quickly once we look at the full picture together."
+  'told-normal':   'Being told your results are "normal" when you feel anything but is one of the most common and most frustrating stories in hormonal health. Standard blood panels don\'t capture hormonal patterns over time, or how those patterns interact with one another. What gets missed is often exactly what explains how you\'ve been feeling.',
+  'tried-hrt':     "Having already tried HRT or prescription medication and still looking for answers suggests your body needs a more tailored approach. Natural treatment works with the body's own hormonal feedback mechanisms rather than around them. For many women who've been through the prescription route, this is where things finally shift.",
+  'tried-natural': "Supplements without a proper protocol rarely reach the root cause. A formulation prepared specifically for your individual profile is a meaningfully different approach. Many women who've tried natural remedies before find this is the piece they were missing.",
+  'no-help':       "Not knowing where to start is a very common place to be. Most women aren't told that what they're experiencing has a name, a recognisable pattern, and a clear path through it. That clarity tends to come quickly once someone with the right clinical experience looks at the full picture."
+};
+
+const NEXT_STEP_OPEN = {
+  affecting:  "When symptoms are disrupting daily life, it's the body signalling it has been compensating for too long. It's also where the right support tends to make the most visible difference.",
+  noticeable: "Symptoms at this level don't tend to plateau on their own, and the earlier targeted support begins, the less work the body has to do to recalibrate.",
+  mild:       "Even milder symptoms are worth taking seriously, because they're the body's earliest signal, and the easiest stage to work with."
 };
 
 const GOAL_TEXT = {
@@ -98,16 +104,16 @@ const GOAL_TEXT = {
 
 const SEVERITY_WEIGHT = { affecting: 3, noticeable: 2, mild: 1 };
 
-const SYMPTOM_REFLECTIONS = {
-  'hot-flushes':       'the hot flushes and night sweats',
+const CONNECT_PHRASE = {
+  'hot-flushes':       'the hot flushes',
   'broken-sleep':      'the broken sleep',
-  'fatigue':           "the fatigue that doesn't lift",
+  'fatigue':           'the fatigue',
   'brain-fog':         'the brain fog',
-  'mood-swings':       "the mood swings that don't feel like you",
-  'weight':            "the weight that won't shift",
-  'anxiety':           "the anxiety that's crept in",
-  'cycles':            'the changes in your cycle',
-  'libido':            'feeling disconnected from your own body',
+  'mood-swings':       'the mood swings',
+  'weight':            'the weight changes',
+  'anxiety':           'the anxiety',
+  'cycles':            'the cycle changes',
+  'libido':            'the change in libido',
   'joint-pain':        'the joint aches',
   'vaginal-dryness':   'the discomfort during intimacy',
   'breast-tenderness': 'the breast tenderness'
@@ -124,8 +130,8 @@ const SYMPTOM_CLUSTERS = {
 const CLUSTER_ORDER = ['sleep', 'mood', 'heat', 'cycle', 'physical'];
 
 const CLUSTER_INSIGHT = {
-  sleep:    "Sleep, energy and mental clarity all run on the same hormonal rhythm. When progesterone and cortisol fall out of sync, the body struggles to reach deep, restorative sleep, which is exactly why the tiredness and fog don't lift no matter how much rest you get.",
-  mood:     "Mood and emotional steadiness are closely tied to the same hormones that regulate your cycle. When estrogen and progesterone fluctuate, the nervous system feels it first, often well before anything would show up on a standard blood test.",
+  sleep:    "Sleep, energy and mental clarity all run on the same hormonal rhythm. When progesterone and cortisol fall out of sync, the body struggles to reach deep, restorative sleep. That's why the tiredness and the fog don't lift, no matter how much rest you get.",
+  mood:     "Mood and emotional steadiness are closely tied to the same hormones that regulate your cycle. When estrogen and progesterone fluctuate, the nervous system feels it first, often before anything else changes.",
   heat:     "Hot flushes and night sweats come from the way the brain's temperature control responds to shifting estrogen levels. It's one of the clearest signals that hormonal rebalancing is the right place to start.",
   cycle:    "Changes in your cycle, your libido and how your body feels day to day are all connected to the same estrogen-progesterone balance. When one shifts, the others tend to follow.",
   physical: "Weight and joint discomfort are often the most visible signs of a hormonal shift. When estrogen drops, it changes how the body manages inflammation and where it stores fat, which is why these changes can feel so stubborn."
@@ -150,13 +156,8 @@ function buildEmailHtml({ name, email, symptoms, duration, priorHelp, goal }) {
   const ctaUrl = `https://herbernie.co.za/hormonal/?step=6&name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}#consult`;
 
   const symptomEntries = Object.entries(symptoms)
-    .filter(([key]) => SYMPTOM_REFLECTIONS[key])
-    .map(([key, severity], index) => ({ key, weight: SEVERITY_WEIGHT[severity] || 1, index }));
-
-  const topReflections = [...symptomEntries]
-    .sort((a, b) => b.weight - a.weight || a.index - b.index)
-    .slice(0, 3)
-    .map(s => SYMPTOM_REFLECTIONS[s.key]);
+    .filter(([key]) => SYMPTOM_CLUSTERS[key])
+    .map(([key, severity], index) => ({ key, severity, weight: SEVERITY_WEIGHT[severity] || 1, index }));
 
   const clusterWeights = {};
   symptomEntries.forEach(s => {
@@ -166,15 +167,30 @@ function buildEmailHtml({ name, email, symptoms, duration, priorHelp, goal }) {
   const dominantCluster = CLUSTER_ORDER.reduce((best, cluster) =>
     (clusterWeights[cluster] || 0) > (clusterWeights[best] || 0) ? cluster : best, CLUSTER_ORDER[0]);
 
-  const para1 = topReflections.length === 1
-    ? `From your answers, ${topReflections[0]} stands out. ${CLUSTER_INSIGHT[dominantCluster]}`
-    : `From your answers, a few things stand out: ${joinNaturally(topReflections)}. ${CLUSTER_INSIGHT[dominantCluster]}`;
+  // Symptoms outside the dominant cluster — acknowledged, not echoed
+  const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+  const others = [...symptomEntries]
+    .filter(s => SYMPTOM_CLUSTERS[s.key] !== dominantCluster && CONNECT_PHRASE[s.key])
+    .sort((a, b) => b.weight - a.weight || a.index - b.index)
+    .slice(0, 3)
+    .map(s => CONNECT_PHRASE[s.key]);
+  const connectPara = others.length === 0 ? '' : (others.length === 1
+    ? `And it rarely comes alone. The same hormonal shift is usually behind ${others[0]} you mentioned as well.`
+    : `And it rarely comes alone. ${cap(joinNaturally(others))} you mentioned tend to move together, because they share the same hormonal driver.`);
 
-  const para2 = DURATION_PARAS[duration]    || DURATION_PARAS['1-3yr'];
+  const severities = symptomEntries.map(s => s.severity);
+  const nextOpen = severities.includes('affecting') ? NEXT_STEP_OPEN.affecting
+    : severities.includes('noticeable') ? NEXT_STEP_OPEN.noticeable
+    : NEXT_STEP_OPEN.mild;
+
+  const para1 = DURATION_PARAS[duration]    || DURATION_PARAS['1-3yr'];
+  const para2 = CLUSTER_INSIGHT[dominantCluster];
   const para3 = PRIOR_HELP_PARAS[priorHelp] || PRIOR_HELP_PARAS['no-help'];
 
   const goalText = GOAL_TEXT[goal] || 'feeling well again';
-  const para4 = `In your consultation, we'll go through ${CLUSTER_TOPIC[dominantCluster]} in more detail, and start mapping out what's needed for ${goalText}.`;
+  const para4 = `${nextOpen} When we meet, Dr. Lurie and I will go through ${CLUSTER_TOPIC[dominantCluster]} and map out what's needed for ${goalText}. Your answers will be in front of us, so the conversation starts from what you've already shared.`;
+
+  const sectionLabel = text => `<div style="font-family:Arial, Helvetica, sans-serif; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:#c4796a; font-weight:700; margin:24px 0 10px;">${text}</div>`;
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -210,24 +226,28 @@ function buildEmailHtml({ name, email, symptoms, duration, priorHelp, goal }) {
               <h1 style="font-family:Georgia, serif; font-size:24px; line-height:1.3; color:#3a2528; margin:0 0 18px; font-weight:700;">
                 Hi ${safeName},
               </h1>
-              <p style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.7; color:#3a2528; margin:0 0 16px;">
-                Thank you for taking the time to go through the assessment &mdash; I know it isn't always easy putting these things into words. Before we meet, I wanted to share a few thoughts on what you described.
+              <p style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.7; color:#3a2528; margin:0;">
+                Thank you for completing the assessment. Here's a written copy of what it found, so you have it on hand.
               </p>
+              ${sectionLabel('What your answers show')}
               <p style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.7; color:#3a2528; margin:0 0 16px;">
                 ${para1}
               </p>
-              <p style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.7; color:#3a2528; margin:0 0 16px;">
+              <p style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.7; color:#3a2528; margin:0;">
                 ${para2}
               </p>
-              <p style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.7; color:#3a2528; margin:0 0 16px;">
+              ${connectPara ? `<p style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.7; color:#3a2528; margin:16px 0 0;">${connectPara}</p>` : ''}
+              ${sectionLabel('Where most women get stuck')}
+              <p style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.7; color:#3a2528; margin:0;">
                 ${para3}
               </p>
+              ${sectionLabel('Your next step')}
               <p style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.7; color:#3a2528; margin:0 0 24px;">
                 ${para4}
               </p>
 
               <p style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.7; color:#3a2528; margin:0 0 16px;">
-                If you haven't booked yet, you can choose a time that suits you below.
+                If you haven't booked your consultation yet, you can choose a time that suits you below.
               </p>
 
               <!-- CTA -->
