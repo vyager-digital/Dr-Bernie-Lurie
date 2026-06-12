@@ -6,13 +6,18 @@ const EXPECTED_AMOUNT = '490.00';
 export async function onRequestPost(context) {
   const { env, request } = context;
   const raw = await request.text();
-  // Acknowledge immediately — PayFast retries unless it gets a fast 200
-  context.waitUntil(processItn(env, raw).catch(() => {}));
-  return new Response('OK', { status: 200 });
+  // PayFast only needs a 200 — body is ignored, so it can carry diagnostics
+  let result;
+  try {
+    result = await processItn(env, raw);
+  } catch (e) {
+    result = `error: ${e.message}`;
+  }
+  return new Response(result || 'OK', { status: 200 });
 }
 
 async function processItn(env, raw) {
-  if (!env.RESEND_API_KEY) return;
+  if (!env.RESEND_API_KEY) return 'no api key';
 
   const params = new URLSearchParams(raw);
   const get    = k => (params.get(k) || '').trim();
@@ -46,7 +51,7 @@ async function processItn(env, raw) {
     ? `Payment received — ${name} (R${amount})`
     : `Payment ${status} — ${name}`;
 
-  await fetch('https://api.resend.com/emails', {
+  const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${env.RESEND_API_KEY}`,
@@ -59,6 +64,8 @@ async function processItn(env, raw) {
       html:    buildHtml(subject, rows),
     }),
   });
+
+  return res.ok ? 'OK' : `resend ${res.status}: ${(await res.text()).slice(0, 200)}`;
 }
 
 function verifySignature(params, passphrase) {
