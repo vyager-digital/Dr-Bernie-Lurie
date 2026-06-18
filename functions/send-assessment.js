@@ -85,7 +85,7 @@ const PRIOR_HELP_PARAS = {
   'told-normal':   'Being told your results are "normal" when you feel anything but is one of the most common and most frustrating stories in hormonal health. Standard blood panels don\'t capture hormonal patterns over time, or how those patterns interact with one another. What gets missed is often exactly what explains how you\'ve been feeling.',
   'tried-hrt':     "Having already tried HRT or prescription medication and still looking for answers suggests your body needs a more tailored approach. Natural treatment works with the body's own hormonal feedback mechanisms rather than around them. For many women who've been through the prescription route, this is where things finally shift.",
   'tried-natural': "Supplements without a proper protocol rarely reach the root cause. A formulation prepared specifically for your individual profile is a meaningfully different approach. Many women who've tried natural remedies before find this is the piece they were missing.",
-  'no-help':       "Not knowing where to start is a very common place to be. Most women aren't told that what they're experiencing has a name, a recognisable pattern, and a clear path through it. That clarity tends to come quickly once someone with the right clinical experience looks at the full picture."
+  'no-help':       "Not knowing where to start is a very common place to be. Most women aren't told that what they're experiencing has a name, a recognisable pattern, and a clear path through it. That clarity tends to come quickly once someone who's seen this pattern many times looks at the full picture."
 };
 
 const NEXT_STEP_OPEN = {
