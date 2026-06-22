@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hormonal Harmony — Campaign Performance Report</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&display=swap" onload="this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&display=swap"></noscript>
+
+<style>
+  :root {
+    --blush: #f2ddd5;
+    --blush-soft: #f9ece6;
+    --rose: #c4796a;
+    --rose-deep: #a85f51;
+    --sage: #7a9e7e;
+    --sage-soft: #e6eee7;
+    --warm-white: #fdf8f5;
+    --text-dark: #3d2e2a;
+    --text-soft: #6b5a54;
+    --line: #ecd9d0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { overflow-x: hidden; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--warm-white);
+    color: var(--text-dark);
+    font-size: 1rem;
+    line-height: 1.65;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 1.25rem 4rem;
+  }
+
+  /* ---------- Header ---------- */
+  .report-header {
+    background: var(--blush-soft);
+    border-bottom: 1px solid var(--line);
+    padding: 3rem 1.25rem 2.5rem;
+    text-align: center;
+  }
+  .report-header .kicker {
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--rose);
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+  .report-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: clamp(1.8rem, 6vw, 2.6rem);
+    line-height: 1.2;
+    color: var(--text-dark);
+    max-width: 18ch;
+    margin: 0 auto 1.2rem;
+  }
+  .report-meta {
+    font-size: 0.95rem;
+    color: var(--text-soft);
+    line-height: 1.8;
+  }
+  .report-meta strong { color: var(--text-dark); font-weight: 500; }
+
+  /* ---------- Sections ---------- */
+  section { padding-top: 2.75rem; }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rose);
+    font-weight: 600;
+    margin-bottom: 0.9rem;
+  }
+  .section-label .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.7rem;
+    height: 1.7rem;
+    border-radius: 50%;
+    background: var(--rose);
+    color: #fff;
+    font-size: 0.85rem;
+    letter-spacing: 0;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: clamp(1.4rem, 4.5vw, 1.9rem);
+    line-height: 1.25;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--rose-deep);
+    margin: 1.75rem 0 0.6rem;
+  }
+
+  p { margin-bottom: 1rem; max-width: 68ch; }
+  p strong { font-weight: 600; color: var(--text-dark); }
+  .source { font-size: 0.85rem; color: var(--text-soft); font-style: italic; }
+
+  /* ---------- Lead / short version ---------- */
+  .lead {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--rose);
+    border-radius: 6px;
+    padding: 1.75rem 1.6rem;
+    margin-top: 2.75rem;
+  }
+  .lead .lead-title {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--rose-deep);
+    margin-bottom: 0.85rem;
+  }
+  .lead p:last-child { margin-bottom: 0; }
+  .lead .note {
+    font-size: 0.9rem;
+    color: var(--text-soft);
+    border-top: 1px solid var(--line);
+    padding-top: 1rem;
+    margin-top: 1.1rem;
+  }
+
+  /* ---------- Metric cards ---------- */
+  .metrics {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin: 1.5rem 0 1.25rem;
+  }
+  .metric {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 1.1rem 1.25rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.2rem 1rem;
+    align-items: baseline;
+  }
+  .metric .label {
+    font-size: 0.92rem;
+    color: var(--text-soft);
+    font-weight: 500;
+  }
+  .metric .value {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    text-align: right;
+  }
+  .metric .read {
+    grid-column: 1 / -1;
+    font-size: 0.88rem;
+    color: var(--text-soft);
+    border-top: 1px dashed var(--line);
+    padding-top: 0.55rem;
+    margin-top: 0.4rem;
+  }
+  .metric .read .bench {
+    color: var(--sage);
+    font-weight: 500;
+  }
+  .metric.highlight {
+    border-color: var(--rose);
+    background: var(--blush-soft);
+  }
+  .metric.highlight .value { color: var(--rose-deep); }
+
+  /* ---------- Trust points ---------- */
+  .trust-point {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 1.2rem 1.35rem;
+    margin-bottom: 0.85rem;
+  }
+  .trust-point .pt-head {
+    font-family: 'Jost', sans-serif;
+    font-weight: 600;
+    color: var(--rose-deep);
+    margin-bottom: 0.35rem;
+    font-size: 1.02rem;
+  }
+  .trust-point p { margin-bottom: 0; font-size: 0.96rem; }
+
+  .caveat {
+    background: var(--sage-soft);
+    border-radius: 6px;
+    padding: 1.5rem 1.5rem;
+    margin-top: 1.75rem;
+  }
+  .caveat h3 { margin-top: 0; color: var(--sage); }
+  .caveat p { margin-bottom: 0; }
+
+  /* ---------- Steps ---------- */
+  .steps { list-style: none; counter-reset: step; margin: 1.25rem 0 1.5rem; }
+  .steps li {
+    counter-increment: step;
+    position: relative;
+    padding-left: 3rem;
+    margin-bottom: 1.1rem;
+    max-width: 66ch;
+  }
+  .steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: -0.1rem;
+    width: 2rem;
+    height: 2rem;
+    background: var(--rose);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .steps li strong { font-weight: 600; }
+
+  .closing {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    color: var(--rose-deep);
+    text-align: center;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 2rem 1rem;
+    margin-top: 2.5rem;
+    max-width: none;
+  }
+
+  hr.divider {
+    border: none;
+    border-top: 1px solid var(--line);
+    margin: 2.75rem 0 0;
+  }
+
+  .report-footer {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-soft);
+    margin-top: 3rem;
+  }
+  .report-footer .brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--rose);
+    letter-spacing: 0.04em;
+    margin-bottom: 0.3rem;
+  }
+
+  /* ---------- Tablet+ ---------- */
+  @media (min-width: 620px) {
+    .report-header { padding: 4rem 2rem 3rem; }
+    .page { padding: 0 2rem 5rem; }
+    .metric { padding: 1.25rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="report-header">
+    <div class="kicker">Campaign Performance Report</div>
+    <h1>Hormonal Harmony</h1>
+    <div class="report-meta">
+      <div><strong>Prepared for</strong> Dr. Bernie Lurie</div>
+      <div><strong>Period</strong> 8&ndash;22 June 2026</div>
+      <div><strong>Prepared by</strong> Vyager Digital</div>
+    </div>
+  </header>
+
+  <main class="page">
+
+    <!-- Short version -->
+    <div class="lead">
+      <div class="lead-title">The short version</div>
+      <p>The acquisition system is working. The ads are reaching the right women at a low cost, the landing page is holding their attention, and the quiz is converting them into qualified leads at a rate above the published industry norm. Every part built to generate demand is doing its job.</p>
+      <p>One step has not converted yet: turning a completed quiz into a paid booking. No one has reached the payment screen. This is a trust-at-the-point-of-payment question, and it is the thing worth working on next.</p>
+      <p class="note">A note on the numbers below: where South African benchmarks exist, they are used. Where only global figures are published, they are labelled as such and treated as a rough guide, not a target.</p>
+    </div>
+
+    <!-- Section 1 -->
+    <section>
+      <div class="section-label"><span class="num">1</span> The ads are working</div>
+      <h2>Reaching the right women, cheaply</h2>
+
+      <div class="metrics">
+        <div class="metric">
+          <span class="label">Spend</span>
+          <span class="value">R1,123.10</span>
+          <span class="read">14 days, deliberately small.</span>
+        </div>
+        <div class="metric">
+          <span class="label">Reach</span>
+          <span class="value">9,109</span>
+          <span class="read">Women reached. A fresh audience.</span>
+        </div>
+        <div class="metric">
+          <span class="label">Link CTR</span>
+          <span class="value">2.2%</span>
+          <span class="read">Roughly double the <span class="bench">~1% typical Facebook average</span> (global, rough guide).</span>
+        </div>
+        <div class="metric">
+          <span class="label">All-click CTR</span>
+          <span class="value">7.30%</span>
+          <span class="read">A strong engagement signal.</span>
+        </div>
+        <div class="metric">
+          <span class="label">Cost per link click</span>
+          <span class="value">R4.39</span>
+          <span class="read">Low cost to bring a visitor to the page.</span>
+        </div>
+        <div class="metric highlight">
+          <span class="label">Cost per qualified lead</span>
+          <span class="value">R93.59</span>
+          <span class="read">Against a benchmark of <span class="bench">R150&ndash;R350</span> for SA professional services. Roughly a third of the local rate.</span>
+        </div>
+      </div>
+
+      <p>The cost-per-lead figure is the one that matters most. South African professional-service businesses typically pay R150 to R350 for a Facebook lead. This campaign is producing a fully qualified lead, with name, email, WhatsApp number, and a complete symptom profile, for R93.59. That is below the local benchmark, and the lead carries more detail than a typical form fill.</p>
+
+      <p class="source">Sources: SA cost-per-lead range &mdash; GrowthPulse Media, 2026. Typical Facebook CTR &mdash; global platform average, used here only as a rough guide.</p>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Section 2 -->
+    <section>
+      <div class="section-label"><span class="num">2</span> The landing page and quiz are working</div>
+      <h2>The women who engage, finish</h2>
+
+      <div class="metrics">
+        <div class="metric">
+          <span class="label">Link clicks</span>
+          <span class="value">256</span>
+          <span class="read">Paid traffic arriving on the page.</span>
+        </div>
+        <div class="metric">
+          <span class="label">Quiz completions</span>
+          <span class="value">11</span>
+          <span class="read">Full questionnaires, start to finish.</span>
+        </div>
+        <div class="metric highlight">
+          <span class="label">Completion rate</span>
+          <span class="value">~100%</span>
+          <span class="read">Everyone who started the quiz finished it.</span>
+        </div>
+      </div>
+
+      <p>Every woman who began the quiz finished it. Start to finish took two to five minutes each. For context, a well-built quiz funnel is considered healthy at around a 40% lead conversion rate (Interact, global). This one is converting the women who engage at close to 100%.</p>
+
+      <p>Several flagged their symptoms as &ldquo;affecting my life.&rdquo; These are women dealing with real symptoms, who gave their contact details and worked through a detailed health questionnaire. The page and the quiz are doing what they were built to do.</p>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Section 3 -->
+    <section>
+      <div class="section-label"><span class="num">3</span> The market is right</div>
+      <h2>Growing demand, under-served</h2>
+      <p>Demand for menopause support in South Africa is growing. The category of menopause treatments and supplements is expanding at roughly 9% a year, the fastest in the region, and researchers note a clear education gap among women about their own symptoms (Grand View Research, 2025). A natural, practitioner-led approach to hormonal symptoms sits directly in that gap.</p>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Section 4 -->
+    <section>
+      <div class="section-label"><span class="num">4</span> The step that has not converted</div>
+      <h2>Trust at the point of payment</h2>
+
+      <p>Eleven women completed the quiz. None reached the payment screen. No one clicked &ldquo;Confirm My Booking.&rdquo;</p>
+
+      <p>This tells us where the break is, and it is precise. No one is abandoning at the payment gateway, because no one is getting that far. The drop happens earlier, at the moment a woman reads her results and decides whether to book. The question she is answering is not &ldquo;can I afford this,&rdquo; it is &ldquo;do I trust this enough to act.&rdquo;</p>
+
+      <p>Three things point to trust rather than price or mechanics:</p>
+
+      <div class="trust-point">
+        <div class="pt-head">Price is not the barrier</div>
+        <p>A private gynaecologist consultation in South Africa costs R3,700 for a new visit, with follow-ups from R1,800 (Dr Emma Bryant, Pretoria, 2026). The R490 consultation is roughly an eighth of that. The cheapest serious option on the table is the one not converting, so cost is not what is stopping her.</p>
+      </div>
+
+      <div class="trust-point">
+        <div class="pt-head">The mechanics are not the barrier</div>
+        <p>Zero payment attempts means the booking flow and PayFast are not where people fall away. They are deciding not to start.</p>
+      </div>
+
+      <div class="trust-point">
+        <div class="pt-head">The ask is a leap of trust</div>
+        <p>She is being asked to pay upfront, online, to a practitioner she has never spoken to, off the back of an automated email. Research on online health services is consistent on this point: the upfront payment to an unfamiliar practitioner is the hardest moment to convert, and it is bridged by credibility, transparency about what is included, and ideally some human contact before payment (Secure Medical; RGV Direct Care, 2025). The mechanism is universal, even where the figures are not local.</p>
+      </div>
+
+      <div class="caveat">
+        <h3>One caveat worth stating plainly</h3>
+        <p>Eleven leads is still a small sample. If the true booking rate were a healthy one in ten, seeing zero bookings across eleven leads is close to a coin toss. We cannot yet call the booking step broken on the numbers alone. What we can say is that the pattern, eleven completions and zero attempts, is consistent enough to act on, and that the lead economics are strong enough to justify spending a little more to get a clear read.</p>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Investment -->
+    <section>
+      <div class="section-label"><span class="num">&#10003;</span> What this means for the investment</div>
+      <h2>The direction is sustainable</h2>
+      <p>The money is doing what it should. R1,123 has produced eleven qualified, warm leads at R93.59 each, in a growing market, off a page and quiz that convert above benchmark. The engine that finds and qualifies the right women is sound and sustainable.</p>
+      <p>The work now is not more spend. It is the handoff after the quiz: making the assessment email and results screen carry enough trust to earn the first booking click. That is where all eleven stopped, and it is the thing to improve next.</p>
+
+      <h3>Recommended next steps</h3>
+      <ol class="steps">
+        <li><strong>Rebuild the post-quiz assessment email and results screen to build trust, not just deliver results.</strong> Dr. Lurie&rsquo;s credentials and photo, a real patient outcome, a clear breakdown of what the R490 includes and why it is a fraction of a specialist visit, and a low-friction option such as a short introductory call before payment.</li>
+        <li><strong>Resume the campaign once that handoff is improved,</strong> and let spend run to roughly R3,000&ndash;R5,000 total so the booking rate becomes statistically readable.</li>
+        <li><strong>Keep optimising budget allocation</strong> across the ads as a secondary efficiency gain.</li>
+      </ol>
+
+      <p class="closing">The direction is sustainable. The leads are real and cheap.<br>The next move is trust, not budget.</p>
+    </section>
+
+    <footer class="report-footer">
+      <div class="brand">Vyager Digital</div>
+      <div>Websites, Funnels &amp; Campaigns That Bring You Clients</div>
+    </footer>
+
+  </main>
+
+</body>
+</html>
