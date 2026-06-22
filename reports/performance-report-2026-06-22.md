@@ -46,9 +46,7 @@ Several flagged their symptoms as "affecting my life." These are women dealing w
 
 ## 3. The market is right
 
-The South African menopause market was worth USD 51.3 million in 2024 and is forecast to reach USD 84.3 million by 2030, growing at 9.3% a year. It is the fastest-growing market of its kind in the region, and researchers note a clear education gap among women about their own symptoms (Grand View Research, 2025).
-
-Demand exists, it is growing, and it is under-served. A natural, practitioner-led approach to hormonal symptoms sits directly in that gap.
+Demand for menopause support in South Africa is growing. The category of menopause treatments and supplements is expanding at roughly 9% a year, the fastest in the region, and researchers note a clear education gap among women about their own symptoms (Grand View Research, 2025). A natural, practitioner-led approach to hormonal symptoms sits directly in that gap.
 
 ---
 
