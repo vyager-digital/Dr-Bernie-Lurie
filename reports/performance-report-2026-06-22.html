@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hormonal Harmony — Campaign Performance</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" onload="this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap"></noscript>
+
+<style>
+  :root {
+    --warm-white: #fdf8f5;
+    --blush: #f2ddd5;
+    --blush-soft: #f9ece6;
+    --rose: #c4796a;
+    --rose-deep: #a85f51;
+    --sage: #7a9e7e;
+    --sage-deep: #5f8466;
+    --plum: #43262e;
+    --plum-soft: #5a3540;
+    --text: #3d2e2a;
+    --text-soft: #786460;
+    --line: #ecd9d0;
+    --gold: #c8a96e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { overflow-x: hidden; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--warm-white);
+    color: var(--text);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 1.5rem; }
+  .wrap-narrow { max-width: 720px; margin: 0 auto; padding: 0 1.5rem; }
+
+  /* ---------- shared type ---------- */
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-size: 0.72rem; letter-spacing: 0.24em; text-transform: uppercase;
+    font-weight: 600; color: var(--rose);
+  }
+  .eyebrow .tick { width: 1.6rem; height: 1px; background: var(--rose); display: inline-block; }
+  .eyebrow .idx { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.1rem; letter-spacing: 0; color: var(--rose-deep); }
+
+  h2.head {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: clamp(1.9rem, 5vw, 3rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 1rem 0 1.1rem;
+    max-width: 18ch;
+  }
+  .takeaway {
+    font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+    color: var(--text-soft);
+    max-width: 52ch;
+    line-height: 1.55;
+  }
+  .takeaway strong { color: var(--text); font-weight: 500; }
+
+  section { padding: clamp(3.5rem, 9vw, 6.5rem) 0; }
+  .tint { background: var(--blush-soft); }
+
+  /* ---------- COVER ---------- */
+  .cover {
+    background:
+      radial-gradient(120% 90% at 85% 0%, var(--blush) 0%, rgba(242,221,213,0) 55%),
+      linear-gradient(180deg, var(--blush-soft) 0%, var(--warm-white) 100%);
+    padding: clamp(3.5rem, 10vw, 7rem) 0 clamp(3rem, 7vw, 5rem);
+    border-bottom: 1px solid var(--line);
+  }
+  .cover .practice {
+    font-family: 'Playfair Display', serif; font-style: italic;
+    font-size: 1.1rem; color: var(--rose); margin-bottom: 2.25rem;
+  }
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: clamp(2.5rem, 8.5vw, 5.2rem);
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+    max-width: 14ch;
+    margin-bottom: 1.6rem;
+  }
+  .cover h1 em { font-style: italic; color: var(--rose-deep); }
+  .cover .sub {
+    font-size: 1.15rem; color: var(--text-soft); max-width: 54ch; margin-bottom: 3rem; line-height: 1.6;
+  }
+  .cover .sub strong { color: var(--text); font-weight: 500; }
+  .cover-meta {
+    display: flex; flex-wrap: wrap; gap: 2rem 3rem;
+    border-top: 1px solid var(--line); padding-top: 1.75rem;
+  }
+  .cover-meta .k { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.3rem; }
+  .cover-meta .v { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--text); }
+
+  /* ---------- FUNNEL (signature) ---------- */
+  .funnel-head { text-align: center; margin-bottom: 2.75rem; }
+  .funnel-head .eyebrow { justify-content: center; }
+  .funnel {
+    display: flex; flex-direction: column; align-items: center; gap: 0;
+    max-width: 640px; margin: 0 auto;
+  }
+  .stage { width: 100%; display: flex; flex-direction: column; align-items: center; }
+  .bar {
+    display: flex; align-items: center; justify-content: space-between;
+    color: #fff; border-radius: 10px;
+    padding: 1.1rem 1.5rem;
+    box-shadow: 0 10px 24px -16px rgba(168,95,81,0.7);
+  }
+  .bar .b-num { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 600; line-height: 1; }
+  .bar .b-lab { text-align: right; font-size: 0.9rem; line-height: 1.25; opacity: 0.92; }
+  .stage.s1 .bar { width: 100%; background: linear-gradient(100deg, var(--rose) 0%, var(--rose-deep) 100%); }
+  .stage.s2 .bar { width: 72%; background: linear-gradient(100deg, var(--rose-deep) 0%, var(--plum-soft) 100%); }
+  .stage.s3 .bar {
+    width: 46%; background: transparent; color: var(--rose-deep);
+    border: 2px dashed var(--rose); box-shadow: none;
+  }
+  .stage.s3 .b-lab { opacity: 1; color: var(--text-soft); }
+  .drop {
+    display: flex; flex-direction: column; align-items: center; gap: 0.15rem;
+    padding: 0.65rem 0; color: var(--rose);
+  }
+  .drop .arw { font-size: 1.1rem; line-height: 1; }
+  .drop .dl { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; }
+  .funnel-foot {
+    text-align: center; margin-top: 2.5rem;
+    font-family: 'Playfair Display', serif; font-style: italic;
+    font-size: clamp(1.2rem, 3vw, 1.6rem); color: var(--text);
+  }
+  .funnel-context {
+    text-align: center; margin-bottom: 2.25rem; font-size: 0.95rem; color: var(--text-soft);
+  }
+  .funnel-context b { font-family: 'Playfair Display', serif; font-style: normal; color: var(--rose-deep); font-size: 1.15rem; }
+
+  /* ---------- big stat block ---------- */
+  .statblock { display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: center; }
+  .stat-hero .figure {
+    font-family: 'Playfair Display', serif; font-weight: 600;
+    font-size: clamp(3.4rem, 13vw, 6rem); line-height: 0.95; color: var(--rose-deep);
+    letter-spacing: -0.02em;
+  }
+  .stat-hero .figure .cur { font-size: 0.5em; vertical-align: 0.35em; color: var(--rose); margin-right: 0.05em; }
+  .stat-hero .cap { font-size: 1rem; color: var(--text-soft); margin-top: 0.6rem; }
+
+  /* benchmark bar */
+  .bench {
+    background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 1.5rem 1.6rem;
+  }
+  .bench .bt { font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-soft); margin-bottom: 1.25rem; }
+  .track { position: relative; height: 14px; background: var(--blush-soft); border-radius: 8px; }
+  .track .band {
+    position: absolute; top: 0; bottom: 0; left: 42.9%; right: 0;
+    background: repeating-linear-gradient(45deg, var(--blush) 0 6px, #f4e3dc 6px 12px);
+    border-radius: 0 8px 8px 0;
+  }
+  .track .you { position: absolute; top: -5px; bottom: -5px; left: 0; width: 26.7%; background: var(--rose); border-radius: 8px; box-shadow: 0 6px 16px -8px var(--rose-deep); }
+  .track .you::after {
+    content: ''; position: absolute; right: -1px; top: 0; bottom: 0; width: 3px; background: var(--rose-deep); border-radius: 2px;
+  }
+  .bench-labels { display: flex; justify-content: space-between; margin-top: 1.5rem; gap: 1rem; }
+  .bl .v { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--text); }
+  .bl .v.rose { color: var(--rose-deep); }
+  .bl .l { font-size: 0.82rem; color: var(--text-soft); }
+  .bl.r { text-align: right; }
+
+  /* ---------- chips ---------- */
+  .chips { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.85rem; margin-top: 2.25rem; }
+  .chip { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 1.25rem 1.1rem; text-align: center; }
+  .chip .cv { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 4.5vw, 1.9rem); font-weight: 600; color: var(--rose-deep); line-height: 1; }
+  .chip .cl { font-size: 0.82rem; color: var(--text-soft); margin-top: 0.5rem; line-height: 1.3; }
+
+  .src { font-size: 0.8rem; color: var(--text-soft); font-style: italic; margin-top: 1.75rem; }
+
+  /* ---------- quiz slide ---------- */
+  .quiz-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: center; }
+  .donut-wrap { display: flex; justify-content: center; }
+  .donut {
+    width: 220px; height: 220px; border-radius: 50%;
+    background: conic-gradient(var(--sage) 0 100%, var(--blush) 0);
+    display: grid; place-items: center; position: relative;
+  }
+  .donut::before { content: ''; position: absolute; inset: 22px; background: var(--warm-white); border-radius: 50%; }
+  .donut .dn { position: relative; text-align: center; }
+  .donut .dn .p { font-family: 'Playfair Display', serif; font-size: 2.6rem; font-weight: 600; color: var(--sage-deep); line-height: 1; }
+  .donut .dn .s { font-size: 0.82rem; color: var(--text-soft); margin-top: 0.3rem; }
+
+  /* ---------- trust (dark) ---------- */
+  .dark { background: var(--plum); color: var(--blush-soft); }
+  .dark .eyebrow, .dark .eyebrow .idx { color: var(--blush); }
+  .dark .eyebrow .tick { background: var(--blush); }
+  .dark h2.head { color: #fff; }
+  .dark .takeaway { color: rgba(249,236,230,0.8); }
+  .dark .takeaway strong { color: #fff; }
+  .gap-figure {
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 1.5rem; margin: 2rem 0 2.75rem;
+    font-family: 'Playfair Display', serif;
+  }
+  .gap-figure .big { font-size: clamp(2.2rem, 7vw, 3.4rem); font-weight: 600; color: #fff; }
+  .gap-figure .big .zero { color: var(--rose); }
+  .gap-figure .lab { font-family: 'Jost', sans-serif; font-size: 0.95rem; color: rgba(249,236,230,0.7); letter-spacing: 0.02em; }
+  .reasons { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+  .reason { background: var(--plum-soft); border-radius: 12px; padding: 1.4rem 1.5rem; border-left: 3px solid var(--rose); }
+  .reason .rh { font-weight: 600; color: #fff; margin-bottom: 0.4rem; font-size: 1.05rem; }
+  .reason .rp { font-size: 0.95rem; color: rgba(249,236,230,0.82); line-height: 1.5; }
+  .reason .rp b { color: var(--blush); font-weight: 600; }
+  .caveat-line {
+    margin-top: 2.25rem; padding-top: 1.5rem; border-top: 1px solid rgba(249,236,230,0.18);
+    font-size: 0.92rem; color: rgba(249,236,230,0.7); max-width: 60ch;
+  }
+
+  /* ---------- plan ---------- */
+  .steps { display: grid; gap: 1rem; margin: 2.25rem 0 2.5rem; }
+  .step { display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; align-items: start; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 1.4rem 1.5rem; }
+  .step .sn {
+    width: 2.4rem; height: 2.4rem; border-radius: 50%; background: var(--rose); color: #fff;
+    display: grid; place-items: center; font-family: 'Playfair Display', serif; font-weight: 600; font-size: 1.1rem;
+  }
+  .step .st { font-weight: 600; color: var(--text); margin-bottom: 0.25rem; }
+  .step .sd { font-size: 0.94rem; color: var(--text-soft); line-height: 1.5; }
+  .closing {
+    font-family: 'Playfair Display', serif; font-style: italic;
+    font-size: clamp(1.4rem, 4vw, 2.1rem); line-height: 1.35; color: var(--rose-deep); text-align: center; max-width: 22ch; margin: 0 auto;
+  }
+
+  /* ---------- footer ---------- */
+  .foot { text-align: center; padding: 3rem 1.5rem 3.5rem; border-top: 1px solid var(--line); }
+  .foot .fb { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--rose); letter-spacing: 0.04em; }
+  .foot .ft { font-size: 0.85rem; color: var(--text-soft); margin-top: 0.3rem; }
+
+  /* ---------- reveal ---------- */
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ---------- responsive up ---------- */
+  @media (min-width: 760px) {
+    .statblock { grid-template-columns: 0.85fr 1.15fr; gap: 3.5rem; }
+    .quiz-grid { grid-template-columns: auto 1fr; gap: 4rem; }
+    .reasons { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- COVER -->
+  <header class="cover">
+    <div class="wrap">
+      <div class="practice reveal">Campaign Performance Report</div>
+      <h1 class="reveal">Hormonal Harmony</h1>
+      <p class="sub reveal">Two weeks in, the campaign is reaching the right women at a low cost and carrying them through the quiz. One thing stands between a completed quiz and a booked consultation: trust at the point of payment. The rest of this report shows where it stands and what to do next.</p>
+      <div class="cover-meta reveal">
+        <div><div class="k">Prepared for</div><div class="v">Dr. Bernie Lurie</div></div>
+        <div><div class="k">Period</div><div class="v">8&ndash;22 June 2026</div></div>
+        <div><div class="k">By</div><div class="v">Vyager Digital</div></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- FUNNEL -->
+  <section>
+    <div class="wrap">
+      <div class="funnel-head reveal">
+        <div class="eyebrow" style="justify-content:center;"><span class="tick"></span> The lead funnel <span class="tick"></span></div>
+        <h2 class="head" style="margin-left:auto;margin-right:auto;text-align:center;max-width:20ch;">From click to booking</h2>
+      </div>
+
+      <div class="funnel-context reveal"><b>9,109</b> women reached &nbsp;·&nbsp; then this is what happened on the page</div>
+
+      <div class="funnel reveal">
+        <div class="stage s1">
+          <div class="bar"><span class="b-num">256</span><span class="b-lab">clicked through<br>to the page</span></div>
+        </div>
+        <div class="drop"><span class="arw">&darr;</span></div>
+        <div class="stage s2">
+          <div class="bar"><span class="b-num">11</span><span class="b-lab">completed the<br>full quiz</span></div>
+        </div>
+        <div class="drop"><span class="arw">&darr;</span><span class="dl">the gap</span></div>
+        <div class="stage s3">
+          <div class="bar"><span class="b-num">0</span><span class="b-lab">reached the<br>payment screen</span></div>
+        </div>
+      </div>
+
+      <p class="funnel-foot reveal">Every stage performs until payment.</p>
+    </div>
+  </section>
+
+  <!-- ADS -->
+  <section class="tint">
+    <div class="wrap">
+      <div class="reveal"><div class="eyebrow"><span class="idx">01</span> The ads</div></div>
+      <h2 class="head reveal">Qualified leads, at a third of the going rate</h2>
+      <p class="takeaway reveal" style="margin-bottom:2.75rem;">Each lead arrives with a name, email, WhatsApp number and full symptom picture &mdash; for well under the South African benchmark.</p>
+
+      <div class="statblock">
+        <div class="stat-hero reveal">
+          <div class="figure"><span class="cur">R</span>93.59</div>
+          <div class="cap">cost per qualified lead</div>
+        </div>
+        <div class="bench reveal">
+          <div class="bt">vs. SA professional-services benchmark</div>
+          <div class="track">
+            <div class="band"></div>
+            <div class="you"></div>
+          </div>
+          <div class="bench-labels">
+            <div class="bl"><div class="v rose">R93.59</div><div class="l">this campaign</div></div>
+            <div class="bl r"><div class="v">R150&ndash;R350</div><div class="l">typical SA cost per lead</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chips reveal">
+        <div class="chip"><div class="cv">2.2%</div><div class="cl">link CTR &mdash; about double the ~1% norm</div></div>
+        <div class="chip"><div class="cv">R4.39</div><div class="cl">cost per click to the page</div></div>
+        <div class="chip"><div class="cv">9,109</div><div class="cl">women reached in 14 days</div></div>
+      </div>
+
+      <p class="src reveal">SA cost-per-lead range: GrowthPulse Media, 2026. CTR norm: global Facebook average, used as a rough guide.</p>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section>
+    <div class="wrap">
+      <div class="quiz-grid">
+        <div class="donut-wrap reveal">
+          <div class="donut">
+            <div class="dn"><div class="p">~100%</div><div class="s">completion</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="reveal"><div class="eyebrow"><span class="idx">02</span> The page &amp; quiz</div></div>
+          <h2 class="head reveal">Everyone who starts, finishes</h2>
+          <p class="takeaway reveal">All <strong>11</strong> women who began the quiz completed it, in two to five minutes each. A healthy quiz funnel runs near 40%. This one converts the women who engage at close to 100%.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST (dark) -->
+  <section class="dark">
+    <div class="wrap">
+      <div class="reveal"><div class="eyebrow"><span class="idx">03</span> The one gap</div></div>
+      <h2 class="head reveal">Trust at the point of payment</h2>
+
+      <div class="gap-figure reveal">
+        <span class="big">11 completed</span>
+        <span class="lab">&mdash;&mdash;</span>
+        <span class="big"><span class="zero">0</span> reached payment</span>
+      </div>
+
+      <p class="takeaway reveal" style="margin-bottom:2.5rem;">No one is abandoning at checkout, because no one gets that far. The drop is the decision to book, after she reads her results. Three things say it is trust, not price.</p>
+
+      <div class="reasons reveal">
+        <div class="reason">
+          <div class="rh">Not the price</div>
+          <div class="rp">A gynaecologist visit runs <b>R3,700</b>. The consultation is <b>R490</b>, an eighth of that. The cheapest serious option is the one not converting.</div>
+        </div>
+        <div class="reason">
+          <div class="rh">Not the mechanics</div>
+          <div class="rp">Zero payment attempts. PayFast and the booking flow are not where people fall away. They decide not to start.</div>
+        </div>
+        <div class="reason">
+          <div class="rh">A trust barrier</div>
+          <div class="rp">Paying upfront, online, to a practitioner she has never spoken to, off one automated email. Research shows this is the hardest moment to convert.</div>
+        </div>
+      </div>
+
+      <p class="caveat-line reveal">One honest caveat: eleven leads is still a small sample. We cannot call the booking step broken on the numbers alone. The pattern is clear enough to act on, and the lead cost is low enough to justify a little more spend to be sure.</p>
+    </div>
+  </section>
+
+  <!-- PLAN -->
+  <section>
+    <div class="wrap-narrow">
+      <div class="reveal" style="text-align:center;"><div class="eyebrow" style="justify-content:center;"><span class="tick"></span> The plan <span class="tick"></span></div></div>
+      <h2 class="head reveal" style="text-align:center;margin-left:auto;margin-right:auto;">The next move is trust, not budget</h2>
+
+      <p class="takeaway reveal" style="text-align:center;margin:0 auto 2.5rem;">At R490 a consultation, the campaign covers its own ad cost once roughly one lead in five books. The leads are already priced to make that work. The constraint is the payment step, not the budget.</p>
+
+      <div class="steps">
+        <div class="step reveal">
+          <div class="sn">1</div>
+          <div><div class="st">Rebuild the results screen and follow-up email to build trust</div><div class="sd">Dr. Lurie&rsquo;s credentials and photo, a real patient outcome, what the R490 includes, and a softer first step such as a short introductory call before payment.</div></div>
+        </div>
+        <div class="step reveal">
+          <div class="sn">2</div>
+          <div><div class="st">Resume the campaign, let it run to ~R3,000&ndash;R5,000</div><div class="sd">Enough spend for the booking rate to become a number we can trust, not a coin toss.</div></div>
+        </div>
+        <div class="step reveal">
+          <div class="sn">3</div>
+          <div><div class="st">Keep tuning budget across the ads</div><div class="sd">A secondary efficiency gain while the trust work does the heavy lifting.</div></div>
+        </div>
+      </div>
+
+      <p class="closing reveal">The economics work. What&rsquo;s left is earning the booking.</p>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="fb">Vyager Digital</div>
+    <div class="ft">Websites, Funnels &amp; Campaigns That Bring You Clients</div>
+  </footer>
+
+  <script>
+    (function () {
+      var els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      els.forEach(function (e) { io.observe(e); });
+    })();
+  </script>
+
+</body>
+</html>

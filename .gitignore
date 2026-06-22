@@ -9,3 +9,6 @@
 
 # Misc
 Thumbs.db
+
+# Local mockups — never deploy
+mockups/

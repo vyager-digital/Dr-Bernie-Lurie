@@ -3,1310 +3,1106 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dr. Bernard Lurie — Nature's Healing Process</title>
+<title>Herbernie Int'l — Dr. Bernard Lurie · Naturopathic Medicine</title>
+<meta name="description" content="Dr. Bernard Lurie — naturopathic doctor with 40+ years of clinical experience in Cape Town. Herbal medicine, iridology, EIS scanning, and whole-person healing.">
+<link rel="icon" href="hormonal/assets/images/herbernie-logo.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@200;300;400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Josefin+Sans:wght@200;300;400&display=swap" onload="this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Josefin+Sans:wght@200;300;400&display=swap"></noscript>
 <style>
-  :root {
-    --forest: #1c3a2a;
-    --moss: #2e5c3e;
-    --sage: #6b8f71;
-    --leaf: #9ab89e;
-    --cream: #f5f0e6;
-    --parchment: #ede5d0;
-    --gold: #c8a96e;
-    --amber: #a07840;
-    --earth: #5c3d1e;
-    --charcoal: #1a1a18;
-  }
+/* ── VARIABLES ── */
+:root {
+  --teal-deep:   #1e3f4a;   /* deep teal — dark bands, footer */
+  --teal-dark:   #2e5f6e;   /* header teal — nav, about panel */
+  --teal-mid:    #428185;   /* logo green — buttons, accents */
+  --teal-light:  #7aadb0;   /* sage panel — softer UI elements */
+  --teal-mist:   #c4d8d6;   /* sage mist — subtle tints */
+  --warm-white:  #faf6f1;   /* main page background */
+  --off-white:   #f2ede7;   /* card / section bg variant */
+  --soft-gray:   #c8cbcc;   /* borders, dividers */
+  --charcoal:    #3a3830;   /* footer charcoal */
+  --text-dark:   #2c2820;   /* main body text */
+  --text-mid:    #4a5a5c;   /* secondary text */
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  /* aliases used throughout */
+  --forest:      var(--teal-deep);
+  --moss:        var(--teal-dark);
+  --sage:        var(--teal-light);
+  --leaf:        var(--teal-mist);
+  --cream:       var(--warm-white);
+  --parchment:   var(--off-white);
+  --gold:        var(--teal-mid);
+  --amber:       #306468;   /* darker teal for hover states */
 
-  html { scroll-behavior: smooth; }
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-accent:  'Josefin Sans', sans-serif;
+}
 
-  body {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    background: var(--cream);
-    color: var(--charcoal);
-    overflow-x: hidden;
-  }
+/* ── RESET ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body {
+  font-family: var(--font-display);
+  background: var(--cream);
+  color: var(--charcoal);
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
 
-  /* ── NOISE TEXTURE OVERLAY ── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 9999;
-    opacity: 0.4;
-  }
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; width: 100%;
+  z-index: 200;
+  padding: 1.1rem 3.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(250,246,241,0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(66,129,133,0.18);
+  transition: padding 0.3s ease, box-shadow 0.3s ease;
+}
+nav.scrolled {
+  padding: 0.75rem 3.5rem;
+  box-shadow: 0 2px 24px rgba(30,63,74,0.07);
+}
+.nav-brand { display: flex; align-items: center; gap: 0.8rem; }
+.nav-logo-img { height: 34px; width: auto; }
+.nav-brand-text { display: flex; flex-direction: column; }
+.nav-brand-name {
+  font-family: var(--font-accent);
+  font-weight: 300;
+  letter-spacing: 0.22em;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  color: var(--forest);
+  line-height: 1.2;
+}
+.nav-brand-tagline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.68rem;
+  color: var(--sage);
+}
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+.nav-links a {
+  font-family: var(--font-accent);
+  font-weight: 300;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  transition: color 0.2s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 0; height: 1px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+.nav-links a:hover { color: var(--forest); }
+.nav-links a:hover::after { width: 100%; }
+.nav-cta {
+  font-family: var(--font-accent) !important;
+  font-weight: 300 !important;
+  font-size: 0.66rem !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  color: var(--cream) !important;
+  background: var(--forest) !important;
+  padding: 0.6rem 1.4rem !important;
+  border: 1px solid var(--forest) !important;
+  transition: background 0.2s ease !important;
+}
+.nav-cta:hover { background: var(--moss) !important; }
+.nav-cta::after { display: none !important; }
+.nav-toggle {
+  display: none;
+  background: none; border: none; cursor: pointer;
+  flex-direction: column; gap: 5px; padding: 4px;
+}
+.nav-toggle span {
+  display: block; width: 22px; height: 1.5px;
+  background: var(--forest);
+  transition: all 0.3s ease;
+}
 
-  /* ── NAV ── */
-  nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 100;
-    padding: 1.2rem 3rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(245,240,230,0.9);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(200,169,110,0.2);
-  }
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 55% 45%;
+  padding-top: 72px;
+  background: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg-panel {
+  position: absolute;
+  right: 0; top: 0;
+  width: 45%; height: 100%;
+  background: linear-gradient(160deg, #cce2e4 0%, #b4d0d4 100%);
+  z-index: 0;
+}
+.hero-left {
+  padding: 5rem 4rem 4rem 5.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+.hero-eyebrow {
+  font-family: var(--font-accent);
+  font-weight: 300;
+  font-size: 0.65rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 36px; height: 1px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+.hero-headline {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(3.2rem, 4.8vw, 5.8rem);
+  line-height: 1.05;
+  color: var(--forest);
+  letter-spacing: -0.01em;
+  margin-bottom: 1.75rem;
+}
+.hero-headline em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--moss);
+}
+.hero-body {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--text-mid);
+  max-width: 480px;
+  margin-bottom: 2.5rem;
+}
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+.btn-primary {
+  font-family: var(--font-accent);
+  font-weight: 300;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: var(--forest);
+  color: var(--cream);
+  padding: 1rem 2.25rem;
+  border: 1px solid var(--forest);
+  transition: all 0.25s ease;
+  display: inline-block;
+}
+.btn-primary:hover { background: var(--moss); border-color: var(--moss); }
+.btn-secondary {
+  font-family: var(--font-accent);
+  font-weight: 300;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--forest);
+  padding: 1rem 2.25rem;
+  border: 1px solid rgba(30,63,74,0.3);
+  transition: all 0.25s ease;
+  display: inline-block;
+}
+.btn-secondary:hover { border-color: var(--forest); background: rgba(30,63,74,0.04); }
+.hero-stats {
+  display: flex;
+  gap: 0;
+  border-top: 1px solid rgba(66,129,133,0.22);
+  padding-top: 2rem;
+}
+.hero-stat {
+  flex: 1;
+  padding-right: 2rem;
+}
+.hero-stat + .hero-stat {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  border-left: 1px solid rgba(66,129,133,0.22);
+}
+.hero-stat:last-child { padding-right: 0; }
+.stat-num {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 2.4rem;
+  color: var(--forest);
+  line-height: 1;
+  display: block;
+}
+.stat-sup {
+  font-size: 1.4rem;
+  vertical-align: super;
+}
+.stat-label {
+  font-family: var(--font-accent);
+  font-size: 0.58rem;
+  font-weight: 300;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sage);
+  display: block;
+  margin-top: 0.3rem;
+}
 
-  .nav-logo {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 300;
-    letter-spacing: 0.25em;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    color: var(--moss);
-  }
+/* hero right */
+.hero-right {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 5rem 3rem 0 2rem;
+}
+.hero-frame {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+.hero-frame::before {
+  content: '';
+  position: absolute;
+  top: -18px; left: -18px;
+  right: 18px; bottom: 18px;
+  border: 1px solid rgba(66,129,133,0.3);
+  z-index: 0;
+  pointer-events: none;
+}
+.hero-frame img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 560px;
+  object-fit: cover;
+  object-position: center top;
+}
+.hero-badge {
+  position: absolute;
+  z-index: 2;
+  background: var(--forest);
+  color: var(--cream);
+  padding: 0.9rem 1.1rem;
+  min-width: 110px;
+}
+.hero-badge-tl {
+  top: 24px; right: -24px;
+  text-align: center;
+}
+.hero-badge-br {
+  bottom: 36px; left: -24px;
+}
+.badge-num {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 300;
+  display: block;
+  line-height: 1;
+}
+.badge-label {
+  font-family: var(--font-accent);
+  font-size: 0.52rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--leaf);
+  display: block;
+  margin-top: 0.25rem;
+}
 
+/* ── MARQUEE ── */
+.marquee-band {
+  background: var(--forest);
+  overflow: hidden;
+  padding: 0.9rem 0;
+  border-top: 1px solid rgba(66,129,133,0.15);
+}
+.marquee-track {
+  display: flex;
+  white-space: nowrap;
+  animation: marquee 36s linear infinite;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-item {
+  font-family: var(--font-accent);
+  font-weight: 200;
+  font-size: 0.62rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--leaf);
+  padding: 0 2.25rem;
+  flex-shrink: 0;
+}
+.marquee-sep { color: var(--gold); margin-left: 2.25rem; }
+
+/* ── SECTION UTILITIES ── */
+.section-label {
+  font-family: var(--font-accent);
+  font-weight: 300;
+  font-size: 0.62rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+}
+.section-label::before {
+  content: '';
+  display: block;
+  width: 28px; height: 1px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+.section-label.center { justify-content: center; }
+.section-label.center::before { display: none; }
+.section-label.center::after {
+  content: '';
+  display: block;
+  width: 28px; height: 1px;
+  background: var(--gold);
+}
+.section-heading {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(2.2rem, 3.2vw, 3.6rem);
+  line-height: 1.12;
+  color: var(--forest);
+}
+.section-heading em { font-style: italic; color: var(--moss); }
+
+/* ── SERVICES ── */
+.services {
+  padding: 7rem 5.5rem;
+  background: var(--warm-white);
+}
+.services-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: end;
+  margin-bottom: 4.5rem;
+}
+.services-intro {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--text-mid);
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+}
+.service-card {
+  background: var(--cream);
+  padding: 2.5rem 1.75rem;
+  border: 1px solid rgba(66,129,133,0.1);
+  transition: background 0.3s ease, transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+}
+.service-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 2px;
+  background: var(--gold);
+  transition: width 0.35s ease;
+}
+.service-card:hover { background: var(--forest); }
+.service-card:hover::after { width: 100%; }
+.service-num {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: rgba(30,63,74,0.06);
+  line-height: 1;
+  margin-bottom: -0.5rem;
+  transition: color 0.3s;
+}
+.service-card:hover .service-num { color: rgba(250,246,241,0.08); }
+.service-icon {
+  font-size: 1.4rem;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  display: block;
+  transition: color 0.3s;
+}
+.icon {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  display: inline-block;
+  vertical-align: -0.125em;
+}
+.service-title {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 400;
+  color: var(--forest);
+  margin-bottom: 0.65rem;
+  line-height: 1.2;
+  transition: color 0.3s;
+}
+.service-text {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--text-mid);
+  transition: color 0.3s;
+}
+.service-card:hover .service-title,
+.service-card:hover .service-text { color: var(--cream); }
+.service-card:hover .service-icon { color: var(--gold); }
+
+/* ── ABOUT ── */
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 700px;
+}
+.about-photo {
+  position: relative;
+  overflow: hidden;
+}
+.about-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+.about-photo::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, rgba(30,63,74,0.15), transparent);
+}
+.about-content {
+  background: var(--forest);
+  padding: 6rem 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.about-content .section-label { color: var(--gold); }
+.about-content .section-label::before { background: var(--gold); }
+.about-content .section-heading { color: var(--cream); margin-bottom: 1.5rem; }
+.about-content .section-heading em { color: var(--gold); }
+.about-body {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.82;
+  color: rgba(196,216,214,0.9);
+  margin-bottom: 2rem;
+}
+.about-creds {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-bottom: 2.5rem;
+}
+.about-cred {
+  font-family: var(--font-accent);
+  font-size: 0.65rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--leaf);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.about-cred::before {
+  content: '';
+  display: block;
+  width: 5px; height: 5px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+.about-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 1.65;
+  color: rgba(250,246,241,0.65);
+  border-left: 2px solid var(--gold);
+  padding-left: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+.btn-light {
+  font-family: var(--font-accent);
+  font-weight: 300;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--forest);
+  background: var(--cream);
+  padding: 0.9rem 2rem;
+  border: 1px solid var(--cream);
+  transition: all 0.25s ease;
+  display: inline-block;
+  align-self: flex-start;
+}
+.btn-light:hover { background: var(--gold); border-color: var(--gold); }
+
+/* ── TREATMENTS ── */
+.treatments {
+  padding: 7rem 5.5rem;
+  background: var(--cream);
+}
+.treatments-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 4rem;
+}
+.treatments-header .section-heading { margin-top: 0.5rem; }
+.treatments-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+.treatment-card {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  cursor: pointer;
+}
+.treatment-card img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.55s ease;
+}
+.treatment-card:hover img { transform: scale(1.05); }
+.treatment-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top,
+    rgba(30,63,74,0.93) 0%,
+    rgba(30,63,74,0.25) 55%,
+    transparent 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem;
+  transition: background 0.35s ease;
+}
+.treatment-card:hover .treatment-overlay {
+  background: linear-gradient(to top,
+    rgba(30,63,74,0.97) 0%,
+    rgba(30,63,74,0.45) 60%,
+    rgba(30,63,74,0.1) 100%
+  );
+}
+.treatment-tag {
+  font-family: var(--font-accent);
+  font-size: 0.57rem;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.45rem;
+}
+.treatment-name {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.2;
+  margin-bottom: 0.4rem;
+}
+.treatment-desc {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--leaf);
+  line-height: 1.65;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.treatment-card:hover .treatment-desc { opacity: 1; transform: translateY(0); }
+.treatments-more {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+/* ── DISPENSARY BAND ── */
+.dispensary {
+  position: relative;
+  overflow: hidden;
+  height: 500px;
+  display: flex;
+  align-items: center;
+}
+.dispensary-bg {
+  position: absolute; inset: 0;
+}
+.dispensary-bg img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+}
+.dispensary-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg,
+    rgba(30,63,74,0.96) 0%,
+    rgba(30,63,74,0.88) 45%,
+    rgba(30,63,74,0.5) 100%
+  );
+}
+.dispensary-content {
+  position: relative;
+  z-index: 1;
+  padding: 0 5.5rem;
+  max-width: 620px;
+}
+.dispensary-content .section-label { color: var(--gold); }
+.dispensary-content .section-label::before { background: var(--gold); }
+.dispensary-content .section-heading { color: var(--cream); margin: 0.5rem 0 1.25rem; }
+.dispensary-content .section-heading em { color: var(--gold); }
+.dispensary-text {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(196,216,214,0.9);
+  margin-bottom: 2rem;
+}
+.btn-gold {
+  font-family: var(--font-accent);
+  font-weight: 300;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: var(--gold);
+  color: var(--forest);
+  padding: 1rem 2.5rem;
+  border: 1px solid var(--gold);
+  transition: all 0.25s ease;
+  display: inline-block;
+}
+.btn-gold:hover { background: var(--amber); border-color: var(--amber); }
+
+/* ── TESTIMONIALS ── */
+.testimonials {
+  padding: 7rem 5.5rem;
+  background: var(--parchment);
+}
+.testimonials-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.testimonials-header .section-heading { margin-top: 0.5rem; }
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+.testimonial-card {
+  background: var(--cream);
+  padding: 2.5rem;
+  border: 1px solid rgba(66,129,133,0.12);
+  position: relative;
+}
+.testimonial-card::before {
+  content: '\201C';
+  position: absolute;
+  top: 1.25rem; left: 1.75rem;
+  font-family: var(--font-display);
+  font-size: 5rem;
+  font-weight: 300;
+  color: rgba(66,129,133,0.18);
+  line-height: 1;
+  pointer-events: none;
+}
+.t-stars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 1.25rem;
+}
+.t-stars .icon { font-size: 0.68rem; color: var(--gold); }
+.t-text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.78;
+  color: var(--text-mid);
+  margin-bottom: 1.5rem;
+}
+.t-author {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.t-avatar {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  flex-shrink: 0;
+}
+.t-name {
+  font-family: var(--font-accent);
+  font-size: 0.66rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--forest);
+  display: block;
+}
+.t-location {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--sage);
+  display: block;
+}
+
+/* ── CTA ── */
+.cta-section {
+  background: var(--forest);
+  padding: 6rem 5.5rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3rem;
+  align-items: center;
+}
+.cta-heading {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(2rem, 3vw, 3.2rem);
+  color: var(--cream);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+.cta-heading em { font-style: italic; color: var(--gold); }
+.cta-sub {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--leaf);
+  line-height: 1.65;
+  max-width: 520px;
+}
+.cta-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+.cta-note {
+  font-family: var(--font-accent);
+  font-size: 0.6rem;
+  font-weight: 300;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(196,216,214,0.7);
+  text-align: center;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--charcoal);
+  padding: 4.5rem 5.5rem 2rem;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 2rem;
+}
+.footer-brand-name {
+  font-family: var(--font-accent);
+  font-weight: 300;
+  letter-spacing: 0.22em;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-bottom: 0.3rem;
+}
+.footer-brand-tag {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--sage);
+  margin-bottom: 1.25rem;
+  display: block;
+}
+.footer-body {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(250,246,241,0.42);
+}
+.footer-col-title {
+  font-family: var(--font-accent);
+  font-weight: 300;
+  font-size: 0.62rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.25rem;
+}
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.footer-links a {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: rgba(250,246,241,0.48);
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--cream); }
+.footer-contact-row {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: rgba(250,246,241,0.48);
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+  margin-bottom: 0.6rem;
+}
+.footer-contact-row .icon {
+  color: var(--gold);
+  font-size: 0.78rem;
+  margin-top: 0.22rem;
+  flex-shrink: 0;
+}
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-copy {
+  font-family: var(--font-accent);
+  font-size: 0.58rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: rgba(250,246,241,0.25);
+  text-transform: uppercase;
+}
+.footer-socials { display: flex; gap: 0.75rem; }
+.footer-socials a {
+  width: 34px; height: 34px;
+  border: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(250,246,241,0.35);
+  font-size: 0.72rem;
+  transition: all 0.2s;
+}
+.footer-socials a:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ── SCROLL ANIMATIONS ── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.fade-up.in { opacity: 1; transform: translateY(0); }
+.delay-1 { transition-delay: 0.12s; }
+.delay-2 { transition-delay: 0.22s; }
+.delay-3 { transition-delay: 0.32s; }
+.delay-4 { transition-delay: 0.42s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1100px) {
+  nav { padding: 1rem 2.5rem; }
+  nav.scrolled { padding: 0.7rem 2.5rem; }
+  .hero-left { padding: 4rem 3rem 4rem 3.5rem; }
+  .hero-right { padding: 4rem 2rem 0 1.5rem; }
+  .services, .treatments { padding: 5.5rem 3.5rem; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5px; }
+  .about-content { padding: 4rem 3.5rem; }
+  .dispensary-content { padding: 0 3.5rem; }
+  .testimonials, .cta-section { padding: 5.5rem 3.5rem; }
+  footer { padding: 3.5rem 3.5rem 2rem; }
+}
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-bg-panel { width: 100%; height: 52%; top: auto; bottom: 0; }
+  .hero-left { padding: 5rem 2.5rem 2rem; }
+  .hero-right { padding: 2rem 2.5rem 0; justify-content: center; }
+  .hero-frame { max-width: 320px; }
+  .hero-frame img { height: 380px; }
+  .about { grid-template-columns: 1fr; }
+  .about-photo { height: 400px; }
+  .services-top { grid-template-columns: 1fr; gap: 1.5rem; }
+  .treatments-grid { grid-template-columns: 1fr 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr 1fr; }
+  .cta-section { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+}
+
+@media (max-width: 680px) {
+  nav { padding: 0.9rem 1.25rem; }
+  nav.scrolled { padding: 0.65rem 1.25rem; }
+  .nav-brand-tagline { display: none; }
+  .nav-toggle { display: flex; }
   .nav-links {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-  }
-
-  .nav-links a {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 300;
-    font-size: 0.8rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: var(--earth);
-    transition: color 0.3s;
-  }
-
-  .nav-links a:hover { color: var(--moss); }
-
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-left {
-    background: var(--forest);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 10rem 5rem 6rem 6rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  /* botanical circle ornament */
-  .hero-left::before {
-    content: '';
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    border: 1px solid rgba(155,184,158,0.15);
-    top: -100px;
-    left: -100px;
-  }
-
-  .hero-left::after {
-    content: '';
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    border: 1px solid rgba(200,169,110,0.12);
-    bottom: 80px;
-    right: -80px;
-  }
-
-  .hero-eyebrow {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 300;
-    letter-spacing: 0.3em;
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.2s forwards;
-  }
-
-  .hero-name {
-    font-size: clamp(3rem, 5vw, 4.5rem);
-    font-weight: 300;
-    line-height: 1.05;
-    color: var(--cream);
-    margin-bottom: 0.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.4s forwards;
-  }
-
-  .hero-name em {
-    font-style: italic;
-    color: var(--leaf);
-  }
-
-  .hero-title {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 300;
-    letter-spacing: 0.15em;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    color: var(--leaf);
-    margin-bottom: 3rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.6s forwards;
-  }
-
-  .hero-divider {
-    width: 60px;
-    height: 1px;
-    background: var(--gold);
-    margin-bottom: 2.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.7s forwards;
-  }
-
-  .hero-quote {
-    font-style: italic;
-    font-size: 1.3rem;
-    font-weight: 400;
-    line-height: 1.7;
-    color: rgba(245,240,230,0.92);
-    max-width: 400px;
-    margin-bottom: 3.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.8s forwards;
-  }
-
-  .hero-cta {
-    display: inline-flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 1s forwards;
-  }
-
-  .btn-primary {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 300;
-    letter-spacing: 0.18em;
-    font-size: 0.82rem;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 1rem 2.5rem;
-    background: var(--gold);
-    color: var(--forest);
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-
-  .btn-primary:hover {
-    background: var(--amber);
-    color: var(--cream);
-    transform: translateY(-2px);
-  }
-
-  .btn-secondary {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 300;
-    letter-spacing: 0.18em;
-    font-size: 0.82rem;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 1rem 2.5rem;
-    border: 1px solid rgba(155,184,158,0.4);
-    color: var(--leaf);
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-
-  .btn-secondary:hover {
-    border-color: var(--leaf);
-    color: var(--cream);
-    transform: translateY(-2px);
-  }
-
-  .hero-right {
-    background: var(--parchment);
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-
-  /* large botanical SVG background */
-  .botanical-bg {
-    position: absolute;
-    inset: 0;
-    opacity: 0.06;
-  }
-
-  .hero-portrait-wrap {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    padding: 8rem 4rem;
-    opacity: 0;
-    animation: fadeIn 1.2s ease 0.5s forwards;
-  }
-
-  .portrait-ring {
-    width: 260px;
-    height: 260px;
-    border-radius: 50%;
-    border: 3px solid var(--gold);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 2.5rem;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 0 0 8px rgba(200,169,110,0.1), 0 0 0 9px rgba(200,169,110,0.15);
-  }
-
-  .portrait-ring::before {
-    content: '';
-    position: absolute;
-    inset: -3px;
-    border-radius: 50%;
-    border: 1px dashed rgba(200,169,110,0.4);
-    pointer-events: none;
-    z-index: 2;
-  }
-
-  .portrait-ring img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    border-radius: 50%;
-    display: block;
-  }
-
-  .hero-stat-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
-
-  .hero-stat {
-    text-align: center;
-    padding: 1.5rem;
-    border: 1px solid rgba(200,169,110,0.2);
-    background: rgba(255,255,255,0.5);
-  }
-
-  .stat-num {
-    font-size: 2.5rem;
-    font-weight: 300;
-    color: var(--moss);
-    display: block;
-    line-height: 1;
-  }
-
-  .stat-label {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 300;
-    letter-spacing: 0.1em;
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    color: var(--amber);
-    display: block;
-    margin-top: 0.4rem;
-  }
-
-  /* ── MARQUEE BAND ── */
-  .marquee-band {
-    background: var(--forest);
-    padding: 1rem 0;
-    overflow: hidden;
-    border-top: 1px solid rgba(200,169,110,0.2);
-    border-bottom: 1px solid rgba(200,169,110,0.2);
-  }
-
-  .marquee-inner {
-    display: flex;
-    gap: 0;
-    animation: marquee 30s linear infinite;
-    white-space: nowrap;
-  }
-
-  .marquee-item {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 300;
-    letter-spacing: 0.3em;
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    color: var(--leaf);
-    padding: 0 3rem;
-    flex-shrink: 0;
-  }
-
-  .marquee-dot {
-    color: var(--gold);
-  }
-
-  @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-
-  /* ── STORY SECTION ── */
-  .story {
-    padding: 9rem 6rem;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 6rem;
-    align-items: start;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-
-  .section-label {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 300;
-    letter-spacing: 0.3em;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1rem;
-  }
-
-  .sticky-left {
-    position: sticky;
-    top: 8rem;
-  }
-
-  .story-heading {
-    font-size: clamp(2.5rem, 4vw, 3.5rem);
-    font-weight: 300;
-    line-height: 1.15;
-    color: var(--forest);
-    margin-bottom: 2rem;
-  }
-
-  .story-heading em {
-    font-style: italic;
-    color: var(--moss);
-  }
-
-  .vertical-line {
-    width: 1px;
-    height: 80px;
-    background: var(--gold);
-    opacity: 0.5;
-  }
-
-  .story-body p {
-    font-size: 1.15rem;
-    font-weight: 400;
-    line-height: 1.85;
-    color: var(--earth);
-    margin-bottom: 1.8rem;
-  }
-
-  .story-body p strong {
-    color: var(--forest);
-    font-weight: 600;
-  }
-
-  .pull-quote {
-    border-left: 2px solid var(--gold);
-    padding: 1.5rem 2rem;
-    margin: 2.5rem 0;
-    background: rgba(200,169,110,0.06);
-  }
-
-  .pull-quote p {
-    font-size: 1.4rem !important;
-    font-style: italic;
-    color: var(--forest) !important;
-    margin-bottom: 0.5rem !important;
-  }
-
-  .pull-quote cite {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 0.78rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--gold);
-  }
-
-  /* ── CREDENTIALS BAND ── */
-  .credentials {
-    background: var(--forest);
-    padding: 6rem;
-  }
-
-  .cred-header {
-    text-align: center;
-    margin-bottom: 4rem;
-  }
-
-  .cred-header h2 {
-    font-size: 2.5rem;
-    font-weight: 300;
-    color: var(--cream);
-    margin-top: 0.75rem;
-  }
-
-  .cred-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .cred-card {
-    background: rgba(255,255,255,0.04);
-    padding: 2.5rem 2rem;
-    border: 1px solid rgba(155,184,158,0.1);
-    transition: background 0.3s;
-  }
-
-  .cred-card:hover { background: rgba(255,255,255,0.08); }
-
-  .cred-icon {
-    width: 32px;
-    height: 1px;
-    background: var(--gold);
-    margin-bottom: 1.5rem;
-  }
-
-  .cred-fa {
-    color: var(--gold);
-    font-size: 1.4rem;
-    margin-bottom: 1.25rem;
-    display: block;
-  }
-
-  .cred-degree {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--cream);
-    margin-bottom: 0.4rem;
-    line-height: 1.3;
-  }
-
-  .cred-institution {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 300;
-    letter-spacing: 0.1em;
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    color: var(--leaf);
-  }
-
-  /* ── SPECIALTIES ── */
-  .specialties {
-    padding: 9rem 6rem;
-    background: var(--parchment);
-  }
-
-  .spec-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .spec-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 5rem;
-    flex-wrap: wrap;
-    gap: 2rem;
-  }
-
-  .spec-header h2 {
-    font-size: clamp(2rem, 3.5vw, 3rem);
-    font-weight: 300;
-    color: var(--forest);
-    line-height: 1.2;
-  }
-
-  .spec-header h2 em { color: var(--moss); font-style: italic; }
-
-  .spec-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0;
-  }
-
-  .spec-item {
-    padding: 2.5rem 3rem;
-    border: 1px solid rgba(200,169,110,0.2);
-    position: relative;
-    overflow: hidden;
-    cursor: default;
-    transition: all 0.4s ease;
-  }
-
-  .spec-item::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--forest);
-    transform: translateY(100%);
-    transition: transform 0.4s ease;
-    z-index: 0;
-  }
-
-  .spec-item:hover::before { transform: translateY(0); }
-
-  .spec-item:hover .spec-num,
-  .spec-item:hover .spec-name,
-  .spec-item:hover .spec-desc { color: var(--cream); }
-
-  .spec-item:hover .spec-divider { background: var(--gold); }
-
-  .spec-num {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 300;
-    font-size: 0.78rem;
-    letter-spacing: 0.25em;
-    color: var(--gold);
-    margin-bottom: 1rem;
-    position: relative;
-    z-index: 1;
-  }
-
-  .spec-name {
-    font-size: 1.35rem;
-    font-weight: 600;
-    color: var(--forest);
-    margin-bottom: 0.75rem;
-    position: relative;
-    z-index: 1;
-    transition: color 0.4s;
-  }
-
-  .spec-divider {
-    width: 30px;
-    height: 1px;
-    background: rgba(200,169,110,0.4);
-    margin-bottom: 1rem;
-    position: relative;
-    z-index: 1;
-    transition: background 0.4s;
-  }
-
-  .spec-desc {
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.7;
-    color: var(--earth);
-    position: relative;
-    z-index: 1;
-    transition: color 0.4s;
-  }
-
-  /* ── TRANSFORMATION STORY ── */
-  .transformation {
-    padding: 9rem 6rem;
+    position: fixed;
+    top: 0; right: -100%;
+    width: 76vw; max-width: 300px;
+    height: 100vh;
     background: var(--cream);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .transformation::before {
-    content: '"';
-    position: absolute;
-    font-size: 40rem;
-    line-height: 1;
-    color: rgba(28,58,42,0.04);
-    top: -5rem;
-    left: -3rem;
-    font-family: 'Cormorant Garamond', serif;
-  }
-
-  .transform-inner {
-    max-width: 900px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
-  }
-
-  .transform-inner .section-label { margin-bottom: 2rem; }
-
-  .transform-inner h2 {
-    font-size: clamp(2rem, 3.5vw, 3rem);
-    font-weight: 300;
-    color: var(--forest);
-    line-height: 1.2;
-    margin-bottom: 3rem;
-  }
-
-  .transform-inner h2 em { color: var(--moss); font-style: italic; }
-
-  .transform-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin: 4rem 0;
-  }
-
-  .t-stat {
-    text-align: center;
-    padding: 2.5rem 1.5rem;
-    border: 1px solid rgba(200,169,110,0.25);
-    position: relative;
-  }
-
-  .t-stat-big {
-    font-size: 3.5rem;
-    font-weight: 300;
-    color: var(--forest);
-    line-height: 1;
-    display: block;
-  }
-
-  .t-stat-unit {
-    font-size: 1.5rem;
-    font-weight: 300;
-    color: var(--gold);
-  }
-
-  .t-stat-label {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 300;
-    letter-spacing: 0.1em;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    color: var(--moss);
-    display: block;
-    margin-top: 0.75rem;
-  }
-
-  .transform-inner p {
-    font-size: 1.15rem;
-    font-weight: 400;
-    line-height: 1.9;
-    color: var(--earth);
-    margin-bottom: 1.5rem;
-  }
-
-  /* ── BOOK SECTION ── */
-  .book-section {
-    background: var(--parchment);
-    padding: 9rem 6rem;
-  }
-
-  .book-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8rem;
-    align-items: center;
-  }
-
-  .book-mockup {
-    position: relative;
-  }
-
-  .book-cover {
-    background: var(--forest);
-    padding: 4rem 3rem;
-    position: relative;
-    box-shadow: 20px 20px 60px rgba(28,58,42,0.25), -4px 0 0 rgba(0,0,0,0.3);
-    transform: perspective(1000px) rotateY(-8deg) rotateX(2deg);
-    transition: transform 0.5s ease;
-  }
-
-  .book-cover:hover {
-    transform: perspective(1000px) rotateY(-3deg) rotateX(1deg);
-  }
-
-  .book-cover-leaf {
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-    opacity: 0.15;
-  }
-
-  .book-cover-eyebrow {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 300;
-    letter-spacing: 0.25em;
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 2rem;
-  }
-
-  .book-cover-title {
-    font-size: 2.5rem;
-    font-weight: 300;
-    color: var(--cream);
-    line-height: 1.15;
-    margin-bottom: 1.5rem;
-  }
-
-  .book-cover-title em {
-    font-style: italic;
-    color: var(--leaf);
-  }
-
-  .book-cover-author {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 300;
-    letter-spacing: 0.15em;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    color: var(--leaf);
-    margin-top: 3rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(155,184,158,0.2);
-  }
-
-  .book-content h2 {
-    font-size: clamp(1.8rem, 2.5vw, 2.5rem);
-    font-weight: 300;
-    color: var(--forest);
-    line-height: 1.2;
-    margin-bottom: 2rem;
-  }
-
-  .book-content h2 em { color: var(--moss); font-style: italic; }
-
-  .book-content p {
-    font-size: 1.1rem;
-    font-weight: 400;
-    line-height: 1.85;
-    color: var(--earth);
-    margin-bottom: 1.5rem;
-  }
-
-  .book-toc {
-    margin: 2.5rem 0;
-    border-top: 1px solid rgba(200,169,110,0.2);
-  }
-
-  .toc-item {
-    padding: 0.9rem 0;
-    border-bottom: 1px solid rgba(200,169,110,0.15);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 1rem;
-    font-weight: 400;
-    color: var(--earth);
-  }
-
-  .toc-part {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 300;
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--gold);
-    background: rgba(200,169,110,0.1);
-    padding: 0.2rem 0.6rem;
-    white-space: nowrap;
-    margin-left: 1rem;
-  }
-
-  /* ── PHILOSOPHY ── */
-  .philosophy {
-    background: var(--forest);
-    padding: 9rem 6rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .philosophy::after {
-    content: '';
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
-    border: 1px solid rgba(155,184,158,0.07);
-    right: -200px;
-    top: -100px;
-  }
-
-  .phil-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8rem;
-    align-items: center;
-    position: relative;
-    z-index: 1;
-  }
-
-  .phil-text h2 {
-    font-size: clamp(2rem, 3vw, 3rem);
-    font-weight: 300;
-    color: var(--cream);
-    line-height: 1.2;
-    margin-bottom: 2.5rem;
-  }
-
-  .phil-text h2 em { color: var(--leaf); font-style: italic; }
-
-  .phil-text p {
-    font-size: 1.1rem;
-    font-weight: 400;
-    line-height: 1.85;
-    color: rgba(245,240,230,0.92);
-    margin-bottom: 1.5rem;
-  }
-
-  .phil-text blockquote {
-    border-left: 2px solid var(--gold);
-    padding: 1rem 1.5rem;
-    margin: 2rem 0;
-  }
-
-  .phil-text blockquote p {
-    font-style: italic;
-    font-size: 1.2rem;
-    color: var(--cream) !important;
-    margin-bottom: 0.3rem !important;
-  }
-
-  .phil-text blockquote cite {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 0.78rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--gold);
-  }
-
-  .phil-pillars {
-    display: flex;
     flex-direction: column;
-    gap: 0;
+    align-items: flex-start;
+    padding: 5rem 2rem 2.5rem;
+    gap: 1.5rem;
+    transition: right 0.35s ease;
+    box-shadow: -4px 0 30px rgba(0,0,0,0.1);
+    z-index: 300;
   }
-
-  .pillar {
-    padding: 2rem;
-    border: 1px solid rgba(155,184,158,0.1);
-    margin-bottom: 2px;
-    transition: background 0.3s;
-  }
-
-  .pillar:hover { background: rgba(255,255,255,0.05); }
-
-  .pillar-num {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 300;
-    font-size: 0.78rem;
-    letter-spacing: 0.25em;
-    color: var(--gold);
-    margin-bottom: 0.75rem;
-  }
-
-  .pillar-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--cream);
-    margin-bottom: 0.5rem;
-  }
-
-  .pillar-text {
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.65;
-    color: rgba(245,240,230,0.88);
-  }
-
-  /* ── TESTIMONIALS ── */
-  .testimonials {
-    padding: 9rem 6rem;
-    background: var(--cream);
-  }
-
-  .test-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .test-header {
-    text-align: center;
-    margin-bottom: 5rem;
-  }
-
-  .test-header h2 {
-    font-size: clamp(2rem, 3vw, 2.8rem);
-    font-weight: 300;
-    color: var(--forest);
-  }
-
-  .test-header h2 em { color: var(--moss); font-style: italic; }
-
-  .test-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
-
-  .test-card {
-    padding: 2.5rem;
-    border: 1px solid rgba(200,169,110,0.2);
-    position: relative;
-    background: var(--parchment);
-  }
-
-  .test-card::before {
-    content: '"';
-    font-size: 6rem;
-    line-height: 0.8;
-    color: rgba(200,169,110,0.2);
-    position: absolute;
-    top: 1.5rem;
-    left: 2rem;
-    font-family: 'Cormorant Garamond', serif;
-  }
-
-  .test-text {
-    font-size: 1.05rem;
-    font-weight: 400;
-    font-style: italic;
-    line-height: 1.75;
-    color: var(--earth);
-    margin-bottom: 1.5rem;
-    padding-top: 2rem;
-    position: relative;
-    z-index: 1;
-  }
-
-  .test-author {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 300;
-    letter-spacing: 0.12em;
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    color: var(--gold);
-  }
-
-  /* ── CONTACT ── */
-  .contact {
-    background: var(--forest);
-    padding: 9rem 6rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .contact::before {
-    content: '';
-    position: absolute;
-    width: 700px;
-    height: 700px;
-    border-radius: 50%;
-    border: 1px solid rgba(155,184,158,0.06);
-    bottom: -300px;
-    left: -200px;
-  }
-
-  .contact-inner {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-  }
-
-  .contact-inner h2 {
-    font-size: clamp(2.5rem, 4vw, 4rem);
-    font-weight: 300;
-    color: var(--cream);
-    line-height: 1.15;
-    margin-bottom: 1.5rem;
-  }
-
-  .contact-inner h2 em { color: var(--leaf); font-style: italic; }
-
-  .contact-inner p {
-    font-size: 1.2rem;
-    font-weight: 300;
-    line-height: 1.8;
-    color: rgba(245,240,230,0.7);
-    margin-bottom: 3rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    max-width: 500px;
-    margin: 0 auto;
-  }
-
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-
-  .form-input {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 400;
-    letter-spacing: 0.08em;
-    font-size: 1rem;
-    padding: 1rem 1.25rem;
-    background: rgba(245,240,230,0.07);
-    border: 1px solid rgba(155,184,158,0.2);
-    color: var(--cream);
-    outline: none;
-    transition: border-color 0.3s;
-    width: 100%;
-  }
-
-  .form-input::placeholder { color: rgba(245,240,230,0.35); }
-  .form-input:focus { border-color: var(--gold); }
-
-  textarea.form-input { resize: none; height: 120px; }
-
-  .form-submit {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 300;
-    letter-spacing: 0.25em;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    padding: 1.2rem 3rem;
-    background: var(--gold);
-    color: var(--forest);
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-
-  .form-submit:hover {
-    background: var(--amber);
-    color: var(--cream);
-    transform: translateY(-2px);
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--charcoal);
-    padding: 3rem 6rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .footer-name {
-    font-size: 1.2rem;
-    font-weight: 300;
-    color: var(--cream);
-    font-style: italic;
-  }
-
-  .footer-note {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 300;
-    letter-spacing: 0.1em;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    color: rgba(245,240,230,0.3);
-    line-height: 1.6;
-  }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  /* scroll reveal */
-  .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
-    .nav-logo { font-size: 0.9rem; }
-
-    /* hero */
-    .hero { grid-template-columns: 1fr; }
-    .hero-right { min-height: 60vh; }
-    .hero-left { padding: 7rem 1.75rem 4rem; }
-    .hero-eyebrow { font-size: 0.82rem; letter-spacing: 0.2em; }
-    .hero-name { font-size: clamp(2.6rem, 9vw, 3.5rem); }
-    .hero-title { font-size: 0.82rem; letter-spacing: 0.12em; }
-    .hero-quote { font-size: 1.15rem; }
-    .btn-primary, .btn-secondary { font-size: 0.85rem; padding: 0.9rem 2rem; }
-
-    /* stats */
-    .hero-stat-grid { grid-template-columns: 1fr 1fr; }
-    .stat-label { font-size: 0.8rem; letter-spacing: 0.08em; }
-    .stat-num { font-size: 2rem; }
-
-    /* marquee */
-    .marquee-item { font-size: 0.82rem; padding: 0 2rem; }
-
-    /* story */
-    .story { grid-template-columns: 1fr; padding: 4rem 1.75rem; gap: 2.5rem; }
-    .sticky-left { position: static; }
-    .story-body p { font-size: 1.1rem; }
-    .pull-quote p { font-size: 1.2rem !important; }
-    .pull-quote cite { font-size: 0.82rem; }
-    .section-label { font-size: 0.82rem; }
-
-    /* credentials */
-    .credentials { padding: 4rem 1.75rem; }
-    .cred-grid { grid-template-columns: 1fr 1fr; gap: 2px; }
-    .cred-degree { font-size: 0.95rem; }
-    .cred-institution { font-size: 0.8rem; }
-
-    /* transformation */
-    .transformation { padding: 5rem 1.75rem; }
-    .transform-stats { grid-template-columns: 1fr; gap: 1.5rem; }
-    .t-stat-big { font-size: 3rem; }
-    .t-stat-label { font-size: 0.85rem; }
-    .transform-inner p { font-size: 1.1rem; }
-
-    /* specialties */
-    .specialties { padding: 5rem 1.75rem; }
-    .spec-list { grid-template-columns: 1fr; }
-    .spec-name { font-size: 1.25rem; }
-    .spec-desc { font-size: 1rem; }
-    .spec-num { font-size: 0.82rem; }
-
-    /* book */
-    .book-section { padding: 5rem 1.75rem; }
-    .book-inner { grid-template-columns: 1fr; gap: 3.5rem; }
-    .book-cover { transform: none; }
-    .book-cover-title { font-size: 2rem; }
-    .toc-item { font-size: 0.95rem; }
-    .toc-part { font-size: 0.78rem; }
-
-    /* philosophy */
-    .philosophy { padding: 5rem 1.75rem; }
-    .phil-inner { grid-template-columns: 1fr; gap: 3.5rem; }
-    .pillar-text { font-size: 1rem; }
-    .pillar-num { font-size: 0.82rem; }
-
-    /* testimonials */
-    .testimonials { padding: 5rem 1.75rem; }
-    .test-grid { grid-template-columns: 1fr; }
-    .test-text { font-size: 1.05rem; }
-    .test-author { font-size: 0.82rem; }
-
-    /* contact */
-    .contact { padding: 5rem 1.75rem; }
-    .form-row { grid-template-columns: 1fr; }
-    .form-input { font-size: 1rem; }
-    .form-submit { font-size: 0.88rem; width: 100%; }
-
-    /* footer */
-    footer { padding: 2rem 1.75rem; flex-direction: column; text-align: center; }
-    .footer-note { font-size: 0.78rem; letter-spacing: 0.08em; }
-  }
-
-  /* Extra small screens */
-  @media (max-width: 480px) {
-    .hero-left { padding: 6rem 1.25rem 3rem; }
-    .hero-eyebrow { font-size: 0.75rem; }
-    .hero-name { font-size: clamp(2.2rem, 10vw, 3rem); }
-    .hero-title { font-size: 0.78rem; }
-    .hero-quote { font-size: 1.1rem; }
-    .cred-grid { grid-template-columns: 1fr; }
-    .spec-item { padding: 2rem 1.5rem; }
-    .book-cover { padding: 3rem 2rem; }
-    .section-label { font-size: 0.8rem; }
-    .story-body p, .transform-inner p, .phil-text p { font-size: 1.05rem; }
-  }
+  .nav-links.open { right: 0; }
+  .nav-links a { font-size: 0.78rem; }
+  .nav-cta { padding: 0.7rem 1.4rem !important; }
+  .hero-left { padding: 4.5rem 1.25rem 2rem; }
+  .hero-right { padding: 1.5rem 1.25rem 0; }
+  .hero-frame img { height: 300px; }
+  .hero-badge-tl { right: -10px; }
+  .hero-badge-br { left: -10px; }
+  .hero-stats { gap: 0; flex-wrap: wrap; }
+  .hero-stat { flex: 0 0 33.33%; padding: 0 0.5rem 1rem 0; }
+  .hero-stat + .hero-stat { border-left: none; padding-left: 0; }
+  .services { padding: 4rem 1.25rem; }
+  .services-grid { grid-template-columns: 1fr; gap: 1px; }
+  .treatments { padding: 4rem 1.25rem; }
+  .treatments-grid { grid-template-columns: 1fr; }
+  .treatment-card { aspect-ratio: 5/4; }
+  .dispensary { height: 420px; }
+  .dispensary-content { padding: 0 1.25rem; }
+  .testimonials { padding: 4rem 1.25rem; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .cta-section { padding: 4rem 1.25rem; }
+  .about-content { padding: 3.5rem 1.25rem; }
+  footer { padding: 3rem 1.25rem 1.5rem; }
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
-  <div class="nav-logo">Dr. Bernard Lurie · ND</div>
-  <ul class="nav-links">
-    <li><a href="#story"><i class="fa-solid fa-seedling" style="margin-right:0.4rem;font-size:0.65rem"></i>My Story</a></li>
-    <li><a href="#specialties"><i class="fa-solid fa-stethoscope" style="margin-right:0.4rem;font-size:0.65rem"></i>Specialties</a></li>
-    <li><a href="#book"><i class="fa-solid fa-book-open" style="margin-right:0.4rem;font-size:0.65rem"></i>The Book</a></li>
-    <li><a href="#philosophy"><i class="fa-solid fa-leaf" style="margin-right:0.4rem;font-size:0.65rem"></i>Philosophy</a></li>
-    <li><a href="#contact"><i class="fa-solid fa-calendar-check" style="margin-right:0.4rem;font-size:0.65rem"></i>Consult</a></li>
+<nav id="main-nav">
+  <div class="nav-brand">
+    <img src="hormonal/assets/images/herbernie-logo.webp" alt="Herbernie Int'l" class="nav-logo-img" width="34" height="34">
+    <div class="nav-brand-text">
+      <span class="nav-brand-name">Herbernie Int'l</span>
+      <span class="nav-brand-tagline">Maintaining your health, naturally</span>
+    </div>
+  </div>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="treatments.html">Treatments</a></li>
+    <li><a href="#testimonials">Results</a></li>
+    <li><a href="#contact" class="nav-cta">Book Consultation</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-bg-panel"></div>
+
   <div class="hero-left">
-    <span class="hero-eyebrow">Naturopathic Doctor · 40+ Years Clinical Practice</span>
-    <h1 class="hero-name">Dr. Bernard<br><em>Lurie</em></h1>
-    <p class="hero-title">Doctor of Science in Naturopathy · PhD · Herbalist · Iridologist</p>
-    <div class="hero-divider"></div>
-    <p class="hero-quote">"Your body has a remarkable capacity to heal. I've witnessed it ten thousand times. You just need to give it what nature intended."</p>
-    <div class="hero-cta">
+    <span class="hero-eyebrow">Naturopathic Medicine · Cape Town</span>
+    <h1 class="hero-headline">
+      Your Health,<br>
+      <em>Naturally</em><br>
+      Supported.
+    </h1>
+    <p class="hero-body">
+      Dr. Bernard Lurie brings 40 years of clinical naturopathic practice — combining herbal medicine, iridology, and whole-person healing into a care system built around you.
+    </p>
+    <div class="hero-actions">
       <a href="#contact" class="btn-primary">Book a Consultation</a>
-      <a href="#book" class="btn-secondary">Read the Book</a>
+      <a href="about.html" class="btn-secondary">Meet Dr. Bernie</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="stat-num">40<span class="stat-sup">+</span></span>
+        <span class="stat-label">Years in Practice</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-num">10k<span class="stat-sup">+</span></span>
+        <span class="stat-label">Patients Helped</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-num">5</span>
+        <span class="stat-label">Advanced Degrees</span>
+      </div>
     </div>
   </div>
+
   <div class="hero-right">
-    <!-- botanical SVG background -->
-    <svg class="botanical-bg" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="400" cy="400" r="300" stroke="#2e5c3e" stroke-width="1"/>
-      <circle cx="400" cy="400" r="200" stroke="#2e5c3e" stroke-width="0.5"/>
-      <circle cx="400" cy="400" r="100" stroke="#2e5c3e" stroke-width="0.5"/>
-      <line x1="100" y1="400" x2="700" y2="400" stroke="#2e5c3e" stroke-width="0.5"/>
-      <line x1="400" y1="100" x2="400" y2="700" stroke="#2e5c3e" stroke-width="0.5"/>
-      <path d="M400 100 Q 600 300 400 700 Q 200 300 400 100" stroke="#c8a96e" stroke-width="0.5" fill="none"/>
-      <ellipse cx="250" cy="200" rx="60" ry="30" stroke="#6b8f71" stroke-width="0.5" transform="rotate(-30 250 200)"/>
-      <ellipse cx="550" cy="600" rx="60" ry="30" stroke="#6b8f71" stroke-width="0.5" transform="rotate(150 550 600)"/>
-      <path d="M 200 400 Q 250 350 300 400 Q 250 450 200 400" stroke="#c8a96e" stroke-width="0.5" fill="none"/>
-      <path d="M 500 300 Q 550 250 600 300 Q 550 350 500 300" stroke="#c8a96e" stroke-width="0.5" fill="none"/>
-    </svg>
-    <div class="hero-portrait-wrap">
-      <div class="portrait-ring">
-        <img src="https://vyager.com.br/wp-content/uploads/2026/02/Dr-Bernie-Lurie.png" alt="Dr. Bernard Lurie" />
+    <div class="hero-frame">
+      <div class="hero-badge hero-badge-tl">
+        <span class="badge-num">DSN</span>
+        <span class="badge-label">Doctor of Science<br>in Naturopathy</span>
       </div>
-      <div class="hero-stat-grid">
-        <div class="hero-stat">
-          <i class="fa-solid fa-briefcase-medical" style="color:var(--gold);font-size:1.1rem;margin-bottom:0.5rem;display:block"></i>
-          <span class="stat-num">40<span style="font-size:1.5rem">+</span></span>
-          <span class="stat-label">Years in Practice</span>
-        </div>
-        <div class="hero-stat">
-          <i class="fa-solid fa-users" style="color:var(--gold);font-size:1.1rem;margin-bottom:0.5rem;display:block"></i>
-          <span class="stat-num">1000<span style="font-size:1.5rem">s</span></span>
-          <span class="stat-label">Patients Helped</span>
-        </div>
-        <div class="hero-stat">
-          <i class="fa-solid fa-graduation-cap" style="color:var(--gold);font-size:1.1rem;margin-bottom:0.5rem;display:block"></i>
-          <span class="stat-num">5</span>
-          <span class="stat-label">Advanced Degrees</span>
-        </div>
-        <div class="hero-stat">
-          <i class="fa-solid fa-book-open" style="color:var(--gold);font-size:1.1rem;margin-bottom:0.5rem;display:block"></i>
-          <span class="stat-num">23</span>
-          <span class="stat-label">Chapter Book</span>
-        </div>
+      <img src="hormonal/assets/images/bernie-portrait.webp"
+           alt="Dr. Bernard Lurie — Naturopathic Doctor"
+           width="400" height="560" loading="eager">
+      <div class="hero-badge hero-badge-br">
+        <span class="badge-num">PhD</span>
+        <span class="badge-label">Herbalist<br>& Iridologist</span>
       </div>
     </div>
   </div>
@@ -1314,326 +1110,302 @@
 
 <!-- MARQUEE -->
 <div class="marquee-band">
-  <div class="marquee-inner">
-    <span class="marquee-item">Natural Healing <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Naturopathic Medicine <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Clinical Herbalism <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Iridology <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Nutritional Medicine <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Detoxification Protocols <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Cancer Support <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Chronic Disease <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Hormonal Health <span class="marquee-dot">✦</span></span>
-    <!-- duplicate for seamless loop -->
-    <span class="marquee-item">Natural Healing <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Naturopathic Medicine <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Clinical Herbalism <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Iridology <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Nutritional Medicine <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Detoxification Protocols <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Cancer Support <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Chronic Disease <span class="marquee-dot">✦</span></span>
-    <span class="marquee-item">Hormonal Health <span class="marquee-dot">✦</span></span>
+  <div class="marquee-track">
+    <span class="marquee-item">Herbal Medicine <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Iridology <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">EIS Scanning <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Clinical Nutrition <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Cancer Support <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Hormonal Health <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Detoxification <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Chronic Disease <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Neural Therapy <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Herbal Dispensary <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Herbal Medicine <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Iridology <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">EIS Scanning <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Clinical Nutrition <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Cancer Support <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Hormonal Health <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Detoxification <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Chronic Disease <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Neural Therapy <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Herbal Dispensary <span class="marquee-sep">✦</span></span>
   </div>
 </div>
 
-<!-- STORY -->
-<section class="story" id="story">
-  <div class="sticky-left reveal">
-    <p class="section-label"><i class="fa-solid fa-book-open-reader" style="margin-right:0.5rem"></i>The Journey</p>
-    <h2 class="story-heading">From <em>sick patient</em> to healed practitioner</h2>
-    <div class="vertical-line" style="margin-top:2rem"></div>
+<!-- SERVICES -->
+<section class="services">
+  <div class="services-top">
+    <div>
+      <div class="section-label fade-up">Areas of Expertise</div>
+      <h2 class="section-heading fade-up delay-1">
+        Holistic treatments<br><em>for lasting wellness</em>
+      </h2>
+    </div>
+    <p class="services-intro fade-up delay-2">
+      Every consultation begins with understanding the whole person — your history, your environment, your body's signals. From there, a plan is built around natural therapies that work together.
+    </p>
   </div>
-  <div class="story-body reveal">
-    <p>At thirty-one years old, Dr. Bernard Lurie was falling apart. Weighing 101 kilograms, plagued by severe cholesterol, hypertension, and a debilitating nervous condition—his doctor offered him one path forward: a lifetime of medication to manage symptoms that would never heal.</p>
-    <p>He chose a different road.</p>
-    <div class="pull-quote">
-      <p>"How many patients do you think I would have if I sent them home on a raw vegetable diet?"</p>
-      <cite>— Bernie's doctor, after Bernie's stunning three-month recovery</cite>
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <div class="service-num">01</div>
+      <span class="service-icon"><svg class="icon" viewBox="0 0 512 512" aria-hidden="true"><path d="M512 32c0 113.6-84.6 207.5-194.2 222c-7.1-53.4-30.6-101.6-65.3-139.3C290.8 46.3 364 0 448 0h32c17.7 0 32 14.3 32 32zM0 96C0 78.3 14.3 64 32 64H64c123.7 0 224 100.3 224 224v32V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V320C100.3 320 0 219.7 0 96z"/></svg></span>
+      <h3 class="service-title">Herbal Medicine</h3>
+      <p class="service-text">Custom tinctures, teas, and botanical compounds formulated for your specific condition and constitution.</p>
     </div>
-    <p>Three months of whole, living foods transformed everything. He lost <strong>29.5 kilograms</strong>. His cholesterol normalized. His blood pressure dropped. The nervous condition simply lifted. Standing before a stunned physician who had expected to see a man dependent on pharmaceuticals for life, Bernie had his answer—and his calling.</p>
-    <p>That was over forty years ago. What followed was a life's dedication to understanding why natural healing works, earning multiple advanced degrees across three continents, and building a clinical practice that has helped thousands of patients recover from conditions the conventional system called incurable.</p>
-  </div>
-</section>
-
-<!-- CREDENTIALS -->
-<section class="credentials">
-  <div class="cred-header reveal">
-    <p class="section-label" style="color:var(--leaf)"><i class="fa-solid fa-graduation-cap" style="margin-right:0.5rem"></i>Academic Foundation</p>
-    <h2>Four Decades of Study<br>& Clinical Practice</h2>
-  </div>
-  <div class="cred-grid reveal">
-    <div class="cred-card">
-      <i class="fa-solid fa-seedling cred-fa"></i>
-      <p class="cred-degree">Diploma in Herbalism</p>
-      <p class="cred-institution">South African College of Herbalism</p>
+    <div class="service-card fade-up delay-1">
+      <div class="service-num">02</div>
+      <span class="service-icon"><svg class="icon" viewBox="0 0 576 512" aria-hidden="true"><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z"/></svg></span>
+      <h3 class="service-title">Iridology</h3>
+      <p class="service-text">Diagnostic analysis of the iris to identify systemic imbalances, genetic weaknesses, and organ health patterns.</p>
     </div>
-    <div class="cred-card">
-      <i class="fa-solid fa-leaf cred-fa"></i>
-      <p class="cred-degree">Advanced Diploma in Natural Health</p>
-      <p class="cred-institution">School of Natural Health Sciences, England</p>
+    <div class="service-card fade-up delay-2">
+      <div class="service-num">03</div>
+      <span class="service-icon"><svg class="icon" viewBox="0 0 640 512" aria-hidden="true"><path d="M128 64c0-17.7 14.3-32 32-32H320c17.7 0 32 14.3 32 32V416h96V256c0-17.7 14.3-32 32-32H608c17.7 0 32 14.3 32 32s-14.3 32-32 32H512V448c0 17.7-14.3 32-32 32H320c-17.7 0-32-14.3-32-32V96H192V256c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32h96V64z"/></svg></span>
+      <h3 class="service-title">EIS Scanning</h3>
+      <p class="service-text">Non-invasive electro-interstitial scanning to assess organ function and metabolic health with clinical precision.</p>
     </div>
-    <div class="cred-card">
-      <i class="fa-solid fa-flask cred-fa"></i>
-      <p class="cred-degree">B.Sc. & Master of Science</p>
-      <p class="cred-institution">Natural Health Sciences</p>
-    </div>
-    <div class="cred-card">
-      <i class="fa-solid fa-certificate cred-fa"></i>
-      <p class="cred-degree">Doctor of Science in Naturopathy</p>
-      <p class="cred-institution">Trinity University, London · University of Redwood</p>
-    </div>
-    <div class="cred-card">
-      <i class="fa-solid fa-scroll cred-fa"></i>
-      <p class="cred-degree">PhD — Doctor of Philosophy in Naturopathy</p>
-      <p class="cred-institution">Fort Jones University</p>
-    </div>
-    <div class="cred-card">
-      <i class="fa-solid fa-eye cred-fa"></i>
-      <p class="cred-degree">Neural Therapy · Iridology · Reflexology · Kinesiology</p>
-      <p class="cred-institution">Advanced Clinical Certifications</p>
+    <div class="service-card fade-up delay-3">
+      <div class="service-num">04</div>
+      <span class="service-icon"><svg class="icon" viewBox="0 0 512 512" aria-hidden="true"><path d="M228.3 469.1L47.6 300.4c-4.2-3.9-8.2-8.1-11.9-12.4h87c22.6 0 43-13.6 51.7-34.5l10.5-25.2 49.3 109.5c3.8 8.5 12.1 14 21.4 14.1s17.8-5 22-13.3L320 253.7l1.7 3.4c9.5 19 28.9 31 50.1 31H476.3c-3.7 4.3-7.7 8.5-11.9 12.4L283.7 469.1c-7.5 7-17.4 10.9-27.7 10.9s-20.2-3.9-27.7-10.9zM503.7 240h-132c-3 0-5.8-1.7-7.2-4.4l-23.2-46.3c-4.1-8.1-12.4-13.3-21.5-13.3s-17.4 5.1-21.5 13.3l-41.4 82.8L205.9 158.2c-3.9-8.7-12.7-14.3-22.2-14.1s-18.1 5.9-21.8 14.8l-31.8 76.3c-1.2 3-4.2 4.9-7.4 4.9H16c-2.6 0-5 .4-7.3 1.1C3 225.2 0 208.2 0 190.9v-5.8c0-69.9 50.5-129.5 119.4-141C165 36.5 211.4 51.4 244 84l12 12 12-12c32.6-32.6 79-47.5 124.6-39.9C461.5 55.6 512 115.2 512 185.1v5.8c0 16.9-2.8 33.5-8.3 49.1z"/></svg></span>
+      <h3 class="service-title">Chronic Disease</h3>
+      <p class="service-text">Long-term support for cancer, diabetes, autoimmune conditions, and cardiovascular health using integrative protocols.</p>
     </div>
   </div>
 </section>
 
-<!-- TRANSFORMATION NUMBERS -->
-<section class="transformation" id="about">
-  <div class="transform-inner">
-    <p class="section-label"><i class="fa-solid fa-chart-line" style="margin-right:0.5rem"></i>The Results Speak</p>
-    <h2>What Bernie's own healing proved — <em>before he proved it for thousands of others</em></h2>
-    <div class="transform-stats">
-      <div class="t-stat reveal">
-        <i class="fa-solid fa-weight-scale" style="color:var(--gold);font-size:1.5rem;margin-bottom:0.75rem;display:block"></i>
-        <span class="t-stat-big">29<span class="t-stat-unit">.5kg</span></span>
-        <span class="t-stat-label">Lost in 3 months — no drugs</span>
-      </div>
-      <div class="t-stat reveal" style="transition-delay:0.1s">
-        <i class="fa-solid fa-heart-pulse" style="color:var(--gold);font-size:1.5rem;margin-bottom:0.75rem;display:block"></i>
-        <span class="t-stat-big">90<span class="t-stat-unit"> days</span></span>
-        <span class="t-stat-label">To normalize blood pressure & cholesterol</span>
-      </div>
-      <div class="t-stat reveal" style="transition-delay:0.2s">
-        <i class="fa-solid fa-clock-rotate-left" style="color:var(--gold);font-size:1.5rem;margin-bottom:0.75rem;display:block"></i>
-        <span class="t-stat-big">40<span class="t-stat-unit">+ yrs</span></span>
-        <span class="t-stat-label">Helping others do the same</span>
-      </div>
+<!-- ABOUT -->
+<section class="about">
+  <div class="about-photo">
+    <img src="hormonal/assets/images/bernie-profile-0334.webp"
+         alt="Dr. Bernard Lurie"
+         width="720" height="700" loading="lazy">
+  </div>
+  <div class="about-content">
+    <div class="section-label fade-up">Meet Dr. Bernie</div>
+    <h2 class="section-heading fade-up delay-1">
+      A lifetime dedicated<br>to <em>natural healing</em>
+    </h2>
+    <p class="about-body fade-up delay-2">
+      Dr. Bernard Lurie is a qualified Naturopath with over 40 years of clinical experience — a Doctor of Science in Naturopathy, herbalist, iridologist, and published author. He has dedicated his career to guiding patients back to health through evidence-informed natural medicine.
+    </p>
+    <div class="about-creds fade-up delay-2">
+      <span class="about-cred">Doctor of Science in Naturopathy (DSN)</span>
+      <span class="about-cred">PhD · Herbalist · Iridologist</span>
+      <span class="about-cred">Author — 23-chapter book on natural healing</span>
+      <span class="about-cred">Practising from Cape Town, South Africa</span>
     </div>
-    <p>Bernie didn't discover a theory. He lived the transformation. And then he spent forty years refining a protocol that has helped patients recover from cancers, diabetes, hormonal imbalances, chronic infections, and conditions that conventional medicine labeled irreversible.</p>
-    <p>He leads with compassion and authority — because he has traveled this road himself before daring to lead others along it.</p>
+    <blockquote class="about-quote fade-up delay-3">
+      "Your body has a remarkable capacity to heal. I've witnessed it ten thousand times. You just need to give it what nature intended."
+    </blockquote>
+    <a href="about.html" class="btn-light fade-up delay-4">Full Biography →</a>
   </div>
 </section>
 
-<!-- SPECIALTIES -->
-<section class="specialties" id="specialties">
-  <div class="spec-inner">
-    <div class="spec-header reveal">
-      <div>
-        <p class="section-label"><i class="fa-solid fa-stethoscope" style="margin-right:0.5rem"></i>Clinical Focus</p>
-        <h2>Areas of<br><em>Specialisation</em></h2>
+<!-- TREATMENTS PREVIEW -->
+<section class="treatments">
+  <div class="treatments-header">
+    <div class="section-label center fade-up">Natural Therapies</div>
+    <h2 class="section-heading fade-up delay-1">
+      Healing the root.<br><em>Restoring the whole.</em>
+    </h2>
+  </div>
+  <div class="treatments-grid">
+    <div class="treatment-card fade-up">
+      <img src="hormonal/assets/images/practice-tinctures.webp"
+           alt="Herbal Dispensary" width="400" height="530" loading="lazy">
+      <div class="treatment-overlay">
+        <span class="treatment-tag">In-Practice</span>
+        <h3 class="treatment-name">Herbal Dispensary</h3>
+        <p class="treatment-desc">Hundreds of high-potency tinctures, formulated and dispensed in-house for each patient's specific needs.</p>
       </div>
     </div>
-    <div class="spec-list">
-      <div class="spec-item reveal">
-        <p class="spec-num"><i class="fa-solid fa-ribbon" style="color:var(--gold);margin-right:0.5rem"></i>01</p>
-        <h3 class="spec-name">Cancer Support</h3>
-        <div class="spec-divider"></div>
-        <p class="spec-desc">Natural protocols designed to complement or replace conventional treatment, focusing on strengthening the immune system, eliminating toxins, and supporting the body's innate healing capacity. Bernie has worked with patients at all stages.</p>
-      </div>
-      <div class="spec-item reveal" style="transition-delay:0.1s">
-        <p class="spec-num"><i class="fa-solid fa-heart-pulse" style="color:var(--gold);margin-right:0.5rem"></i>02</p>
-        <h3 class="spec-name">Chronic Degenerative Conditions</h3>
-        <div class="spec-divider"></div>
-        <p class="spec-desc">Arthritis, diabetes, autoimmune disorders and other conditions that conventional medicine manages but rarely resolves. Bernie's protocols address root causes rather than symptom suppression.</p>
-      </div>
-      <div class="spec-item reveal" style="transition-delay:0.15s">
-        <p class="spec-num"><i class="fa-solid fa-scale-balanced" style="color:var(--gold);margin-right:0.5rem"></i>03</p>
-        <h3 class="spec-name">Hormonal Health</h3>
-        <div class="spec-divider"></div>
-        <p class="spec-desc">Natural approaches to restoring hormonal balance for both women and men — without the risks associated with synthetic hormone replacement therapy. Thyroid, adrenal, and reproductive health addressed holistically.</p>
-      </div>
-      <div class="spec-item reveal" style="transition-delay:0.2s">
-        <p class="spec-num"><i class="fa-solid fa-droplet" style="color:var(--gold);margin-right:0.5rem"></i>04</p>
-        <h3 class="spec-name">Detoxification & Cleansing</h3>
-        <div class="spec-divider"></div>
-        <p class="spec-desc">Supervised whole-body detox protocols for heavy metals, candida, parasites, and accumulated toxins — addressing the underlying terrain that allows disease to take hold in the first place.</p>
-      </div>
-      <div class="spec-item reveal" style="transition-delay:0.25s">
-        <p class="spec-num"><i class="fa-solid fa-stomach" style="color:var(--gold);margin-right:0.5rem"></i>05</p>
-        <h3 class="spec-name">Digestive Disorders</h3>
-        <div class="spec-divider"></div>
-        <p class="spec-desc">Candidiasis, spastic colon, IBS, and other gut conditions. Bernie recognizes that gut health underlies nearly every chronic disease — and treats the source, not just the discomfort.</p>
-      </div>
-      <div class="spec-item reveal" style="transition-delay:0.3s">
-        <p class="spec-num"><i class="fa-solid fa-star-of-life" style="color:var(--gold);margin-right:0.5rem"></i>06</p>
-        <h3 class="spec-name">Health Optimisation</h3>
-        <div class="spec-divider"></div>
-        <p class="spec-desc">For those not yet sick, but wanting to thrive. Comprehensive constitution assessment via iridology, individualized nutritional protocols, and lifestyle strategies to prevent disease before it starts.</p>
+    <div class="treatment-card fade-up delay-1">
+      <img src="hormonal/assets/images/practice-dispensary.webp"
+           alt="Herbernie Int'l Products" width="400" height="530" loading="lazy">
+      <div class="treatment-overlay">
+        <span class="treatment-tag">Herbernie Range</span>
+        <h3 class="treatment-name">Herbal Products</h3>
+        <p class="treatment-desc">A curated range of Herbernie Int'l tinctures available for ongoing use between consultations.</p>
       </div>
     </div>
+    <div class="treatment-card fade-up delay-2">
+      <img src="hormonal/assets/images/bernie-portrait.webp"
+           alt="Initial Consultation with Dr. Bernie" width="400" height="530" loading="lazy">
+      <div class="treatment-overlay">
+        <span class="treatment-tag">Starting Point</span>
+        <h3 class="treatment-name">Initial Consultation</h3>
+        <p class="treatment-desc">A thorough assessment using EIS scanning, iridology, and case history before any protocol is prescribed.</p>
+      </div>
+    </div>
+  </div>
+  <div class="treatments-more fade-up">
+    <a href="treatments.html" class="btn-secondary">View All Treatments →</a>
   </div>
 </section>
 
-<!-- BOOK SECTION -->
-<section class="book-section" id="book">
-  <div class="book-inner">
-    <div class="book-mockup reveal">
-      <div class="book-cover">
-        <svg class="book-cover-leaf" width="80" height="80" viewBox="0 0 80 80" fill="none">
-          <path d="M40 5 Q65 20 70 40 Q65 60 40 75 Q15 60 10 40 Q15 20 40 5Z" stroke="#9ab89e" stroke-width="1" fill="none" opacity="0.5"/>
-          <path d="M40 5 L40 75" stroke="#9ab89e" stroke-width="0.5" opacity="0.3"/>
-          <path d="M10 40 Q25 35 40 40 Q55 45 70 40" stroke="#9ab89e" stroke-width="0.5" fill="none" opacity="0.3"/>
-        </svg>
-        <p class="book-cover-eyebrow">Now Available</p>
-        <h2 class="book-cover-title">Nature's<br><em>Healing</em><br>Process</h2>
-        <p style="font-size:1rem;font-weight:300;color:rgba(155,184,158,0.7);line-height:1.6;margin-top:1.5rem">The complete guide to natural health based on 40 years of clinical practice and personal transformation</p>
-        <p class="book-cover-author">Dr. Bernard Lurie · ND · DSc · PhD</p>
-      </div>
-    </div>
-    <div class="book-content reveal">
-      <p class="section-label"><i class="fa-solid fa-book" style="margin-right:0.5rem"></i>The Book</p>
-      <h2>Six Parts. Twenty-Three Chapters.<br><em>A Complete Healing System.</em></h2>
-      <p>After decades of patients asking Bernie to put his protocols in writing, <em>Nature's Healing Process</em> is the comprehensive guide to understanding why we get sick and what we can actually do about it — rooted in Bernie's personal story, clinical experience, and the healing wisdom of nature.</p>
-      <div class="book-toc">
-        <div class="toc-item"><span>Part I: The Journey to Natural Healing</span><span class="toc-part">2 Chapters</span></div>
-        <div class="toc-item"><span>Part II: What Makes Us Sick</span><span class="toc-part">3 Chapters</span></div>
-        <div class="toc-item"><span>Part III: The Path to Healing</span><span class="toc-part">5 Chapters</span></div>
-        <div class="toc-item"><span>Part IV: Supporting Your Healing</span><span class="toc-part">4 Chapters</span></div>
-        <div class="toc-item"><span>Part V: Specific Conditions</span><span class="toc-part">6 Chapters</span></div>
-        <div class="toc-item"><span>Part VI: Practical Application</span><span class="toc-part">3 Chapters</span></div>
-      </div>
-      <a href="#contact" class="btn-primary" style="display:inline-block;margin-top:1rem">Request Your Copy</a>
-    </div>
+<!-- DISPENSARY BAND -->
+<div class="dispensary">
+  <div class="dispensary-bg">
+    <img src="hormonal/assets/images/practice-tinctures.webp"
+         alt="Herbernie Int'l dispensary" width="1440" height="500" loading="lazy">
   </div>
-</section>
-
-<!-- PHILOSOPHY -->
-<section class="philosophy" id="philosophy">
-  <div class="phil-inner">
-    <div class="phil-text reveal">
-      <p class="section-label" style="color:var(--leaf)"><i class="fa-solid fa-spa" style="margin-right:0.5rem"></i>Philosophy</p>
-      <h2>The Body Was Designed<br>to <em>Heal Itself</em></h2>
-      <p>Bernie's approach is rooted in a simple but radical belief: the human body, given the right conditions, has the innate intelligence to restore itself to health. Disease is not a failure of the body — it is a signal that something in the terrain must change.</p>
-      <blockquote>
-        <p>"In my Christian faith, I see this revealed in Genesis — God provided every herb, every fruit, every seed. You may call it nature's wisdom or the body's intelligence. The principle remains the same."</p>
-        <cite>— Dr. Bernard Lurie</cite>
-      </blockquote>
-      <p>After 200 years and billions in research, Bernie asks a provocative question: why are we still losing? His answer — and the foundation of his practice — is that the system profits from treatment, not cures. Natural healing offers a different promise.</p>
-    </div>
-    <div class="phil-pillars reveal">
-      <div class="pillar">
-        <p class="pillar-num"><i class="fa-solid fa-magnifying-glass-plus" style="color:var(--gold);margin-right:0.5rem"></i>01 · Principle</p>
-        <h4 class="pillar-title">Find the Root Cause</h4>
-        <p class="pillar-text">Symptoms are messages. Treat the cause, never the symptom. Every protocol begins with understanding why the body is signaling distress.</p>
-      </div>
-      <div class="pillar">
-        <p class="pillar-num"><i class="fa-solid fa-carrot" style="color:var(--gold);margin-right:0.5rem"></i>02 · Principle</p>
-        <h4 class="pillar-title">Food is the Foundation</h4>
-        <p class="pillar-text">Whole, living, unprocessed foods are the most powerful medicine available. No supplement can compensate for what the wrong diet destroys.</p>
-      </div>
-      <div class="pillar">
-        <p class="pillar-num"><i class="fa-solid fa-water" style="color:var(--gold);margin-right:0.5rem"></i>03 · Principle</p>
-        <h4 class="pillar-title">Detoxification First</h4>
-        <p class="pillar-text">The body cannot heal in a toxic terrain. Cleansing the liver, bowel, and lymph system is the prerequisite for every effective protocol.</p>
-      </div>
-      <div class="pillar">
-        <p class="pillar-num"><i class="fa-solid fa-mortar-pestle" style="color:var(--gold);margin-right:0.5rem"></i>04 · Principle</p>
-        <h4 class="pillar-title">Herbs Are God's Pharmacy</h4>
-        <p class="pillar-text">Nature provides precisely what the body needs to heal. Forty years of clinical experience has shown Bernie which herbs work, and when.</p>
-      </div>
-      <div class="pillar">
-        <p class="pillar-num"><i class="fa-solid fa-person-praying" style="color:var(--gold);margin-right:0.5rem"></i>05 · Principle</p>
-        <h4 class="pillar-title">Body, Mind & Spirit</h4>
-        <p class="pillar-text">True healing addresses all three dimensions. Stress, emotional toxins, and spiritual disconnection are as real as physical disease.</p>
-      </div>
-    </div>
+  <div class="dispensary-overlay"></div>
+  <div class="dispensary-content fade-up">
+    <div class="section-label">Herbernie Int'l Range</div>
+    <h2 class="section-heading">Your health,<br><em>naturally maintained</em></h2>
+    <p class="dispensary-text">
+      The Herbernie Int'l product line brings Dr. Lurie's decades of formulation knowledge into a range of high-potency herbal tinctures — available for ongoing support between consultations.
+    </p>
+    <a href="treatments.html" class="btn-gold">Explore the Range</a>
   </div>
-</section>
+</div>
 
 <!-- TESTIMONIALS -->
-<section class="testimonials">
-  <div class="test-inner">
-    <div class="test-header reveal">
-      <p class="section-label" style="margin-bottom:0.75rem"><i class="fa-solid fa-comments" style="margin-right:0.5rem"></i>Patient Stories</p>
-      <h2>Remarkable Recoveries<br><em>Real Lives Changed</em></h2>
+<section class="testimonials" id="testimonials">
+  <div class="testimonials-header">
+    <div class="section-label center fade-up">Patient Outcomes</div>
+    <h2 class="section-heading fade-up delay-1">What Our Clients Say</h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card fade-up">
+      <div class="t-stars">
+        <svg class="icon" viewBox="0 0 576 512" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg><svg class="icon" viewBox="0 0 576 512" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg>
+        <svg class="icon" viewBox="0 0 576 512" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg><svg class="icon" viewBox="0 0 576 512" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg>
+        <svg class="icon" viewBox="0 0 576 512" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg>
+      </div>
+      <p class="t-text">"After years of conventional medicine failing to address my chronic fatigue, Dr. Lurie identified the root cause within two consultations. Six months later, I feel like myself again."</p>
+      <div class="t-author">
+        <img src="hormonal/assets/images/bernie-profile-0375.webp"
+             alt="Patient" class="t-avatar" width="42" height="42" loading="lazy">
+        <div>
+          <span class="t-name">Sarah M.</span>
+          <span class="t-location">Cape Town</span>
+        </div>
+      </div>
     </div>
-    <div class="test-grid">
-      <div class="test-card reveal">
-        <p class="test-text">Bernie's protocols gave me back my life. After years of specialists telling me my condition was "managed but incurable," I found out what managed really meant — and what cured could feel like.</p>
-        <p class="test-author">Patient — Chronic degenerative condition</p>
+    <div class="testimonial-card fade-up delay-1">
+      <div class="t-stars">
+        <svg class="icon" viewBox="0 0 576 512" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg><svg class="icon" viewBox="0 0 576 512" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg>
+        <svg class="icon" viewBox="0 0 576 512" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg><svg class="icon" viewBox="0 0 576 512" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg>
+        <svg class="icon" viewBox="0 0 576 512" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg>
       </div>
-      <div class="test-card reveal" style="transition-delay:0.1s">
-        <p class="test-text">I was given months to live. That was three years ago. I followed Dr. Lurie's natural protocol alongside careful monitoring. I'm here. I'm thriving. Not everyone will have my outcome — but I was told I had no chance at all.</p>
-        <p class="test-author">Patient — Cancer support protocol</p>
-      </div>
-      <div class="test-card reveal" style="transition-delay:0.2s">
-        <p class="test-text">I had been suffering from hormonal imbalances for over a decade. Every doctor prescribed something different, and nothing helped. Within six months of working with Bernie, everything normalized — naturally.</p>
-        <p class="test-author">Patient — Hormonal health</p>
+      <p class="t-text">"The EIS scan gave me more insight into my health than any blood test I'd had. Dr. Lurie explains everything clearly and takes the time to actually listen."</p>
+      <div class="t-author">
+        <img src="hormonal/assets/images/bernie-profile-0396.webp"
+             alt="Patient" class="t-avatar" width="42" height="42" loading="lazy">
+        <div>
+          <span class="t-name">Joanne K.</span>
+          <span class="t-location">Stellenbosch</span>
+        </div>
       </div>
     </div>
-    <p style="text-align:center;font-family:'Josefin Sans',sans-serif;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--sage);margin-top:3rem;font-weight:200">Individual results vary. Natural healing requires commitment, supervision, and realistic expectations.</p>
+    <div class="testimonial-card fade-up delay-2">
+      <div class="t-stars">
+        <svg class="icon" viewBox="0 0 576 512" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg><svg class="icon" viewBox="0 0 576 512" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg>
+        <svg class="icon" viewBox="0 0 576 512" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg><svg class="icon" viewBox="0 0 576 512" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg>
+        <svg class="icon" viewBox="0 0 576 512" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg>
+      </div>
+      <p class="t-text">"I was diagnosed with stage 2 cancer and chose to complement my treatment with Dr. Lurie's protocols. His support throughout that journey was invaluable."</p>
+      <div class="t-author">
+        <img src="hormonal/assets/images/bernie-profile-0362.webp"
+             alt="Patient" class="t-avatar" width="42" height="42" loading="lazy">
+        <div>
+          <span class="t-name">Margaret T.</span>
+          <span class="t-location">Somerset West</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="contact-inner">
-    <p class="section-label" style="color:var(--leaf)"><i class="fa-solid fa-calendar-check" style="margin-right:0.5rem"></i>Work With Dr. Lurie</p>
-    <h2>Begin Your<br><em>Healing Journey</em></h2>
-    <p>Dr. Lurie offers comprehensive initial consultations including iridology assessment, individualized protocol design, and ongoing guidance. No journey toward health should begin without proper professional support.</p>
-    <form class="contact-form" onsubmit="return false;">
-      <div class="form-row">
-        <input type="text" class="form-input" placeholder="First Name">
-        <input type="text" class="form-input" placeholder="Last Name">
-      </div>
-      <input type="email" class="form-input" placeholder="✉  Email Address">
-      <input type="tel" class="form-input" placeholder="📞  Phone Number">
-      <select class="form-input" style="appearance:none;cursor:pointer;">
-        <option value="" style="background:#1c3a2a">🌿  Area of Concern</option>
-        <option value="cancer" style="background:#1c3a2a">Cancer Support</option>
-        <option value="chronic" style="background:#1c3a2a">Chronic Condition</option>
-        <option value="hormonal" style="background:#1c3a2a">Hormonal Health</option>
-        <option value="digestive" style="background:#1c3a2a">Digestive Issues</option>
-        <option value="detox" style="background:#1c3a2a">Detoxification</option>
-        <option value="general" style="background:#1c3a2a">General Wellness</option>
-      </select>
-      <textarea class="form-input" placeholder="Briefly describe your health situation and goals..."></textarea>
-      <button type="submit" class="form-submit"><i class="fa-solid fa-paper-plane" style="margin-right:0.75rem"></i>Request Consultation</button>
-    </form>
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div>
+    <h2 class="cta-heading fade-up">
+      Ready to begin your<br><em>healing journey?</em>
+    </h2>
+    <p class="cta-sub fade-up delay-1">
+      Schedule a consultation with Dr. Bernard Lurie. Initial appointments are comprehensive — plan for 60–90 minutes.
+    </p>
+  </div>
+  <div class="cta-actions">
+    <a href="#contact" class="btn-gold">Book a Consultation</a>
+    <span class="cta-note">or contact us directly</span>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <p class="footer-name"><i class="fa-solid fa-leaf" style="color:var(--gold);margin-right:0.5rem;font-size:0.9rem"></i>Dr. Bernard Lurie</p>
-  <div style="display:flex;gap:1.5rem;align-items:center">
-    <a href="/cdn-cgi/l/email-protection#5d3e3233293c3e291d392f3f382f33343831282f3438733e3230" style="color:rgba(245,240,230,0.35);font-size:1rem;text-decoration:none;transition:color 0.3s" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(245,240,230,0.35)'"><i class="fa-solid fa-envelope"></i></a>
-    <a href="tel:+1234567890" style="color:rgba(245,240,230,0.35);font-size:1rem;text-decoration:none;transition:color 0.3s" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(245,240,230,0.35)'"><i class="fa-solid fa-phone"></i></a>
-    <a href="#contact" style="color:rgba(245,240,230,0.35);font-size:1rem;text-decoration:none;transition:color 0.3s" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(245,240,230,0.35)'"><i class="fa-solid fa-calendar-days"></i></a>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">Herbernie Int'l</div>
+      <span class="footer-brand-tag">Maintaining your health, naturally</span>
+      <p class="footer-body">Dr. Bernard Lurie's naturopathic practice in Cape Town, South Africa. Combining 40 years of clinical experience with the healing power of nature.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigate</div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Dr. Bernie</a></li>
+        <li><a href="treatments.html">Treatments</a></li>
+        <li><a href="#testimonials">Patient Results</a></li>
+        <li><a href="#contact">Book a Consultation</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Treatments</div>
+      <ul class="footer-links">
+        <li><a href="treatments.html">Herbal Medicine</a></li>
+        <li><a href="treatments.html">Iridology</a></li>
+        <li><a href="treatments.html">EIS Scanning</a></li>
+        <li><a href="treatments.html">Neural Therapy</a></li>
+        <li><a href="treatments.html">Clinical Nutrition</a></li>
+        <li><a href="hormonal/">Hormonal Health</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <div class="footer-contact-row">
+        <svg class="icon" viewBox="0 0 384 512" aria-hidden="true"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
+        <span>Cape Town,<br>South Africa</span>
+      </div>
+      <div class="footer-contact-row">
+        <svg class="icon" viewBox="0 0 512 512" aria-hidden="true"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg>
+        <span>+27 XX XXX XXXX</span>
+      </div>
+      <div class="footer-contact-row">
+        <svg class="icon" viewBox="0 0 512 512" aria-hidden="true"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
+        <span>Get in touch via the form above</span>
+      </div>
+    </div>
   </div>
-  <p class="footer-note"><i class="fa-solid fa-shield-halved" style="color:rgba(245,240,230,0.3);margin-right:0.4rem"></i>Educational content only — not a substitute for professional medical advice.<br>© 2025 Dr. Bernard Lurie · All Rights Reserved</p>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Herbernie Int'l · Dr. Bernard Lurie · All Rights Reserved</span>
+    <div class="footer-socials">
+      <a href="#" aria-label="Facebook"><svg class="icon" viewBox="0 0 320 512" aria-hidden="true"><path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"/></svg></a>
+      <a href="#" aria-label="Instagram"><svg class="icon" viewBox="0 0 448 512" aria-hidden="true"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a>
+      <a href="#" aria-label="WhatsApp"><svg class="icon" viewBox="0 0 448 512" aria-hidden="true"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg></a>
+    </div>
+  </div>
 </footer>
 
 <script>
-  // Scroll reveal — trigger immediately for elements already in viewport
-  const reveals = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-  reveals.forEach(r => io.observe(r));
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
 
-  // Nav link active highlight
-  const navLinks = document.querySelectorAll('.nav-links a');
-  navLinks.forEach(link => {
-    link.addEventListener('click', e => {
-      navLinks.forEach(l => l.style.color = '');
-      e.target.style.color = 'var(--moss)';
-    });
-  });
+const toggle = document.getElementById('nav-toggle');
+const navLinks = document.getElementById('nav-links');
+toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
