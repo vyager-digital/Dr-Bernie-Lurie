@@ -7,7 +7,7 @@
 
 The acquisition system is working. The ads are reaching the right women at a low cost, the landing page is holding their attention, and the quiz is converting them into qualified leads at a rate well above industry norms. Every part built to *generate demand* is doing its job.
 
-One step has not converted yet: turning a completed quiz into a paid booking. No one has reached the payment screen. This is a trust-at-the-point-of-payment question, and it is the single thing worth working on next. The rest of the system has earned the right to have that one step fixed.
+One step has not converted yet: turning a completed quiz into a paid booking. No one has reached the payment screen. This is a trust-at-the-point-of-payment question, and it is the thing worth working on next.
 
 A note on the numbers below: where South African benchmarks exist, they are used. Where only global figures are published, they are labelled as such and treated as a rough guide, not a target.
 
@@ -25,7 +25,7 @@ A note on the numbers below: where South African benchmarks exist, they are used
 | Cost per link click | R4.39 | — | Very low |
 | Cost per qualified lead | **R93.59** | **R150–R350** (SA professional services) | Roughly a third of the local rate |
 
-The cost-per-lead figure is the one that matters most, and it is the strongest. South African professional-service businesses typically pay R150 to R350 for a Facebook lead. This campaign is producing a *fully qualified* lead, with name, email, WhatsApp number, and a complete symptom profile, for R93.59. That is well below the local benchmark for a richer lead than most businesses ever capture.
+The cost-per-lead figure is the one that matters most, and it is the strongest. South African professional-service businesses typically pay R150 to R350 for a Facebook lead. This campaign is producing a fully qualified lead, with name, email, WhatsApp number, and a complete symptom profile, for R93.59. That is below the local benchmark, and the lead carries more detail than a typical form fill.
 
 Frequency at 1.30 means the audience is nowhere near saturated. There is room to scale when the time is right.
 
@@ -43,7 +43,7 @@ Frequency at 1.30 means the audience is nowhere near saturated. There is room to
 
 Every woman who began the quiz finished it. Start to finish took two to five minutes each. For context, a well-built quiz funnel is considered healthy at around a 40% lead conversion rate (Interact, global). This one is converting the women who engage at close to 100%.
 
-Several flagged their symptoms as "affecting my life." These are not curious browsers. They are women in real discomfort, who gave their contact details and worked through a detailed health questionnaire. The page and the quiz are doing exactly what they were built to do.
+Several flagged their symptoms as "affecting my life." These are women dealing with real symptoms, who gave their contact details and worked through a detailed health questionnaire. The page and the quiz are doing what they were built to do.
 
 ---
 
