@@ -19,15 +19,12 @@ A note on the numbers below: where South African benchmarks exist, they are used
 |---|---|---|---|
 | Spend | R1,123.10 | — | 14 days, deliberately small |
 | Reach | 9,109 women | — | Fresh audience |
-| Frequency | 1.30 | — | No ad fatigue |
 | Link CTR | 2.2% | ~1% typical (global Facebook avg) | Roughly double |
 | All-click CTR | 7.30% | — | Strong engagement signal |
 | Cost per link click | R4.39 | — | Very low |
 | Cost per qualified lead | **R93.59** | **R150–R350** (SA professional services) | Roughly a third of the local rate |
 
 The cost-per-lead figure is the one that matters most. South African professional-service businesses typically pay R150 to R350 for a Facebook lead. This campaign is producing a fully qualified lead, with name, email, WhatsApp number, and a complete symptom profile, for R93.59. That is below the local benchmark, and the lead carries more detail than a typical form fill.
-
-Frequency at 1.30 means the audience is nowhere near saturated. There is room to scale when the time is right.
 
 *Sources: SA cost-per-lead range — GrowthPulse Media, 2026. Typical Facebook CTR — global platform average, used here only as a rough guide.*
 
