@@ -41,6 +41,7 @@ export async function onRequestPost(context) {
     const goal      = body.goal      || '';
 
     const html = buildEmailHtml({ name, email, symptoms, duration, priorHelp, goal });
+    const text = buildEmailText({ name, email, symptoms, duration, priorHelp, goal });
 
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -55,6 +56,7 @@ export async function onRequestPost(context) {
         reply_to: 'info@herbernie.co.za',
         subject:  `Your personalised assessment, ${name}`,
         html,
+        text,
       }),
     });
 
@@ -151,8 +153,7 @@ function joinNaturally(items) {
   return `${items.slice(0, -1).join(', ')} and ${items[items.length - 1]}`;
 }
 
-function buildEmailHtml({ name, email, symptoms, duration, priorHelp, goal }) {
-  const safeName = escapeHtml(name);
+function computeAssessment({ name, email, symptoms, duration, priorHelp, goal }) {
   const ctaUrl = `https://herbernie.co.za/hormonal/?step=6&name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}#consult`;
 
   const symptomEntries = Object.entries(symptoms)
@@ -189,6 +190,61 @@ function buildEmailHtml({ name, email, symptoms, duration, priorHelp, goal }) {
 
   const goalText = GOAL_TEXT[goal] || 'feeling well again';
   const para4 = `${nextOpen} When we meet, Dr. Lurie and I will go through ${CLUSTER_TOPIC[dominantCluster]} and map out what's needed for ${goalText}. Your answers will be in front of us, so the conversation starts from what you've already shared.`;
+
+  return { para1, para2, connectPara, para3, para4, ctaUrl };
+}
+
+// Plain-text twin of the HTML email. Recipients see the HTML; this version
+// is read by spam filters (and shown only in text-only clients), which
+// improves inbox placement on stricter providers like Outlook.
+function buildEmailText({ name, email, symptoms, duration, priorHelp, goal }) {
+  const { para1, para2, connectPara, para3, para4, ctaUrl } =
+    computeAssessment({ name, email, symptoms, duration, priorHelp, goal });
+
+  const lines = [
+    `Hi ${name},`,
+    ``,
+    `Thank you for completing the assessment. Here's a written copy of what it found, so you have it on hand.`,
+    ``,
+    `WHAT YOUR ANSWERS SHOW`,
+    para1,
+    ``,
+    para2,
+  ];
+  if (connectPara) lines.push(``, connectPara);
+  lines.push(
+    ``,
+    `WHERE MOST WOMEN GET STUCK`,
+    para3,
+    ``,
+    `YOUR NEXT STEP`,
+    para4,
+    ``,
+    `If you haven't booked your consultation yet, you can choose a time that suits you here:`,
+    ctaUrl,
+    ``,
+    `If you have any questions before then, you can reply to this email directly or message us on WhatsApp at (+27) 76 239 0423.`,
+    ``,
+    `Looking forward to going through all of this with you soon.`,
+    ``,
+    `Kind regards,`,
+    `Joanne Buckingham`,
+    `Registered Natural Health Practitioner`,
+    ``,
+    `Herbernie International · Port Elizabeth, South Africa`,
+    `Phone: (+27) 41 378 1531`,
+    `WhatsApp: (+27) 76 239 0423`,
+    `info@herbernie.co.za`,
+    ``,
+    `This assessment reflects the clinical observations of Dr. Bernard Lurie, N.D. and Joanne Buckingham, and is for educational purposes. It does not constitute medical advice.`,
+  );
+  return lines.join('\n');
+}
+
+function buildEmailHtml({ name, email, symptoms, duration, priorHelp, goal }) {
+  const safeName = escapeHtml(name);
+  const { para1, para2, connectPara, para3, para4, ctaUrl } =
+    computeAssessment({ name, email, symptoms, duration, priorHelp, goal });
 
   const sectionLabel = text => `<div style="font-family:Arial, Helvetica, sans-serif; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:#c4796a; font-weight:700; margin:24px 0 10px;">${text}</div>`;
 
