@@ -40,8 +40,10 @@ export async function onRequestPost(context) {
     const priorHelp = body.priorHelp || '';
     const goal      = body.goal      || '';
 
-    const html = buildEmailHtml({ name, email, symptoms, duration, priorHelp, goal });
-    const text = buildEmailText({ name, email, symptoms, duration, priorHelp, goal });
+    const resend = body.resend === true;
+
+    const html = buildEmailHtml({ name, email, symptoms, duration, priorHelp, goal, resend });
+    const text = buildEmailText({ name, email, symptoms, duration, priorHelp, goal, resend });
 
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -197,14 +199,16 @@ function computeAssessment({ name, email, symptoms, duration, priorHelp, goal })
 // Plain-text twin of the HTML email. Recipients see the HTML; this version
 // is read by spam filters (and shown only in text-only clients), which
 // improves inbox placement on stricter providers like Outlook.
-function buildEmailText({ name, email, symptoms, duration, priorHelp, goal }) {
+function buildEmailText({ name, email, symptoms, duration, priorHelp, goal, resend }) {
   const { para1, para2, connectPara, para3, para4, ctaUrl } =
     computeAssessment({ name, email, symptoms, duration, priorHelp, goal });
 
   const lines = [
     `Hi ${name},`,
     ``,
-    `Thank you for completing the assessment. Here's a written copy of what it found, so you have it on hand.`,
+    resend
+      ? `We're resending your assessment results to make sure they reach you. We hope this one comes through.`
+      : `Thank you for completing the assessment. Here's a written copy of what it found, so you have it on hand.`,
     ``,
     `WHAT YOUR ANSWERS SHOW`,
     para1,
@@ -241,7 +245,7 @@ function buildEmailText({ name, email, symptoms, duration, priorHelp, goal }) {
   return lines.join('\n');
 }
 
-function buildEmailHtml({ name, email, symptoms, duration, priorHelp, goal }) {
+function buildEmailHtml({ name, email, symptoms, duration, priorHelp, goal, resend }) {
   const safeName = escapeHtml(name);
   const { para1, para2, connectPara, para3, para4, ctaUrl } =
     computeAssessment({ name, email, symptoms, duration, priorHelp, goal });
@@ -283,7 +287,7 @@ function buildEmailHtml({ name, email, symptoms, duration, priorHelp, goal }) {
                 Hi ${safeName},
               </h1>
               <p style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.7; color:#3a2528; margin:0;">
-                Thank you for completing the assessment. Here's a written copy of what it found, so you have it on hand.
+                ${resend ? `We're resending your assessment results to make sure they reach you. We hope this one comes through.` : `Thank you for completing the assessment. Here's a written copy of what it found, so you have it on hand.`}
               </p>
               ${sectionLabel('What your answers show')}
               <p style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.7; color:#3a2528; margin:0 0 16px;">
