@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Consultation Booking — Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" onload="this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap"></noscript>
+<style>
+  :root {
+    --blush:       #f2ddd5;
+    --blush-light: #faf3f0;
+    --blush-deep:  #ead0c8;
+    --rose:        #c4796a;
+    --rose-dark:   #a05c4e;
+    --rose-soft:   #d4938a;
+    --sage:        #7a9e7e;
+    --mauve:       #9e8094;
+    --warm-white:  #fdf8f5;
+    --text-dark:   #3a2528;
+    --text-mid:    #6e5a54;
+    --text-light:  #b09990;
+  }
+  * { box-sizing: border-box; }
+  html, body { overflow-x: hidden; }
+  body {
+    margin: 0; background: var(--warm-white); color: var(--text-dark);
+    font-family: 'DM Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .stage { padding: 3rem 1.2rem 4rem; }
+  .quiz-card {
+    background: white; border: 1px solid var(--blush-deep);
+    border-radius: 2rem; padding: 3rem;
+    box-shadow: 0 16px 64px rgba(196,121,106,0.1);
+    position: relative; overflow: hidden;
+    max-width: 620px; margin: 0 auto;
+  }
+  .quiz-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--rose-soft), var(--rose), var(--mauve));
+  }
+  .quiz-confirm-icon {
+    width: 64px; height: 64px; background: rgba(196,121,106,0.1); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem; color: var(--rose); margin: 0 auto 1.5rem;
+  }
+  .quiz-confirm-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700;
+    color: var(--text-dark); text-align: center; margin: 0 0 1.2rem;
+  }
+  .quiz-confirm-summary {
+    font-family: 'DM Sans', sans-serif; font-size: 1.05rem; line-height: 1.8;
+    color: var(--text-dark); text-align: center; max-width: 52ch; margin: 0 auto 2rem;
+  }
+  /* On-screen assessment (mirrors the emailed assessment) */
+  .assess-block { text-align: left; }
+  .assess-section { margin-bottom: 1.6rem; }
+  .assess-section-label { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rose); font-weight: 600; margin-bottom: 0.65rem; }
+  .assess-text { font-size: 1rem; line-height: 1.75; color: var(--text-mid); margin: 0 0 0.9rem; }
+  .assess-text:last-child { margin-bottom: 0; }
+  .assess-email-note {
+    display: flex; align-items: flex-start; gap: 0.8rem;
+    background: var(--blush-light); border: 1px solid var(--blush-deep);
+    border-radius: 0.9rem; padding: 1rem 1.2rem;
+    font-size: 1rem; line-height: 1.6; color: var(--text-mid); overflow-wrap: anywhere; min-width: 0;
+  }
+  .assess-email-note svg { color: var(--rose); margin-top: 3px; flex-shrink: 0; width: 17px; height: 17px; }
+  .assess-email-note strong { color: var(--text-dark); font-weight: 600; }
+  .quiz-divider { height: 1px; background: var(--blush-deep); margin: 0 0 2rem; }
+  .quiz-offer-card {
+    background: var(--blush-light); border: 1px solid var(--blush-deep);
+    border-radius: 1.4rem; padding: 1.8rem; margin-bottom: 1.5rem; text-align: left;
+  }
+  .quiz-offer-label { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rose); font-weight: 500; margin-bottom: 0.4rem; }
+  .quiz-offer-title { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--text-dark); margin-bottom: 0.3rem; }
+  .quiz-offer-price { font-size: 1.4rem; font-weight: 600; color: var(--rose); margin-bottom: 1.2rem; }
+  .quiz-offer-team { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.3rem; padding-bottom: 1.3rem; border-bottom: 1px solid var(--blush-deep); }
+  .quiz-offer-avatars { display: flex; flex-shrink: 0; }
+  .quiz-offer-avatars img { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; object-position: center top; border: 2px solid var(--warm-white); display: block; }
+  .quiz-offer-avatars img + img { margin-left: -12px; }
+  .quiz-offer-team-name { font-size: 0.92rem; font-weight: 600; color: var(--text-dark); line-height: 1.35; }
+  .quiz-offer-team-creds { font-size: 0.78rem; color: var(--text-mid); line-height: 1.4; margin-top: 0.15rem; }
+  .quiz-offer-rows { display: flex; flex-direction: column; gap: 0.55rem; }
+  .quiz-offer-row { display: flex; align-items: flex-start; gap: 0.7rem; font-size: 0.85rem; color: var(--text-mid); line-height: 1.5; }
+  .quiz-offer-row svg { color: var(--sage); margin-top: 2px; flex-shrink: 0; width: 16px; height: 16px; }
+  .quiz-offer-fine { font-size: 0.82rem; color: var(--text-light); margin: 1.2rem 0 0; }
+
+  .quiz-steps-strip { display: flex; align-items: flex-start; justify-content: center; margin-top: 1.5rem; }
+  .quiz-step { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; min-width: 76px; }
+  .quiz-step-num { width: 22px; height: 22px; border-radius: 50%; background: var(--blush); color: var(--rose-dark); font-size: 0.78rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .quiz-step-text { font-size: 0.78rem; color: var(--text-mid); line-height: 1.3; text-align: center; }
+  .quiz-step-line { flex: 1; min-width: 18px; max-width: 52px; height: 1px; background: var(--blush-deep); margin-top: 11px; }
+
+  /* ---- FAQ accordion (new) ---- */
+  .faq-block { margin-top: 2rem; border-top: 1px solid var(--blush-deep); }
+  .faq-heading { text-align: center; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rose); font-weight: 600; margin: 1.8rem 0 0.4rem; }
+  .faq-sub { text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--text-mid); margin: 0 0 1rem; }
+  .faq-item { border-bottom: 1px solid var(--blush-deep); }
+  .faq-q {
+    width: 100%; background: none; border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding: 1.05rem 0; text-align: left;
+    font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--text-dark);
+  }
+  .faq-q:hover { color: var(--rose-dark); }
+  .faq-q svg { flex-shrink: 0; width: 18px; height: 18px; color: var(--rose); transition: transform 0.3s ease; }
+  .faq-item.open .faq-q svg { transform: rotate(45deg); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+  .faq-a-inner { padding: 0 0 1.1rem; font-size: 0.92rem; line-height: 1.7; color: var(--text-mid); max-width: 60ch; }
+  .faq-a-inner a { color: var(--rose); text-decoration: underline; }
+
+  .quiz-tos-label { display: flex; align-items: center; gap: 0.65rem; font-size: 0.88rem; color: var(--text-mid); margin: 1.6rem 0 1.2rem; cursor: pointer; }
+  .quiz-tos-label input { width: 18px; height: 18px; flex-shrink: 0; accent-color: var(--rose); }
+  .quiz-tos-link { color: var(--rose); text-decoration: underline; }
+  .quiz-nav { display: flex; align-items: center; justify-content: space-between; margin-top: 0; gap: 1rem; }
+  .quiz-btn-back {
+    background: transparent; color: var(--text-mid); border: 1px solid var(--blush-deep);
+    padding: 0.9rem 1.4rem; border-radius: 3rem; font-size: 0.85rem; font-family: 'DM Sans', sans-serif;
+    cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; min-height: 52px;
+  }
+  .quiz-btn-primary {
+    background: var(--rose); color: white; border: none; flex: 1; justify-content: center;
+    padding: 0.9rem 2rem; border-radius: 3rem; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em;
+    cursor: pointer; font-family: 'DM Sans', sans-serif; box-shadow: 0 6px 24px rgba(196,121,106,0.3);
+    display: inline-flex; align-items: center; gap: 0.5rem; min-height: 52px;
+  }
+  .quiz-disclaimer { font-size: 0.72rem; color: var(--text-light); text-align: center; line-height: 1.65; margin-top: 1rem; display: flex; align-items: center; justify-content: center; gap: 0.3rem; }
+
+  @media (max-width: 560px) {
+    .stage { padding: 2rem 1rem 3rem; }
+    .quiz-card { padding: 1.8rem 1.2rem; border-radius: 1.2rem; }
+    .quiz-nav { flex-direction: column-reverse; }
+    .quiz-btn-primary, .quiz-btn-back { width: 100%; justify-content: center; }
+    .quiz-step { min-width: 60px; }
+    .faq-q { font-size: 0.9rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <div class="quiz-card">
+
+    <!-- existing screen, faithful -->
+    <div class="quiz-confirm-icon">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z"/></svg>
+    </div>
+    <h3 class="quiz-confirm-headline">Assessment complete</h3>
+    <div class="quiz-confirm-summary">
+      <div class="assess-block">
+        <div class="assess-section">
+          <div class="assess-section-label">What your answers show</div>
+          <p class="assess-text">Sarah, you've been managing this for over a year. That's long enough for the body to develop real compensation patterns, and it's why targeted, personalised support makes more difference than general advice.</p>
+          <p class="assess-text">Sleep, energy and mental clarity all run on the same hormonal rhythm. When progesterone and cortisol fall out of sync, the body struggles to reach deep, restorative sleep. That's why the tiredness and the fog don't lift, no matter how much rest you get.</p>
+          <p class="assess-text">And it rarely comes alone. The mood swings and the hot flushes you mentioned tend to move together, because they share the same hormonal driver.</p>
+        </div>
+        <div class="assess-section">
+          <div class="assess-section-label">Where most women get stuck</div>
+          <p class="assess-text">Being told your results are &ldquo;normal&rdquo; when you feel anything but is one of the most common and most frustrating stories in hormonal health. Standard blood panels don't capture hormonal patterns over time, or how those patterns interact with one another. What gets missed is often exactly what explains how you've been feeling.</p>
+        </div>
+        <div class="assess-section">
+          <div class="assess-section-label">Your next step</div>
+          <p class="assess-text">When symptoms are disrupting daily life, it's the body signalling it has been compensating for too long. It's also where the right support tends to make the most visible difference. In your consultation, Dr. Lurie and Joanne will go through what's been happening with your sleep, energy and focus and map out what's needed for feeling like yourself again.</p>
+        </div>
+        <div class="assess-email-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+          <span>A full copy of your assessment has been sent to <strong>sarah@email.com</strong>. It usually arrives within a few minutes. If you don't see it, check your spam or promotions folder.</span>
+        </div>
+      </div>
+    </div>
+    <div class="quiz-divider"></div>
+
+    <div class="quiz-offer-card">
+      <div class="quiz-offer-label">&#10022; Your Initial Consultation</div>
+      <div class="quiz-offer-title">30-Minute Online Consultation</div>
+      <div class="quiz-offer-price">R490</div>
+      <div class="quiz-offer-team">
+        <div class="quiz-offer-avatars">
+          <img src="../hormonal/assets/images/bernie-profile-0377.webp" alt="Dr. Bernard Lurie" width="46" height="46">
+          <img src="../hormonal/assets/images/bernie-profile-0368.webp" alt="Joanne Buckingham" width="46" height="46">
+        </div>
+        <div>
+          <div class="quiz-offer-team-name">With Dr. Bernard Lurie &amp; Joanne Buckingham</div>
+          <div class="quiz-offer-team-creds">Naturopath (PhD) &middot; Registered Natural Health Practitioner</div>
+        </div>
+      </div>
+      <div class="quiz-offer-rows">
+        <div class="quiz-offer-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 9"/></svg>A full review of your symptoms and history, guided by your assessment</div>
+        <div class="quiz-offer-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 9"/></svg>The root cause behind them identified and explained</div>
+        <div class="quiz-offer-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 9"/></svg>A natural treatment plan prescribed for your individual profile</div>
+        <div class="quiz-offer-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 9"/></svg>Follow-up support as your treatment begins to take effect</div>
+      </div>
+      <p class="quiz-offer-fine">Consultation fee only. Prescribed medication and supplements are billed separately.</p>
+    </div>
+
+    <div class="quiz-steps-strip">
+      <div class="quiz-step"><span class="quiz-step-num">1</span><span class="quiz-step-text">Confirm booking</span></div>
+      <div class="quiz-step-line"></div>
+      <div class="quiz-step"><span class="quiz-step-num">2</span><span class="quiz-step-text">Choose your time</span></div>
+      <div class="quiz-step-line"></div>
+      <div class="quiz-step"><span class="quiz-step-num">3</span><span class="quiz-step-text">Meet online</span></div>
+    </div>
+
+    <!-- NEW: FAQ -->
+    <div class="faq-block">
+      <div class="faq-heading">Before you book</div>
+      <p class="faq-sub">A few things women often want to know first</p>
+
+      <div class="faq-item">
+        <button class="faq-q">Will I be told to buy supplements?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">It's a fair thing to ask. A lot of the wellness world does work that way. Your appointment is a consultation, not a product sale. Our job is to understand what's behind your symptoms and explain it to you clearly. If a supplement or a change to your diet would genuinely help, we'll explain why, and the decision stays with you. You're booking a conversation, and nothing is sold to you on the spot.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">Is this evidence-based or just wellness talk?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">You've probably seen enough big promises to be wary, and that's reasonable. We work from approaches that have evidence behind them for menopause symptoms: nutrition, lifestyle, and targeted natural support. Where the evidence is thin, we'll tell you. You won't be handed miracle claims.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">Will you tell me honestly if natural treatment isn't enough?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes, and this matters to how we work. Natural support helps many women, but not every symptom should be handled that way. If something needs medical assessment, or if HRT or another medical route would serve you better, we'll say so plainly. We work within the naturopathic scope and are honest about where it ends.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">Can you help if I'm considering HRT too?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Of course. Many women arrive unsure, some leaning towards HRT and others wanting to start with natural support. Most just want to understand the options and trade-offs before committing to anything. The consultation is where you think it through with us instead of deciding alone. You're not signing up to one camp.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">Can I speak to someone before I pay?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. Paying before you've spoken to anyone is a lot to ask, and you don't have to. Dr. Lurie and Joanne run the practice together, and Joanne is happy to answer your questions on <a href="#">WhatsApp</a> first. If it feels right after that, you book. If not, there's no pressure.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">What happens if I need to reschedule or cancel?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Life happens, and your booking isn't a trap. You can reschedule free of charge up to 48 hours before your appointment, and if you need to cancel, Joanne will sort it out with you directly. We keep this simple, and you'll know exactly where you stand before you pay.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">Is the practice properly qualified?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. The practice is run by two registered Natural Health Practitioners, Dr. Lurie and Joanne. We're also clear about where natural medicine fits: it works with conventional care, and if something needs a medical doctor, we'll tell you. Women's hormonal health is the core of what we do, and we've helped many women through perimenopause and menopause.</div></div>
+      </div>
+    </div>
+
+    <label class="quiz-tos-label">
+      <input type="checkbox">
+      <span>I agree to the <a href="#" class="quiz-tos-link">Terms of Service</a></span>
+    </label>
+    <div class="quiz-nav">
+      <button class="quiz-btn-back"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> &nbsp;Back</button>
+      <button class="quiz-btn-primary">Confirm My Booking &nbsp;<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+    </div>
+    <p class="quiz-disclaimer"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" style="opacity:0.6;"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Secure online payment.</p>
+
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.parentElement;
+      var answer = item.querySelector('.faq-a');
+      var isOpen = item.classList.contains('open');
+      if (isOpen) {
+        item.classList.remove('open');
+        answer.style.maxHeight = null;
+      } else {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+</script>
+</body>
+</html>
