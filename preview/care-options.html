@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Herbernie — Care Options</title>
+  <style>
+    :root {
+      --page: #f5f1ee;
+      --paper: #ffffff;
+      --mist: #d5e1df;
+      --sage: #a3b7b5;
+      --teal: #456670;
+      --deep-teal: #244f5d;
+      --charcoal: #3d4542;
+      --ink: #2b2f36;
+      --muted: #6f7775;
+      --line: #d8dddc;
+      --leaf: #007a3d;
+      --white: #ffffff;
+      --shadow: 0 18px 45px rgba(36, 79, 93, 0.12);
+      --radius-xl: 26px;
+      --radius-lg: 18px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.55;
+    }
+
+    .section { padding: 72px 22px; }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: var(--deep-teal);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1, h2, h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+    }
+
+    .hero {
+      background:
+        linear-gradient(180deg, rgba(213,225,223,0.95), rgba(245,241,238,1)),
+        radial-gradient(circle at 90% 12%, rgba(0,122,61,0.12), transparent 32%);
+      padding-top: 76px;
+      padding-bottom: 58px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      max-width: 760px;
+      color: var(--ink);
+      font-size: clamp(42px, 5.8vw, 70px);
+      line-height: 0.98;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      max-width: 680px;
+      color: var(--charcoal);
+      font-size: 19px;
+      margin-bottom: 28px;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      color: var(--white);
+      background: var(--deep-teal);
+      box-shadow: 0 12px 28px rgba(36, 79, 93, 0.22);
+    }
+
+    .btn-secondary {
+      color: var(--deep-teal);
+      background: rgba(255,255,255,0.72);
+      border-color: var(--line);
+    }
+
+    .hero-card {
+      background: var(--paper);
+      border: 1px solid rgba(255,255,255,0.8);
+      border-radius: var(--radius-xl);
+      padding: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h2 {
+      color: var(--deep-teal);
+      font-size: 34px;
+      line-height: 1.05;
+      margin-bottom: 14px;
+    }
+
+    .price-large {
+      font-size: 48px;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    .price-caption {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .plain-list {
+      display: grid;
+      gap: 12px;
+      margin: 22px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .plain-list li {
+      position: relative;
+      padding-left: 28px;
+      color: var(--charcoal);
+      font-size: 15px;
+    }
+
+    .plain-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--leaf);
+      font-weight: 900;
+    }
+
+    .intro {
+      max-width: 820px;
+      margin-bottom: 34px;
+    }
+
+    .intro h2 {
+      color: var(--deep-teal);
+      font-size: clamp(34px, 4.4vw, 54px);
+      line-height: 1.02;
+      margin-bottom: 14px;
+    }
+
+    .intro p {
+      color: var(--muted);
+      font-size: 17px;
+      margin-bottom: 0;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .step {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: 0 10px 28px rgba(36, 79, 93, 0.05);
+    }
+
+    .number {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: var(--mist);
+      color: var(--deep-teal);
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .step h3 {
+      color: var(--deep-teal);
+      font-size: 28px;
+      line-height: 1.05;
+      margin-bottom: 10px;
+    }
+
+    .step p {
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 0;
+    }
+
+    .dark-band {
+      background: var(--deep-teal);
+      color: var(--white);
+    }
+
+    .dark-band .intro h2,
+    .dark-band .eyebrow {
+      color: var(--white);
+    }
+
+    .dark-band .intro p {
+      color: rgba(255,255,255,0.76);
+    }
+
+    .protocol-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .protocol {
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+    }
+
+    .protocol h3 {
+      color: var(--white);
+      font-size: 29px;
+      line-height: 1.05;
+      margin-bottom: 12px;
+    }
+
+    .protocol .amount {
+      color: var(--mist);
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      margin-bottom: 10px;
+    }
+
+    .protocol p {
+      color: rgba(255,255,255,0.76);
+      font-size: 15px;
+      margin-bottom: 0;
+    }
+
+    .protocol-note {
+      margin-top: 24px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      color: rgba(255,255,255,0.85);
+      font-size: 15px;
+    }
+
+    .care-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .care-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      padding: 26px;
+      box-shadow: 0 10px 28px rgba(36, 79, 93, 0.05);
+    }
+
+    .care-card.featured {
+      border: 2px solid var(--deep-teal);
+      box-shadow: var(--shadow);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 7px 11px;
+      background: var(--mist);
+      color: var(--deep-teal);
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .care-card h3 {
+      color: var(--deep-teal);
+      font-size: 32px;
+      line-height: 1.05;
+      margin-bottom: 10px;
+    }
+
+    .programme-price {
+      font-size: 40px;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .programme-note {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    .programme-permonth {
+      display: inline-block;
+      color: var(--deep-teal);
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    .care-card .best-for {
+      color: var(--charcoal);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .care-card p {
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+
+    .care-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .care-card li {
+      position: relative;
+      padding-left: 24px;
+      color: var(--charcoal);
+      font-size: 14px;
+    }
+
+    .care-card li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--leaf);
+      font-weight: 900;
+    }
+
+    .household { background: var(--mist); }
+
+    .household-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .mini-card {
+      background: var(--paper);
+      border: 1px solid rgba(61,69,66,0.12);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+    }
+
+    .mini-card h3 {
+      color: var(--deep-teal);
+      font-size: 30px;
+      line-height: 1.05;
+      margin-bottom: 8px;
+    }
+
+    .mini-price {
+      font-size: 34px;
+      line-height: 1;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 14px;
+    }
+
+    .mini-card p {
+      color: var(--muted);
+      margin-bottom: 0;
+      font-size: 15px;
+    }
+
+    .note {
+      margin-top: 24px;
+      background: rgba(255,255,255,0.65);
+      border: 1px solid rgba(61,69,66,0.12);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      color: var(--charcoal);
+      font-size: 15px;
+    }
+
+    @media (max-width: 940px) {
+      .hero-grid,
+      .steps,
+      .protocol-grid,
+      .care-grid,
+      .household-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .section { padding: 54px 18px; }
+      .hero { padding-top: 56px; }
+      .btn-row { display: grid; }
+      .btn { width: 100%; }
+      .hero-card, .care-card { border-radius: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero section">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Herbernie care options</span>
+          <h1>Start with an EIS Scan and Consultation.</h1>
+          <p>
+            Your first appointment gives Dr. Lurie a clearer view of your body, your symptoms and your health history before recommending a natural treatment plan.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="#start">How it works</a>
+            <a class="btn btn-secondary" href="#ongoing-care">Ongoing care options</a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <h2>EIS Scan and Consultation</h2>
+          <div class="price-large">R990</div>
+          <div class="price-caption">This is your first appointment. If treatment is needed, it is recommended and priced separately afterwards.</div>
+          <ul class="plain-list">
+            <li>Full-body EIS scan</li>
+            <li>Consultation with Dr. Lurie</li>
+            <li>Review of your symptoms and health history</li>
+            <li>Natural treatment plan recommendation</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="start" class="section">
+      <div class="container">
+        <div class="intro">
+          <span class="eyebrow">The first step</span>
+          <h2>A simple care path for patients.</h2>
+          <p>
+            Patients do not need to choose a long programme before they have been assessed. The first step is the EIS Scan and Consultation. After that, Dr. Lurie explains the recommended treatment path.
+          </p>
+        </div>
+
+        <div class="steps">
+          <article class="step">
+            <div class="number">1</div>
+            <h3>Scan</h3>
+            <p>The EIS scan gives a full-body overview and helps identify areas of imbalance in the body.</p>
+          </article>
+
+          <article class="step">
+            <div class="number">2</div>
+            <h3>Consultation</h3>
+            <p>Dr. Lurie reviews your scan, symptoms and health history with you during your appointment.</p>
+          </article>
+
+          <article class="step">
+            <div class="number">3</div>
+            <h3>Treatment Plan</h3>
+            <p>You receive a recommended natural treatment plan. Medicines, tinctures or supplements are quoted separately.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="protocols" class="section dark-band">
+      <div class="container">
+        <div class="intro">
+          <span class="eyebrow">Treatment plans</span>
+          <h2>Your treatment plan is based on your assessment.</h2>
+          <p>
+            After the EIS Scan and Consultation, Dr. Lurie recommends the treatment plan that best fits your body and your symptoms. Most plans fall into one of these ranges.
+          </p>
+        </div>
+
+        <div class="protocol-grid">
+          <article class="protocol">
+            <h3>Foundational Plan</h3>
+            <div class="amount">R1,950</div>
+            <p>For patients who need a lighter treatment plan or support for a narrower health concern.</p>
+          </article>
+
+          <article class="protocol">
+            <h3>Comprehensive Plan</h3>
+            <div class="amount">R3,450</div>
+            <p>For patients who need broader support across more than one area of the body.</p>
+          </article>
+
+          <article class="protocol">
+            <h3>Intensive Plan</h3>
+            <div class="amount">R4,950</div>
+            <p>For patients who need a fuller treatment plan and more involved natural medicine support.</p>
+          </article>
+        </div>
+
+        <div class="protocol-note">
+          Each treatment plan price includes your EIS Scan and Consultation. The R990 you pay to begin comes off the total, so there is nothing added on top.
+        </div>
+      </div>
+    </section>
+
+    <section id="ongoing-care" class="section">
+      <div class="container">
+        <div class="intro">
+          <span class="eyebrow">Ongoing support</span>
+          <h2>More support while your treatment takes effect.</h2>
+          <p>
+            Natural treatment usually works over time. Some patients need only the consultation and a one-off treatment plan. Others prefer an all-in package that brings the consultation, treatment plan and ongoing follow-up together at one price.
+          </p>
+        </div>
+
+        <div class="care-grid">
+          <article class="care-card featured">
+            <span class="pill">Most common</span>
+            <h3>3-Month Guided Care</h3>
+            <div class="programme-price">From R5,900</div>
+            <div class="programme-permonth">≈ R1,967 / month</div>
+            <div class="programme-note">An all-in price that includes your consultation, treatment plan and guided follow-up.</div>
+            <div class="best-for">Best for starting a new treatment plan.</div>
+            <p>For patients who want follow-up while their medicine, tinctures or supplements begin to take effect.</p>
+            <ul>
+              <li>EIS Scan, Consultation and treatment plan included</li>
+              <li>Follow-up after your first month</li>
+              <li>Progress review at three months</li>
+              <li>Treatment adjustments if needed</li>
+            </ul>
+          </article>
+
+          <article class="care-card">
+            <span class="pill">Deeper support</span>
+            <h3>6-Month Ongoing Care</h3>
+            <div class="programme-price">From R9,900</div>
+            <div class="programme-permonth">≈ R1,650 / month</div>
+            <div class="programme-note">An all-in price covering your consultation, treatment plan, longer follow-up and lifestyle support.</div>
+            <div class="best-for">Best for longer-standing concerns.</div>
+            <p>For patients who need more time, more follow-up and more lifestyle support as their treatment progresses.</p>
+            <ul>
+              <li>EIS Scan, Consultation and treatment plan included</li>
+              <li>Regular follow-ups throughout</li>
+              <li>Progress reviews and treatment adjustments</li>
+              <li>Lifestyle and routine guidance</li>
+            </ul>
+          </article>
+
+          <article class="care-card">
+            <span class="pill">Year-round care</span>
+            <h3>12-Month Wellness Partnership</h3>
+            <div class="programme-price">From R16,800</div>
+            <div class="programme-permonth">≈ R1,400 / month</div>
+            <div class="programme-note">An all-in price covering your consultation, treatment plan and regular check-ins over the year.</div>
+            <div class="best-for">Best for ongoing natural health support.</div>
+            <p>For patients who want regular check-ins and a longer-term relationship with the practice.</p>
+            <ul>
+              <li>EIS Scan, Consultation and treatment plan included</li>
+              <li>A consultation every three months</li>
+              <li>Ongoing follow-up and treatment adjustments</li>
+              <li>Lifestyle and routine guidance</li>
+              <li>Priority booking throughout the year</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="note">
+          Each programme price is all-in. It includes your consultation, follow-up and treatment plan, so there are no separate medicine, tincture or supplement costs added on top. After your EIS Scan and Consultation, Dr. Lurie confirms the programme that best fits your needs.
+        </div>
+      </div>
+    </section>
+
+    <section class="section household">
+      <div class="container">
+        <div class="intro">
+          <span class="eyebrow">Consultation options</span>
+          <h2>Individual, couple and family appointments.</h2>
+          <p>
+            The consultation fee covers the appointment. Treatment plans are quoted separately for each person because each person may need a different plan.
+          </p>
+        </div>
+
+        <div class="household-grid">
+          <article class="mini-card">
+            <h3>Individual</h3>
+            <div class="mini-price">R990</div>
+            <p>EIS Scan and Consultation for one patient.</p>
+          </article>
+
+          <article class="mini-card">
+            <h3>Couple</h3>
+            <div class="mini-price">R1,650</div>
+            <p>For two people assessed together in one shared appointment. Treatment plans are quoted per person.</p>
+          </article>
+
+          <article class="mini-card">
+            <h3>Family</h3>
+            <div class="mini-price">R2,150</div>
+            <p>For 2 adults and up to 2 children in one household consultation. Treatment plans are quoted per person.</p>
+          </article>
+        </div>
+
+        <div class="note">
+          If one person needs a separate, detailed individual assessment, Dr. Lurie will explain this before adding another consultation fee.
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
