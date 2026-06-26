@@ -156,7 +156,7 @@ function joinNaturally(items) {
 }
 
 function computeAssessment({ name, email, symptoms, duration, priorHelp, goal }) {
-  const ctaUrl = `https://herbernie.co.za/hormonal/?step=6&name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}#consult`;
+  const ctaUrl = `https://herbernie.co.za/?step=6&name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}#consult`;
 
   const symptomEntries = Object.entries(symptoms)
     .filter(([key]) => SYMPTOM_CLUSTERS[key])
