@@ -2700,6 +2700,14 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
     if (emailField) emailField.value = email;
     document.getElementById('quiz-summary-text').innerHTML = `<p>${name ? name + ', w' : 'W'}elcome back. Whenever you're ready, here's your 30-minute online consultation with Dr. Lurie and Joanne.</p>`;
     quizGoTo(6);
+    // Land directly on the offer card (not the intro), once layout settles and after
+    // the browser's own #consult hash jump, so she sees the price + booking straight away.
+    setTimeout(function() {
+      const card = document.querySelector('#qs-6 .quiz-offer-card');
+      if (!card) return;
+      const y = card.getBoundingClientRect().top + window.pageYOffset - 100;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }, 350);
   })();
 
   // Show booking section if returning from PayFast payment
