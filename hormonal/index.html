@@ -2232,6 +2232,19 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
     el.addEventListener('click', () => fbq('track', 'ViewContent'));
   });
 
+  // Pre-booking FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const answer = item.querySelector('.faq-a');
+      if (item.classList.toggle('open')) {
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      } else {
+        answer.style.maxHeight = null;
+      }
+    });
+  });
+
   // Mobile menu
   const hamburger = document.getElementById('navHamburger');
   const mobileMenu = document.getElementById('mobileMenu');
