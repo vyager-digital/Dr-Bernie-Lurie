@@ -1033,6 +1033,19 @@
   .quiz-step-line { flex: 1; min-width: 18px; max-width: 52px; height: 1px; background: var(--blush-deep); margin-top: 11px; }
   .quiz-tos-link { color: var(--rose); text-decoration: underline; cursor: pointer; }
 
+  /* Pre-booking FAQ accordion */
+  .faq-block { margin-top: 2rem; border-top: 1px solid var(--blush-deep); }
+  .faq-heading { text-align: center; font-family: 'DM Sans', sans-serif; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rose); font-weight: 600; margin: 1.8rem 0 0.4rem; }
+  .faq-sub { text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--text-mid); margin: 0 0 1rem; }
+  .faq-item { border-bottom: 1px solid var(--blush-deep); }
+  .faq-q { width: 100%; background: none; border: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.05rem 0; text-align: left; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--text-dark); }
+  .faq-q:hover { color: var(--rose-dark); }
+  .faq-q svg { flex-shrink: 0; width: 18px; height: 18px; color: var(--rose); transition: transform 0.3s ease; }
+  .faq-item.open .faq-q svg { transform: rotate(45deg); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+  .faq-a-inner { padding: 0 0 1.1rem; font-family: 'DM Sans', sans-serif; font-size: 0.92rem; line-height: 1.7; color: var(--text-mid); max-width: 60ch; }
+  .faq-a-inner a { color: var(--rose); text-decoration: underline; }
+
   /* TOS modal */
   .tos-modal-overlay {
     display: none; position: fixed; inset: 0; z-index: 1000;
@@ -1078,6 +1091,7 @@
     .quiz-card { padding: 1.8rem 1.2rem; border-radius: 1.2rem; }
     .quiz-main-headline { font-size: 1.85rem; }
     .quiz-intro-sub { font-size: 1.05rem; }
+    .faq-q { font-size: 0.9rem; }
 
     /* Symptoms stack */
     .symptom-row { flex-direction: column; align-items: flex-start; gap: 0.6rem; padding: 1rem 0; }
@@ -2091,6 +2105,47 @@ src="https://www.facebook.com/tr?id=1297058208673280&ev=PageView&noscript=1"
           <div class="quiz-step-line"></div>
           <div class="quiz-step"><span class="quiz-step-num">3</span><span class="quiz-step-text">Meet online</span></div>
         </div>
+
+        <div class="faq-block">
+          <div class="faq-heading">Before you book</div>
+          <p class="faq-sub">A few things women often want to know first</p>
+
+          <div class="faq-item">
+            <button class="faq-q" type="button">Will I be told to buy supplements?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a"><div class="faq-a-inner">It's a fair thing to ask. A lot of the wellness world does work that way. Your appointment is a consultation, not a product sale. Our job is to understand what's behind your symptoms and explain it to you clearly. If a supplement or a change to your diet would genuinely help, we'll explain why, and the decision stays with you. You're booking a conversation, and nothing is sold to you on the spot.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" type="button">Is this evidence-based or just wellness talk?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a"><div class="faq-a-inner">You've probably seen enough big promises to be wary, and that's reasonable. We work from approaches that have evidence behind them for menopause symptoms: nutrition, lifestyle, and targeted natural support. Where the evidence is thin, we'll tell you. You won't be handed miracle claims.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" type="button">Will you tell me honestly if natural treatment isn't enough?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a"><div class="faq-a-inner">Yes, and this matters to how we work. Natural support helps many women, but not every symptom should be handled that way. If something needs medical assessment, or if HRT or another medical route would serve you better, we'll say so plainly. We work within the naturopathic scope and are honest about where it ends.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" type="button">Can you help if I'm considering HRT too?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a"><div class="faq-a-inner">Of course. Many women arrive unsure, some leaning towards HRT and others wanting to start with natural support. Most just want to understand the options and trade-offs before committing to anything. The consultation is where you think it through with us instead of deciding alone. You're not signing up to one camp.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" type="button">Can I speak to someone before I pay?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a"><div class="faq-a-inner">Yes. Paying before you've spoken to anyone is a lot to ask, and you don't have to. Dr. Lurie and Joanne run the practice together, and Joanne is happy to answer your questions on <a href="https://wa.me/27762390423" target="_blank" rel="noopener">WhatsApp</a> first. If it feels right after that, you book. If not, there's no pressure.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" type="button">What happens if I need to reschedule or cancel?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a"><div class="faq-a-inner">Life happens, and your booking isn't a trap. You can reschedule free of charge up to 48 hours before your appointment, and if you need to cancel, Joanne will sort it out with you directly. We keep this simple, and you'll know exactly where you stand before you pay.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" type="button">Is the practice properly qualified?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a"><div class="faq-a-inner">Yes. The practice is run by two registered Natural Health Practitioners, Dr. Lurie and Joanne. We're also clear about where natural medicine fits: it works with conventional care, and if something needs a medical doctor, we'll tell you. Women's hormonal health is the core of what we do, and we've helped many women through perimenopause and menopause.</div></div>
+          </div>
+        </div>
+
         <label class="quiz-tos-label">
           <input type="checkbox" id="tos-check" onchange="this.closest('.quiz-tos-label').classList.remove('tos-attn')">
           <span>I agree to the <a href="/terms.html" class="quiz-tos-link" onclick="openTosModal(event)">Terms of Service</a></span>
