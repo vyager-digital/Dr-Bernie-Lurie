@@ -1032,6 +1032,213 @@ footer {
   footer { padding: 3rem 1.25rem 1.5rem; }
   .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
 }
+
+/* ── EDITORIAL VISUAL UPGRADE ── */
+nav {
+  height: 76px;
+  padding: 0 clamp(1.5rem, 4vw, 5rem);
+  background: rgba(251,250,248,0.95);
+  border-bottom-color: rgba(47,79,93,0.14);
+}
+nav.scrolled { padding: 0 clamp(1.5rem, 4vw, 5rem); }
+.nav-logo-img { height: 42px; }
+.nav-brand-name { font-weight: 400; letter-spacing: 0.2em; }
+.nav-links { gap: clamp(1.1rem, 2.2vw, 2.4rem); }
+
+.hero {
+  min-height: 760px;
+  grid-template-columns: 46% 54%;
+  padding-top: 76px;
+  background: var(--warm-white);
+}
+.hero-bg-panel { display: none; }
+.hero-left {
+  padding: 5.5rem clamp(2.5rem, 5vw, 6.5rem);
+  background:
+    radial-gradient(circle at 8% 12%, rgba(212,222,219,0.62), transparent 34%),
+    var(--warm-white);
+}
+.hero-eyebrow { color: var(--teal-dark); margin-bottom: 1.4rem; }
+.hero-headline {
+  font-size: clamp(4rem, 5.7vw, 7rem);
+  line-height: 0.9;
+  letter-spacing: -0.035em;
+  margin-bottom: 1.8rem;
+}
+.hero-headline em { color: var(--teal-dark); }
+.hero-body { max-width: 510px; font-size: 1.22rem; line-height: 1.68; }
+.hero-actions { margin-bottom: 0; }
+.btn-primary, .btn-secondary, .btn-light, .btn-gold {
+  min-height: 49px;
+  padding: 0.9rem 1.7rem;
+}
+.hero-right { align-items: stretch; padding: 0; background: var(--teal-mist); }
+.hero-frame { max-width: none; height: 100%; }
+.hero-frame::before { display: none; }
+.hero-frame img {
+  height: calc(100vh - 76px);
+  min-height: 684px;
+  object-fit: cover;
+  object-position: center 18%;
+}
+
+.practice-note { background: var(--teal-deep); color: var(--warm-white); }
+.practice-note-inner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 1180px;
+  margin: 0 auto;
+  border-left: 1px solid rgba(255,255,255,0.14);
+}
+.practice-note-item {
+  padding: 1.45rem 2rem;
+  border-right: 1px solid rgba(255,255,255,0.14);
+}
+.practice-note-item strong { display: block; font-size: 1.08rem; font-weight: 400; line-height: 1.2; }
+.practice-note-item span { color: rgba(255,255,255,0.56); font-size: 0.82rem; font-style: italic; }
+
+.services {
+  position: relative;
+  overflow: hidden;
+  padding: 8rem max(3rem, calc((100vw - 1180px) / 2));
+  background: var(--warm-white);
+}
+.services::before {
+  content: '';
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  right: -80px;
+  top: 20px;
+  opacity: 0.035;
+  background: url('hormonal/assets/images/herbernie-logo.webp') center / contain no-repeat;
+}
+.services-top { grid-template-columns: 0.9fr 1.1fr; gap: 6rem; margin-bottom: 4rem; position: relative; }
+.services-intro { max-width: 570px; font-size: 1.15rem; }
+.services-grid {
+  position: relative;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: rgba(47,79,93,0.16);
+  border: 1px solid rgba(47,79,93,0.16);
+}
+.service-card {
+  min-height: 245px;
+  padding: 2.8rem 3rem;
+  border: 0;
+  background: var(--off-white);
+  cursor: default;
+}
+.service-card:nth-child(2), .service-card:nth-child(3) { background: #e5ebe8; }
+.service-card::after { display: none; }
+.service-card:hover { background: var(--off-white); transform: none; }
+.service-card:nth-child(2):hover, .service-card:nth-child(3):hover { background: #e5ebe8; }
+.service-num {
+  margin: 0 0 1.2rem;
+  color: var(--teal-mid);
+  font-family: var(--font-accent);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+}
+.service-icon { display: none; }
+.service-title { font-size: 1.75rem; margin-bottom: 0.7rem; }
+.service-text { max-width: 440px; font-size: 1.02rem; }
+.service-card:hover .service-title { color: var(--forest); }
+.service-card:hover .service-text { color: var(--text-mid); }
+.service-card:hover .service-num { color: var(--teal-mid); }
+
+.about { grid-template-columns: 46% 54%; min-height: 760px; }
+.about-photo img { object-position: center 18%; }
+.about-photo::after { background: linear-gradient(to right, rgba(47,79,93,0.08), transparent); }
+.about-content { padding: 6rem clamp(3rem, 6vw, 7rem); background: var(--teal-deep); }
+.about-body { max-width: 620px; font-size: 1.08rem; }
+.about-quote { max-width: 580px; color: rgba(251,250,248,0.7); }
+
+.treatments {
+  padding: 8rem max(3rem, calc((100vw - 1180px) / 2));
+  background: var(--off-white);
+}
+.treatments-header { max-width: 700px; margin: 0 0 3.8rem; text-align: left; }
+.treatments-header .section-label.center { justify-content: flex-start; }
+.treatments-header .section-label.center::after { display: none; }
+.treatments-grid { gap: 1rem; }
+.treatment-card { aspect-ratio: 4 / 5; }
+.treatment-overlay { padding: 2.2rem; }
+.treatment-desc { opacity: 1; transform: none; color: rgba(251,250,248,0.72); }
+.treatments-more { text-align: left; }
+
+.dispensary { height: 560px; }
+.dispensary-bg img { object-position: center 48%; }
+.dispensary-overlay {
+  background: linear-gradient(90deg, rgba(47,79,93,0.96) 0%, rgba(47,79,93,0.82) 42%, rgba(47,79,93,0.12) 100%);
+}
+.dispensary-content { max-width: 690px; padding-left: max(3rem, calc((100vw - 1180px) / 2)); }
+
+.testimonials { display: none; }
+.visit { display: grid; grid-template-columns: 48% 52%; min-height: 720px; background: var(--warm-white); }
+.visit-photo { min-height: 720px; }
+.visit-photo img { height: 100%; object-fit: cover; object-position: center 20%; }
+.visit-content { padding: 6.5rem clamp(3rem, 6vw, 7rem); align-self: center; }
+.visit-content .section-heading { margin: 0.8rem 0 1.3rem; }
+.visit-intro { color: var(--text-mid); font-size: 1.08rem; line-height: 1.75; max-width: 580px; }
+.visit-steps { margin-top: 2.2rem; border-top: 1px solid rgba(47,79,93,0.2); }
+.visit-step {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgba(47,79,93,0.2);
+}
+.visit-step span { color: var(--teal-mid); font-family: var(--font-accent); font-size: 0.58rem; letter-spacing: 0.14em; padding-top: 0.25rem; }
+.visit-step h3 { color: var(--forest); font-size: 1.3rem; font-weight: 400; margin-bottom: 0.2rem; }
+.visit-step p { color: var(--text-mid); font-size: 0.92rem; line-height: 1.55; }
+
+.cta-section { padding: 6rem max(3rem, calc((100vw - 1180px) / 2)); background: var(--teal-dark); }
+footer { padding-left: max(3rem, calc((100vw - 1180px) / 2)); padding-right: max(3rem, calc((100vw - 1180px) / 2)); }
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 5rem 2.5rem 4rem; }
+  .hero-right { padding: 0; }
+  .hero-frame { max-width: none; }
+  .hero-frame img { height: 600px; min-height: 0; }
+  .practice-note-inner { grid-template-columns: 1fr 1fr 1fr; }
+  .practice-note-item { padding: 1.3rem 1.2rem; }
+  .services, .treatments { padding: 6rem 2.5rem; }
+  .services-top { grid-template-columns: 1fr; gap: 1.5rem; }
+  .about { grid-template-columns: 1fr; }
+  .about-photo { height: 580px; }
+  .visit { grid-template-columns: 1fr; }
+  .visit-photo { min-height: 540px; height: 540px; }
+  .visit-content { padding: 5rem 2.5rem; }
+}
+
+@media (max-width: 680px) {
+  nav { height: 68px; }
+  .hero { padding-top: 68px; }
+  .hero-left { padding: 4.2rem 1.25rem 3.5rem; }
+  .hero-headline { font-size: clamp(3.5rem, 17vw, 5rem); }
+  .hero-body { font-size: 1.05rem; }
+  .hero-actions { align-items: stretch; flex-direction: column; width: 100%; }
+  .hero-actions a { text-align: center; }
+  .hero-frame img { height: 470px; object-position: center 16%; }
+  .practice-note-inner { grid-template-columns: 1fr; border-left: 0; }
+  .practice-note-item { border-right: 0; border-bottom: 1px solid rgba(255,255,255,0.14); padding: 1rem 1.25rem; }
+  .services, .treatments { padding: 4.5rem 1.25rem; }
+  .services-grid { grid-template-columns: 1fr; }
+  .service-card { min-height: 0; padding: 2.2rem 1.5rem; }
+  .service-card:nth-child(2), .service-card:nth-child(3) { background: var(--off-white); }
+  .service-card:nth-child(even) { background: #e5ebe8; }
+  .about-photo { height: 460px; }
+  .about-content { padding: 4.5rem 1.25rem; }
+  .treatment-card { aspect-ratio: 4 / 5; }
+  .dispensary { height: 500px; }
+  .dispensary-content { padding: 0 1.25rem; }
+  .visit-photo { min-height: 460px; height: 460px; }
+  .visit-content { padding: 4.5rem 1.25rem; }
+  .cta-section { padding: 4.5rem 1.25rem; }
+  footer { padding-left: 1.25rem; padding-right: 1.25rem; }
+}
 </style>
 </head>
 <body>
@@ -1052,7 +1259,7 @@ footer {
     <li><a href="index.html">Home</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#treatments">Treatments</a></li>
-    <li><a href="#testimonials">Results</a></li>
+    <li><a href="#process">Your Visit</a></li>
     <li><a href="#contact" class="nav-cta">Book Consultation</a></li>
   </ul>
 </nav>
@@ -1082,6 +1289,23 @@ footer {
       <img src="hormonal/assets/images/bernie-profile-0352.webp"
            alt="Dr. Bernard Lurie — Naturopathic Doctor"
            width="400" height="560" loading="eager">
+    </div>
+  </div>
+</section>
+
+<section class="practice-note" aria-label="Practice highlights">
+  <div class="practice-note-inner">
+    <div class="practice-note-item">
+      <strong>Personal consultations</strong>
+      <span>Time to understand the whole picture</span>
+    </div>
+    <div class="practice-note-item">
+      <strong>Botanical formulations</strong>
+      <span>Prepared around individual needs</span>
+    </div>
+    <div class="practice-note-item">
+      <strong>In-person &amp; remote</strong>
+      <span>Natural health support across South Africa</span>
     </div>
   </div>
 </section>
@@ -1214,6 +1438,33 @@ footer {
   </div>
 </div>
 
+<section class="visit" id="process">
+  <div class="visit-photo">
+    <img src="hormonal/assets/images/bernie-profile-0345.webp"
+         alt="Dr. Bernard Lurie seated in the garden"
+         width="1200" height="1500" loading="lazy">
+  </div>
+  <div class="visit-content">
+    <div class="section-label fade-up">Your First Visit</div>
+    <h2 class="section-heading fade-up delay-1">A careful conversation.<br><em>A clearer way forward.</em></h2>
+    <p class="visit-intro fade-up delay-2">The first consultation is designed to give your story enough room. Bernie brings your history, symptoms, daily habits and assessment findings together before recommending a practical way forward.</p>
+    <div class="visit-steps fade-up delay-3">
+      <div class="visit-step">
+        <span>01</span>
+        <div><h3>Listen</h3><p>Begin with your full history, concerns and the changes you have already noticed.</p></div>
+      </div>
+      <div class="visit-step">
+        <span>02</span>
+        <div><h3>Assess</h3><p>Use the appropriate tools and observations to look for patterns—not isolated symptoms.</p></div>
+      </div>
+      <div class="visit-step">
+        <span>03</span>
+        <div><h3>Plan</h3><p>Leave with clear next steps and natural support designed around your real life.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- TESTIMONIALS -->
 <section class="testimonials" id="testimonials">
   <div class="testimonials-header">
@@ -1302,7 +1553,7 @@ footer {
         <li><a href="index.html">Home</a></li>
         <li><a href="#about">About Dr. Bernie</a></li>
         <li><a href="#treatments">Treatments</a></li>
-        <li><a href="#testimonials">Patient Results</a></li>
+        <li><a href="#process">Your First Visit</a></li>
         <li><a href="#contact">Book a Consultation</a></li>
       </ul>
     </div>
