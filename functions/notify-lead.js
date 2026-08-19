@@ -27,14 +27,23 @@ export async function onRequestPost(context) {
     let body = {};
     try { body = await request.json(); } catch {}
 
-    const type     = body.type === 'completion' ? 'completion' : 'lead';
+    const type     = ['completion', 'contact'].includes(body.type) ? body.type : 'lead';
     const name     = escapeHtml((body.name || '').trim() || '—');
     const email    = escapeHtml((body.email || '').trim() || '—');
     const whatsapp = escapeHtml((body.whatsapp || '').trim() || '—');
 
     let subject, rows;
 
-    if (type === 'completion') {
+    if (type === 'contact') {
+      subject = `New enquiry — ${body.name || 'Website visitor'}`;
+      rows = [
+        ['Name', name],
+        ['Email', email],
+        ['Phone / WhatsApp', whatsapp],
+        ['Message', escapeHtml((body.message || '').trim() || '—')],
+        ['Source', escapeHtml((body.source || 'Herbernie website').trim())],
+      ];
+    } else if (type === 'completion') {
       subject = `Quiz completed — ${body.name || 'New lead'}`;
       rows = [
         ['Name', name],
@@ -55,7 +64,12 @@ export async function onRequestPost(context) {
       ];
     }
 
-    const html = buildNotifyHtml(subject, rows);
+    const brand = type === 'contact' ? BRANDS.practice : BRANDS.quiz;
+    const html  = buildNotifyHtml(subject, rows, brand);
+
+    const replyTo = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test((body.email || '').trim())
+      ? (body.email || '').trim()
+      : null;
 
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -64,8 +78,9 @@ export async function onRequestPost(context) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from:    'Herbernie Hormonal Quiz <notifications@send.herbernie.co.za>',
+        from:    `${brand.from} <notifications@send.herbernie.co.za>`,
         to:      ['hello@vyager.co', 'info@herbernie.co.za'],
+        ...(replyTo ? { reply_to: replyTo } : {}),
         subject,
         html,
       }),
@@ -83,15 +98,38 @@ export async function onRequestPost(context) {
   }
 }
 
+const BRANDS = {
+  quiz: {
+    from:   'Herbernie Hormonal Quiz',
+    label:  'Hormonal Harmony Quiz',
+    bg:     '#f2ddd5',
+    card:   '#fdf8f5',
+    rule:   '#ead0c8',
+    accent: '#a05c4e',
+    text:   '#3a2528',
+    muted:  '#6e5a54',
+  },
+  practice: {
+    from:   "Herbernie Int'l",
+    label:  "Herbernie Int'l — Website Enquiry",
+    bg:     '#dbe4e2',
+    card:   '#f4efeb',
+    rule:   '#a3b8b4',
+    accent: '#22495a',
+    text:   '#22495a',
+    muted:  '#486573',
+  },
+};
+
 function escapeHtml(str) {
   return String(str).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
 }
 
-function buildNotifyHtml(title, rows) {
+function buildNotifyHtml(title, rows, brand = BRANDS.quiz) {
   const rowsHtml = rows.map(([label, value]) => `
     <tr>
-      <td style="padding:6px 12px 6px 0; font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#6e5a54; font-weight:700; vertical-align:top; white-space:nowrap;">${label}</td>
-      <td style="padding:6px 0; font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#3a2528; white-space:pre-line;">${value}</td>
+      <td style="padding:6px 12px 6px 0; font-family:Arial, Helvetica, sans-serif; font-size:13px; color:${brand.muted}; font-weight:700; vertical-align:top; white-space:nowrap;">${label}</td>
+      <td style="padding:6px 0; font-family:Arial, Helvetica, sans-serif; font-size:13px; color:${brand.text}; white-space:pre-line;">${value}</td>
     </tr>`).join('');
 
   return `<!DOCTYPE html>
@@ -101,19 +139,19 @@ function buildNotifyHtml(title, rows) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${title}</title>
 </head>
-<body style="margin:0; padding:0; background:#f2ddd5; font-family:Arial, Helvetica, sans-serif;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f2ddd5; padding:24px 16px;">
+<body style="margin:0; padding:0; background:${brand.bg}; font-family:Arial, Helvetica, sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${brand.bg}; padding:24px 16px;">
     <tr>
       <td align="center">
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:520px; background:#fdf8f5; border-radius:14px; overflow:hidden;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:520px; background:${brand.card}; border-radius:14px; overflow:hidden;">
           <tr>
-            <td style="padding:20px 28px; border-bottom:1px solid #ead0c8;">
-              <div style="font-family:Georgia, serif; font-size:16px; font-weight:700; color:#a05c4e;">Hormonal Harmony Quiz</div>
+            <td style="padding:20px 28px; border-bottom:1px solid ${brand.rule};">
+              <div style="font-family:Georgia, serif; font-size:16px; font-weight:700; color:${brand.accent};">${brand.label}</div>
             </td>
           </tr>
           <tr>
             <td style="padding:24px 28px;">
-              <h1 style="font-family:Georgia, serif; font-size:18px; color:#3a2528; margin:0 0 16px;">${title}</h1>
+              <h1 style="font-family:Georgia, serif; font-size:18px; color:${brand.text}; margin:0 0 16px;">${title}</h1>
               <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;">
                 ${rowsHtml}
               </table>
