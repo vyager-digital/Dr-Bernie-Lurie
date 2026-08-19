@@ -1163,6 +1163,8 @@ nav.scrolled { padding: 0 clamp(1.5rem, 4vw, 5rem); }
 .treatments-header .section-label.center::after { display: none; }
 .treatments-grid { gap: 1rem; }
 .treatment-card { aspect-ratio: 4 / 5; }
+.treatment-card:nth-child(2) img { object-position: 52% center; }
+.treatment-card:nth-child(3) img { object-position: 48% center; }
 .treatment-overlay { padding: 2.2rem; }
 .treatment-desc { opacity: 1; transform: none; color: rgba(251,250,248,0.72); }
 .treatments-more { text-align: left; }
@@ -1174,10 +1176,49 @@ nav.scrolled { padding: 0 clamp(1.5rem, 4vw, 5rem); }
 }
 .dispensary-content { max-width: 690px; padding-left: max(3rem, calc((100vw - 1180px) / 2)); }
 
-.testimonials { display: none; }
+.testimonials {
+  display: block;
+  padding: 8rem max(3rem, calc((100vw - 1180px) / 2));
+  background: #e5ebe8;
+}
+.testimonials-header {
+  max-width: 720px;
+  margin: 0 0 3.5rem;
+  text-align: left;
+}
+.testimonials-header .section-label.center { justify-content: flex-start; }
+.testimonials-header .section-label.center::after { display: none; }
+.testimonials-grid {
+  gap: 0;
+  border-top: 1px solid rgba(47,79,93,0.22);
+  border-bottom: 1px solid rgba(47,79,93,0.22);
+}
+.testimonial-card {
+  min-height: 330px;
+  padding: 3rem 2.5rem;
+  background: transparent;
+  border: 0;
+}
+.testimonial-card + .testimonial-card { border-left: 1px solid rgba(47,79,93,0.22); }
+.testimonial-card::before {
+  top: 2rem;
+  left: 2rem;
+  color: rgba(47,79,93,0.12);
+}
+.t-stars { display: none; }
+.t-text {
+  position: relative;
+  margin: 1.5rem 0 2rem;
+  color: var(--text-dark);
+  font-size: 1.16rem;
+  line-height: 1.72;
+}
+.t-avatar { display: none; }
+.t-author { padding-top: 1.2rem; border-top: 1px solid rgba(47,79,93,0.14); }
+.t-location { color: var(--teal-dark); }
 .visit { display: grid; grid-template-columns: 48% 52%; min-height: 720px; background: var(--warm-white); }
 .visit-photo { min-height: 720px; }
-.visit-photo img { height: 100%; object-fit: cover; object-position: center 20%; }
+.visit-photo img { height: 100%; object-fit: cover; object-position: center; }
 .visit-content { padding: 6.5rem clamp(3rem, 6vw, 7rem); align-self: center; }
 .visit-content .section-heading { margin: 0.8rem 0 1.3rem; }
 .visit-intro { color: var(--text-mid); font-size: 1.08rem; line-height: 1.75; max-width: 580px; }
@@ -1208,6 +1249,10 @@ footer { padding-left: max(3rem, calc((100vw - 1180px) / 2)); padding-right: max
   .services-top { grid-template-columns: 1fr; gap: 1.5rem; }
   .about { grid-template-columns: 1fr; }
   .about-photo { height: 580px; }
+  .testimonials { padding: 6rem 2.5rem; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .testimonial-card { min-height: 0; }
+  .testimonial-card + .testimonial-card { border-left: 0; border-top: 1px solid rgba(47,79,93,0.22); }
   .visit { grid-template-columns: 1fr; }
   .visit-photo { min-height: 540px; height: 540px; }
   .visit-content { padding: 5rem 2.5rem; }
@@ -1231,6 +1276,9 @@ footer { padding-left: max(3rem, calc((100vw - 1180px) / 2)); padding-right: max
   .service-card:nth-child(even) { background: #e5ebe8; }
   .about-photo { height: 460px; }
   .about-content { padding: 4.5rem 1.25rem; }
+  .testimonials { padding: 4.5rem 1.25rem; }
+  .testimonial-card { padding: 2.5rem 1.25rem; }
+  .testimonial-card::before { left: 0.8rem; }
   .treatment-card { aspect-ratio: 4 / 5; }
   .dispensary { height: 500px; }
   .dispensary-content { padding: 0 1.25rem; }
@@ -1398,8 +1446,8 @@ footer { padding-left: max(3rem, calc((100vw - 1180px) / 2)); padding-right: max
       </div>
     </div>
     <div class="treatment-card fade-up delay-1">
-      <img src="hormonal/assets/images/practice-dispensary.webp"
-           alt="Herbernie Int'l Products" width="400" height="530" loading="lazy">
+      <img src="hormonal/assets/images/legacy-placeholders/legacy-home-portrait.jpg"
+           alt="A bottle of Herbernie echinacea tincture among succulents" width="1200" height="960" loading="lazy">
       <div class="treatment-overlay">
         <span class="treatment-tag">Herbernie Range</span>
         <h3 class="treatment-name">Herbal Products</h3>
@@ -1407,8 +1455,8 @@ footer { padding-left: max(3rem, calc((100vw - 1180px) / 2)); padding-right: max
       </div>
     </div>
     <div class="treatment-card fade-up delay-2">
-      <img src="hormonal/assets/images/bernie-profile-0345.webp"
-           alt="Initial Consultation with Dr. Bernie" width="400" height="530" loading="lazy">
+      <img src="hormonal/assets/images/legacy-placeholders/legacy-eis-scan.jpg"
+           alt="An EIS assessment during a naturopathic consultation" width="1050" height="699" loading="lazy">
       <div class="treatment-overlay">
         <span class="treatment-tag">Starting Point</span>
         <h3 class="treatment-name">Initial Consultation</h3>
@@ -1440,9 +1488,9 @@ footer { padding-left: max(3rem, calc((100vw - 1180px) / 2)); padding-right: max
 
 <section class="visit" id="process">
   <div class="visit-photo">
-    <img src="hormonal/assets/images/bernie-profile-0345.webp"
-         alt="Dr. Bernard Lurie seated in the garden"
-         width="1200" height="1500" loading="lazy">
+    <img src="hormonal/assets/images/legacy-placeholders/legacy-home-landscape.jpg"
+         alt="Natural foods, herbs and handcrafted bowls arranged on a table"
+         width="1800" height="1200" loading="lazy">
   </div>
   <div class="visit-content">
     <div class="section-label fade-up">Your First Visit</div>
@@ -1468,8 +1516,8 @@ footer { padding-left: max(3rem, calc((100vw - 1180px) / 2)); padding-right: max
 <!-- TESTIMONIALS -->
 <section class="testimonials" id="testimonials">
   <div class="testimonials-header">
-    <div class="section-label center fade-up">Patient Outcomes</div>
-    <h2 class="section-heading fade-up delay-1">What Our Clients Say</h2>
+    <div class="section-label center fade-up">Patient Perspectives</div>
+    <h2 class="section-heading fade-up delay-1">In their own words</h2>
   </div>
   <div class="testimonials-grid">
     <div class="testimonial-card fade-up">
