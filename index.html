@@ -515,18 +515,18 @@ button { font: inherit; color: inherit; }
   min-height: 76px;
 }
 .account summary::-webkit-details-marker { display: none; }
-.account-initials {
+.account-mark {
   display: grid; place-items: center;
   width: 54px; height: 54px; border-radius: var(--r-sm);
-  background: var(--sage); color: var(--slate-deep);
-  font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; letter-spacing: 0.02em;
+  background: rgba(163, 184, 180, 0.13); color: var(--sage);
+  transition: background-color 0.3s var(--ease), color 0.3s var(--ease);
 }
-.account-who { min-width: 0; }
-.account-name {
-  display: block; font-family: var(--font-display); font-size: 1.42rem; line-height: 1.2;
+.account-mark .ico { width: 26px; height: 26px; }
+.account-condition {
+  display: block; min-width: 0;
+  font-family: var(--font-display); font-size: 1.46rem; line-height: 1.22;
   color: var(--off-white);
 }
-.account-meta { display: block; font-size: 0.92rem; color: var(--light-86); }
 .account-open {
   display: inline-flex; align-items: center; gap: 0.45rem;
   color: var(--sage); font-size: 0.82rem; font-weight: 600;
@@ -534,13 +534,21 @@ button { font: inherit; color: inherit; }
 }
 .account-open .ico { width: 14px; height: 14px; transition: transform 0.3s var(--ease); }
 .account[open] .account-open .ico { transform: rotate(180deg); }
-.account[open] .account-initials { background: var(--off-white); }
+.account:hover .account-mark { background: rgba(163, 184, 180, 0.22); }
+.account[open] .account-mark { background: var(--sage); color: var(--slate-deep); }
 .account-text { padding: 0.25rem 1.35rem 1.9rem 4.6rem; }
+.account-attrib {
+  display: flex; align-items: baseline; gap: 0.7rem;
+  margin-bottom: 1.15rem; padding-bottom: 0.95rem;
+  border-bottom: 1px solid var(--light-20);
+  color: var(--sage); font-size: 0.9rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.45;
+}
+.account-attrib::before {
+  content: ''; width: 26px; height: 2px; flex: none; background: currentColor; transform: translateY(-0.32em);
+}
 .account-text p { margin-bottom: 0.9rem; color: var(--light-86); font-size: 1.02rem; line-height: 1.65; }
 .account-text p:last-child { margin-bottom: 0; }
-.account-sign {
-  padding-top: 0.4rem; color: var(--sage); font-size: 0.95rem; font-style: italic;
-}
 .accounts-more { max-width: 1240px; margin: 1.5rem auto 0; text-align: center; }
 
 /* ── 15. CONTACT ─────────────────────────────────────────── */
@@ -719,7 +727,8 @@ a.contact-row strong { font-weight: 600; }
   .condition h3 { font-size: 1.32rem; }
 
   .account summary { grid-template-columns: 48px minmax(0, 1fr); padding: 0.95rem 1.05rem; }
-  .account-initials { width: 48px; height: 48px; font-size: 1.05rem; }
+  .account-mark { width: 48px; height: 48px; }
+  .account-mark .ico { width: 23px; height: 23px; }
   .account-open { grid-column: 2; }
   .account-text { padding: 0.25rem 1.05rem 1.6rem 1.05rem; }
 
@@ -764,6 +773,17 @@ a.contact-row strong { font-weight: 600; }
   </symbol>
   <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <path d="M4.6 12.6 9.4 17.4 19.6 6.6"/>
+  </symbol>
+  <symbol id="b-sprig" viewBox="0 0 24 24">
+    <path d="M12 23V2.5" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+    <g fill="currentColor">
+      <ellipse cx="7.5" cy="18.2" rx="4.3" ry="2.5" transform="rotate(-24 7.5 18.2)"/>
+      <ellipse cx="16.5" cy="15.4" rx="4.3" ry="2.5" transform="rotate(24 16.5 15.4)"/>
+      <ellipse cx="7.9" cy="12.1" rx="3.8" ry="2.25" transform="rotate(-24 7.9 12.1)"/>
+      <ellipse cx="16.1" cy="9.3" rx="3.8" ry="2.25" transform="rotate(24 16.1 9.3)"/>
+      <ellipse cx="8.7" cy="6.3" rx="3.1" ry="1.85" transform="rotate(-24 8.7 6.3)"/>
+      <ellipse cx="15.3" cy="4" rx="3.1" ry="1.85" transform="rotate(24 15.3 4)"/>
+    </g>
   </symbol>
   <symbol id="i-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <path d="m5.5 9 6.5 6.5L18.5 9"/>
@@ -1040,72 +1060,61 @@ a.contact-row strong { font-weight: 600; }
   <div class="accounts-list" id="accounts-list">
     <details class="account rise">
       <summary>
-        <span class="account-initials" aria-hidden="true">AV</span>
-        <span class="account-who">
-          <span class="account-name">Ane Venter</span>
-          <span class="account-meta">Komatipoort · Breast cancer</span>
-        </span>
+        <span class="account-mark" aria-hidden="true"><svg class="ico"><use href="#b-sprig"></use></svg></span>
+        <span class="account-condition">Breast cancer</span>
         <span class="account-open">Read <svg class="ico" aria-hidden="true"><use href="#i-chevron"></use></svg></span>
       </summary>
       <div class="account-text">
+        <p class="account-attrib">Ane Venter · Komatipoort</p>
         <p>Firstly I want to thank my Creator and secondly Dr. Lurie for the miracle in my healing.</p>
         <p>I had been suffering from cancer for 11 years and within two months on Dr. Lurie’s treatment, I was healed.</p>
         <p>It started with breast cancer and thereafter moved to my thigh. In a major operation, my leg was amputated and replaced with a steel pipe. Two years later the cancer spread to my lungs.</p>
         <p>The Oncologist in Nelspruit showed me scans and informed me that I would suffocate and die within two months. I was having chemotherapy that cost my medical aid R60 000 per month. I got very ill from the chemo and informed my family that I could no longer carry on with the treatment.</p>
         <p>I saw Dr. Lurie and started on his treatment. Within one week, I could already feel my energy levels rise and started with my neglected chores. Once again, I wish to thank Dr. Lurie for his kindness, which I experienced after many hours over the phone. Nothing was ever too much trouble.</p>
-        <p class="account-sign">Ane Venter, Komatipoort</p>
       </div>
     </details>
 
     <details class="account rise d1">
       <summary>
-        <span class="account-initials" aria-hidden="true">JM</span>
-        <span class="account-who">
-          <span class="account-name">Jeanne &amp; Jose Munro</span>
-          <span class="account-meta">Lymph gland cancer</span>
-        </span>
+        <span class="account-mark" aria-hidden="true"><svg class="ico"><use href="#b-sprig"></use></svg></span>
+        <span class="account-condition">Lymph gland cancer</span>
         <span class="account-open">Read <svg class="ico" aria-hidden="true"><use href="#i-chevron"></use></svg></span>
       </summary>
       <div class="account-text">
+        <p class="account-attrib">Jeanne and Jose Munro</p>
         <p>A sad story with a happy ending…</p>
         <p>My husband was diagnosed with cancer in the glands of his throat by a specialist. Scans and biopsies were done and it was suggested that an operation and chemotherapy for a couple of months was the only way out. As well understand, we were very sad about the outcome and decided to go to Durban and see an oncologist there for a second opinion.</p>
         <p>The same procedure was followed and the outcome of the tests was the same, except for the warning that an operation should be performed straight away as the lymph gland in the neck was so full of cancer cells that it may overflow and spread to the rest of the body. The operation was not performed as my husband was very apprehensive regarding this matter and was informed by the specialist that part of the face and neck might be slightly lame after the operation.</p>
         <p>Before we went to Durban, we met a lady at a health shop and she told us that we should contact Dr. Bernard Lurie as he had been very successful with the treating of several illnesses including cancer. My husband decided to go and see Dr. Lurie. This decision changed our lives. After 3 weeks of his herbal treatment and the right way of eating, my husband felt much better. After 3 months of treatment, Dr. Lurie insisted that my husband should go again for a scan and blood tests and he listened. No traces of cancer could be found.</p>
         <p>All I can say is “THANK YOU VERY MUCH DR. LURIE”</p>
-        <p class="account-sign">Jeanne and Jose Munro</p>
       </div>
     </details>
 
     <details class="account rise d2">
       <summary>
-        <span class="account-initials" aria-hidden="true">BC</span>
-        <span class="account-who">
-          <span class="account-name">Bernard Cox</span>
-          <span class="account-meta">Bladder cancer · Written October 2025</span>
-        </span>
+        <span class="account-mark" aria-hidden="true"><svg class="ico"><use href="#b-sprig"></use></svg></span>
+        <span class="account-condition">Bladder cancer</span>
         <span class="account-open">Read <svg class="ico" aria-hidden="true"><use href="#i-chevron"></use></svg></span>
       </summary>
       <div class="account-text">
+        <p class="account-attrib">Bernard Cox · 31 October 2025</p>
         <p>Hello Doctor Lurie,</p>
         <p>It’s been a long time… I just want to reiterate my thanks and gratitude to you for successfully treating me for Bladder cancer way back in September 2005. Friends and family thought that I was taking a chance by choosing God’s Pharmacy over modern Allopathic treatments, but over the years, I was the one who has the last laugh.</p>
         <p>Some friends were real sceptics, but after five years, some insisted that my cure was just a remission; but twenty years late, when I see them, I sometimes taunt them on how they were so very wrong.</p>
         <p>I also want to thank you for successfully treating my wife over the past six months for her lung Cancer. She is doing wonderfully.</p>
         <p>Here’s wishing you and yours well and further successes in treating others who had lost hope… into the future.</p>
         <p>May God bless you</p>
-        <p class="account-sign">Bernard Cox, 31 October 2025</p>
       </div>
     </details>
 
     <details class="account rise">
       <summary>
-        <span class="account-initials" aria-hidden="true">GM</span>
-        <span class="account-who">
-          <span class="account-name">Gloria Motsi</span>
-          <span class="account-meta">Pretoria · Writing about her mother</span>
-        </span>
+        <span class="account-mark" aria-hidden="true"><svg class="ico"><use href="#b-sprig"></use></svg></span>
+        <span class="account-condition">Acute myeloblastic leukaemia</span>
         <span class="account-open">Read <svg class="ico" aria-hidden="true"><use href="#i-chevron"></use></svg></span>
       </summary>
       <div class="account-text">
+        <p class="account-attrib">Gloria Motsi · Pretoria, writing about her mother</p>
         <p>My mom was diagnosed with Acute Myeloblastic Leukemia on the 20 August 2019. She collapsed at work and was admitted on the same day.</p>
         <p>The hospital started administering chemotherapy treatment to her on the 22 August 2019. We were told that she must have 6 rounds of Chemotherapy.</p>
         <p>A friend told me about Dr Bernie and I also visited his website. I saw testimonies of people who were healed of cancer but was not convinced. I even called one of his patient who has healed from cancer of the bladder. He showed me pictures of him when he was very sick and his recent pictures. However, I was still not convinced that someone might be healed of cancer. So the reason I contacted Dr Bernie is that after the first round of Chemotherapy, my mom’s blood count were decreasing fast and her Oncologist was worried about her condition.</p>
@@ -1113,54 +1122,45 @@ a.contact-row strong { font-weight: 600; }
         <p>On the 23 September 2019 we started with the intense treatment. My mom was strictly on the vegetable and fruits diet, no sugar and no carbohydrates. After 2 weeks my mom was no longer frail, she was showing improvement. My mom went to the hospital for the 2nd chemo, even though I tried to talk her out of it. She insisted to go back. She went on the 2nd chemotherapy treatment and this time it was bad. She developed a fungal infection. She started hallucinating. She was not responding to the hospital treatment, we almost lost her. The hospital was unable to treat the infection. They tried different antibiotics but all of them failed. I spoke to Dr Bernie who recommended that I carry on with the drops from the cancer kit. I started giving her the medication to fight the infection. I did this while she was in hospital and I could see some improvement. Her blood count started to increase and she was discharged from the hospital. We continued with Dr Bernie’s treatment at home.</p>
         <p>On the 12 December 2019 we went to the hospital for her checkup. They took some blood and we waited for the results. We went to see her Oncologist who told us that my mom is cancer free, she will not go through the remaining 4 chemotherapy and they will no longer put a port. In short that is how my mom was healed of Leukemia at the age of 63…… She is strong as a horse, her hair is back and her skin colour is back to normal and can’t wait to go back to work next month (April 2020).</p>
         <p>I want to thank God for using Dr Bernie to heal my mom. May God bless you with more wisdom to continue treating other sicknesses effectively.</p>
-        <p class="account-sign">Gloria Motsi, Pretoria</p>
       </div>
     </details>
 
     <details class="account rise" hidden data-extra>
       <summary>
-        <span class="account-initials" aria-hidden="true">RM</span>
-        <span class="account-who">
-          <span class="account-name">R. W. Mukheibir</span>
-          <span class="account-meta">Cancer of the pericardium</span>
-        </span>
+        <span class="account-mark" aria-hidden="true"><svg class="ico"><use href="#b-sprig"></use></svg></span>
+        <span class="account-condition">Cancer of the pericardium</span>
         <span class="account-open">Read <svg class="ico" aria-hidden="true"><use href="#i-chevron"></use></svg></span>
       </summary>
       <div class="account-text">
+        <p class="account-attrib">R. W. Mukheibir</p>
         <p>A year after I had a kidney removed I got cancer of the pericardium, and spend three weeks in hospital. My oncologist suggested enfuron injections.</p>
         <p>I decided to consult Dr. Lurie who put me on a strict diet and large doses of herbal medication as well as Glyco Nutrients.</p>
         <p>Ten years later I am leading a normal life.</p>
-        <p class="account-sign">R. W. Mukheibir</p>
       </div>
     </details>
 
     <details class="account rise" hidden data-extra>
       <summary>
-        <span class="account-initials" aria-hidden="true">HH</span>
-        <span class="account-who">
-          <span class="account-name">Heleen Human</span>
-          <span class="account-meta">Tadcaster · Writing about her daughter</span>
-        </span>
+        <span class="account-mark" aria-hidden="true"><svg class="ico"><use href="#b-sprig"></use></svg></span>
+        <span class="account-condition">Epilepsy</span>
         <span class="account-open">Read <svg class="ico" aria-hidden="true"><use href="#i-chevron"></use></svg></span>
       </summary>
       <div class="account-text">
+        <p class="account-attrib">Heleen Human · Tadcaster, writing about her daughter</p>
         <p>We were introduced to Dr. Bernie Lurie by friends. My daughter was suffering from a mysterious epilepsy-related condition which she attracted at the age of 30 years. Dr. Bernie considered her a case study and constantly discussed the matter with us and also suggested that we discontinue the expensive pills she was using. She stopped the medication, which was prescribed by a specialist who had done numerous E.E.G scans on her. It's been 2 years later and she has never had an epileptic attack since.</p>
         <p>We put his carrot juice theory to the test with very good results. We always had free access to him for advice and treatment. His knowledge and supplements for various diseases are astonishing.</p>
         <p>With excellent human relations, he possesses together with his intelligent summary of a particular problem, he can be a winning combination for the medical field.</p>
-        <p class="account-sign">Heleen Human, Tadcaster</p>
       </div>
     </details>
 
     <details class="account rise" hidden data-extra>
       <summary>
-        <span class="account-initials" aria-hidden="true">JN</span>
-        <span class="account-who">
-          <span class="account-name">Joe Van Niekerk</span>
-          <span class="account-meta">Randhart · Chronic fatigue syndrome</span>
-        </span>
+        <span class="account-mark" aria-hidden="true"><svg class="ico"><use href="#b-sprig"></use></svg></span>
+        <span class="account-condition">Chronic fatigue syndrome</span>
         <span class="account-open">Read <svg class="ico" aria-hidden="true"><use href="#i-chevron"></use></svg></span>
       </summary>
       <div class="account-text">
+        <p class="account-attrib">Joe Van Niekerk · Randhart</p>
         <p>I suffered from Chronic Fatigue Syndrome for a period of approx. 14 years, during which I consulted a number of conventional medical practitioners and specialists. Nine years down the line, the coxsackie virus was finally detected in my blood and my condition was diagnosed as M.E. syndrome.</p>
         <p>I was extremely relieved to learn what was wrong with me, but then the bad news followed: The conventional medical practitioners had no cure for this disease!!!</p>
         <p>I eliminated refined Carbohydrates, wheat, and foods/ drinks containing yeast from my diet but as years went by, I could sense a steady decline of my system.</p>
@@ -1168,58 +1168,49 @@ a.contact-row strong { font-weight: 600; }
         <p>Dr. Lurie informed me that I was severely ill and that drastic action was required. He gave me 14 different types of herbal medicines and instructed me to eat only vegetables for a period of 6 weeks. Dr. Lurie was always available on his cell. I even phoned him one morning at 03H00 when I difficulty urinating and suffered from a rapid drop in blood pressure.</p>
         <p>I lost 23kg in body mass during the six-week treatment cycle and recovered completely from the disease mentioned above. I have subsequently been consulting Dr. Lurie from time to time whenever I require his advice or my body needed some fine-tuning.</p>
         <p>I am extremely grateful for the herbal proficiency of Dr. Lurie.</p>
-        <p class="account-sign">Joe Van Niekerk, Randhart</p>
       </div>
     </details>
 
     <details class="account rise" hidden data-extra>
       <summary>
-        <span class="account-initials" aria-hidden="true">SC</span>
-        <span class="account-who">
-          <span class="account-name">Suzette Coetzer</span>
-          <span class="account-meta">White River · Asthma and allergies</span>
-        </span>
+        <span class="account-mark" aria-hidden="true"><svg class="ico"><use href="#b-sprig"></use></svg></span>
+        <span class="account-condition">Asthma and allergies</span>
         <span class="account-open">Read <svg class="ico" aria-hidden="true"><use href="#i-chevron"></use></svg></span>
       </summary>
       <div class="account-text">
+        <p class="account-attrib">Suzette Coetzer · White River</p>
         <p>I would hereby like to thank Dr. Lurie for the new lease of life that I have been granted since being under his treatment.</p>
         <p>I have been suffering from asthma and allergies for 34 years, and have been taking up to 6 anti-histamine tablets per day, as well as cortisone tablets, and above all this I used an asthma inhaler at least 20 times a day!!</p>
         <p>Since starting his treatment, I’m no longer on any medication as mentioned before and I feel like a person who has emerged from a cocoon. No asthma! No blocked nose, swollen eyes or constant dull headaches! With the suggested diet plan, and the Herbernie Tinctures, a new life has opened up for me.</p>
         <p>I lost 8kg in weight and is feeling so good. My husband, who had been away on a business trip for 14 days, could not believe that I was the same person, and friends kept on asking me if I had been away on holiday.</p>
         <p>I would like to extent my sincere gratitude to him and I am recommending his natural approach to healing.</p>
-        <p class="account-sign">Suzette Coetzer, White River</p>
       </div>
     </details>
 
     <details class="account rise" hidden data-extra>
       <summary>
-        <span class="account-initials" aria-hidden="true">LM</span>
-        <span class="account-who">
-          <span class="account-name">Llewellyn Muller</span>
-          <span class="account-meta">Testicular cancer</span>
-        </span>
+        <span class="account-mark" aria-hidden="true"><svg class="ico"><use href="#b-sprig"></use></svg></span>
+        <span class="account-condition">Testicular cancer</span>
         <span class="account-open">Read <svg class="ico" aria-hidden="true"><use href="#i-chevron"></use></svg></span>
       </summary>
       <div class="account-text">
+        <p class="account-attrib">Llewellyn Muller</p>
         <p>My walk with Dr Lurie and my healing from cancer. I was diagnosed with cancer during 2005. I had testicular cancer. I was operated on with the cancerous testicle being removed. I was told that I must also have radiation and chemo theraphy as the cancer had spread in my body. The only thing I knew about cancer patients was that most did not survive.</p>
         <p>I had signed a document to say I will go for radiation and chemo. After being discharged from hospital I prayed and asked the Lord to find me someone who could heal me. Prior to getting cancer I done competitive cycling in South Africa. One day I went to Walmer Park shopping center to a particular shop where I bought supplements to take orally to help me perform better in cycling. When I walked into the shop there stood a man in front of me who was talking to the owner of the shop. I was overwhelmed by the man standing in front of me. I had not yet even seen his face as his back was towards me. He turned around and departed from the shop and I asked the owner of the shop — who is that man?</p>
         <p>He asked me why do I want to know who this man was and where I have I been as he did not see me for sometime? I told him I was diagnosed with cancer. The owner of the shop told me that the gentleman was Dr Lurie and that he could help me with my cancer. He gave me Dr Lurie phone number and I contacted him. When I look back I realize that by Gods grace I was in that shop at the right time — a prayer that was answered. I went to meet Dr Lurie. He asked me about my lifestyle and eating habits. Me being thin, i thought I could eat and drink anything. Little did I know that what you eat and drink can have a such a big effect on your health and longevity.</p>
         <p>Well it was refreshing to hear a completely different approach as how to deal and be treated for cancer. I do not quite remember the exact duration or time I was on the supplements and medicine that Dr Lurie formulated and prescribed to me. I think that after 3-4 months I went to have test done at the hospital and they told me there is no trace of cancer. I was so happy to get this good news. Glory to our Lord for Dr Lurie to cross my path. It was not easy to adjust to what I was told to eat and drink never mind the taste of the medicines formulated by Dr Lurie and the supplements, I had to drink. In the meantime I was contacted by a law firm in Cape Town who acted on behalf of the hospital in Port Elizabeth to claim money from me as I had signed documents to say I would go for the follow up treatment with chemo therapy. I told the law firm that I did not go and intend not to go for chemo theraphy as I no longer had cancer. May the Lord bless the lady from the law firm who said she will fight them even if she must lose her job. She said how can they want to sue you when you had no chemo theraphy. I never heard from them again.</p>
         <p>Well that episode in my life was a good eye opener having made me aware as to the benefits of healthy eating and drinking - all the credit to Dr Lurie for helping me transform my life. My lifestyle has not changed since having cancer. I only eat and drink what can benefit my body - again thanks to Dr Lurie in educating me. Glory to our Lord and Saviour for you Dr Lurie for crossing my path and helping me heal my body.</p>
-        <p class="account-sign">Llewellyn Muller</p>
       </div>
     </details>
 
     <details class="account rise" hidden data-extra>
       <summary>
-        <span class="account-initials" aria-hidden="true">FD</span>
-        <span class="account-who">
-          <span class="account-name">Freek Duvenage</span>
-          <span class="account-meta">Lung cancer</span>
-        </span>
+        <span class="account-mark" aria-hidden="true"><svg class="ico"><use href="#b-sprig"></use></svg></span>
+        <span class="account-condition">Lung cancer</span>
         <span class="account-open">Read <svg class="ico" aria-hidden="true"><use href="#i-chevron"></use></svg></span>
       </summary>
       <div class="account-text">
+        <p class="account-attrib">Freek Duvenage</p>
         <p>My Journey of Healing and Hope</p>
         <p>Approximately two decades ago, while living in Nelspruit, Mpumalanga, I was hospitalized with a severe case of pneumonia. Despite intensive medical treatment, my condition did not improve. After undergoing a series of tests and CT scans, doctors identified a compromised gland and opted to remove it for further analysis. The results confirmed a diagnosis of cancer.</p>
         <p>Given my family’s history with the disease, I made the personal decision to decline further gland removal and refuse chemotherapy. Shortly thereafter, we relocated to a small farming town in the Eastern Cape. The cleaner air and natural surroundings offered a sense of renewal, and I began self-medicating with herbs such as Aloe Vera to support my health.</p>
@@ -1227,22 +1218,18 @@ a.contact-row strong { font-weight: 600; }
         <p>Dr. Lurie conducted a comprehensive body scan. He prescribed a strict regimen of specific vegetables, fruits, and herbal medication tailored to my condition. Given the severity of my illness and the extent to which the cancer had spread, recovery was gradual. After four months, I began regaining strength and weight, and a follow-up consultation confirmed significant progress.</p>
         <p>I continued with a second course of treatment and remained committed to the prescribed diet, more accurately, a healthier way of living. To this day, I remain under the care of Dr. Lurie, taking herbal medication daily and maintaining a balanced, nourishing lifestyle.</p>
         <p>This path of treatment has enabled me to live a normal, fulfilling life. I am deeply grateful for the healing I’ve experienced.</p>
-        <p class="account-sign">Freek Duvenage</p>
       </div>
     </details>
 
     <details class="account rise" hidden data-extra>
       <summary>
-        <span class="account-initials" aria-hidden="true">JR</span>
-        <span class="account-who">
-          <span class="account-name">Jackie Rautenbach</span>
-          <span class="account-meta">Jeffreys Bay · Persistent skin sore</span>
-        </span>
+        <span class="account-mark" aria-hidden="true"><svg class="ico"><use href="#b-sprig"></use></svg></span>
+        <span class="account-condition">A skin sore that would not heal</span>
         <span class="account-open">Read <svg class="ico" aria-hidden="true"><use href="#i-chevron"></use></svg></span>
       </summary>
       <div class="account-text">
+        <p class="account-attrib">Jackie Rautenbach · Jeffreys Bay</p>
         <p>What a wonderful ointment! My husband had a raw sore behind his ear for over 2 years that just wouldn't heal. Doctors wanted him to get a skin graft. We came to see Dr. Bernard Lurie, and started using the Comfrey and CancerBush ointment. 4 months later, it was HEALED. WONDERFUL OINTMENT! Thank you Dr. Lurie</p>
-        <p class="account-sign">Jackie Rautenbach, Jeffreys Bay</p>
       </div>
     </details>
   </div>
