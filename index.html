@@ -1103,6 +1103,7 @@ nav.scrolled { padding: 0 clamp(1.5rem, 4vw, 5rem); }
   padding: 8rem max(3rem, calc((100vw - 1180px) / 2));
   background: var(--warm-white);
 }
+.services[hidden] { display: none !important; }
 .services::before {
   content: '';
   position: absolute;
@@ -1147,6 +1148,55 @@ nav.scrolled { padding: 0 clamp(1.5rem, 4vw, 5rem); }
 .service-card:hover .service-text { color: var(--text-mid); }
 .service-card:hover .service-num { color: var(--teal-mid); }
 
+.conditions {
+  display: grid;
+  grid-template-columns: 0.82fr 1.18fr;
+  gap: clamp(4rem, 8vw, 9rem);
+  padding: 8rem max(3rem, calc((100vw - 1180px) / 2));
+  background: var(--teal-deep);
+  color: var(--warm-white);
+}
+.conditions-intro { align-self: start; }
+.conditions .section-label { color: var(--teal-light); }
+.conditions .section-label::before { background: var(--teal-light); }
+.conditions .section-heading { margin: 0.8rem 0 1.5rem; color: var(--warm-white); }
+.conditions .section-heading em { color: var(--teal-light); }
+.conditions-lead {
+  max-width: 480px;
+  color: rgba(251,250,248,0.72);
+  font-size: 1.08rem;
+  line-height: 1.75;
+}
+.conditions-note {
+  max-width: 480px;
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(251,250,248,0.16);
+  color: rgba(251,250,248,0.48);
+  font-family: var(--font-accent);
+  font-size: 0.58rem;
+  line-height: 1.7;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.conditions-list { border-top: 1px solid rgba(251,250,248,0.18); }
+.condition-item {
+  display: grid;
+  grid-template-columns: 42px minmax(170px, 0.72fr) 1fr;
+  gap: 1.5rem;
+  padding: 1.75rem 0;
+  border-bottom: 1px solid rgba(251,250,248,0.18);
+}
+.condition-num {
+  color: var(--teal-light);
+  font-family: var(--font-accent);
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  padding-top: 0.35rem;
+}
+.condition-item h3 { color: var(--warm-white); font-size: 1.45rem; font-weight: 400; line-height: 1.1; }
+.condition-item p { color: rgba(251,250,248,0.65); font-size: 0.94rem; line-height: 1.62; }
+
 .about { grid-template-columns: 46% 54%; min-height: 760px; }
 .about-photo img { object-position: center 18%; }
 .about-photo::after { background: linear-gradient(to right, rgba(47,79,93,0.08), transparent); }
@@ -1158,13 +1208,25 @@ nav.scrolled { padding: 0 clamp(1.5rem, 4vw, 5rem); }
   padding: 8rem max(3rem, calc((100vw - 1180px) / 2));
   background: var(--off-white);
 }
-.treatments-header { max-width: 700px; margin: 0 0 3.8rem; text-align: left; }
+.treatments-header {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 6rem;
+  align-items: end;
+  max-width: none;
+  margin: 0 0 3.8rem;
+  text-align: left;
+}
 .treatments-header .section-label.center { justify-content: flex-start; }
 .treatments-header .section-label.center::after { display: none; }
+.treatments-intro { max-width: 580px; color: var(--text-mid); font-size: 1.08rem; line-height: 1.72; }
 .treatments-grid { gap: 1rem; }
 .treatment-card { aspect-ratio: 4 / 5; }
 .treatment-card:nth-child(2) img { object-position: 52% center; }
 .treatment-card:nth-child(3) img { object-position: 48% center; }
+.treatment-card:nth-child(4) img { object-position: center; }
+.treatment-card:nth-child(5) img { object-position: center; }
+.treatment-card:nth-child(6) img { object-position: center; }
 .treatment-overlay { padding: 2.2rem; }
 .treatment-desc { opacity: 1; transform: none; color: rgba(251,250,248,0.72); }
 .treatments-more { text-align: left; }
@@ -1189,26 +1251,51 @@ nav.scrolled { padding: 0 clamp(1.5rem, 4vw, 5rem); }
 .testimonials-header .section-label.center { justify-content: flex-start; }
 .testimonials-header .section-label.center::after { display: none; }
 .testimonials-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0;
   border-top: 1px solid rgba(47,79,93,0.22);
   border-bottom: 1px solid rgba(47,79,93,0.22);
 }
 .testimonial-card {
-  min-height: 330px;
-  padding: 3rem 2.5rem;
+  min-height: 520px;
+  padding: 0 2.5rem 2.8rem;
   background: transparent;
   border: 0;
+  overflow: hidden;
 }
-.testimonial-card + .testimonial-card { border-left: 1px solid rgba(47,79,93,0.22); }
+.testimonial-card:nth-child(even) { border-left: 1px solid rgba(47,79,93,0.22); }
+.testimonial-card:nth-child(n+3) { border-top: 1px solid rgba(47,79,93,0.22); }
 .testimonial-card::before {
-  top: 2rem;
+  top: 12.5rem;
   left: 2rem;
   color: rgba(47,79,93,0.12);
 }
 .t-stars { display: none; }
+.t-media {
+  position: relative;
+  height: 190px;
+  margin: 0 -2.5rem 2.1rem;
+  overflow: hidden;
+  background: var(--teal-dark);
+}
+.t-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.testimonial-card:hover .t-media img { transform: scale(1.025); }
+.t-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(25,54,62,0.55), transparent 58%);
+}
+.t-media--portrait img { object-position: center 34%; }
+.t-media--scenic img { object-position: center; }
 .t-text {
   position: relative;
-  margin: 1.5rem 0 2rem;
+  margin: 0 0 2rem;
   color: var(--text-dark);
   font-size: 1.16rem;
   line-height: 1.72;
@@ -1216,6 +1303,66 @@ nav.scrolled { padding: 0 clamp(1.5rem, 4vw, 5rem); }
 .t-avatar { display: none; }
 .t-author { padding-top: 1.2rem; border-top: 1px solid rgba(47,79,93,0.14); }
 .t-location { color: var(--teal-dark); }
+
+.case-studies {
+  padding: 8rem max(3rem, calc((100vw - 1180px) / 2));
+  background: var(--warm-white);
+}
+.case-studies-header {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 6rem;
+  align-items: end;
+  margin-bottom: 4rem;
+}
+.case-studies-header .section-heading { margin-top: 0.8rem; }
+.case-studies-intro { color: var(--text-mid); font-size: 1.06rem; line-height: 1.72; }
+.case-studies-note {
+  margin-top: 1.2rem;
+  color: var(--teal-dark);
+  font-family: var(--font-accent);
+  font-size: 0.58rem;
+  line-height: 1.65;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+.case-studies-list { border-top: 1px solid rgba(47,79,93,0.24); }
+.case-study { border-bottom: 1px solid rgba(47,79,93,0.24); }
+.case-study summary {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1.5rem 0;
+  cursor: pointer;
+  list-style: none;
+}
+.case-study summary::-webkit-details-marker { display: none; }
+.case-study-icon {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border: 1px solid rgba(200,169,110,0.72);
+  border-radius: 50%;
+  color: var(--gold);
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+.case-study-icon svg { width: 18px; height: 18px; fill: currentColor; }
+.case-study summary:hover .case-study-icon,
+.case-study[open] .case-study-icon {
+  color: var(--warm-white);
+  background: var(--gold);
+  transform: translateX(3px);
+}
+.case-study-title { color: var(--forest); font-size: 1.65rem; font-weight: 400; }
+.case-study-action { color: var(--teal-dark); font-family: var(--font-accent); font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; }
+.case-study-action::after { content: ' +'; }
+.case-study[open] .case-study-action::after { content: ' −'; }
+.case-study-body { max-width: 820px; padding: 0 0 3.2rem 80px; color: var(--text-mid); }
+.case-study-body p { font-size: 1.02rem; line-height: 1.75; }
+.case-study-body p + p { margin-top: 1rem; }
+.case-study-author { color: var(--forest); font-style: italic; }
 .visit { display: grid; grid-template-columns: 48% 52%; min-height: 720px; background: var(--warm-white); }
 .visit-photo { min-height: 720px; }
 .visit-photo img { height: 100%; object-fit: cover; object-position: center; }
@@ -1247,12 +1394,18 @@ footer { padding-left: max(3rem, calc((100vw - 1180px) / 2)); padding-right: max
   .practice-note-item { padding: 1.3rem 1.2rem; }
   .services, .treatments { padding: 6rem 2.5rem; }
   .services-top { grid-template-columns: 1fr; gap: 1.5rem; }
+  .treatments-header { grid-template-columns: 1fr; gap: 1.5rem; }
+  .conditions { grid-template-columns: 1fr; gap: 3.5rem; padding: 6rem 2.5rem; }
+  .condition-item { grid-template-columns: 42px minmax(160px, 0.7fr) 1fr; }
   .about { grid-template-columns: 1fr; }
   .about-photo { height: 580px; }
   .testimonials { padding: 6rem 2.5rem; }
   .testimonials-grid { grid-template-columns: 1fr; }
   .testimonial-card { min-height: 0; }
-  .testimonial-card + .testimonial-card { border-left: 0; border-top: 1px solid rgba(47,79,93,0.22); }
+  .testimonial-card:nth-child(even) { border-left: 0; }
+  .testimonial-card + .testimonial-card { border-top: 1px solid rgba(47,79,93,0.22); }
+  .case-studies { padding: 6rem 2.5rem; }
+  .case-studies-header { grid-template-columns: 1fr; gap: 1.5rem; }
   .visit { grid-template-columns: 1fr; }
   .visit-photo { min-height: 540px; height: 540px; }
   .visit-content { padding: 5rem 2.5rem; }
@@ -1275,10 +1428,19 @@ footer { padding-left: max(3rem, calc((100vw - 1180px) / 2)); padding-right: max
   .service-card:nth-child(2), .service-card:nth-child(3) { background: var(--off-white); }
   .service-card:nth-child(even) { background: #e5ebe8; }
   .about-photo { height: 460px; }
+  .conditions { padding: 4.5rem 1.25rem; gap: 2.8rem; }
+  .condition-item { grid-template-columns: 34px 1fr; gap: 0.5rem 1rem; padding: 1.5rem 0; }
+  .condition-item p { grid-column: 2; }
   .about-content { padding: 4.5rem 1.25rem; }
   .testimonials { padding: 4.5rem 1.25rem; }
-  .testimonial-card { padding: 2.5rem 1.25rem; }
+  .testimonial-card { padding: 0 1.25rem 2.5rem; }
+  .t-media { margin: 0 -1.25rem 1.8rem; }
   .testimonial-card::before { left: 0.8rem; }
+  .case-studies { padding: 4.5rem 1.25rem; }
+  .case-study summary { grid-template-columns: 52px 1fr; gap: 0.5rem 1rem; }
+  .case-study-action { grid-column: 2; }
+  .case-study-icon { width: 44px; height: 44px; }
+  .case-study-body { padding-left: 68px; }
   .treatment-card { aspect-ratio: 4 / 5; }
   .dispensary { height: 500px; }
   .dispensary-content { padding: 0 1.25rem; }
@@ -1306,6 +1468,7 @@ footer { padding-left: max(3rem, calc((100vw - 1180px) / 2)); padding-right: max
   <ul class="nav-links" id="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="#about">About</a></li>
+    <li><a href="#conditions">Conditions</a></li>
     <li><a href="#treatments">Treatments</a></li>
     <li><a href="#process">Your Visit</a></li>
     <li><a href="#contact" class="nav-cta">Book Consultation</a></li>
@@ -1324,7 +1487,7 @@ footer { padding-left: max(3rem, calc((100vw - 1180px) / 2)); padding-right: max
       Supported.
     </h1>
     <p class="hero-body">
-      Dr. Bernard Lurie brings decades of clinical naturopathic practice — combining herbal medicine, iridology, and whole-person healing into care built around you.
+      Naturopathic care for complex and long-standing health concerns — available in South Africa and remotely.
     </p>
     <div class="hero-actions">
       <a href="#contact" class="btn-primary">Book a Consultation</a>
@@ -1344,12 +1507,12 @@ footer { padding-left: max(3rem, calc((100vw - 1180px) / 2)); padding-right: max
 <section class="practice-note" aria-label="Practice highlights">
   <div class="practice-note-inner">
     <div class="practice-note-item">
-      <strong>Personal consultations</strong>
-      <span>Time to understand the whole picture</span>
+      <strong>Nearly four decades</strong>
+      <span>Clinical naturopathic experience</span>
     </div>
     <div class="practice-note-item">
-      <strong>Botanical formulations</strong>
-      <span>Prepared around individual needs</span>
+      <strong>Comprehensive first visits</strong>
+      <span>Plan for a 60–90 minute appointment</span>
     </div>
     <div class="practice-note-item">
       <strong>In-person &amp; remote</strong>
@@ -1359,16 +1522,16 @@ footer { padding-left: max(3rem, calc((100vw - 1180px) / 2)); padding-right: max
 </section>
 
 <!-- SERVICES -->
-<section class="services">
+<section class="services" hidden aria-hidden="true">
   <div class="services-top">
     <div>
       <div class="section-label fade-up">Areas of Expertise</div>
       <h2 class="section-heading fade-up delay-1">
-        Holistic treatments<br><em>for lasting wellness</em>
+        Four disciplines.<br><em>One considered plan.</em>
       </h2>
     </div>
     <p class="services-intro fade-up delay-2">
-      Every consultation begins with understanding the whole person — your history, your environment, your body's signals. From there, a plan is built around natural therapies that work together.
+      The practice combines botanical medicine, iris assessment, EIS scanning and clinical nutrition. Each contributes a different perspective and is considered in context.
     </p>
   </div>
   <div class="services-grid">
@@ -1393,9 +1556,51 @@ footer { padding-left: max(3rem, calc((100vw - 1180px) / 2)); padding-right: max
     <div class="service-card fade-up delay-3">
       <div class="service-num">04</div>
       <span class="service-icon"><svg class="icon" viewBox="0 0 512 512" aria-hidden="true"><path d="M228.3 469.1L47.6 300.4c-4.2-3.9-8.2-8.1-11.9-12.4h87c22.6 0 43-13.6 51.7-34.5l10.5-25.2 49.3 109.5c3.8 8.5 12.1 14 21.4 14.1s17.8-5 22-13.3L320 253.7l1.7 3.4c9.5 19 28.9 31 50.1 31H476.3c-3.7 4.3-7.7 8.5-11.9 12.4L283.7 469.1c-7.5 7-17.4 10.9-27.7 10.9s-20.2-3.9-27.7-10.9zM503.7 240h-132c-3 0-5.8-1.7-7.2-4.4l-23.2-46.3c-4.1-8.1-12.4-13.3-21.5-13.3s-17.4 5.1-21.5 13.3l-41.4 82.8L205.9 158.2c-3.9-8.7-12.7-14.3-22.2-14.1s-18.1 5.9-21.8 14.8l-31.8 76.3c-1.2 3-4.2 4.9-7.4 4.9H16c-2.6 0-5 .4-7.3 1.1C3 225.2 0 208.2 0 190.9v-5.8c0-69.9 50.5-129.5 119.4-141C165 36.5 211.4 51.4 244 84l12 12 12-12c32.6-32.6 79-47.5 124.6-39.9C461.5 55.6 512 115.2 512 185.1v5.8c0 16.9-2.8 33.5-8.3 49.1z"/></svg></span>
-      <h3 class="service-title">Chronic Disease</h3>
-      <p class="service-text">Long-term support for cancer, diabetes, autoimmune conditions, and cardiovascular health using integrative protocols.</p>
+      <h3 class="service-title">Clinical Nutrition</h3>
+      <p class="service-text">Food, supplement and lifestyle guidance shaped around your constitution, health history and practical needs.</p>
     </div>
+  </div>
+</section>
+
+<!-- CONDITIONS & CONCERNS -->
+<section class="conditions" id="conditions">
+  <div class="conditions-intro fade-up">
+    <div class="section-label">Conditions &amp; Concerns</div>
+    <h2 class="section-heading">Support for complex,<br><em>long-standing concerns.</em></h2>
+    <p class="conditions-lead">Bernie works with people seeking naturopathic support across the following areas, including alongside care from their existing medical practitioners.</p>
+    <p class="conditions-note">Naturopathic care is supportive and does not replace necessary medical, oncology or emergency treatment. Coordination with your treating practitioners is encouraged.</p>
+  </div>
+  <div class="conditions-list">
+    <article class="condition-item fade-up">
+      <span class="condition-num">01</span>
+      <h3>Cancer Support</h3>
+      <p>Individualised support around nourishment, resilience, treatment tolerance and recovery, designed to work alongside the guidance of your oncology team.</p>
+    </article>
+    <article class="condition-item fade-up delay-1">
+      <span class="condition-num">02</span>
+      <h3>Chronic Conditions</h3>
+      <p>Whole-person support for persistent fatigue, inflammatory and autoimmune concerns, arthritis and other complex long-term health patterns.</p>
+    </article>
+    <article class="condition-item fade-up delay-2">
+      <span class="condition-num">03</span>
+      <h3>Hormonal Health</h3>
+      <p>Natural support for thyroid, adrenal, menstrual, menopausal and reproductive health concerns for women and men.</p>
+    </article>
+    <article class="condition-item fade-up">
+      <span class="condition-num">04</span>
+      <h3>Digestive Health</h3>
+      <p>Support for IBS, candidiasis, bloating, irregular digestion and the wider relationship between gut health, energy and immunity.</p>
+    </article>
+    <article class="condition-item fade-up delay-1">
+      <span class="condition-num">05</span>
+      <h3>Detoxification</h3>
+      <p>Carefully considered nutritional and lifestyle support for reducing avoidable exposures and strengthening the body's normal elimination pathways.</p>
+    </article>
+    <article class="condition-item fade-up delay-2">
+      <span class="condition-num">06</span>
+      <h3>Health Optimisation</h3>
+      <p>Preventive care, constitution assessment and practical strategies for people who want to protect their health before illness takes hold.</p>
+    </article>
   </div>
 </section>
 
@@ -1420,47 +1625,74 @@ footer { padding-left: max(3rem, calc((100vw - 1180px) / 2)); padding-right: max
       <span class="about-cred">Author — 23-chapter book on natural healing</span>
       <span class="about-cred">Consultations in South Africa and remotely</span>
     </div>
-    <p class="about-quote fade-up delay-3">
-      A whole-person approach that puts understanding, education, and prevention at the centre of care.
-    </p>
-    <a href="#contact" class="btn-light fade-up delay-4">Book with Dr. Bernie →</a>
+    <a href="#contact" class="btn-light fade-up delay-3">Book with Dr. Bernie →</a>
   </div>
 </section>
 
 <!-- TREATMENTS PREVIEW -->
 <section class="treatments" id="treatments">
   <div class="treatments-header">
-    <div class="section-label center fade-up">Natural Therapies</div>
-    <h2 class="section-heading fade-up delay-1">
-      Healing the root.<br><em>Restoring the whole.</em>
-    </h2>
+    <div>
+      <div class="section-label center fade-up">Assessment &amp; Treatment</div>
+      <h2 class="section-heading fade-up delay-1">
+        One plan.<br><em>The right tools for it.</em>
+      </h2>
+    </div>
+    <p class="treatments-intro fade-up delay-2">A consultation may draw on herbal medicine, iridology and clinical nutrition. The assessment and additional in-practice therapies available are shown below.</p>
   </div>
   <div class="treatments-grid">
     <div class="treatment-card fade-up">
-      <img src="hormonal/assets/images/practice-tinctures.webp"
-           alt="Herbal Dispensary" width="400" height="530" loading="lazy">
-      <div class="treatment-overlay">
-        <span class="treatment-tag">In-Practice</span>
-        <h3 class="treatment-name">Herbal Dispensary</h3>
-        <p class="treatment-desc">Hundreds of high-potency tinctures, formulated and dispensed in-house for each patient's specific needs.</p>
-      </div>
-    </div>
-    <div class="treatment-card fade-up delay-1">
-      <img src="hormonal/assets/images/legacy-placeholders/legacy-home-portrait.jpg"
-           alt="A bottle of Herbernie echinacea tincture among succulents" width="1200" height="960" loading="lazy">
-      <div class="treatment-overlay">
-        <span class="treatment-tag">Herbernie Range</span>
-        <h3 class="treatment-name">Herbal Products</h3>
-        <p class="treatment-desc">A curated range of Herbernie Int'l tinctures available for ongoing use between consultations.</p>
-      </div>
-    </div>
-    <div class="treatment-card fade-up delay-2">
       <img src="hormonal/assets/images/legacy-placeholders/legacy-eis-scan.jpg"
            alt="An EIS assessment during a naturopathic consultation" width="1050" height="699" loading="lazy">
       <div class="treatment-overlay">
-        <span class="treatment-tag">Starting Point</span>
-        <h3 class="treatment-name">Initial Consultation</h3>
-        <p class="treatment-desc">A thorough assessment using EIS scanning, iridology, and case history before any protocol is prescribed.</p>
+        <span class="treatment-tag">Assessment</span>
+        <h3 class="treatment-name">EIS Scan &amp; Consultation</h3>
+        <p class="treatment-desc">A non-invasive scan reviewed alongside your medical history and other assessment findings.</p>
+      </div>
+    </div>
+    <div class="treatment-card fade-up delay-1">
+      <img src="hormonal/assets/images/legacy-placeholders/legacy-rife-treatment.jpg"
+           alt="Hand holding the contact cylinders used during a Rife session" width="1100" height="734" loading="lazy">
+      <div class="treatment-overlay">
+        <span class="treatment-tag">Adjunctive Therapy</span>
+        <h3 class="treatment-name">Rife Sessions</h3>
+        <p class="treatment-desc">A device-based session offered where Bernie considers it appropriate.</p>
+      </div>
+    </div>
+    <div class="treatment-card fade-up delay-2">
+      <img src="hormonal/assets/images/legacy-placeholders/legacy-foot-detox.jpg"
+           alt="A mineralising foot treatment session" width="1600" height="1067" loading="lazy">
+      <div class="treatment-overlay">
+        <span class="treatment-tag">Restorative Care</span>
+        <h3 class="treatment-name">Mineralising Foot Detox</h3>
+        <p class="treatment-desc">A mineral foot-bath offered within a wider wellness plan.</p>
+      </div>
+    </div>
+    <div class="treatment-card fade-up">
+      <img src="hormonal/assets/images/legacy-placeholders/legacy-treatment-room.jpg"
+           alt="The heated stone surface of a spinal alignment bed" width="1623" height="1080" loading="lazy">
+      <div class="treatment-overlay">
+        <span class="treatment-tag">Mobility &amp; Comfort</span>
+        <h3 class="treatment-name">Spinal Alignment Bed</h3>
+        <p class="treatment-desc">A guided session using the practice's alignment bed to encourage relaxation, comfort and mobility.</p>
+      </div>
+    </div>
+    <div class="treatment-card fade-up delay-1">
+      <img src="hormonal/assets/images/legacy-placeholders/legacy-g5-massage.jpg"
+           alt="A G5 mechanical massage treatment" width="430" height="430" loading="lazy">
+      <div class="treatment-overlay">
+        <span class="treatment-tag">Bodywork</span>
+        <h3 class="treatment-name">G5 Massage</h3>
+        <p class="treatment-desc">Mechanical massage for muscle relaxation, circulation and lymphatic movement.</p>
+      </div>
+    </div>
+    <div class="treatment-card fade-up delay-2">
+      <img src="hormonal/assets/images/legacy-placeholders/legacy-neural-therapy.jpg"
+           alt="A practitioner administering a neural therapy injection" width="1600" height="900" loading="lazy">
+      <div class="treatment-overlay">
+        <span class="treatment-tag">Targeted Treatment</span>
+        <h3 class="treatment-name">Neural Therapy</h3>
+        <p class="treatment-desc">An injection-based therapy considered after consultation, with suitability and risks explained beforehand.</p>
       </div>
     </div>
   </div>
@@ -1478,9 +1710,9 @@ footer { padding-left: max(3rem, calc((100vw - 1180px) / 2)); padding-right: max
   <div class="dispensary-overlay"></div>
   <div class="dispensary-content fade-up">
     <div class="section-label">Herbernie Int'l Range</div>
-    <h2 class="section-heading">Your health,<br><em>naturally maintained</em></h2>
+    <h2 class="section-heading">Formulated in practice.<br><em>Made for daily use.</em></h2>
     <p class="dispensary-text">
-      The Herbernie Int'l product line brings Dr. Lurie's decades of formulation knowledge into a range of high-potency herbal tinctures — available for ongoing support between consultations.
+      Herbernie tinctures draw on Dr. Lurie's formulation experience and are available for ongoing use between appointments.
     </p>
     <a href="#contact" class="btn-gold">Ask About the Range</a>
   </div>
@@ -1495,7 +1727,7 @@ footer { padding-left: max(3rem, calc((100vw - 1180px) / 2)); padding-right: max
   <div class="visit-content">
     <div class="section-label fade-up">Your First Visit</div>
     <h2 class="section-heading fade-up delay-1">A careful conversation.<br><em>A clearer way forward.</em></h2>
-    <p class="visit-intro fade-up delay-2">The first consultation is designed to give your story enough room. Bernie brings your history, symptoms, daily habits and assessment findings together before recommending a practical way forward.</p>
+    <p class="visit-intro fade-up delay-2">Your first appointment gives Bernie time to understand your history, symptoms and daily habits before recommending practical next steps.</p>
     <div class="visit-steps fade-up delay-3">
       <div class="visit-step">
         <span>01</span>
@@ -1516,58 +1748,144 @@ footer { padding-left: max(3rem, calc((100vw - 1180px) / 2)); padding-right: max
 <!-- TESTIMONIALS -->
 <section class="testimonials" id="testimonials">
   <div class="testimonials-header">
-    <div class="section-label center fade-up">Patient Perspectives</div>
-    <h2 class="section-heading fade-up delay-1">In their own words</h2>
+    <div class="section-label center fade-up">From the Previous Herbernie Website</div>
+    <h2 class="section-heading fade-up delay-1">Client testimonials</h2>
   </div>
   <div class="testimonials-grid">
     <div class="testimonial-card fade-up">
+      <div class="t-media t-media--portrait">
+        <img src="https://static.wixstatic.com/media/b6da28_597971c0365641618c18bb96838b5207~mv2.jpg/v1/fill/w_720,h_420,al_c,q_85,enc_avif,quality_auto/stephen%20rautenbach.jpg"
+             alt="Stephen Rautenbach, shown with Jackie Rautenbach's testimonial on the previous Herbernie website"
+             width="720" height="420" loading="lazy">
+      </div>
       <div class="t-stars">
         <svg class="icon" viewBox="0 0 576 512" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg><svg class="icon" viewBox="0 0 576 512" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg>
         <svg class="icon" viewBox="0 0 576 512" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg><svg class="icon" viewBox="0 0 576 512" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg>
         <svg class="icon" viewBox="0 0 576 512" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg>
       </div>
-      <p class="t-text">"After years of conventional medicine failing to address my chronic fatigue, Dr. Lurie identified the root cause within two consultations. Six months later, I feel like myself again."</p>
+      <p class="t-text">What a wonderful ointment! My husband had a raw sore behind his ear for over 2 years that just wouldn't heal. Doctors wanted him to get a skin graft. We came to see Dr. Bernard Lurie, and started using the Comfrey and CancerBush ointment. 4 months later, it was HEALED. WONDERFUL OINTMENT! Thank you Dr. Lurie</p>
       <div class="t-author">
-        <img src="hormonal/assets/images/bernie-profile-0375.webp"
-             alt="Patient" class="t-avatar" width="42" height="42" loading="lazy">
         <div>
-          <span class="t-name">Sarah M.</span>
-          <span class="t-location">Cape Town</span>
+          <span class="t-name">Jackie Rautenbach</span>
+          <span class="t-location">Jefreys Bay</span>
         </div>
       </div>
     </div>
     <div class="testimonial-card fade-up delay-1">
+      <div class="t-media t-media--portrait">
+        <img src="https://static.wixstatic.com/media/b6da28_5722fe6017d84ae38fe596457fbbdf0e~mv2.jpg/v1/fill/w_720,h_420,al_c,q_85,enc_avif,quality_auto/marlien%20crewe-brown_edited.jpg"
+             alt="Marlien Crewe-Brown, shown with Elmarie Crewe-Brown's testimonial on the previous Herbernie website"
+             width="720" height="420" loading="lazy">
+      </div>
       <div class="t-stars">
         <svg class="icon" viewBox="0 0 576 512" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg><svg class="icon" viewBox="0 0 576 512" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg>
         <svg class="icon" viewBox="0 0 576 512" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg><svg class="icon" viewBox="0 0 576 512" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg>
         <svg class="icon" viewBox="0 0 576 512" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg>
       </div>
-      <p class="t-text">"The EIS scan gave me more insight into my health than any blood test I'd had. Dr. Lurie explains everything clearly and takes the time to actually listen."</p>
+      <p class="t-text">Morning Jo-anne. I just wanted to share with you that Marlien is doing so well. She had a big gala this weekend and is now Conference Champion in 200 Breast. She has lost weight and is thriving. It is just her skin that remains a challenge but that is due to the chlorine. This too shall pass when swimming is behind her. Thank you for all you do for her. We truly appreciate you and Dr Lurie.</p>
       <div class="t-author">
-        <img src="hormonal/assets/images/bernie-profile-0396.webp"
-             alt="Patient" class="t-avatar" width="42" height="42" loading="lazy">
         <div>
-          <span class="t-name">Joanne K.</span>
-          <span class="t-location">Stellenbosch</span>
+          <span class="t-name">Elmarie Crewe-Brown</span>
         </div>
       </div>
     </div>
     <div class="testimonial-card fade-up delay-2">
+      <div class="t-media t-media--scenic">
+        <img src="https://static.wixstatic.com/media/b6da28_93e7701f2b564fb29bb1793a08aa1877~mv2.jpg/v1/fill/w_720,h_420,al_c,q_85,enc_avif,quality_auto/b6da28_93e7701f2b564fb29bb1793a08aa1877~mv2.jpg"
+             alt="Scenic image used behind Patti McCarogher's testimonial on the previous Herbernie website"
+             width="720" height="420" loading="lazy">
+      </div>
+      <div class="t-stars">
+        <svg class="icon" viewBox="0 0 576 512" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg>
+      </div>
+      <p class="t-text">"Hi Jo, just wanted to let you know... I have had huge body changes over the weekend. All my pain in my back and colon are gone. I am feel great. Loving the juices! Thank you, Thank you, Thank you!</p>
+      <div class="t-author">
+        <div>
+          <span class="t-name">Patti McCarogher</span>
+          <span class="t-location">Jeffreys Bay</span>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card fade-up">
+      <div class="t-media t-media--scenic">
+        <img src="https://static.wixstatic.com/media/b6da28_f1200e742ac642efbf873f4ecc1393c9~mv2.jpg/v1/fill/w_720,h_420,al_c,q_85,enc_avif,quality_auto/b6da28_f1200e742ac642efbf873f4ecc1393c9~mv2.jpg"
+             alt="Scenic image used behind Ileen Pearce's testimonial on the previous Herbernie website"
+             width="720" height="420" loading="lazy">
+      </div>
       <div class="t-stars">
         <svg class="icon" viewBox="0 0 576 512" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg><svg class="icon" viewBox="0 0 576 512" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg>
         <svg class="icon" viewBox="0 0 576 512" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg><svg class="icon" viewBox="0 0 576 512" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg>
         <svg class="icon" viewBox="0 0 576 512" aria-hidden="true"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg>
       </div>
-      <p class="t-text">"I was diagnosed with stage 2 cancer and chose to complement my treatment with Dr. Lurie's protocols. His support throughout that journey was invaluable."</p>
+      <p class="t-text">"Dr. Lurie, I am incredibly grateful for the care and support I received from the moment I walked into your office. Your approach was thoughtful, personalized and focused on getting to the root of the problem. I can honestly say that you helpped me get my health back, and I can't recommend you highly enough! Thank you!"</p>
       <div class="t-author">
-        <img src="hormonal/assets/images/bernie-profile-0362.webp"
-             alt="Patient" class="t-avatar" width="42" height="42" loading="lazy">
         <div>
-          <span class="t-name">Margaret T.</span>
-          <span class="t-location">Somerset West</span>
+          <span class="t-name">Ileen Pearce</span>
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- VERIFIED CASE STUDIES FROM PREVIOUS SITE -->
+<section class="case-studies" id="case-studies">
+  <div class="case-studies-header">
+    <div>
+      <div class="section-label fade-up">Patient Accounts</div>
+      <h2 class="section-heading fade-up delay-1">Success stories,<br><em>preserved as written.</em></h2>
+    </div>
+    <div class="fade-up delay-2">
+      <p class="case-studies-intro">These accounts are reproduced from the previous Herbernie website without rewriting their claims or personal language.</p>
+      <p class="case-studies-note">Personal experiences vary. Testimonials are not medical evidence or a guarantee of outcome, and naturopathic care does not replace necessary medical or oncology treatment.</p>
+    </div>
+  </div>
+  <div class="case-studies-list">
+    <details class="case-study fade-up">
+      <summary>
+        <span class="case-study-icon" aria-hidden="true"><svg viewBox="0 0 60 60"><path d="M46.5 28.9 20.6 3c-.6-.6-1.6-.6-2.2 0l-4.8 4.8c-.6.6-.6 1.6 0 2.2l19.8 20-19.9 19.9c-.6.6-.6 1.6 0 2.2l4.8 4.8c.6.6 1.6.6 2.2 0l25.8-25.8c.8-.6.8-1.6.2-2.2z"/></svg></span>
+        <span class="case-study-title">Breast Cancer</span>
+        <span class="case-study-action">Read full story</span>
+      </summary>
+      <div class="case-study-body">
+        <p>Firstly I want to thank my Creator and secondly Dr. Lurie for the miracle in my healing.</p>
+        <p>I had been suffering from cancer for 11 years and within two months on Dr. Lurie’s treatment, I was healed.</p>
+        <p>It started with breast cancer and thereafter moved to my thigh. In a major operation, my leg was amputated and replaced with a steel pipe. Two years later the cancer spread to my lungs.</p>
+        <p>The Oncologist in Nelspruit showed me scans and informed me that I would suffocate and die within two months. I was having chemotherapy that cost my medical aid R60 000 per month. I got very ill from the chemo and informed my family that I could no longer carry on with the treatment.</p>
+        <p>I saw Dr. Lurie and started on his treatment. Within one week, I could already feel my energy levels rise and started with my neglected chores.<br>Once again, I wish to thank Dr. Lurie for his kindness, which I experienced after many hours over the phone. Nothing was ever too much trouble.</p>
+        <p class="case-study-author">“Ane Venter – Komtiepoort”</p>
+      </div>
+    </details>
+    <details class="case-study fade-up delay-1">
+      <summary>
+        <span class="case-study-icon" aria-hidden="true"><svg viewBox="0 0 60 60"><path d="M46.5 28.9 20.6 3c-.6-.6-1.6-.6-2.2 0l-4.8 4.8c-.6.6-.6 1.6 0 2.2l19.8 20-19.9 19.9c-.6.6-.6 1.6 0 2.2l4.8 4.8c.6.6 1.6.6 2.2 0l25.8-25.8c.8-.6.8-1.6.2-2.2z"/></svg></span>
+        <span class="case-study-title">Lymph Gland Cancer</span>
+        <span class="case-study-action">Read full story</span>
+      </summary>
+      <div class="case-study-body">
+        <p>A sad story with a happy ending…</p>
+        <p>My husband was diagnosed with cancer in the glands of his throat by a specialist. Scans and biopsies were done and it was suggested that an operation and chemotherapy for a couple of months was the only way out.<br>As well understand, we were very sad about the outcome and decided to go to Durban and see an oncologist there for a second opinion.</p>
+        <p>The same procedure was followed and the outcome of the tests was the same, except for the warning that an operation should be performed straight away as the lymph gland in the neck was so full of cancer cells that it may overflow and spread to the rest of the body. The operation was not performed as my husband was very apprehensive regarding this matter and was informed by the specialist that part of the face and neck might be slightly lame after the operation.</p>
+        <p>Before we went to Durban, we met a lady at a health shop and she told us that we should contact Dr. Bernard Lurie as he had been very successful with the treating of several illnesses including cancer. My husband decided to go and see Dr. Lurie. This decision changed our lives. After 3 weeks of his herbal treatment and the right way of eating, my husband felt much better. After 3 months of treatment, Dr. Lurie insisted that my husband should go again for a scan and blood tests and he listened. No traces of cancer could be found.</p>
+        <p>All I can say is “THANK YOU VERY MUCH DR. LURIE”</p>
+        <p class="case-study-author">‘ Jeanne and Jose Munro”</p>
+      </div>
+    </details>
+    <details class="case-study fade-up delay-2">
+      <summary>
+        <span class="case-study-icon" aria-hidden="true"><svg viewBox="0 0 60 60"><path d="M46.5 28.9 20.6 3c-.6-.6-1.6-.6-2.2 0l-4.8 4.8c-.6.6-.6 1.6 0 2.2l19.8 20-19.9 19.9c-.6.6-.6 1.6 0 2.2l4.8 4.8c.6.6 1.6.6 2.2 0l25.8-25.8c.8-.6.8-1.6.2-2.2z"/></svg></span>
+        <span class="case-study-title">Bladder Cancer</span>
+        <span class="case-study-action">Read full story</span>
+      </summary>
+      <div class="case-study-body">
+        <p>Hello Doctor Lurie,</p>
+        <p>It’s been a long time… I just want to reiterate my thanks and gratitude to you for successfully treating me for Bladder cancer way back in September 2005. Friends and family thought that I was taking a chance by choosing God’s Pharmacy over modern Allopathic treatments, but over the years, I was the one who has the last laugh.</p>
+        <p>Some friends were real sceptics, but after five years, some insisted that my cure was just a remission; but twenty years late, when I see them, I sometimes taunt them on how they were so very wrong.</p>
+        <p>I also want to thank you for successfully treating my wife over the past six months for her lung Cancer. She is doing wonderfully.</p>
+        <p>Here’s wishing you and yours well and further successes in treating others who had lost hope… into the future.</p>
+        <p>May God bless you</p>
+        <p class="case-study-author">Bernard Cox<br>31st. October 2025</p>
+      </div>
+    </details>
   </div>
 </section>
 
@@ -1575,10 +1893,10 @@ footer { padding-left: max(3rem, calc((100vw - 1180px) / 2)); padding-right: max
 <section class="cta-section" id="contact">
   <div>
     <h2 class="cta-heading fade-up">
-      Ready to begin your<br><em>healing journey?</em>
+      Ready to talk about<br><em>your health?</em>
     </h2>
     <p class="cta-sub fade-up delay-1">
-      Schedule a consultation with Dr. Bernard Lurie. Initial appointments are comprehensive — plan for 60–90 minutes.
+      Book a 60–90 minute initial consultation with Dr. Bernard Lurie.
     </p>
   </div>
   <div class="cta-actions">
@@ -1593,27 +1911,29 @@ footer { padding-left: max(3rem, calc((100vw - 1180px) / 2)); padding-right: max
     <div>
       <div class="footer-brand-name">Herbernie Int'l</div>
       <span class="footer-brand-tag">Maintaining your health, naturally</span>
-      <p class="footer-body">Dr. Bernard Lurie's South African naturopathic practice, combining decades of clinical experience with the healing power of nature.</p>
+      <p class="footer-body">Naturopathic consultations in South Africa and remotely.</p>
     </div>
     <div>
       <div class="footer-col-title">Navigate</div>
       <ul class="footer-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="#about">About Dr. Bernie</a></li>
+        <li><a href="#conditions">Conditions &amp; Concerns</a></li>
         <li><a href="#treatments">Treatments</a></li>
         <li><a href="#process">Your First Visit</a></li>
+        <li><a href="#case-studies">Success Stories</a></li>
         <li><a href="#contact">Book a Consultation</a></li>
       </ul>
     </div>
     <div>
       <div class="footer-col-title">Treatments</div>
       <ul class="footer-links">
-        <li><a href="#treatments">Herbal Medicine</a></li>
-        <li><a href="#treatments">Iridology</a></li>
-        <li><a href="#treatments">EIS Scanning</a></li>
+        <li><a href="#treatments">EIS Scan &amp; Consultation</a></li>
+        <li><a href="#treatments">Rife Sessions</a></li>
+        <li><a href="#treatments">Mineralising Foot Detox</a></li>
+        <li><a href="#treatments">Spinal Alignment Bed</a></li>
+        <li><a href="#treatments">G5 Massage</a></li>
         <li><a href="#treatments">Neural Therapy</a></li>
-        <li><a href="#treatments">Clinical Nutrition</a></li>
-        <li><a href="hormonal/">Hormonal Health</a></li>
       </ul>
     </div>
     <div>
