@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Herbernie Int'l</title>
+<meta name="description" content="How Herbernie Int'l collects, uses, shares and protects your personal and health information under POPIA.">
+<link rel="canonical" href="https://herbernie.co.za/privacy.html">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#22495A">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;display=swap" onload="this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;display=swap"></noscript>
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+html, body { overflow-x: hidden; }
+html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+:root {
+  --slate-deep: #22495A;
+  --slate-mid:  #486573;
+  --sage:       #A3B8B4;
+  --off-white:  #F4EFEB;
+  --leaf:       #2F7B46;
+  --white:      #FFFFFF;
+  --slate-08:   rgba(34, 73, 90, 0.08);
+  --slate-14:   rgba(34, 73, 90, 0.14);
+  --slate-22:   rgba(34, 73, 90, 0.22);
+  --light-72:   rgba(244, 239, 235, 0.72);
+  --light-86:   rgba(244, 239, 235, 0.86);
+  --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-body:    'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --r-md: 16px; --r-sm: 12px; --r-pill: 999px;
+  --pad-x: max(1.25rem, calc((100vw - 880px) / 2));
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+body {
+  margin: 0; background: var(--white); color: var(--slate-mid);
+  font-family: var(--font-body); font-size: 18px; line-height: 1.62;
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+ul { list-style: none; margin: 0; padding: 0; }
+h1, h2, h3 { margin: 0; font-weight: 500; text-wrap: balance; }
+p { margin: 0; }
+:focus-visible { outline: 3px solid var(--leaf); outline-offset: 3px; border-radius: 4px; }
+.skip-link {
+  position: absolute; left: 1rem; top: -100px; z-index: 200;
+  padding: 0.75rem 1.25rem; border-radius: var(--r-pill);
+  background: var(--slate-deep); color: var(--off-white);
+  font-size: 0.85rem; text-decoration: none; transition: top 0.2s var(--ease);
+}
+.skip-link:focus { top: 1rem; }
+
+/* NAV */
+.l-nav {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 0.85rem var(--pad-x);
+  background: rgba(255,255,255,0.94); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--slate-14);
+}
+.l-brand { text-decoration: none; }
+.l-brand-name {
+  display: block; font-family: var(--font-display); font-size: 1.5rem;
+  line-height: 1.1; color: var(--slate-deep);
+}
+.l-brand-tag { display: block; color: var(--slate-mid); font-size: 0.82rem; line-height: 1.3; }
+.l-back {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  min-height: 44px; padding: 0.55rem 1.1rem; border-radius: var(--r-pill);
+  border: 1px solid var(--slate-22); color: var(--slate-deep);
+  font-size: 0.85rem; font-weight: 600; text-decoration: none;
+  transition: background 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.l-back:hover { background: var(--slate-08); border-color: var(--slate-deep); }
+
+/* HEADER */
+.l-head { padding: clamp(2.75rem, 6vw, 4.5rem) var(--pad-x) clamp(1.5rem, 3vw, 2.25rem); }
+.l-label {
+  display: inline-block; margin-bottom: 0.9rem;
+  padding: 0.4rem 0.9rem; border-radius: var(--r-pill);
+  background: var(--off-white); color: var(--slate-deep);
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+}
+.l-title {
+  font-family: var(--font-display); font-size: clamp(2.4rem, 6vw, 3.4rem);
+  line-height: 1.1; color: var(--slate-deep);
+}
+.l-meta { margin-top: 0.9rem; font-size: 0.95rem; color: var(--slate-mid); }
+.l-intro { margin-top: 1.25rem; font-size: 1.14rem; line-height: 1.6; color: var(--slate-mid); }
+
+/* TOC */
+.l-toc {
+  margin: 2rem var(--pad-x) 0; padding: 1.4rem 1.6rem;
+  background: var(--off-white); border-radius: var(--r-md);
+}
+.l-toc h2 {
+  font-family: var(--font-display); font-size: 1.25rem; color: var(--slate-deep);
+  margin-bottom: 0.75rem;
+}
+.l-toc ol { margin: 0; padding-left: 1.15rem; columns: 2; column-gap: 2rem; }
+.l-toc li { margin-bottom: 0.4rem; font-size: 0.98rem; break-inside: avoid; }
+.l-toc a { color: var(--slate-deep); text-decoration: none; border-bottom: 1px solid var(--slate-22); }
+.l-toc a:hover { border-bottom-color: var(--slate-deep); }
+
+/* BODY */
+.l-body { padding: clamp(2rem, 4vw, 3rem) var(--pad-x) clamp(3rem, 6vw, 5rem); }
+.l-sec + .l-sec { margin-top: clamp(2rem, 4vw, 2.75rem); }
+.l-sec h2 {
+  font-family: var(--font-display); font-size: clamp(1.6rem, 3.2vw, 2rem);
+  line-height: 1.2; color: var(--slate-deep); margin-bottom: 0.85rem;
+}
+.l-sec h3 {
+  font-size: 1.05rem; font-weight: 600; color: var(--slate-deep);
+  margin: 1.35rem 0 0.5rem;
+}
+.l-sec p { font-size: 1.02rem; line-height: 1.68; }
+.l-sec p + p { margin-top: 0.85rem; }
+.l-sec ul { margin: 0.85rem 0 0; }
+.l-sec li {
+  position: relative; padding-left: 1.4rem; margin-bottom: 0.55rem;
+  font-size: 1.02rem; line-height: 1.6;
+}
+.l-sec li::before {
+  content: ''; position: absolute; left: 0; top: 0.66em;
+  width: 6px; height: 6px; border-radius: 50%; background: var(--sage);
+}
+.l-sec ol { margin: 0.85rem 0 0; padding-left: 1.3rem; }
+.l-sec ol li { padding-left: 0.35rem; }
+.l-sec ol li::before { display: none; }
+.l-sec strong { color: var(--slate-deep); font-weight: 600; }
+.l-sec a { color: var(--slate-deep); text-decoration: underline; text-underline-offset: 3px; }
+
+.l-callout {
+  margin-top: 1.25rem; padding: 1.25rem 1.4rem;
+  background: var(--off-white); border-left: 3px solid var(--leaf);
+  border-radius: var(--r-sm);
+}
+.l-callout p { font-size: 1rem; }
+
+/* FOOTER */
+.l-foot {
+  background: var(--slate-deep); color: var(--light-86);
+  padding: clamp(2.5rem, 5vw, 3.5rem) var(--pad-x);
+}
+.l-foot-name { font-family: var(--font-display); font-size: 1.75rem; color: var(--off-white); }
+.l-foot p { margin-top: 0.5rem; font-size: 0.98rem; color: var(--light-72); }
+.l-foot-links {
+  display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin-top: 1.5rem;
+  padding-top: 1.5rem; border-top: 1px solid rgba(244,239,235,0.18);
+}
+.l-foot-links a {
+  min-height: 44px; display: inline-flex; align-items: center;
+  color: var(--light-86); font-size: 0.92rem; text-decoration: none;
+}
+.l-foot-links a:hover { color: var(--off-white); text-decoration: underline; }
+.l-foot-note { margin-top: 1.25rem; font-size: 0.85rem; color: var(--light-72); }
+
+@media (max-width: 700px) {
+  .l-toc ol { columns: 1; }
+  .l-brand-tag { display: none; }
+  .l-nav { padding: 0.7rem 1.25rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="l-nav" aria-label="Primary">
+  <a class="l-brand" href="index.html">
+    <span class="l-brand-name">Herbernie Int'l</span>
+    <span class="l-brand-tag">Maintaining your health, naturally</span>
+  </a>
+  <a class="l-back" href="index.html">Back to site</a>
+</nav>
+
+<main id="main">
+
+<header class="l-head">
+  <span class="l-label">Legal</span>
+  <h1 class="l-title">Privacy Policy</h1>
+  <p class="l-meta">Last updated: 20 August 2026</p>
+  <p class="l-intro">How we collect, use, share and protect your personal and health information, in line with POPIA.</p>
+</header>
+
+<nav class="l-toc" aria-label="On this page">
+  <h2>On this page</h2>
+  <ol>
+      <li><a href="#s1">Who We Are</a></li>
+      <li><a href="#s2">What Information We Collect</a></li>
+      <li><a href="#s3">How We Collect It</a></li>
+      <li><a href="#s4">Why We Use Your Information</a></li>
+      <li><a href="#s5">Legal Basis for Processing</a></li>
+      <li><a href="#s6">Who We Share It With</a></li>
+      <li><a href="#s7">How Long We Keep It</a></li>
+      <li><a href="#s8">How We Protect It</a></li>
+      <li><a href="#s9">Your Rights Under POPIA</a></li>
+      <li><a href="#s10">Cookies and Analytics</a></li>
+      <li><a href="#s11">Changes to This Policy</a></li>
+      <li><a href="#s12">Contact Us</a></li>
+  </ol>
+</nav>
+
+<div class="l-body">
+  <section class="l-sec" id="s1">
+    <h2>1. Who We Are</h2>
+    <p>This Privacy Policy explains how Herbernie International (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;) collects, uses, and protects your personal information when you visit our website or use our services.</p>
+    <p>Herbernie International is a natural health practice based in Gqeberha (Port Elizabeth), South Africa, led by Dr. Bernard Lurie. We are the responsible party under the Protection of Personal Information Act 4 of 2013 (POPIA).</p>
+    <p>By using this website or booking a consultation, you confirm that you have read and understood this policy.</p>
+  </section>
+  <section class="l-sec" id="s2">
+    <h2>2. What Information We Collect</h2>
+    <h3>Contact information</h3>    <ul>
+      <li>Your name</li>
+      <li>Email address</li>
+      <li>WhatsApp or telephone number (where provided)</li>
+      <li>Delivery address and postal code, where you order products</li>
+    </ul>    <h3>Health information</h3>    <ul>
+      <li>Health history and symptoms shared during consultations</li>
+      <li>Assessment and scan findings, including EIS scan results</li>
+      <li>Consultation notes and recommended treatment plans</li>
+    </ul>    <h3>Payment information</h3>    <p>Payment for products is made by electronic transfer to our bank account. Where online payment is offered, it is processed by a third-party payment provider. We do not collect or store your card details.</p>    <h3>Usage information</h3>    <p>When you visit our website, we may collect standard technical data such as your IP address, browser type, and pages visited. This is used only for website performance and analytics purposes.</p>
+  </section>
+  <section class="l-sec" id="s3">
+    <h2>3. How We Collect It</h2>
+    <p>We collect your personal information in the following ways:</p>    <ul>
+      <li><strong>Directly from you</strong> when you complete the enquiry form, book a consultation, order products, or contact us</li>
+      <li><strong>During your consultation</strong>, from information shared verbally or in writing with our practitioners</li>
+      <li><strong>Automatically</strong>, as basic usage data collected when you browse the website</li>
+    </ul>    <p>We do not purchase, rent, or obtain personal information from third-party data brokers.</p>
+  </section>
+  <section class="l-sec" id="s4">
+    <h2>4. Why We Use Your Information</h2>
+    <p>We use your personal information to:</p>    <ul>
+      <li>Respond to your enquiry and arrange your appointment</li>
+      <li>Carry out your consultation, assessment, and any treatment you agree to</li>
+      <li>Prepare and send reports, scan results, and treatment recommendations</li>
+      <li>Process and deliver product orders</li>
+      <li>Keep the health records we are required to keep by law</li>
+      <li>Maintain and improve the website</li>
+    </ul>    <p>We will not use your information for any purpose beyond what is described here without your consent.</p>
+  </section>
+  <section class="l-sec" id="s5">
+    <h2>5. Legal Basis for Processing</h2>
+    <p>Under POPIA, we process your personal information on the following grounds:</p>    <ul>
+      <li><strong>Contract</strong> to fulfil your booking or order and deliver the services you have requested</li>
+      <li><strong>Consent</strong> for optional communications, which you can withdraw at any time</li>
+      <li><strong>Legal obligation</strong> to retain health records as required by South African law</li>
+      <li><strong>Legitimate interest</strong> for website analytics and service improvement, where this does not override your rights</li>
+    </ul>    <p>Because we process special personal information (health data), we do so only with your explicit consent, or where it is necessary to carry out your treatment.</p>
+  </section>
+  <section class="l-sec" id="s6">
+    <h2>6. Who We Share It With</h2>
+    <p>We do not sell your personal information. We share it only in the following limited circumstances:</p>    <ul>
+      <li><strong>Our practitioners</strong> and clinical staff involved in your care, on a need-to-know basis</li>
+      <li><strong>Third-party testing laboratories</strong> where Dr. Lurie requests testing, and only with your agreement</li>
+      <li><strong>Courier services</strong>, which receive your delivery address in order to deliver your order</li>
+      <li><strong>Payment providers</strong>, who handle payment details under their own privacy policy</li>
+      <li><strong>Communication tools</strong>, such as the email and WhatsApp platforms used to send results and appointment reminders</li>
+      <li><strong>Legal requirements</strong>, if we are required to disclose by a court order, regulator, or applicable South African law</li>
+    </ul>    <p>Any third party we work with is required to handle your information securely and in accordance with POPIA.</p>
+  </section>
+  <section class="l-sec" id="s7">
+    <h2>7. How Long We Keep It</h2>
+    <p>We retain your information for as long as necessary to fulfil the purposes described in this policy, or as required by law.</p>    <ul>
+      <li><strong>Health records</strong> are retained for a minimum of 5 years following your last consultation, in line with South African health record requirements</li>
+      <li><strong>Contact and booking information</strong> is retained for 3 years after your last interaction, then deleted or anonymised</li>
+      <li><strong>Marketing communications</strong> are retained until you unsubscribe or withdraw consent</li>
+    </ul>    <p>When information is no longer needed, it is securely deleted or anonymised.</p>
+  </section>
+  <section class="l-sec" id="s8">
+    <h2>8. How We Protect It</h2>
+    <p>We take the security of your personal information seriously. Our measures include:</p>    <ul>
+      <li>Secure, encrypted connections (HTTPS) across the website</li>
+      <li>Access to health records restricted to authorised practitioners only</li>
+      <li>Payment processing handled by PCI-compliant third-party providers</li>
+      <li>Regular review of our data handling practices</li>
+    </ul>    <p>No method of electronic transmission or storage is completely secure. While we take every reasonable precaution, we cannot guarantee absolute security. If you believe your information has been compromised, please contact us immediately.</p>
+  </section>
+  <section class="l-sec" id="s9">
+    <h2>9. Your Rights Under POPIA</h2>
+    <p>As a data subject under POPIA, you have the following rights:</p>    <ul>
+      <li><strong>Right of access</strong> to request a copy of the personal information we hold about you</li>
+      <li><strong>Right to correction</strong> of inaccurate or incomplete information</li>
+      <li><strong>Right to deletion</strong>, subject to any legal retention obligations</li>
+      <li><strong>Right to object</strong> to certain uses of your information, including direct marketing</li>
+      <li><strong>Right to withdraw consent</strong> at any time, without affecting prior processing</li>
+      <li><strong>Right to complain</strong> to the Information Regulator of South Africa if you believe your rights have been violated</li>
+    </ul>    <p>To exercise any of these rights, contact us using the details in section 12. We will respond within a reasonable time and in accordance with POPIA requirements.</p>    <p>Information Regulator contact: <a href="mailto:inforeg@justice.gov.za">inforeg@justice.gov.za</a></p>
+  </section>
+  <section class="l-sec" id="s10">
+    <h2>10. Cookies and Analytics</h2>
+    <p>Our website may use cookies and similar technologies to understand how visitors interact with the site. This data is aggregated and anonymised, and it is not linked to your personal identity.</p>    <p>You can control cookies through your browser settings at any time. Disabling cookies may affect some functionality of the site.</p>
+  </section>
+  <section class="l-sec" id="s11">
+    <h2>11. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. The current version is always available at this URL, with the revision date noted at the top.</p>    <p>If we make material changes that affect how we use your health information, we will notify you directly by email where we hold your contact details.</p>
+  </section>
+  <section class="l-sec" id="s12">
+    <h2>12. Contact Us</h2>
+    <p>For any questions about this policy, to request access to your information, or to exercise your POPIA rights:</p>    <ul>
+      <li>Practice: Herbernie International</li>
+      <li>Location: Gqeberha (Port Elizabeth), South Africa</li>
+      <li>Email: <a href="mailto:info@herbernie.co.za">info@herbernie.co.za</a></li>
+      <li>WhatsApp: <a href="https://wa.me/27762390423">+27 76 239 0423</a></li>
+    </ul>    <p>We aim to respond to all privacy-related enquiries within 5 business days.</p>
+  </section>
+</div>
+
+</main>
+
+<footer class="l-foot">
+  <div class="l-foot-name">Herbernie Int'l</div>
+  <p>Dr. Bernard Lurie t/a Herbernie Int'l &middot; Gqeberha (Port Elizabeth), South Africa</p>
+  <div class="l-foot-links">
+      <a href="index.html">Home</a>
+      <a href="disclaimer.html">Disclaimer</a>
+      <a href="terms.html">Terms and Conditions</a>
+      <a href="quality-control.html">Quality Control Policy</a>
+      <a href="privacy.html" aria-current="page">Privacy Policy</a>
+  </div>
+  <p class="l-foot-note">&copy; 2026 Dr. Bernard Lurie t/a Herbernie Int'l. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

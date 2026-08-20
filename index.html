@@ -464,6 +464,151 @@ button { font: inherit; color: inherit; }
 .tx-safety p + p { margin-top: 0.65rem; }
 .tx-safety strong { color: var(--slate-deep); font-weight: 600; }
 
+/* ── 14c. FAQ ────────────────────────────────────────────── */
+.faq-list { display: grid; gap: 0.7rem; max-width: 900px; margin: 0 auto; }
+.faq {
+  overflow: hidden; background: var(--white);
+  border: 1px solid var(--slate-14); border-radius: var(--r-md);
+  transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.faq:hover, .faq[open] { border-color: var(--slate-22); box-shadow: var(--shadow-sm); }
+.faq summary {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center; gap: 1.25rem;
+  min-height: 64px; padding: 1.1rem 1.4rem;
+  cursor: pointer; list-style: none;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq-q {
+  font-family: var(--font-display); font-size: 1.32rem; line-height: 1.25;
+  color: var(--slate-deep);
+}
+.faq-mark {
+  position: relative; flex: none; width: 22px; height: 22px;
+  border-radius: 50%; border: 1px solid var(--slate-22);
+  transition: transform 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.faq-mark::before, .faq-mark::after {
+  content: ''; position: absolute; left: 50%; top: 50%;
+  background: var(--leaf); border-radius: 2px; transform: translate(-50%, -50%);
+}
+.faq-mark::before { width: 10px; height: 1.5px; }
+.faq-mark::after  { width: 1.5px; height: 10px; transition: opacity 0.3s var(--ease); }
+.faq[open] .faq-mark { transform: rotate(180deg); border-color: var(--leaf); }
+.faq[open] .faq-mark::after { opacity: 0; }
+.faq-a { padding: 0 1.4rem 1.5rem; max-width: 70ch; }
+.faq-a p { font-size: 1.02rem; line-height: 1.65; color: var(--slate-mid); }
+.faq-a p + p { margin-top: 0.75rem; }
+.faq-a ol { margin: 0.85rem 0 0; padding-left: 1.3rem; }
+.faq-a ol li { margin-bottom: 0.55rem; font-size: 1.02rem; line-height: 1.6; color: var(--slate-mid); }
+.faq-a strong { color: var(--slate-deep); font-weight: 600; }
+.faq-a a { color: var(--slate-deep); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ── 14b. FEES ───────────────────────────────────────────── */
+.fees-grid {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem;
+  max-width: 1240px; margin: 0 auto;
+}
+.fee {
+  display: flex; flex-direction: column; gap: 0.6rem;
+  padding: clamp(1.35rem, 2.4vw, 1.85rem);
+  border: 1px solid var(--slate-14); border-radius: var(--r-md);
+  background: var(--white);
+}
+.fee-name {
+  font-family: var(--font-display); font-size: 1.5rem; line-height: 1.2;
+  color: var(--slate-deep);
+}
+.fee-price {
+  font-family: var(--font-display); font-size: 2.5rem; line-height: 1;
+  color: var(--leaf);
+}
+.fee p { font-size: 1rem; line-height: 1.55; color: var(--slate-mid); }
+.fees-extra {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem;
+  max-width: 1240px; margin: 1rem auto 0;
+}
+.fee-line {
+  display: grid; grid-template-columns: 1fr auto; gap: 0.4rem 1rem; align-items: baseline;
+  padding: 1.15rem 1.35rem;
+  background: var(--off-white); border-radius: var(--r-sm);
+}
+.fee-line dt { font-size: 1.02rem; font-weight: 600; color: var(--slate-deep); }
+.fee-line dd {
+  margin: 0; font-family: var(--font-display); font-size: 1.5rem; line-height: 1;
+  color: var(--leaf); white-space: nowrap;
+}
+.fee-line .fee-sub { grid-column: 1 / -1; font-size: 0.95rem; line-height: 1.5; color: var(--slate-mid); }
+.fees-note {
+  max-width: 1240px; margin: 1.5rem auto 0;
+  display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start;
+  padding: 1.35rem 1.5rem;
+  background: var(--white); border: 1px solid var(--slate-14);
+  border-left: 3px solid var(--leaf); border-radius: var(--r-sm);
+}
+.fees-note > .ico { width: 1.5rem; height: 1.5rem; color: var(--leaf); margin-top: 0.15rem; }
+.fees-note h3 {
+  font-family: var(--font-display); font-size: 1.35rem; line-height: 1.2;
+  color: var(--slate-deep); margin-bottom: 0.5rem;
+}
+.fees-note p { font-size: 1rem; line-height: 1.6; color: var(--slate-mid); }
+.fees-note p + p { margin-top: 0.6rem; }
+.fees-note a { color: var(--slate-deep); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ── 11b. CANCER / HIV SUPPORT ───────────────────────────── */
+.cs-wrap {
+  display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+  gap: clamp(1.5rem, 3vw, 2.75rem); align-items: start;
+  max-width: 1240px; margin: 0 auto;
+}
+.cs-main p { color: var(--light-86); font-size: 1.04rem; line-height: 1.68; }
+.cs-main p + p { margin-top: 1rem; }
+.cs-main h3 {
+  font-family: var(--font-display); font-size: 1.5rem; line-height: 1.2;
+  color: var(--off-white); margin: 1.75rem 0 0.75rem;
+}
+.cs-card {
+  padding: clamp(1.5rem, 2.6vw, 2rem);
+  background: rgba(244, 239, 235, 0.06);
+  border: 1px solid rgba(244, 239, 235, 0.18);
+  border-radius: var(--r-md);
+}
+.cs-card h3 {
+  font-family: var(--font-display); font-size: 1.5rem; line-height: 1.2;
+  color: var(--off-white); margin-bottom: 1rem;
+}
+.cs-list { display: grid; gap: 0.7rem; }
+.cs-list li {
+  display: grid; grid-template-columns: auto 1fr; gap: 0.7rem; align-items: start;
+  color: var(--light-86); font-size: 1rem; line-height: 1.55;
+}
+.cs-list .ico { width: 1.1rem; height: 1.1rem; color: var(--sage); margin-top: 0.28em; }
+.cs-costs {
+  margin-top: 1.5rem; padding-top: 1.25rem;
+  border-top: 1px solid rgba(244, 239, 235, 0.18);
+  display: grid; gap: 0.6rem;
+}
+.cs-cost { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.5rem; }
+.cs-cost dt { color: var(--light-86); font-size: 1rem; }
+.cs-cost dd { margin: 0; color: var(--off-white); font-size: 1.05rem; font-weight: 600; white-space: nowrap; }
+.cs-cost.is-lead dd { font-family: var(--font-display); font-size: 1.85rem; font-weight: 500; line-height: 1; }
+.cs-card .btn { margin-top: 1.5rem; width: 100%; justify-content: center; }
+.cs-note {
+  max-width: 1240px; margin: clamp(1.75rem, 3vw, 2.5rem) auto 0;
+  display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start;
+  padding: 1.35rem 1.5rem;
+  background: rgba(244, 239, 235, 0.06);
+  border-left: 3px solid var(--sage);
+  border-radius: var(--r-sm);
+}
+.cs-note > .ico { width: 1.5rem; height: 1.5rem; color: var(--sage); margin-top: 0.15rem; }
+.cs-note h3 {
+  font-family: var(--font-display); font-size: 1.3rem; line-height: 1.2;
+  color: var(--off-white); margin-bottom: 0.5rem;
+}
+.cs-note p { color: var(--light-86); font-size: 1rem; line-height: 1.62; }
+.cs-note p + p { margin-top: 0.6rem; }
+
 /* ── 12. DISPENSARY ──────────────────────────────────────── */
 .dispensary {
   display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -652,10 +797,20 @@ a.contact-row strong { font-weight: 600; }
 }
 .footer-contact a:hover { opacity: 1; color: var(--sage); }
 .footer-contact .ico { width: 18px; height: 18px; margin-top: 0.18rem; color: var(--sage); }
+.footer-legal-links {
+  display: flex; flex-wrap: wrap; gap: 0 1.75rem;
+  max-width: 1240px; margin: 2.5rem auto 0; padding-top: 1.25rem;
+  border-top: 1px solid rgba(244, 239, 235, 0.16);
+}
+.footer-legal-links a {
+  display: inline-flex; align-items: center; min-height: 44px;
+  color: var(--off-white); opacity: 0.82;
+  font-size: 0.9rem; text-decoration: none;
+}
+.footer-legal-links a:hover { opacity: 1; color: var(--sage); text-decoration: underline; }
 .footer-bottom {
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.25rem;
-  max-width: 1240px; margin: 2.75rem auto 0; padding-top: 1.5rem;
-  border-top: 1px solid rgba(244, 239, 235, 0.16);
+  max-width: 1240px; margin: 0.5rem auto 0;
 }
 .footer-legal { color: var(--off-white); opacity: 0.78; font-size: 0.88rem; line-height: 1.55; max-width: 72ch; }
 .footer-socials { display: flex; gap: 0.6rem; }
@@ -688,9 +843,12 @@ a.contact-row strong { font-weight: 600; }
 /* ── 18. RESPONSIVE ──────────────────────────────────────── */
 @media (max-width: 1080px) {
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .nav-links { gap: clamp(0.7rem, 1.4vw, 1.1rem); }
+  .nav-links a:not(.nav-cta) { font-size: 0.78rem; }
 }
 
 @media (max-width: 980px) {
+  .fees-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .nav-toggle { display: block; }
   .nav-links {
     position: fixed; inset: 78px 0 auto 0;
@@ -741,6 +899,9 @@ a.contact-row strong { font-weight: 600; }
   .hero-actions { width: 100%; }
   .hero-actions .btn { flex: 1 1 100%; }
 
+  .fees-grid { grid-template-columns: 1fr; }
+  .fees-extra { grid-template-columns: 1fr; }
+  .cs-wrap { grid-template-columns: 1fr; }
   .tx-grid { grid-template-columns: 1fr; gap: 0.85rem; }
   .tx-card { aspect-ratio: 5 / 4; }
 
@@ -834,6 +995,7 @@ a.contact-row strong { font-weight: 600; }
     <li><a href="#about">About</a></li>
     <li><a href="#conditions">Conditions</a></li>
     <li><a href="#treatments">Treatments</a></li>
+    <li><a href="#cancer-support">Cancer Support</a></li>
     <li><a href="#process">Your Visit</a></li>
     <li><a href="#accounts">Patient Accounts</a></li>
     <li><a href="#contact" class="nav-cta">Book Consultation</a></li>
@@ -1018,6 +1180,66 @@ a.contact-row strong { font-weight: 600; }
   </div>
 </section>
 
+<!-- CANCER & HIV SUPPORT -->
+<section class="section dark-panel" id="cancer-support">
+  <div class="section-head rise">
+    <span class="label">Cancer &amp; HIV Support</span>
+    <h2 class="h-section">The Herbernie <em>Support Kit</em></h2>
+    <p class="lede">A structured programme of roughly five months, built around a foundational kit and adapted to your situation. It is designed to sit alongside the care of your oncology or medical team.</p>
+  </div>
+
+  <div class="cs-wrap">
+    <div class="cs-main rise">
+      <p>The kit came out of many years of work in the practice. Rather than hand patients a list of separate products, Dr. Lurie set out to bring the elements he drew on most often into one considered programme. It has been revised many times since, as new understanding and new components were added.</p>
+      <p>Every person responds differently. Metabolism, physical condition, immune strength, emotional state and outlook all affect how the body responds to any supportive programme. That is why the foundational kit is adapted for each patient rather than issued the same way every time.</p>
+
+      <h3>What the programme involves</h3>
+      <p>The kit forms the base. Additional preparations are then selected for your particular situation, and dietary and nutritional guidance is built around them. Progress is reviewed with you as you go, and the programme is adjusted where it needs to be.</p>
+      <p>Some patients notice symptoms they had felt before returning for a period during the programme. In naturopathic practice this is described as retracing. If it happens, tell Dr. Lurie. He will talk it through with you, and where it is appropriate, alongside your treating doctor.</p>
+
+      <h3>Support while you are on it</h3>
+      <p>Five months is a long time to carry a serious diagnosis, and questions rarely arrive during office hours. You have Dr. Lurie's direct number for the duration of the programme, for emergencies and for treatment queries.</p>
+    </div>
+
+    <aside class="cs-card rise d1" aria-labelledby="cs-included">
+      <h3 id="cs-included">What is included</h3>
+      <ul class="cs-list">
+        <li><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg><span>The foundational Herbernie kit, adapted with additional preparations chosen for your situation</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg><span>A compact frequency generator</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg><span>Dietary and nutritional guidance</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg><span>Direct access to Dr. Lurie, any time, for emergencies and treatment queries</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg><span>Approximately five months of ongoing review and adjustment</span></li>
+      </ul>
+
+      <dl class="cs-costs">
+        <div class="cs-cost is-lead">
+          <dt>Herbernie Kit</dt>
+          <dd>R45&thinsp;900</dd>
+        </div>
+        <div class="cs-cost">
+          <dt>Overnight delivery in South Africa</dt>
+          <dd>R800</dd>
+        </div>
+        <div class="cs-cost">
+          <dt>International delivery</dt>
+          <dd>Quoted</dd>
+        </div>
+      </dl>
+
+      <a href="#contact" class="btn btn-light">Enquire About the Kit <svg class="ico" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+    </aside>
+  </div>
+
+  <aside class="cs-note rise" aria-labelledby="cs-scope">
+    <svg class="ico" aria-hidden="true"><use href="#i-shield"></use></svg>
+    <div>
+      <h3 id="cs-scope">What this programme is, and what it is not</h3>
+      <p>This is supportive care. Herbernie makes <strong>no claim to cure, treat, prevent or reverse</strong> cancer or HIV, and the kit is not a substitute for oncology, antiretroviral or any other medical treatment. Any decision about treatment your doctor has prescribed should be made with that doctor.</p>
+      <p>Responses vary from person to person, and patient accounts on this site are not a guarantee of any particular result. We cannot offer guarantees. What we do commit to is a high standard of care and support for every patient throughout the programme.</p>
+    </div>
+  </aside>
+</section>
+
 <!-- DISPENSARY -->
 <section class="section" id="dispensary">
   <div class="dispensary rise">
@@ -1064,6 +1286,123 @@ a.contact-row strong { font-weight: 600; }
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- FEES -->
+<section class="section" id="fees">
+  <div class="section-head rise">
+    <span class="label">Fees</span>
+    <h2 class="h-section">Clear pricing, <em>before you book.</em></h2>
+    <p class="lede">Consultation fees are shown below. If a treatment plan is recommended afterwards, Bernie will talk through what it involves and what it costs before anything is agreed.</p>
+  </div>
+
+  <div class="fees-grid">
+    <article class="fee rise">
+      <h3 class="fee-name">Consultation with EIS Scan</h3>
+      <span class="fee-price">R980</span>
+      <p>A full consultation together with a non-invasive EIS scan, reviewed with you on the day.</p>
+    </article>
+    <article class="fee rise d1">
+      <h3 class="fee-name">Consultation</h3>
+      <span class="fee-price">R590</span>
+      <p>A full consultation without a scan, covering your history, symptoms and daily habits.</p>
+    </article>
+    <article class="fee rise d2">
+      <h3 class="fee-name">Remote Consultation</h3>
+      <span class="fee-price">R490</span>
+      <p>The same consultation by WhatsApp or Zoom call, for patients who cannot travel to the practice.</p>
+    </article>
+  </div>
+
+  <dl class="fees-extra rise">
+    <div class="fee-line">
+      <dt>Full written report from Dr. Lurie</dt>
+      <dd>R450</dd>
+      <p class="fee-sub">Allow 3&ndash;4 working days. A copy of your EIS scan is emailed to you at no charge.</p>
+    </div>
+    <div class="fee-line">
+      <dt>Courier within South Africa</dt>
+      <dd>R120</dd>
+      <p class="fee-sub">Sent via The Courier Guy. Allow 2&ndash;3 working days from the day payment reflects.</p>
+    </div>
+  </dl>
+
+  <aside class="fees-note rise" aria-labelledby="fees-aid">
+    <svg class="ico" aria-hidden="true"><use href="#i-shield"></use></svg>
+    <div>
+      <h3 id="fees-aid">Medical aid and payment</h3>
+      <p>The practice is private and <strong>is not covered by medical aid</strong>. This includes any third-party testing, such as Ampath, that Dr. Lurie requests on your behalf.</p>
+      <p>Consultations are payable on the day. Pricing for the Herbernie Cancer &amp; HIV Support Kit is set out in the <a href="#cancer-support">Cancer &amp; HIV Support</a> section.</p>
+    </div>
+  </aside>
+</section>
+
+<!-- FAQ -->
+<section class="section section-tint" id="faq">
+  <div class="section-head rise">
+    <span class="label">Questions</span>
+    <h2 class="h-section">Before you <em>get in touch</em></h2>
+    <p class="lede">The questions the practice is asked most often. If yours is not here, send it through and we will answer it directly.</p>
+  </div>
+
+  <div class="faq-list">
+    <details class="faq rise">
+      <summary><span class="faq-q">Are you registered with medical aids?</span><span class="faq-mark" aria-hidden="true"></span></summary>
+      <div class="faq-a">
+        <p>We are a private practice and are <strong>not covered by medical aid</strong>. That includes any third-party testing, such as Ampath, requested by Dr. Lurie.</p>
+      </div>
+    </details>
+
+    <details class="faq rise">
+      <summary><span class="faq-q">Can I get a report after my consultation?</span><span class="faq-mark" aria-hidden="true"></span></summary>
+      <div class="faq-a">
+        <p>A copy of your EIS scan is emailed to you at no charge. A full written report from Dr. Lurie is available at an additional cost of <strong>R450</strong> and takes 3&ndash;4 working days.</p>
+        <p>You are welcome to take notes, photographs or video during your session. Please keep these for your own personal use rather than sharing them publicly.</p>
+      </div>
+    </details>
+
+    <details class="faq rise">
+      <summary><span class="faq-q">Am I allowed to eat or drink before the consultation?</span><span class="faq-mark" aria-hidden="true"></span></summary>
+      <div class="faq-a">
+        <p>Yes. You may eat and drink as normal before your consultation.</p>
+      </div>
+    </details>
+
+    <details class="faq rise">
+      <summary><span class="faq-q">How long should I use the tinctures and supplements?</span><span class="faq-mark" aria-hidden="true"></span></summary>
+      <div class="faq-a">
+        <p>Tinctures and supplements should be used for <strong>at least 3 months</strong>, or until your next follow-up consultation. A follow-up is usually suggested after a month.</p>
+        <p>Where Dr. Lurie advises in-practice treatment, we suggest a minimum of 10 sessions.</p>
+      </div>
+    </details>
+
+    <details class="faq rise">
+      <summary><span class="faq-q">Can I order more tinctures or supplements, and do you courier?</span><span class="faq-mark" aria-hidden="true"></span></summary>
+      <div class="faq-a">
+        <p>Yes. We use The Courier Guy for local deliveries. A flat <strong>R120</strong> is added to each order to cover the courier cost, with a lead time of 2&ndash;3 working days.</p>
+      </div>
+    </details>
+
+    <details class="faq rise">
+      <summary><span class="faq-q">How do I place an order?</span><span class="faq-mark" aria-hidden="true"></span></summary>
+      <div class="faq-a">
+        <ol>
+          <li>Send us a list of the tinctures or supplements you need to replace. We will reply with a quotation and banking details. Quotations are valid for <strong>3 working days</strong>.</li>
+          <li>Send proof of payment by <a href="https://wa.me/27762390423">WhatsApp</a> or email.</li>
+          <li>Include your full street address and postal code so we can send your parcel.</li>
+        </ol>
+        <p>No parcels are dispatched until payment reflects in our bank account.</p>
+      </div>
+    </details>
+
+    <details class="faq rise">
+      <summary><span class="faq-q">Is there anyone who should not have a Rife session?</span><span class="faq-mark" aria-hidden="true"></span></summary>
+      <div class="faq-a">
+        <p>Yes. Rife sessions are <strong>not offered</strong> to anyone who is pregnant, has epilepsy, is at risk of heart failure, wears a pacemaker or any other life-support device, or is receiving acute or critical care.</p>
+        <p>Tell Dr. Lurie before you book if any of these apply to you. Other options are available, and your consultation is unaffected.</p>
+      </div>
+    </details>
   </div>
 </section>
 
@@ -1325,7 +1664,10 @@ a.contact-row strong { font-weight: 600; }
         <li><a href="#about">About Dr. Bernie</a></li>
         <li><a href="#conditions">Conditions &amp; Concerns</a></li>
         <li><a href="#treatments">Treatments</a></li>
+        <li><a href="#cancer-support">Cancer &amp; HIV Support</a></li>
         <li><a href="#process">Your First Visit</a></li>
+        <li><a href="#fees">Fees</a></li>
+        <li><a href="#faq">Questions</a></li>
         <li><a href="#accounts">Patient Accounts</a></li>
         <li><a href="#contact">Book a Consultation</a></li>
       </ul>
@@ -1363,6 +1705,12 @@ a.contact-row strong { font-weight: 600; }
       </div>
     </div>
   </div>
+  <nav class="footer-legal-links" aria-label="Legal">
+    <a href="disclaimer.html">Disclaimer</a>
+    <a href="terms.html">Terms &amp; Conditions</a>
+    <a href="quality-control.html">Quality Control Policy</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </nav>
   <div class="footer-bottom">
     <span class="footer-legal">© 2026 Herbernie Int'l · Dr. Bernard Lurie. Information on this site is general and does not replace advice from your doctor or specialist. Naturopathic care does not replace necessary medical, oncology or emergency treatment.</span>
     <div class="footer-socials">
