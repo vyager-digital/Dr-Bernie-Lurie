@@ -4,6 +4,20 @@
 
 ---
 
+## ✅ DECISION (Sean, 2026-08-20)
+
+**Incorporate everything in this audit EXCEPT the "coming soon" items.**
+
+Explicitly out of scope:
+- Foot Reflexology (§1c)
+- "Establish Eating Habits" (§1d)
+- Herbal products / online shop (§1d)
+
+Everything else in §1–§6 is approved to build. Work the priority list at the foot of this document.
+Two items still need a client answer before their section can ship — the live email address and the canonical bio (§4, §5).
+
+---
+
 ## Old site map (what exists today)
 
 | URL | Page |
