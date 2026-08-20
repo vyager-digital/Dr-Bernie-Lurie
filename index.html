@@ -464,6 +464,14 @@ button { font: inherit; color: inherit; }
 .tx-safety p + p { margin-top: 0.65rem; }
 .tx-safety strong { color: var(--slate-deep); font-weight: 600; }
 
+.tx-detail { max-width: 1240px; margin: 2rem auto 0; }
+.tx-detail-head {
+  font-family: var(--font-display); font-size: clamp(1.5rem, 2.6vw, 1.9rem);
+  line-height: 1.2; color: var(--slate-deep); margin-bottom: 1rem;
+}
+.tx-detail .faq-list { max-width: none; }
+.faq-a sub { font-size: 0.75em; }
+
 /* ── 14c. FAQ ────────────────────────────────────────────── */
 .faq-list { display: grid; gap: 0.7rem; max-width: 900px; margin: 0 auto; }
 .faq {
@@ -1167,6 +1175,68 @@ a.contact-row strong { font-weight: 600; }
       </div>
     </article>
   </div>
+  <div class="tx-detail rise">
+    <h3 class="tx-detail-head">In more detail</h3>
+    <div class="faq-list">
+
+      <details class="faq">
+        <summary><span class="faq-q">EIS Scan &amp; Consultation</span><span class="faq-mark" aria-hidden="true"></span></summary>
+        <div class="faq-a">
+          <p>An Electro Interstitial Scan is non-invasive. It is used for pre-screening, to help shape a treatment plan, and to follow how things are moving over the course of care.</p>
+          <p>It measures electrolyte and enzyme activity, and reports on the functional status of <strong>37 internal organs across 69 parameters</strong>. The output covers acid-base status, biochemical, hormonal and neurohormonal estimates, cellular mitochondrial and enzymatic activity, interstitial pH, oxygen, CO<sub>2</sub> and ATP, body mass index and body composition, and an organ system and health risk analysis.</p>
+          <p>The scan is one input among several. Bernie reads it alongside your history, your symptoms and the rest of the assessment. It is not a diagnosis on its own, and it does not replace tests your doctor has ordered.</p>
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary><span class="faq-q">Rife Sessions</span><span class="faq-mark" aria-hidden="true"></span></summary>
+        <div class="faq-a">
+          <p>The Rife-Medic is a non-invasive device that applies specific frequencies through hand-held contact cylinders. The idea behind it is resonance: living organisms each have their own characteristic frequency, and the device applies frequencies intended to disturb microbes while leaving surrounding tissue undisturbed.</p>
+          <p>In the practice it is used to support circulation, detoxification, energy and pain relief, as part of a wider plan rather than on its own.</p>
+          <p><strong>Conditions of use.</strong> The device is not intended to diagnose disease or to replace any medication or therapy your doctor has prescribed. Use of any bio-resonance device is at your own discretion and risk.</p>
+          <p><strong>Not suitable for everyone.</strong> Rife sessions are not offered to anyone who is pregnant, has epilepsy, is at risk of heart failure, wears a pacemaker or any other life-support device, or is receiving acute or critical care.</p>
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary><span class="faq-q">Mineralising Foot Detox</span><span class="faq-mark" aria-hidden="true"></span></summary>
+        <div class="faq-a">
+          <p>The treatment is simple and quite relaxing. An electrode sits in a container of water, you submerge your feet, and you rest for roughly <strong>45 minutes</strong>. Minerals are produced by the reaction between the electrode and the water.</p>
+          <p>Patients commonly report better sleep, improved digestion, more energy, relief from stress and tension, and reduced inflammation. Effects vary from person to person, and it works best as part of a wider plan rather than as a one-off.</p>
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary><span class="faq-q">Spinal Alignment Bed</span><span class="faq-mark" aria-hidden="true"></span></summary>
+        <div class="faq-a">
+          <p>A thermal massage bed combining gentle spinal decompression, acupressure and heat. Physical jade rollers work from the head to the base of the spine, and the bed produces far-infrared warmth that penetrates into the tissue.</p>
+          <p>It is used to encourage circulation, ease muscular tension, relieve stress and fatigue, support detoxification and settle everyday aches.</p>
+          <p><strong>Sessions run 40 minutes</strong> and are done fully clothed. The minimum age is 13, and there is no upper limit. Far-infrared is a different thing from ultraviolet and does not carry the same risks. Drink plenty of water afterwards. If you have a serious back condition, speak to your GP before booking.</p>
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary><span class="faq-q">G5 Massage</span><span class="faq-mark" aria-hidden="true"></span></summary>
+        <div class="faq-a">
+          <p>The G5 works by vibration. Shaped probes deliver vibration energy into the deeper layers of tissue, which helps relieve pain, move circulation along and relax muscle. It reaches areas a manual massage struggles with, and it holds the same rhythm throughout.</p>
+          <p><strong>The heads each do something different:</strong> flat heads for smoothing and toning, knobbed heads to stimulate circulation and work on cellulite, and roller or brush heads for gentle drainage. The machine moves up, down and side to side, creating a percussion effect that mobilises fluid and brings oxygen into the tissue.</p>
+          <p><strong>What to expect.</strong> A course of <strong>1&ndash;2 sessions per week</strong> is usually suggested. Temporary redness or mild discomfort afterwards is normal given the depth of the massage. Drink plenty of water before and after.</p>
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary><span class="faq-q">Neural Therapy</span><span class="faq-mark" aria-hidden="true"></span></summary>
+        <div class="faq-a">
+          <p>Neural therapy targets the <strong>autonomic nervous system</strong>, the part of the nervous system that runs the body's automatic functions: immune response, circulation and hormone production.</p>
+          <p>It works by <strong>injecting a local anaesthetic into defined regions of the body</strong>, with the intention of resetting nerve pathways that have stopped regulating properly.</p>
+          <p>It is used mainly for chronic musculoskeletal pain, headaches and migraine, and for autonomic complaints such as digestive trouble and menstrual irregularity. It may also support circulation and tissue repair, and calm inflammation.</p>
+          <p>Suitability and risks are discussed with you at consultation before anything is agreed.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+
   <aside class="tx-safety rise" aria-labelledby="rife-safety">
     <svg class="ico" aria-hidden="true"><use href="#i-shield"></use></svg>
     <div>
@@ -1604,18 +1674,18 @@ a.contact-row strong { font-weight: 600; }
           <svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg>
           <span><strong>Message on WhatsApp</strong><br>+27 76 239 0423</span>
         </a>
-        <a class="contact-row" href="tel:+27762390423">
+        <a class="contact-row" href="tel:+27413781531">
           <svg class="ico" aria-hidden="true"><use href="#i-phone"></use></svg>
-          <span><strong>Call the practice</strong><br>+27 76 239 0423</span>
+          <span><strong>Call the practice</strong><br>+27 41 378 1531</span>
         </a>
         <a class="contact-row" href="mailto:info@herbernie.co.za">
           <svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>
           <span><strong>Email</strong><br>info@herbernie.co.za</span>
         </a>
-        <div class="contact-row">
+        <a class="contact-row" href="https://www.google.com/maps/search/?api=1&amp;query=19+Caviare+Crescent+Beachview+Gqeberha+South+Africa" rel="noopener">
           <svg class="ico" aria-hidden="true"><use href="#i-pin"></use></svg>
-          <span><strong>South Africa</strong><br>In-person and remote consultations</span>
-        </div>
+          <span><strong>19 Caviare Crescent</strong><br>Beachview, Gqeberha (Port Elizabeth)</span>
+        </a>
       </div>
     </div>
 
@@ -1698,9 +1768,13 @@ a.contact-row strong { font-weight: 600; }
           <svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>
           <span>info@herbernie.co.za</span>
         </a>
+        <a href="tel:+27413781531">
+          <svg class="ico" aria-hidden="true"><use href="#i-phone"></use></svg>
+          <span>+27 41 378 1531</span>
+        </a>
         <div>
           <svg class="ico" aria-hidden="true"><use href="#i-pin"></use></svg>
-          <span>South Africa<br>Remote consultations available</span>
+          <span>19 Caviare Crescent, Beachview<br>Gqeberha (Port Elizabeth)</span>
         </div>
       </div>
     </div>
@@ -1806,6 +1880,43 @@ form.addEventListener('submit', async e => {
     btn.disabled = false;
   }
 });
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "@id": "https://herbernie.co.za/#practice",
+  "name": "Herbernie Int'l",
+  "alternateName": "Herbernie International",
+  "description": "Naturopathic care from Dr. Bernard Lurie for complex and long-standing health concerns. Herbal medicine, iridology, EIS scanning and clinical nutrition, in South Africa and remotely.",
+  "url": "https://herbernie.co.za/",
+  "image": "https://herbernie.co.za/assets/images/opt/bernie-hero-1050.webp",
+  "telephone": "+27413781531",
+  "email": "info@herbernie.co.za",
+  "priceRange": "R490-R980",
+  "currenciesAccepted": "ZAR",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "19 Caviare Crescent",
+    "addressLocality": "Beachview, Gqeberha (Port Elizabeth)",
+    "addressRegion": "Eastern Cape",
+    "addressCountry": "ZA"
+  },
+  "areaServed": { "@type": "Country", "name": "South Africa" },
+  "availableService": [
+    { "@type": "MedicalTherapy", "name": "EIS Scan & Consultation" },
+    { "@type": "MedicalTherapy", "name": "Rife Sessions" },
+    { "@type": "MedicalTherapy", "name": "Mineralising Foot Detox" },
+    { "@type": "MedicalTherapy", "name": "Spinal Alignment Bed" },
+    { "@type": "MedicalTherapy", "name": "G5 Massage" },
+    { "@type": "MedicalTherapy", "name": "Neural Therapy" }
+  ],
+  "founder": {
+    "@type": "Person",
+    "name": "Dr. Bernard Lurie",
+    "jobTitle": "Naturopath"
+  }
+}
 </script>
 </body>
 </html>
