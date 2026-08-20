@@ -102,7 +102,7 @@ p { margin: 0; }
   margin-bottom: 0.75rem;
 }
 .l-toc ol { margin: 0; padding-left: 1.15rem; columns: 2; column-gap: 2rem; }
-.l-toc li { margin-bottom: 0.4rem; font-size: 0.98rem; break-inside: avoid; }
+.l-toc li { margin-bottom: 0.4rem; font-size: 1rem; break-inside: avoid; }
 .l-toc a { color: var(--slate-deep); text-decoration: none; border-bottom: 1px solid var(--slate-22); }
 .l-toc a:hover { border-bottom-color: var(--slate-deep); }
 
@@ -161,6 +161,8 @@ p { margin: 0; }
 
 @media (max-width: 700px) {
   .l-toc ol { columns: 1; }
+  .l-toc li { margin-bottom: 0; }
+  .l-toc a { display: inline-flex; align-items: center; min-height: 44px; }
   .l-brand-tag { display: none; }
   .l-nav { padding: 0.7rem 1.25rem; }
 }
