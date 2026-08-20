@@ -296,6 +296,7 @@ button { font: inherit; color: inherit; }
 .hero {
   display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
   padding-top: 78px; background: var(--off-white);
+  min-height: min(90vh, 780px); max-height: 880px;
 }
 .hero-copy {
   position: relative; z-index: 1;
@@ -307,8 +308,9 @@ button { font: inherit; color: inherit; }
 .hero-copy .h-display { max-width: 15ch; }
 .hero-copy .lede { max-width: 46ch; font-size: 1.18rem; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; }
-.hero-media { position: relative; background: var(--slate-deep); }
+.hero-media { position: relative; overflow: hidden; background: var(--slate-deep); }
 .hero-media img {
+  position: absolute; inset: 0;
   width: 100%; height: 100%; object-fit: cover; object-position: center 12%;
 }
 .hero-media::after {
@@ -879,7 +881,7 @@ a.contact-row strong { font-weight: 600; }
   .nav-cta { justify-content: center; margin-top: 0.85rem; min-height: 52px; }
   .nav-links li:has(.nav-cta) { border-top: 0; }
 
-  .hero { grid-template-columns: 1fr; }
+  .hero { grid-template-columns: 1fr; min-height: 0; max-height: none; }
   .hero-media { order: -1; aspect-ratio: 4 / 3; max-height: 62vh; }
   .hero-copy { padding-top: 2.75rem; padding-bottom: 3.25rem; }
 
