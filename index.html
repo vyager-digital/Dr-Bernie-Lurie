@@ -506,23 +506,28 @@ button { font: inherit; color: inherit; }
   overflow: hidden;
   border: 1px solid var(--light-20); border-radius: var(--r-md);
   background: rgba(244, 239, 235, 0.055);
+  transition: background-color 0.3s var(--ease), border-color 0.3s var(--ease);
 }
+.account:hover, .account[open] { border-color: rgba(244, 239, 235, 0.32); }
+.account[open] { background: rgba(244, 239, 235, 0.09); }
 .account[hidden] { display: none; }
 .account summary {
-  display: grid; grid-template-columns: 76px minmax(0, 1fr) auto;
-  align-items: center; gap: 0.35rem 1.1rem;
-  padding: 1rem 1.35rem; cursor: pointer; list-style: none;
-  min-height: 92px;
+  display: grid; grid-template-columns: 152px minmax(0, 1fr) auto;
+  align-items: center; gap: 0.35rem 1.6rem;
+  padding: 0 1.6rem 0 0; cursor: pointer; list-style: none;
+  min-height: 152px;
 }
 .account summary::-webkit-details-marker { display: none; }
 .account-mark {
-  display: grid; place-items: center;
-  --mark-bg: var(--sage);
-  width: 76px; height: 76px; border-radius: var(--r-sm);
-  background: var(--mark-bg); color: var(--slate-deep);
-  transition: background-color 0.3s var(--ease);
+  align-self: stretch; overflow: hidden;
+  width: 152px; background: var(--off-white);
 }
-.account-mark .ico { width: 44px; height: 44px; }
+.account-mark img {
+  display: block; width: 100%; height: 100%; object-fit: contain;
+  transition: transform 0.5s var(--ease);
+}
+.account:hover .account-mark img,
+.account[open] .account-mark img { transform: scale(1.05); }
 .account-condition {
   display: block; min-width: 0;
   font-family: var(--font-display); font-size: 1.46rem; line-height: 1.22;
@@ -535,9 +540,7 @@ button { font: inherit; color: inherit; }
 }
 .account-open .ico { width: 14px; height: 14px; transition: transform 0.3s var(--ease); }
 .account[open] .account-open .ico { transform: rotate(180deg); }
-.account:hover .account-mark { --mark-bg: #B7C8C5; }
-.account[open] .account-mark { --mark-bg: var(--off-white); }
-.account-text { padding: 0.25rem 1.35rem 1.9rem 6.1rem; }
+.account-text { padding: 0.25rem 1.6rem 1.9rem calc(152px + 1.6rem); }
 .account-attrib {
   display: flex; align-items: baseline; gap: 0.7rem;
   margin-bottom: 1.15rem; padding-bottom: 0.95rem;
@@ -548,7 +551,7 @@ button { font: inherit; color: inherit; }
 .account-attrib::before {
   content: ''; width: 26px; height: 2px; flex: none; background: currentColor; transform: translateY(-0.32em);
 }
-.account-text p { margin-bottom: 0.9rem; color: var(--light-86); font-size: 1.02rem; line-height: 1.65; }
+.account-text p { margin-bottom: 0.9rem; color: var(--light-86); font-size: 1.02rem; line-height: 1.65; max-width: 64ch; }
 .account-text p:last-child { margin-bottom: 0; }
 .accounts-more { max-width: 1240px; margin: 1.5rem auto 0; text-align: center; }
 
@@ -661,6 +664,7 @@ a.contact-row strong { font-weight: 600; }
   }
   .rise { opacity: 1; transform: none; }
   .btn:hover, .tx-card:hover img, .condition:hover { transform: none; }
+  .account:hover .account-mark img, .account[open] .account-mark img { transform: none; }
 }
 
 /* ── 18. RESPONSIVE ──────────────────────────────────────── */
@@ -727,9 +731,9 @@ a.contact-row strong { font-weight: 600; }
   .chip .ico { width: 23px; height: 23px; }
   .condition h3 { font-size: 1.32rem; }
 
-  .account summary { grid-template-columns: 60px minmax(0, 1fr); padding: 0.95rem 1.05rem; }
-  .account-mark { width: 60px; height: 60px; }
-  .account-mark .ico { width: 36px; height: 36px; }
+  .account summary { grid-template-columns: 104px minmax(0, 1fr); gap: 0.3rem 1.05rem; padding: 0 1.05rem 0 0; min-height: 104px; }
+  .account-mark { width: 104px; grid-row: 1 / span 2; }
+  .account-condition { font-size: 1.24rem; }
   .account-open { grid-column: 2; }
   .account-text { padding: 0.25rem 1.05rem 1.6rem 1.05rem; }
 
@@ -774,101 +778,6 @@ a.contact-row strong { font-weight: 600; }
   </symbol>
   <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <path d="M4.6 12.6 9.4 17.4 19.6 6.6"/>
-  </symbol>
-  <symbol id="a-breast" viewBox="0 0 24 24">
-    <g fill="currentColor">
-      <rect x="3.4" y="2.2" width="2.6" height="19.6" rx="1.1"/>
-      <path d="M6 6.1c6.9 0 10.9 2.4 10.9 5.9s-4 5.9-10.9 5.9z"/>
-    </g><g fill="none" stroke="var(--mark-bg)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="15.4" cy="12" r="1.9"/>
-      <path d="M6 9.6c2.9.5 4.8 1.3 5.8 2.4-1 1.1-2.9 1.9-5.8 2.4"/>
-    </g>
-  </symbol>
-  <symbol id="a-lymph" viewBox="0 0 24 24">
-    <g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
-      <path d="M2.8 20.8c3.2-.7 4.9-3.2 7.3-5.1s4.2-3.6 5.6-5.9 2.6-4.3 4.5-5.6"/>
-    </g><g fill="currentColor">
-      <ellipse cx="6.2" cy="18.6" rx="3.5" ry="2.7" transform="rotate(-34 6.2 18.6)"/>
-      <ellipse cx="12.6" cy="13.2" rx="3.5" ry="2.7" transform="rotate(-42 12.6 13.2)"/>
-      <ellipse cx="18.4" cy="7.2" rx="3.5" ry="2.7" transform="rotate(-40 18.4 7.2)"/>
-    </g><g fill="none" stroke="var(--mark-bg)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M4.6 17.5l3.2 2.2M11 12.1l3.2 2.2M16.8 6.1l3.2 2.2"/>
-    </g>
-  </symbol>
-  <symbol id="a-bladder" viewBox="0 0 24 24">
-    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-      <path d="M7.4 2.8l1.9 4.9M16.6 2.8l-1.9 4.9"/>
-    </g><g fill="currentColor">
-      <path d="M12 21.6c-4.4 0-7.4-3-7.4-6.9 0-4.2 3-7.4 7.4-7.4s7.4 3.2 7.4 7.4c0 3.9-3 6.9-7.4 6.9z"/>
-    </g><g fill="none" stroke="var(--mark-bg)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 21.4v-4.2M12 17.2c-1.9 0-3.2-1.3-3.2-3"/>
-    </g>
-  </symbol>
-  <symbol id="a-blood" viewBox="0 0 24 24">
-    <g fill="currentColor">
-      <circle cx="8" cy="8" r="5"/>
-      <circle cx="16.8" cy="13.2" r="4.3"/>
-      <circle cx="9.4" cy="18" r="3.8"/>
-    </g><g fill="none" stroke="var(--mark-bg)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="8" cy="8" r="2.1"/>
-      <circle cx="16.8" cy="13.2" r="1.7"/>
-    </g>
-  </symbol>
-  <symbol id="a-heart" viewBox="0 0 24 24">
-    <g fill="currentColor">
-      <path d="M12 20s-7-4.6-7-9.3A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.7c0 4.7-7 9.3-7 9.3z"/>
-    </g>
-    <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-      <path d="M3.9 17.9C2.5 15.8 1.8 13.4 1.8 10.9 1.8 6 6.4 2.4 12 2.4s10.2 3.6 10.2 8.5c0 2.5-.7 4.9-2.1 7"/>
-    </g>
-  </symbol>
-  <symbol id="a-brain" viewBox="0 0 24 24">
-    <g fill="currentColor">
-      <path d="M12 2.9C7.6 2.9 4 6.1 4 10.2c0 1.2.3 2.3.9 3.3-.8.9-1.2 2-1.2 3.2 0 2.6 2.3 4.7 5.1 4.7 1.1 0 2.2-.3 3.1-.9.9.6 2 .9 3.1.9 2.8 0 5.1-2.1 5.1-4.7 0-1.2-.4-2.3-1.2-3.2.6-1 .9-2.1.9-3.3 0-4.1-3.6-7.3-8-7.3z"/>
-    </g><g fill="none" stroke="var(--mark-bg)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 3.4v17.2"/>
-      <path d="M8.6 7c-1.3.8-1.9 2.1-1.6 3.4M15.4 7c1.3.8 1.9 2.1 1.6 3.4M7.8 15.7c1-.7 2.4-.5 3.2.4M16.2 15.7c-1-.7-2.4-.5-3.2.4"/>
-    </g>
-  </symbol>
-  <symbol id="a-mito" viewBox="0 0 24 24">
-    <g fill="currentColor">
-      <rect x="1.8" y="5.8" width="20.4" height="12.4" rx="6.2"/>
-    </g><g fill="none" stroke="var(--mark-bg)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M6.2 7.8c2 1.3 2 2.7 0 4s-2 2.7 0 4M11.2 7.8c2 1.3 2 2.7 0 4s-2 2.7 0 4M16.2 7.8c2 1.3 2 2.7 0 4s-2 2.7 0 4"/>
-    </g>
-  </symbol>
-  <symbol id="a-airway" viewBox="0 0 24 24">
-    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 2.6v6.6" stroke-width="3.4"/>
-      <path d="M12 9.2c0 2.6-2.3 3.4-4.1 4.8s-2.9 3-2.9 5.6M12 9.2c0 2.6 2.3 3.4 4.1 4.8s2.9 3 2.9 5.6" stroke-width="2.4"/>
-      <path d="M5 19.6c0 1.3-.7 2.3-1.9 2.9M5 19.6c1.3.4 2 1.5 2.1 2.9M19 19.6c0 1.3.7 2.3 1.9 2.9M19 19.6c-1.3.4-2 1.5-2.1 2.9" stroke-width="1.7"/>
-    </g><g fill="none" stroke="var(--mark-bg)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M10.5 4.6h3M10.5 6.8h3"/>
-    </g>
-  </symbol>
-  <symbol id="a-testis" viewBox="0 0 24 24">
-    <g fill="currentColor">
-      <ellipse cx="10.6" cy="13.9" rx="6.6" ry="7.6"/>
-    </g>
-    <g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
-      <path d="M15.8 8.9c2.1 1.6 3 4 3 6.3 0 2.5-1.1 4.6-2.8 6"/>
-    </g>
-  </symbol>
-  <symbol id="a-lungs" viewBox="0 0 24 24">
-    <g fill="currentColor">
-      <path d="M11.2 10.4v8.4c0 1.7-.9 2.7-2.6 2.7H5.4c-2.2 0-3.5-1.3-3.5-3.5 0-2.2.4-5 1.3-7.6.8-2.4 2.2-4.1 4.4-4.1 1.6 0 3.1 1 3.6 3.1zM12.8 10.4v8.4c0 1.7.9 2.7 2.6 2.7h3.2c2.2 0 3.5-1.3 3.5-3.5 0-2.2-.4-5-1.3-7.6-.8-2.4-2.2-4.1-4.4-4.1-1.6 0-3.1 1-3.6 3.1z"/>
-    </g>
-    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-      <path d="M12 2.4v8"/><path d="M9.6 5.6h4.8"/>
-    </g>
-  </symbol>
-  <symbol id="a-skin" viewBox="0 0 24 24">
-    <g fill="currentColor">
-      <path d="M1.8 7.2c2.5-2.1 5.1-2.1 7.6 0s5.1 2.1 7.6 0c1.9-1.6 3.8-2 5.2-1.2v15.6H1.8z"/>
-    </g><g fill="none" stroke="var(--mark-bg)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M2.2 12.4h19.6M2.2 17.4h19.6"/>
-      <path d="M15.2 7.6v7.8c0 1.5 1.2 2.5 2.6 2.5"/>
-    </g>
   </symbol>
   <symbol id="i-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <path d="m5.5 9 6.5 6.5L18.5 9"/>
@@ -1145,7 +1054,7 @@ a.contact-row strong { font-weight: 600; }
   <div class="accounts-list" id="accounts-list">
     <details class="account rise">
       <summary>
-        <span class="account-mark" aria-hidden="true"><svg class="ico"><use href="#a-breast"></use></svg></span>
+        <span class="account-mark" aria-hidden="true"><img src="assets/images/conditions/breast.webp" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
         <span class="account-condition">Breast cancer</span>
         <span class="account-open">Read <svg class="ico" aria-hidden="true"><use href="#i-chevron"></use></svg></span>
       </summary>
@@ -1161,7 +1070,7 @@ a.contact-row strong { font-weight: 600; }
 
     <details class="account rise d1">
       <summary>
-        <span class="account-mark" aria-hidden="true"><svg class="ico"><use href="#a-lymph"></use></svg></span>
+        <span class="account-mark" aria-hidden="true"><img src="assets/images/conditions/lymph.webp" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
         <span class="account-condition">Lymph gland cancer</span>
         <span class="account-open">Read <svg class="ico" aria-hidden="true"><use href="#i-chevron"></use></svg></span>
       </summary>
@@ -1177,7 +1086,7 @@ a.contact-row strong { font-weight: 600; }
 
     <details class="account rise d2">
       <summary>
-        <span class="account-mark" aria-hidden="true"><svg class="ico"><use href="#a-bladder"></use></svg></span>
+        <span class="account-mark" aria-hidden="true"><img src="assets/images/conditions/bladder.webp" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
         <span class="account-condition">Bladder cancer</span>
         <span class="account-open">Read <svg class="ico" aria-hidden="true"><use href="#i-chevron"></use></svg></span>
       </summary>
@@ -1194,7 +1103,7 @@ a.contact-row strong { font-weight: 600; }
 
     <details class="account rise">
       <summary>
-        <span class="account-mark" aria-hidden="true"><svg class="ico"><use href="#a-blood"></use></svg></span>
+        <span class="account-mark" aria-hidden="true"><img src="assets/images/conditions/blood.webp" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
         <span class="account-condition">Acute myeloblastic leukaemia</span>
         <span class="account-open">Read <svg class="ico" aria-hidden="true"><use href="#i-chevron"></use></svg></span>
       </summary>
@@ -1212,7 +1121,7 @@ a.contact-row strong { font-weight: 600; }
 
     <details class="account rise" hidden data-extra>
       <summary>
-        <span class="account-mark" aria-hidden="true"><svg class="ico"><use href="#a-heart"></use></svg></span>
+        <span class="account-mark" aria-hidden="true"><img src="assets/images/conditions/heart.webp" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
         <span class="account-condition">Cancer of the pericardium</span>
         <span class="account-open">Read <svg class="ico" aria-hidden="true"><use href="#i-chevron"></use></svg></span>
       </summary>
@@ -1226,7 +1135,7 @@ a.contact-row strong { font-weight: 600; }
 
     <details class="account rise" hidden data-extra>
       <summary>
-        <span class="account-mark" aria-hidden="true"><svg class="ico"><use href="#a-brain"></use></svg></span>
+        <span class="account-mark" aria-hidden="true"><img src="assets/images/conditions/brain.webp" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
         <span class="account-condition">Epilepsy</span>
         <span class="account-open">Read <svg class="ico" aria-hidden="true"><use href="#i-chevron"></use></svg></span>
       </summary>
@@ -1240,7 +1149,7 @@ a.contact-row strong { font-weight: 600; }
 
     <details class="account rise" hidden data-extra>
       <summary>
-        <span class="account-mark" aria-hidden="true"><svg class="ico"><use href="#a-mito"></use></svg></span>
+        <span class="account-mark" aria-hidden="true"><img src="assets/images/conditions/mito.webp" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
         <span class="account-condition">Chronic fatigue syndrome</span>
         <span class="account-open">Read <svg class="ico" aria-hidden="true"><use href="#i-chevron"></use></svg></span>
       </summary>
@@ -1258,7 +1167,7 @@ a.contact-row strong { font-weight: 600; }
 
     <details class="account rise" hidden data-extra>
       <summary>
-        <span class="account-mark" aria-hidden="true"><svg class="ico"><use href="#a-airway"></use></svg></span>
+        <span class="account-mark" aria-hidden="true"><img src="assets/images/conditions/airway.webp" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
         <span class="account-condition">Asthma and allergies</span>
         <span class="account-open">Read <svg class="ico" aria-hidden="true"><use href="#i-chevron"></use></svg></span>
       </summary>
@@ -1274,7 +1183,7 @@ a.contact-row strong { font-weight: 600; }
 
     <details class="account rise" hidden data-extra>
       <summary>
-        <span class="account-mark" aria-hidden="true"><svg class="ico"><use href="#a-testis"></use></svg></span>
+        <span class="account-mark" aria-hidden="true"><img src="assets/images/conditions/testis.webp" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
         <span class="account-condition">Testicular cancer</span>
         <span class="account-open">Read <svg class="ico" aria-hidden="true"><use href="#i-chevron"></use></svg></span>
       </summary>
@@ -1290,7 +1199,7 @@ a.contact-row strong { font-weight: 600; }
 
     <details class="account rise" hidden data-extra>
       <summary>
-        <span class="account-mark" aria-hidden="true"><svg class="ico"><use href="#a-lungs"></use></svg></span>
+        <span class="account-mark" aria-hidden="true"><img src="assets/images/conditions/lungs.webp" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
         <span class="account-condition">Lung cancer</span>
         <span class="account-open">Read <svg class="ico" aria-hidden="true"><use href="#i-chevron"></use></svg></span>
       </summary>
@@ -1308,7 +1217,7 @@ a.contact-row strong { font-weight: 600; }
 
     <details class="account rise" hidden data-extra>
       <summary>
-        <span class="account-mark" aria-hidden="true"><svg class="ico"><use href="#a-skin"></use></svg></span>
+        <span class="account-mark" aria-hidden="true"><img src="assets/images/conditions/skin.webp" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
         <span class="account-condition">A skin sore that would not heal</span>
         <span class="account-open">Read <svg class="ico" aria-hidden="true"><use href="#i-chevron"></use></svg></span>
       </summary>

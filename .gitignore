@@ -12,3 +12,6 @@ Thumbs.db
 
 # Local mockups — never deploy
 mockups/
+
+# Playwright scratch
+.playwright-mcp/
