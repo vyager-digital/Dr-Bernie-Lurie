@@ -38,3 +38,42 @@
 ## Notes
 - **index.html is not deployed** — Cloudflare Pages builds from `hormonal/`. Pushing does not publish it.
 - Each page has its own distinct visual identity — do not cross-apply styles between pages
+
+## Deployment — read this before touching anything
+Repo: `vyager-digital/Dr-Bernie-Lurie`, git-connected Cloudflare Pages.
+**The `hormonal/` folder is the web root.** `herbernie.co.za/` serves `hormonal/index.html`.
+
+- `index.html` at the repo root is **not deployed**. Pushing it does not publish it.
+- `/hormonal/` is not a real path on the live site. It renders only because Cloudflare falls
+  back to index.html for unmatched routes — images break. **Every outbound or shared link must
+  use the bare root** `herbernie.co.za/...`, never `/hormonal/...`.
+- `thankyou.html` is at `/thankyou.html` live (repo path `hormonal/thankyou.html`).
+
+## Working rules
+- **Review before shipping.** The auto-commit hook deploys every saved change straight to the
+  live site. Anything conversion-facing (booking screen, offer copy, CTAs, payment flow) needs
+  Sean's go-ahead first. "Let me know your thoughts" means discuss, not build.
+- **PayFast worker — only ever change the amount line.** The URL constants in
+  `functions/create-checkout.js` are load-bearing for ZAR. Don't touch anything else.
+- **Never add new payment notification email types.** Two emails only: one payment-attempt per
+  "Confirm My Booking" click, and one payment-received. Make those more reliable instead.
+- **Check the Drive folder before asking Sean for content.**
+- **Don't restructure layouts unless asked.** Verify by code review, never by self-screenshot.
+- **Full mobile QA before calling anything done** — ≥16px body, weight ≥500 on Cormorant
+  Garamond, no wrapping breakage.
+
+## Images
+- Never downscale or over-compress. Portraits ≤1200px long side at `cwebp -q 82`; banners
+  ≤1400–1600px wide at `-q 80`. Never below q78 or 800px. Update the width/height attributes.
+- Infographics with baked-in text labels need separate desktop and mobile orientations —
+  a square composition goes illegible at ~335–380px.
+- **`bernie-profile-*` in `hormonal/assets/images/` is the whole shoot, not just Bernie.**
+  Five of the nine are Joanne. Check the photo library memory before using one as "Bernie".
+
+## Reporting to the client
+Business register, not landing-page language. Lead with the finding and the numbers.
+Use South African data, not US/global benchmarks — label any global figure as a rough proxy.
+
+## Full project memory
+`drbernie_index` in the memory store — 37 entries covering the Meta Ads funnel, quiz and
+assessment flow, PayFast/booking, Clarity, deliverability, FAQ work and performance reports.
