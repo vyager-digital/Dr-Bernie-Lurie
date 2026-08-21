@@ -328,6 +328,7 @@ button { font: inherit; color: inherit; }
 .hero {
   display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
   padding-top: 78px; background: var(--off-white);
+  border-bottom: 1px solid var(--slate-14);
   min-height: min(90vh, 780px); max-height: 880px;
 }
 .hero-copy {
@@ -350,28 +351,6 @@ button { font: inherit; color: inherit; }
   background: linear-gradient(to top, rgba(34, 73, 90, 0.30), transparent);
   pointer-events: none;
 }
-
-/* ── 7. PRACTICE STRIP ───────────────────────────────────── */
-.strip { background: var(--slate-deep); padding: 0 var(--pad-x); }
-.strip-inner {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  max-width: 1240px; margin: 0 auto;
-}
-.strip-item {
-  padding: 2rem 1.75rem 1.9rem;
-  border-left: 1px solid var(--light-12);
-}
-.strip-item:first-child { border-left: 0; padding-left: 0; }
-.strip-item::before {
-  content: ''; display: block; width: 38px; height: 2px;
-  margin-bottom: 1rem; background: var(--sage);
-}
-.strip-item strong {
-  display: block; margin-bottom: 0.3rem;
-  color: var(--off-white); font-family: var(--font-display);
-  font-size: 1.45rem; font-weight: 500; line-height: 1.2;
-}
-.strip-item span { color: var(--light-86); font-size: 0.98rem; line-height: 1.5; }
 
 /* ── 8. SECTION SHELLS ───────────────────────────────────── */
 .section { padding: var(--pad-y) var(--pad-x); }
@@ -969,10 +948,6 @@ a.contact-row strong { font-weight: 600; }
   :root { --pad-y: clamp(3.25rem, 9vw, 4.25rem); --r-lg: 20px; }
   body { font-size: 17px; }
 
-  .strip-inner { grid-template-columns: 1fr; }
-  .strip-item { padding: 1.6rem 0; border-left: 0; border-top: 1px solid var(--light-12); }
-  .strip-item:first-child { border-top: 0; }
-
   .hero-copy { gap: 1.25rem; }
   .hero-copy .lede { font-size: 1.08rem; }
   .hero-actions { width: 100%; }
@@ -1103,24 +1078,6 @@ a.contact-row strong { font-weight: 600; }
          sizes="(max-width: 980px) 100vw, 46vw"
          alt="Shelves of Herbernie International herbal tinctures in the practice dispensary" width="1000" height="1777"
          fetchpriority="high" decoding="async">
-  </div>
-</section>
-
-<!-- PRACTICE STRIP -->
-<section class="strip dark-panel" aria-label="Practice at a glance">
-  <div class="strip-inner">
-    <div class="strip-item">
-      <strong>Nearly four decades</strong>
-      <span>Clinical naturopathic experience</span>
-    </div>
-    <div class="strip-item">
-      <strong>Comprehensive first visits</strong>
-      <span>Plan for a 60&ndash;90 minute appointment</span>
-    </div>
-    <div class="strip-item">
-      <strong>In-person &amp; remote</strong>
-      <span>Natural health support across South Africa</span>
-    </div>
   </div>
 </section>
 
