@@ -532,21 +532,6 @@ button { font: inherit; color: inherit; }
 .cs-cost dd { margin: 0; color: var(--off-white); font-size: 1.05rem; font-weight: 600; white-space: nowrap; }
 .cs-cost.is-lead dd { font-family: var(--font-display); font-size: 1.85rem; font-weight: 500; line-height: 1; }
 .cs-card .btn { margin-top: 1.5rem; width: 100%; justify-content: center; }
-.cs-note {
-  max-width: 1240px; margin: clamp(1.75rem, 3vw, 2.5rem) auto 0;
-  display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start;
-  padding: 1.35rem 1.5rem;
-  background: rgba(244, 239, 235, 0.06);
-  border-left: 3px solid var(--sage);
-  border-radius: var(--r-sm);
-}
-.cs-note > .ico { width: 1.5rem; height: 1.5rem; color: var(--sage); margin-top: 0.15rem; }
-.cs-note h3 {
-  font-family: var(--font-display); font-size: 1.3rem; line-height: 1.2;
-  color: var(--off-white); margin-bottom: 0.5rem;
-}
-.cs-note p { color: var(--light-86); font-size: 1rem; line-height: 1.62; }
-.cs-note p + p { margin-top: 0.6rem; }
 
 /* ── 12. DISPENSARY ──────────────────────────────────────── */
 .dispensary {
@@ -603,7 +588,7 @@ button { font: inherit; color: inherit; }
 }
 .accounts-head .h-section { max-width: 16ch; }
 .accounts-head .lede { margin-bottom: 1.2rem; }
-.accounts-list { display: grid; gap: 0.7rem; max-width: 1240px; margin: 0 auto; }
+.accounts-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 0.85rem; max-width: 1240px; margin: 0 auto; }
 .account {
   overflow: hidden;
   border: 1px solid var(--light-20); border-radius: var(--r-md);
@@ -642,16 +627,17 @@ button { font: inherit; color: inherit; }
 }
 .account-open .ico { width: 14px; height: 14px; transition: transform 0.3s var(--ease); }
 .account[open] .account-open .ico { transform: rotate(180deg); }
-.account-text { padding: 0.25rem 1.6rem 1.9rem calc(152px + 1.6rem); }
-.account-attrib {
-  display: flex; align-items: baseline; gap: 0.7rem;
-  margin-bottom: 1.15rem; padding-bottom: 0.95rem;
-  border-bottom: 1px solid var(--light-20);
-  color: var(--sage); font-size: 0.9rem; font-weight: 600;
+.account-text { padding: 0 1.6rem 1.9rem 1.6rem; }
+.account-text::before { content: ''; display: block; width: 26px; height: 2px; margin-bottom: 1.15rem; background: var(--sage); }
+.account-head { display: grid; gap: 0.3rem; min-width: 0; padding: 1.5rem 0; }
+.account-meta {
+  color: var(--sage); font-size: 0.82rem; font-weight: 600;
   letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.45;
 }
-.account-attrib::before {
-  content: ''; width: 26px; height: 2px; flex: none; background: currentColor; transform: translateY(-0.32em);
+.account-teaser {
+  margin-top: 0.4rem; max-width: 40ch;
+  font-family: var(--font-display); font-style: italic; font-size: 1.18rem; line-height: 1.4;
+  color: var(--light-86);
 }
 .account-text p { margin-bottom: 0.9rem; color: var(--light-86); font-size: 1.02rem; line-height: 1.65; max-width: 64ch; }
 .account-text p:last-child { margin-bottom: 0; }
@@ -787,6 +773,7 @@ a.contact-row strong { font-weight: 600; }
 }
 
 @media (max-width: 980px) {
+  .accounts-list { grid-template-columns: 1fr; }
   .fees-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .nav-toggle { display: block; }
   .nav-links {
@@ -853,7 +840,9 @@ a.contact-row strong { font-weight: 600; }
   .account-mark { width: 104px; grid-row: 1 / span 2; }
   .account-condition { font-size: 1.24rem; }
   .account-open { grid-column: 2; }
-  .account-text { padding: 0.25rem 1.05rem 1.6rem 1.05rem; }
+  .account-head { padding: 1rem 0; }
+  .account-teaser { font-size: 1.05rem; }
+  .account-text { padding: 0 1.05rem 1.6rem 1.05rem; }
 
   .visit-body, .about-body, .dispensary-body, .conditions-intro { padding: 1.85rem 1.35rem; }
   .step { grid-template-columns: 38px minmax(0, 1fr); gap: 0.75rem; }
@@ -917,9 +906,6 @@ a.contact-row strong { font-weight: 600; }
   <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
     <rect x="2.6" y="4.8" width="18.8" height="14.4" rx="2.4"/><path d="m2.9 6.6 9.1 6.3 9.1-6.3"/>
   </symbol>
-  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 2.8 4.8 5.9v5.4c0 4.5 3 8.6 7.2 9.9 4.2-1.3 7.2-5.4 7.2-9.9V5.9z"/><path d="M9.2 11.9 11.3 14l3.5-3.9"/>
-  </symbol>
   <symbol id="i-wa" viewBox="0 0 448 512"><path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></symbol>
 </svg><nav class="nav" id="nav" aria-label="Primary">
   <a class="nav-brand" href="index.html">
@@ -945,11 +931,14 @@ a.contact-row strong { font-weight: 600; }
     <details class="account rise">
       <summary>
         <span class="account-mark" aria-hidden="true"><img src="assets/images/conditions/breast.webp" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
-        <span class="account-condition">Breast cancer</span>
+        <span class="account-head">
+          <span class="account-condition">Breast cancer</span>
+          <span class="account-meta">Ane Venter · Komatipoort</span>
+          <span class="account-teaser">“Nothing was ever too much trouble.”</span>
+        </span>
         <span class="account-open">Read <svg class="ico" aria-hidden="true"><use href="#i-chevron"></use></svg></span>
       </summary>
       <div class="account-text">
-        <p class="account-attrib">Ane Venter · Komatipoort</p>
         <p>Firstly I want to thank my Creator and secondly Dr. Lurie for the miracle in my healing.</p>
         <p>I had been suffering from cancer for 11 years and within two months on Dr. Lurie’s treatment, I was healed.</p>
         <p>It started with breast cancer and thereafter moved to my thigh. In a major operation, my leg was amputated and replaced with a steel pipe. Two years later the cancer spread to my lungs.</p>
@@ -961,11 +950,14 @@ a.contact-row strong { font-weight: 600; }
     <details class="account rise d1">
       <summary>
         <span class="account-mark" aria-hidden="true"><img src="assets/images/conditions/lymph.webp" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
-        <span class="account-condition">Lymph gland cancer</span>
+        <span class="account-head">
+          <span class="account-condition">Lymph gland cancer</span>
+          <span class="account-meta">Jeanne and Jose Munro</span>
+          <span class="account-teaser">“A sad story with a happy ending.”</span>
+        </span>
         <span class="account-open">Read <svg class="ico" aria-hidden="true"><use href="#i-chevron"></use></svg></span>
       </summary>
       <div class="account-text">
-        <p class="account-attrib">Jeanne and Jose Munro</p>
         <p>A sad story with a happy ending…</p>
         <p>My husband was diagnosed with cancer in the glands of his throat by a specialist. Scans and biopsies were done and it was suggested that an operation and chemotherapy for a couple of months was the only way out. As well understand, we were very sad about the outcome and decided to go to Durban and see an oncologist there for a second opinion.</p>
         <p>The same procedure was followed and the outcome of the tests was the same, except for the warning that an operation should be performed straight away as the lymph gland in the neck was so full of cancer cells that it may overflow and spread to the rest of the body. The operation was not performed as my husband was very apprehensive regarding this matter and was informed by the specialist that part of the face and neck might be slightly lame after the operation.</p>
@@ -977,11 +969,14 @@ a.contact-row strong { font-weight: 600; }
     <details class="account rise d2">
       <summary>
         <span class="account-mark" aria-hidden="true"><img src="assets/images/conditions/bladder.webp" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
-        <span class="account-condition">Bladder cancer</span>
+        <span class="account-head">
+          <span class="account-condition">Bladder cancer</span>
+          <span class="account-meta">Bernard Cox · 31 October 2025</span>
+          <span class="account-teaser">“I just want to reiterate my thanks and gratitude to you.”</span>
+        </span>
         <span class="account-open">Read <svg class="ico" aria-hidden="true"><use href="#i-chevron"></use></svg></span>
       </summary>
       <div class="account-text">
-        <p class="account-attrib">Bernard Cox · 31 October 2025</p>
         <p>Hello Doctor Lurie,</p>
         <p>It’s been a long time… I just want to reiterate my thanks and gratitude to you for successfully treating me for Bladder cancer way back in September 2005. Friends and family thought that I was taking a chance by choosing God’s Pharmacy over modern Allopathic treatments, but over the years, I was the one who has the last laugh.</p>
         <p>Some friends were real sceptics, but after five years, some insisted that my cure was just a remission; but twenty years late, when I see them, I sometimes taunt them on how they were so very wrong.</p>
@@ -994,11 +989,14 @@ a.contact-row strong { font-weight: 600; }
     <details class="account rise">
       <summary>
         <span class="account-mark" aria-hidden="true"><img src="assets/images/conditions/blood.webp" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
-        <span class="account-condition">Acute myeloblastic leukaemia</span>
+        <span class="account-head">
+          <span class="account-condition">Acute myeloblastic leukaemia</span>
+          <span class="account-meta">Gloria Motsi · Pretoria, writing about her mother</span>
+          <span class="account-teaser">“I told myself that it will not kill me to try it.”</span>
+        </span>
         <span class="account-open">Read <svg class="ico" aria-hidden="true"><use href="#i-chevron"></use></svg></span>
       </summary>
       <div class="account-text">
-        <p class="account-attrib">Gloria Motsi · Pretoria, writing about her mother</p>
         <p>My mom was diagnosed with Acute Myeloblastic Leukemia on the 20 August 2019. She collapsed at work and was admitted on the same day.</p>
         <p>The hospital started administering chemotherapy treatment to her on the 22 August 2019. We were told that she must have 6 rounds of Chemotherapy.</p>
         <p>A friend told me about Dr Bernie and I also visited his website. I saw testimonies of people who were healed of cancer but was not convinced. I even called one of his patient who has healed from cancer of the bladder. He showed me pictures of him when he was very sick and his recent pictures. However, I was still not convinced that someone might be healed of cancer. So the reason I contacted Dr Bernie is that after the first round of Chemotherapy, my mom’s blood count were decreasing fast and her Oncologist was worried about her condition.</p>
@@ -1012,11 +1010,14 @@ a.contact-row strong { font-weight: 600; }
     <details class="account rise" data-extra>
       <summary>
         <span class="account-mark" aria-hidden="true"><img src="assets/images/conditions/heart.webp" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
-        <span class="account-condition">Cancer of the pericardium</span>
+        <span class="account-head">
+          <span class="account-condition">Cancer of the pericardium</span>
+          <span class="account-meta">R. W. Mukheibir</span>
+          <span class="account-teaser">“Ten years later I am leading a normal life.”</span>
+        </span>
         <span class="account-open">Read <svg class="ico" aria-hidden="true"><use href="#i-chevron"></use></svg></span>
       </summary>
       <div class="account-text">
-        <p class="account-attrib">R. W. Mukheibir</p>
         <p>A year after I had a kidney removed I got cancer of the pericardium, and spend three weeks in hospital. My oncologist suggested enfuron injections.</p>
         <p>I decided to consult Dr. Lurie who put me on a strict diet and large doses of herbal medication as well as Glyco Nutrients.</p>
         <p>Ten years later I am leading a normal life.</p>
@@ -1026,11 +1027,14 @@ a.contact-row strong { font-weight: 600; }
     <details class="account rise" data-extra>
       <summary>
         <span class="account-mark" aria-hidden="true"><img src="assets/images/conditions/brain.webp" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
-        <span class="account-condition">Epilepsy</span>
+        <span class="account-head">
+          <span class="account-condition">Epilepsy</span>
+          <span class="account-meta">Heleen Human · Tadcaster, writing about her daughter</span>
+          <span class="account-teaser">“We always had free access to him for advice and treatment.”</span>
+        </span>
         <span class="account-open">Read <svg class="ico" aria-hidden="true"><use href="#i-chevron"></use></svg></span>
       </summary>
       <div class="account-text">
-        <p class="account-attrib">Heleen Human · Tadcaster, writing about her daughter</p>
         <p>We were introduced to Dr. Bernie Lurie by friends. My daughter was suffering from a mysterious epilepsy-related condition which she attracted at the age of 30 years. Dr. Bernie considered her a case study and constantly discussed the matter with us and also suggested that we discontinue the expensive pills she was using. She stopped the medication, which was prescribed by a specialist who had done numerous E.E.G scans on her. It's been 2 years later and she has never had an epileptic attack since.</p>
         <p>We put his carrot juice theory to the test with very good results. We always had free access to him for advice and treatment. His knowledge and supplements for various diseases are astonishing.</p>
         <p>With excellent human relations, he possesses together with his intelligent summary of a particular problem, he can be a winning combination for the medical field.</p>
@@ -1040,11 +1044,14 @@ a.contact-row strong { font-weight: 600; }
     <details class="account rise" data-extra>
       <summary>
         <span class="account-mark" aria-hidden="true"><img src="assets/images/conditions/mito.webp" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
-        <span class="account-condition">Chronic fatigue syndrome</span>
+        <span class="account-head">
+          <span class="account-condition">Chronic fatigue syndrome</span>
+          <span class="account-meta">Joe Van Niekerk · Randhart</span>
+          <span class="account-teaser">“Dr. Lurie was always available on his cell.”</span>
+        </span>
         <span class="account-open">Read <svg class="ico" aria-hidden="true"><use href="#i-chevron"></use></svg></span>
       </summary>
       <div class="account-text">
-        <p class="account-attrib">Joe Van Niekerk · Randhart</p>
         <p>I suffered from Chronic Fatigue Syndrome for a period of approx. 14 years, during which I consulted a number of conventional medical practitioners and specialists. Nine years down the line, the coxsackie virus was finally detected in my blood and my condition was diagnosed as M.E. syndrome.</p>
         <p>I was extremely relieved to learn what was wrong with me, but then the bad news followed: The conventional medical practitioners had no cure for this disease!!!</p>
         <p>I eliminated refined Carbohydrates, wheat, and foods/ drinks containing yeast from my diet but as years went by, I could sense a steady decline of my system.</p>
@@ -1058,11 +1065,14 @@ a.contact-row strong { font-weight: 600; }
     <details class="account rise" data-extra>
       <summary>
         <span class="account-mark" aria-hidden="true"><img src="assets/images/conditions/airway.webp" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
-        <span class="account-condition">Asthma and allergies</span>
+        <span class="account-head">
+          <span class="account-condition">Asthma and allergies</span>
+          <span class="account-meta">Suzette Coetzer · White River</span>
+          <span class="account-teaser">“I feel like a person who has emerged from a cocoon.”</span>
+        </span>
         <span class="account-open">Read <svg class="ico" aria-hidden="true"><use href="#i-chevron"></use></svg></span>
       </summary>
       <div class="account-text">
-        <p class="account-attrib">Suzette Coetzer · White River</p>
         <p>I would hereby like to thank Dr. Lurie for the new lease of life that I have been granted since being under his treatment.</p>
         <p>I have been suffering from asthma and allergies for 34 years, and have been taking up to 6 anti-histamine tablets per day, as well as cortisone tablets, and above all this I used an asthma inhaler at least 20 times a day!!</p>
         <p>Since starting his treatment, I’m no longer on any medication as mentioned before and I feel like a person who has emerged from a cocoon. No asthma! No blocked nose, swollen eyes or constant dull headaches! With the suggested diet plan, and the Herbernie Tinctures, a new life has opened up for me.</p>
@@ -1074,11 +1084,14 @@ a.contact-row strong { font-weight: 600; }
     <details class="account rise" data-extra>
       <summary>
         <span class="account-mark" aria-hidden="true"><img src="assets/images/conditions/testis.webp" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
-        <span class="account-condition">Testicular cancer</span>
+        <span class="account-head">
+          <span class="account-condition">Testicular cancer</span>
+          <span class="account-meta">Llewellyn Muller</span>
+          <span class="account-teaser">“It was refreshing to hear a completely different approach.”</span>
+        </span>
         <span class="account-open">Read <svg class="ico" aria-hidden="true"><use href="#i-chevron"></use></svg></span>
       </summary>
       <div class="account-text">
-        <p class="account-attrib">Llewellyn Muller</p>
         <p>My walk with Dr Lurie and my healing from cancer. I was diagnosed with cancer during 2005. I had testicular cancer. I was operated on with the cancerous testicle being removed. I was told that I must also have radiation and chemo theraphy as the cancer had spread in my body. The only thing I knew about cancer patients was that most did not survive.</p>
         <p>I had signed a document to say I will go for radiation and chemo. After being discharged from hospital I prayed and asked the Lord to find me someone who could heal me. Prior to getting cancer I done competitive cycling in South Africa. One day I went to Walmer Park shopping center to a particular shop where I bought supplements to take orally to help me perform better in cycling. When I walked into the shop there stood a man in front of me who was talking to the owner of the shop. I was overwhelmed by the man standing in front of me. I had not yet even seen his face as his back was towards me. He turned around and departed from the shop and I asked the owner of the shop — who is that man?</p>
         <p>He asked me why do I want to know who this man was and where I have I been as he did not see me for sometime? I told him I was diagnosed with cancer. The owner of the shop told me that the gentleman was Dr Lurie and that he could help me with my cancer. He gave me Dr Lurie phone number and I contacted him. When I look back I realize that by Gods grace I was in that shop at the right time — a prayer that was answered. I went to meet Dr Lurie. He asked me about my lifestyle and eating habits. Me being thin, i thought I could eat and drink anything. Little did I know that what you eat and drink can have a such a big effect on your health and longevity.</p>
@@ -1090,11 +1103,14 @@ a.contact-row strong { font-weight: 600; }
     <details class="account rise" data-extra>
       <summary>
         <span class="account-mark" aria-hidden="true"><img src="assets/images/conditions/lungs.webp" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
-        <span class="account-condition">Lung cancer</span>
+        <span class="account-head">
+          <span class="account-condition">Lung cancer</span>
+          <span class="account-meta">Freek Duvenage</span>
+          <span class="account-teaser">“My journey of healing and hope.”</span>
+        </span>
         <span class="account-open">Read <svg class="ico" aria-hidden="true"><use href="#i-chevron"></use></svg></span>
       </summary>
       <div class="account-text">
-        <p class="account-attrib">Freek Duvenage</p>
         <p>My Journey of Healing and Hope</p>
         <p>Approximately two decades ago, while living in Nelspruit, Mpumalanga, I was hospitalized with a severe case of pneumonia. Despite intensive medical treatment, my condition did not improve. After undergoing a series of tests and CT scans, doctors identified a compromised gland and opted to remove it for further analysis. The results confirmed a diagnosis of cancer.</p>
         <p>Given my family’s history with the disease, I made the personal decision to decline further gland removal and refuse chemotherapy. Shortly thereafter, we relocated to a small farming town in the Eastern Cape. The cleaner air and natural surroundings offered a sense of renewal, and I began self-medicating with herbs such as Aloe Vera to support my health.</p>
@@ -1106,14 +1122,6 @@ a.contact-row strong { font-weight: 600; }
     </details>
 
   </div>
-
-  <aside class="cs-note rise" aria-label="Important note about patient accounts">
-    <svg class="ico" aria-hidden="true"><use href="#i-shield"></use></svg>
-    <div>
-      <h3>About these accounts</h3>
-      <p>Personal experiences vary. These accounts are not medical evidence or a guarantee of any outcome. Some describe personal decisions about prescribed treatment; they are not advice to stop or change medication. Naturopathic care does not replace necessary medical or oncology treatment. Always speak to your treating doctor before changing anything about your care.</p>
-    </div>
-  </aside>
 </section></main><footer class="simple-footer">
   <div class="simple-footer-inner">
     <div class="simple-footer-main">

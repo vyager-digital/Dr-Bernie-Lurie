@@ -361,22 +361,12 @@ button { font: inherit; color: inherit; }
 .dark-panel { background: var(--slate-deep); }
 
 /* ── 9. CONDITIONS ───────────────────────────────────────── */
-.conditions {
-  display: grid; grid-template-columns: minmax(300px, 0.82fr) minmax(0, 1.18fr);
-  gap: clamp(1.75rem, 4vw, 3.5rem);
-  max-width: 1240px; margin: 0 auto;
+.conditions-grid {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem; max-width: 1240px; margin: 0 auto;
 }
-.conditions-intro {
-  position: sticky; top: 102px; align-self: start;
-  padding: clamp(2rem, 3.4vw, 2.9rem);
-  border-radius: var(--r-lg);
-}
-.conditions-intro .lede { margin-bottom: 1.4rem; }
-.conditions-list { display: grid; gap: 0.75rem; }
 .condition {
-  display: grid; grid-template-columns: 96px minmax(0, 1fr);
-  align-items: start; gap: 0.5rem 1.15rem;
-  padding: 1.3rem 1.45rem;
+  display: flex; flex-direction: column; overflow: hidden;
   border: 1px solid var(--slate-14); border-radius: var(--r-md);
   background: var(--white);
   transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s var(--ease);
@@ -384,18 +374,19 @@ button { font: inherit; color: inherit; }
 .condition:hover { transform: translateY(-2px); border-color: var(--slate-22); box-shadow: var(--shadow-sm); }
 .chip {
   display: block; overflow: hidden;
-  width: 96px; height: 96px; grid-row: span 2;
-  border-radius: var(--r-sm);
-  background: var(--off-white);
+  height: 210px; background: var(--off-white);
+  border-bottom: 1px solid var(--slate-14);
 }
-.chip img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s var(--ease); }
+.chip img { display: block; width: 100%; height: 100%; object-fit: contain; transition: transform 0.5s var(--ease); }
 .condition:hover .chip img { transform: scale(1.05); }
+.condition-body { padding: 1.35rem 1.5rem 1.6rem; }
 .condition h3 {
-  align-self: center;
+  margin-bottom: 0.45rem;
   font-family: var(--font-display); font-size: 1.5rem; line-height: 1.2;
   color: var(--slate-deep);
 }
-.condition p { grid-column: 2; font-size: 1rem; line-height: 1.55; color: var(--slate-mid); }
+.condition p { font-size: 1rem; line-height: 1.55; color: var(--slate-mid); }
+.conditions-note { max-width: 1240px; margin: 2rem auto 0; }
 
 /* ── 10. ABOUT ───────────────────────────────────────────── */
 .about {
@@ -597,21 +588,6 @@ button { font: inherit; color: inherit; }
   color: var(--leaf); white-space: nowrap;
 }
 .fee-line .fee-sub { grid-column: 1 / -1; font-size: 1rem; line-height: 1.5; color: var(--slate-mid); }
-.fees-note {
-  max-width: 1240px; margin: 1.5rem auto 0;
-  display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start;
-  padding: 1.35rem 1.5rem;
-  background: var(--white); border: 1px solid var(--slate-14);
-  border-left: 3px solid var(--leaf); border-radius: var(--r-sm);
-}
-.fees-note > .ico { width: 1.5rem; height: 1.5rem; color: var(--leaf); margin-top: 0.15rem; }
-.fees-note h3 {
-  font-family: var(--font-display); font-size: 1.35rem; line-height: 1.2;
-  color: var(--slate-deep); margin-bottom: 0.5rem;
-}
-.fees-note p { font-size: 1rem; line-height: 1.6; color: var(--slate-mid); }
-.fees-note p + p { margin-top: 0.6rem; }
-.fees-note a { color: var(--slate-deep); text-decoration: underline; text-underline-offset: 3px; }
 
 /* ── 11b. CANCER SUPPORT ───────────────────────────── */
 .cs-wrap {
@@ -902,9 +878,8 @@ a.contact-row strong { font-weight: 600; }
   .hero-media { order: -1; aspect-ratio: 4 / 3; max-height: 62vh; }
   .hero-copy { padding-top: 2.75rem; padding-bottom: 3.25rem; }
 
-  .conditions, .about, .dispensary, .contact, .accounts-head { grid-template-columns: 1fr; }
-  .conditions { gap: 1.5rem; }
-  .conditions-intro { position: static; }
+  .about, .dispensary, .contact, .accounts-head { grid-template-columns: 1fr; }
+  .conditions-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .about { gap: 0.85rem; }
   .about-photo { min-height: 0; aspect-ratio: 4 / 3; }
   .dispensary-media { aspect-ratio: 16 / 10; min-height: 0; }
@@ -932,8 +907,9 @@ a.contact-row strong { font-weight: 600; }
   .team-card { grid-template-columns: 1fr; }
   .team-photo { min-height: 0; aspect-ratio: 4 / 5; }
 
-  .condition { grid-template-columns: 72px minmax(0, 1fr); gap: 0.45rem 0.95rem; padding: 1.15rem 1.1rem; }
-  .chip { width: 72px; height: 72px; }
+  .conditions-grid { grid-template-columns: 1fr; gap: 0.85rem; }
+  .chip { height: 170px; }
+  .condition-body { padding: 1.15rem 1.2rem 1.35rem; }
   .condition h3 { font-size: 1.32rem; }
 
   .account summary { grid-template-columns: 104px minmax(0, 1fr); gap: 0.3rem 1.05rem; padding: 0 1.05rem 0 0; min-height: 104px; }
@@ -942,7 +918,7 @@ a.contact-row strong { font-weight: 600; }
   .account-open { grid-column: 2; }
   .account-text { padding: 0.25rem 1.05rem 1.6rem 1.05rem; }
 
-  .about-body, .dispensary-body, .conditions-intro { padding: 1.85rem 1.35rem; }
+  .about-body, .dispensary-body { padding: 1.85rem 1.35rem; }
 
   .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
   .footer-bottom { margin-top: 2rem; }
@@ -985,9 +961,6 @@ a.contact-row strong { font-weight: 600; }
   <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
     <rect x="2.6" y="4.8" width="18.8" height="14.4" rx="2.4"/><path d="m2.9 6.6 9.1 6.3 9.1-6.3"/>
   </symbol>
-  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 2.8 4.8 5.9v5.4c0 4.5 3 8.6 7.2 9.9 4.2-1.3 7.2-5.4 7.2-9.9V5.9z"/><path d="M9.2 11.9 11.3 14l3.5-3.9"/>
-  </symbol>
   <symbol id="i-wa" viewBox="0 0 448 512"><path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></symbol>
 </svg><nav class="nav" id="nav" aria-label="Primary">
   <a class="nav-brand" href="index.html">
@@ -1021,50 +994,60 @@ a.contact-row strong { font-weight: 600; }
          fetchpriority="high" decoding="async">
   </div>
 </section><section class="section section-tint" id="conditions">
-  <div class="conditions">
-    <div class="conditions-intro dark-panel rise">
-      <span class="label">Conditions &amp; Concerns</span>
-      <h2 class="h-section">Areas of care</h2>
-      <p class="lede" style="margin-top:1.1rem">Bernie provides naturopathic support across the following areas.</p>
-      <p class="fineprint">Naturopathic care does not replace necessary medical, oncology or emergency treatment.</p>
-    </div>
-    <div class="conditions-list">
+  <div class="section-head rise">
+    <span class="label">Conditions &amp; Concerns</span>
+    <h2 class="h-section">Areas of care</h2>
+    <p class="lede">Bernie provides naturopathic support across the following areas.</p>
+  </div>
+  <div class="conditions-grid">
       <article class="condition rise">
         <span class="chip" aria-hidden="true"><img src="assets/images/conditions/joint.webp" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
-        <h3>Chronic Conditions</h3>
-        <p>Whole-person support for persistent fatigue, inflammatory and autoimmune concerns, arthritis and other complex long-term health patterns.</p>
+        <div class="condition-body">
+          <h3>Chronic Conditions</h3>
+          <p>Whole-person support for persistent fatigue, inflammatory and autoimmune concerns, arthritis and other complex long-term health patterns.</p>
+        </div>
       </article>
       <article class="condition rise d1">
         <span class="chip" aria-hidden="true"><img src="assets/images/conditions/cells.webp" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
-        <h3>Cancer Support</h3>
-        <p>Individualised support focused on nourishment, resilience, treatment tolerance and recovery.</p>
+        <div class="condition-body">
+          <h3>Cancer Support</h3>
+          <p>Individualised support focused on nourishment, resilience, treatment tolerance and recovery.</p>
+        </div>
       </article>
       <article class="condition rise d2">
         <span class="chip" aria-hidden="true"><img src="assets/images/conditions/thyroid.webp" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
-        <h3>Hormonal Health</h3>
-        <p>Natural support for thyroid, adrenal, menstrual, menopausal and reproductive health concerns for women and men.</p>
+        <div class="condition-body">
+          <h3>Hormonal Health</h3>
+          <p>Natural support for thyroid, adrenal, menstrual, menopausal and reproductive health concerns for women and men.</p>
+        </div>
       </article>
       <article class="condition rise">
         <span class="chip" aria-hidden="true"><img src="assets/images/conditions/digestive.webp" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
-        <h3>Digestive Health</h3>
-        <p>Support for IBS, candidiasis, bloating, irregular digestion and the wider relationship between gut health, energy and immunity.</p>
+        <div class="condition-body">
+          <h3>Digestive Health</h3>
+          <p>Support for IBS, candidiasis, bloating, irregular digestion and the wider relationship between gut health, energy and immunity.</p>
+        </div>
       </article>
       <article class="condition rise d1">
         <span class="chip" aria-hidden="true"><img src="assets/images/conditions/liver.webp" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
-        <h3>Detoxification</h3>
-        <p>Carefully considered nutritional and lifestyle support for reducing avoidable exposures and strengthening the body's normal elimination pathways.</p>
+        <div class="condition-body">
+          <h3>Detoxification</h3>
+          <p>Carefully considered nutritional and lifestyle support for reducing avoidable exposures and strengthening the body's normal elimination pathways.</p>
+        </div>
       </article>
       <article class="condition rise d2">
         <span class="chip" aria-hidden="true"><img src="assets/images/conditions/dna.webp" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
-        <h3>Health Optimisation</h3>
-        <p>Preventive care, constitution assessment and practical strategies for people who want to protect their health before illness takes hold.</p>
+        <div class="condition-body">
+          <h3>Health Optimisation</h3>
+          <p>Preventive care, constitution assessment and practical strategies for people who want to protect their health before illness takes hold.</p>
+        </div>
       </article>
-    </div>
   </div>
+  <p class="fineprint conditions-note rise">Naturopathic care does not replace necessary medical, oncology or emergency treatment.</p>
 </section><section class="section" id="about"><div class="about">
   <div class="about-photo rise"><img src="assets/images/opt/bernie-about-700.webp" srcset="assets/images/opt/bernie-about-700.webp 700w, assets/images/opt/bernie-about-1050.webp 1050w, assets/images/opt/bernie-about-1400.webp 1400w" sizes="(max-width:980px) 100vw,44vw" alt="Dr. Bernard Lurie at the practice" width="1400" height="2114" loading="lazy" decoding="async"></div>
   <div class="about-body dark-panel rise d1"><span class="label">Meet Dr. Bernie</span><h2 class="h-section">About Dr. Bernard Lurie</h2><p class="lede">Dr. Bernard Lurie is a qualified naturopath, herbalist and iridologist. He leads each consultation and develops an individual herbal and nutritional plan from your history, symptoms and assessment findings.</p><div class="creds"><span class="cred"><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg>Doctor of Science in Naturopathy</span><span class="cred"><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg>Herbal medicine · Iridology · Clinical nutrition</span></div><a href="about.html" class="btn btn-light">About the Practice <svg class="ico" aria-hidden="true"><use href="#i-arrow"></use></svg></a></div>
-</div></section><section class="section" id="fees"><div class="section-head rise"><span class="label">Consultation Fees</span><h2 class="h-section">Consultation fees</h2><p class="lede">In-practice consultations are available with or without an EIS scan. Remote appointments can also be arranged. Any additional treatment or product costs are explained in advance.</p></div><div class="fees-grid" style="grid-template-columns:repeat(2,minmax(0,1fr));max-width:820px"><article class="fee rise"><h3 class="fee-name">Initial Consultation</h3><span class="fee-price">R590</span><p>A full consultation covering your history, symptoms and daily habits.</p></article><article class="fee rise d1"><h3 class="fee-name">Consultation with EIS Scan</h3><span class="fee-price">R980</span><p>A full consultation with a non-invasive EIS scan reviewed with you on the day.</p></article></div><aside class="fees-note rise" aria-label="Payment note"><svg class="ico" aria-hidden="true"><use href="#i-shield"></use></svg><div><h3>Private practice</h3><p>Consultations are not covered by medical aid and are payable on the day. Remote consultations can be arranged when travel is not practical.</p></div></aside></section><section class="section dark-panel" id="stories"><div class="section-head rise"><span class="label">Patient Accounts</span><h2 class="h-section">What patients have shared</h2><p class="lede">These are selected excerpts from patient accounts. Individual experiences vary and are not medical evidence or a guarantee of results.</p></div><div class="quote-grid"><article class="quote-card rise"><blockquote>“I wish to thank Dr. Lurie for his kindness. Nothing was ever too much trouble.”</blockquote><cite>Patient account</cite></article><article class="quote-card rise d1"><blockquote>“We always had free access to him for advice and support.”</blockquote><cite>Patient account</cite></article></div><div class="tx-more rise"><a class="btn btn-light" href="patient-stories.html">Read patient accounts <svg class="ico" aria-hidden="true"><use href="#i-arrow"></use></svg></a></div></section><section class="section dark-panel" id="contact">
+</div></section><section class="section" id="fees"><div class="section-head rise"><span class="label">Consultation Fees</span><h2 class="h-section">Consultation fees</h2><p class="lede">In-practice consultations are available with or without an EIS scan. Remote appointments can also be arranged. Any additional treatment or product costs are explained in advance.</p></div><div class="fees-grid" style="grid-template-columns:repeat(2,minmax(0,1fr));max-width:820px"><article class="fee rise"><h3 class="fee-name">Initial Consultation</h3><span class="fee-price">R590</span><p>A full consultation covering your history, symptoms and daily habits.</p></article><article class="fee rise d1"><h3 class="fee-name">Consultation with EIS Scan</h3><span class="fee-price">R980</span><p>A full consultation with a non-invasive EIS scan reviewed with you on the day.</p></article></div></section><section class="section dark-panel" id="stories"><div class="section-head rise"><span class="label">Patient Accounts</span><h2 class="h-section">What patients have shared</h2><p class="lede">These are selected excerpts from patient accounts. Individual experiences vary and are not medical evidence or a guarantee of results.</p></div><div class="quote-grid"><article class="quote-card rise"><blockquote>“I wish to thank Dr. Lurie for his kindness. Nothing was ever too much trouble.”</blockquote><cite>Patient account</cite></article><article class="quote-card rise d1"><blockquote>“We always had free access to him for advice and support.”</blockquote><cite>Patient account</cite></article></div><div class="tx-more rise"><a class="btn btn-light" href="patient-stories.html">Read patient accounts <svg class="ico" aria-hidden="true"><use href="#i-arrow"></use></svg></a></div></section><section class="section dark-panel" id="contact">
   <div class="contact">
     <div class="contact-copy rise">
       <span class="label">Book a Consultation</span>
