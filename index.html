@@ -374,7 +374,7 @@ button { font: inherit; color: inherit; }
 .conditions-intro .lede { margin-bottom: 1.4rem; }
 .conditions-list { display: grid; gap: 0.75rem; }
 .condition {
-  display: grid; grid-template-columns: 56px minmax(0, 1fr);
+  display: grid; grid-template-columns: 96px minmax(0, 1fr);
   align-items: start; gap: 0.5rem 1.15rem;
   padding: 1.3rem 1.45rem;
   border: 1px solid var(--slate-14); border-radius: var(--r-md);
@@ -383,12 +383,13 @@ button { font: inherit; color: inherit; }
 }
 .condition:hover { transform: translateY(-2px); border-color: var(--slate-22); box-shadow: var(--shadow-sm); }
 .chip {
-  display: grid; place-items: center;
-  width: 56px; height: 56px; grid-row: span 2;
+  display: block; overflow: hidden;
+  width: 96px; height: 96px; grid-row: span 2;
   border-radius: var(--r-sm);
-  background: var(--sage); color: var(--slate-deep);
+  background: var(--off-white);
 }
-.chip .ico { width: 26px; height: 26px; }
+.chip img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s var(--ease); }
+.condition:hover .chip img { transform: scale(1.05); }
 .condition h3 {
   align-self: center;
   font-family: var(--font-display); font-size: 1.5rem; line-height: 1.2;
@@ -862,7 +863,7 @@ a.contact-row strong { font-weight: 600; }
     transition-duration: 0.01ms !important; scroll-behavior: auto !important;
   }
   .rise { opacity: 1; transform: none; }
-  .btn:hover, .tx-card:hover img, .condition:hover { transform: none; }
+  .btn:hover, .tx-card:hover img, .condition:hover, .condition:hover .chip img { transform: none; }
   .account:hover .account-mark img, .account[open] .account-mark img { transform: none; }
 }
 
@@ -931,9 +932,8 @@ a.contact-row strong { font-weight: 600; }
   .team-card { grid-template-columns: 1fr; }
   .team-photo { min-height: 0; aspect-ratio: 4 / 5; }
 
-  .condition { grid-template-columns: 48px minmax(0, 1fr); gap: 0.45rem 0.95rem; padding: 1.15rem 1.1rem; }
-  .chip { width: 48px; height: 48px; }
-  .chip .ico { width: 23px; height: 23px; }
+  .condition { grid-template-columns: 72px minmax(0, 1fr); gap: 0.45rem 0.95rem; padding: 1.15rem 1.1rem; }
+  .chip { width: 72px; height: 72px; }
   .condition h3 { font-size: 1.32rem; }
 
   .account summary { grid-template-columns: 104px minmax(0, 1fr); gap: 0.3rem 1.05rem; padding: 0 1.05rem 0 0; min-height: 104px; }
@@ -967,24 +967,6 @@ a.contact-row strong { font-weight: 600; }
   <defs>
     <g id="s" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></g>
   </defs>
-  <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 20.4S4.4 15.6 4.4 10.2A4.3 4.3 0 0 1 12 7.5a4.3 4.3 0 0 1 7.6 2.7c0 5.4-7.6 10.2-7.6 10.2z"/>
-  </symbol>
-  <symbol id="i-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M2.4 12h4.2l2.1-6 3.6 12 2.5-7.4 1.9 4.1h4.9"/>
-  </symbol>
-  <symbol id="i-balance" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 4.2v15.6M7 20h10M4.2 8.6h15.6M12 4.2 4.2 8.6M12 4.2l7.8 4.4M4.2 8.6 1.8 14.4a2.9 2.9 0 0 0 4.8 0zM19.8 8.6l2.4 5.8a2.9 2.9 0 0 1-4.8 0z"/>
-  </symbol>
-  <symbol id="i-digest" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M8.4 3.4v6.3a3.8 3.8 0 0 0 3.8 3.8h1.6a3.5 3.5 0 0 1 0 7H9.6M6 3.4h4.8"/>
-  </symbol>
-  <symbol id="i-droplet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 3.2s6.1 6.7 6.1 10.5a6.1 6.1 0 1 1-12.2 0C5.9 9.9 12 3.2 12 3.2z"/>
-  </symbol>
-  <symbol id="i-sprout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 20.6v-7.2M12 13.4C12 9.8 9.1 6.9 5.5 6.9c0 3.6 2.9 6.5 6.5 6.5zM12 13.4c0-3.2 2.6-5.7 5.7-5.7 0 3.2-2.6 5.7-5.7 5.7zM6.6 20.6h10.8"/>
-  </symbol>
   <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <path d="M4.6 12.6 9.4 17.4 19.6 6.6"/>
   </symbol>
@@ -1048,32 +1030,32 @@ a.contact-row strong { font-weight: 600; }
     </div>
     <div class="conditions-list">
       <article class="condition rise">
-        <span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-pulse"></use></svg></span>
+        <span class="chip" aria-hidden="true"><img src="assets/images/conditions/joint.webp" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
         <h3>Chronic Conditions</h3>
         <p>Whole-person support for persistent fatigue, inflammatory and autoimmune concerns, arthritis and other complex long-term health patterns.</p>
       </article>
       <article class="condition rise d1">
-        <span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-heart"></use></svg></span>
+        <span class="chip" aria-hidden="true"><img src="assets/images/conditions/cells.webp" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
         <h3>Cancer Support</h3>
         <p>Individualised support focused on nourishment, resilience, treatment tolerance and recovery.</p>
       </article>
       <article class="condition rise d2">
-        <span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-balance"></use></svg></span>
+        <span class="chip" aria-hidden="true"><img src="assets/images/conditions/thyroid.webp" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
         <h3>Hormonal Health</h3>
         <p>Natural support for thyroid, adrenal, menstrual, menopausal and reproductive health concerns for women and men.</p>
       </article>
       <article class="condition rise">
-        <span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-digest"></use></svg></span>
+        <span class="chip" aria-hidden="true"><img src="assets/images/conditions/digestive.webp" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
         <h3>Digestive Health</h3>
         <p>Support for IBS, candidiasis, bloating, irregular digestion and the wider relationship between gut health, energy and immunity.</p>
       </article>
       <article class="condition rise d1">
-        <span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-droplet"></use></svg></span>
+        <span class="chip" aria-hidden="true"><img src="assets/images/conditions/liver.webp" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
         <h3>Detoxification</h3>
         <p>Carefully considered nutritional and lifestyle support for reducing avoidable exposures and strengthening the body's normal elimination pathways.</p>
       </article>
       <article class="condition rise d2">
-        <span class="chip"><svg class="ico" aria-hidden="true"><use href="#i-sprout"></use></svg></span>
+        <span class="chip" aria-hidden="true"><img src="assets/images/conditions/dna.webp" alt="" width="320" height="320" loading="lazy" decoding="async"></span>
         <h3>Health Optimisation</h3>
         <p>Preventive care, constitution assessment and practical strategies for people who want to protect their health before illness takes hold.</p>
       </article>
